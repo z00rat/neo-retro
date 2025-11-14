@@ -1,10 +1,17 @@
-# dependencies (bun install)
+# dependencies
 node_modules
 
 # output
 out
 dist
 *.tgz
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
+/dist
 
 # code coverage
 coverage
@@ -15,12 +22,11 @@ logs
 _.log
 report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
-# dotenv environment variable files
+# Env
 .env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+.env.*
+!.env.example
+!.env.test
 
 # caches
 .eslintcache
@@ -30,5 +36,10 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 # IntelliJ based IDEs
 .idea
 
-# Finder (MacOS) folder config
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# OS
 .DS_Store
+Thumbs.db
