@@ -1,0 +1,2 @@
+/* Tailwind v4 preset that tells the compiler to scan the neo-retro source components. */
+@source './src/lib/**/*.{svelte,ts}';

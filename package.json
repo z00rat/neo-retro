@@ -1,11 +1,23 @@
 {
   "name": "neo-retro",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
-    "dev": "vite dev",
-    "build": "vite build && npm run prepack",
+    "dev": "bun run dev:package",
+    "build": "bun run build:package",
     "preview": "vite preview",
-    "prepack": "svelte-kit sync && svelte-package && publint",
+    "build:css": "bunx @tailwindcss/cli -i src/lib/styles/globals.css -o dist/styles/globals.css",
+    "build:cjs": "node ./scripts/build-cjs.js",
+    "build:types:cjs": "node ./scripts/build-types-cjs.js",
+    "sync:package": "svelte-kit sync --mode package",
+    "build:package": "bun run sync:package && svelte-package && bun run build:css && bun run build:cjs && bun run build:types:cjs",
+    "watch:svelte": "bun run sync:package && svelte-package --watch",
+    "watch:css": "bunx @tailwindcss/cli -i src/lib/styles/globals.css -o dist/styles/globals.css --watch",
+    "watch:cjs": "bunx onchange dist/index.js --initial -- bun run build:cjs",
+    "watch:types": "bunx onchange dist/index.d.ts --initial -- bun run build:types:cjs",
+    "dev:package": "bunx concurrently -k \"bun run watch:svelte\" \"bun run watch:cjs\" \"bun run watch:types\"",
+    "prepack": "bun run build:package && publint",
+    "prepare": "bun run build:package",
+    "prepublishOnly": "bun run build:package && publint",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "format": "prettier --write .",
@@ -13,16 +25,33 @@
   },
   "files": [
     "dist",
+    "src/lib",
+    "tailwind.css",
     "!dist/**/*.test.*",
     "!dist/**/*.spec.*"
   ],
   "sideEffects": [
     "**/*.css"
   ],
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
-    "./styles": "./src/lib/styles/globals.css"
+    ".": {
+      "svelte": "./dist/index.js",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": "./dist/index.js"
+    },
+    "./style": "./dist/styles/globals.css",
+    "./tailwind": "./tailwind.css",
+    "./package.json": "./package.json"
   },
   "peerDependencies": {
     "svelte": "^5.0.0"
@@ -35,6 +64,7 @@
     "@sveltejs/kit": "^2.47.1",
     "@sveltejs/package": "^2.5.4",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
+    "@tailwindcss/cli": "^4.1.14",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.14",
@@ -44,6 +74,8 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-svelte": "^3.12.4",
     "globals": "^16.4.0",
+    "concurrently": "^9.1.2",
+    "onchange": "^7.1.0",
     "prettier": "^3.6.2",
     "prettier-plugin-svelte": "^3.4.0",
     "prettier-plugin-tailwindcss": "^0.7.1",
