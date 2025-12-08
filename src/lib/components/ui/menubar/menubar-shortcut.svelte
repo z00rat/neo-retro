@@ -13,7 +13,7 @@
 <span
   bind:this={ref}
   data-slot="menubar-shortcut"
-  class={cn('ml-auto text-xs tracking-widest text-muted-foreground', className)}
+  class={cn('ml-auto text-xs tracking-widest text-primary-foreground hover:text-accent-foreground', className)}
   {...restProps}
 >
   {@render children?.()}

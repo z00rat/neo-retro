@@ -14,8 +14,9 @@
 <Input
   bind:ref
   data-slot="input-group-control"
+  noShadow={true}
   class={cn(
-    'flex-1 rounded-none border-0 bg-transparent shadow-none focus-visible:ring-0 dark:bg-transparent',
+    'flex-1 rounded-none border-0 bg-transparent shadow-none dark:bg-transparent',
     className,
   )}
   bind:value

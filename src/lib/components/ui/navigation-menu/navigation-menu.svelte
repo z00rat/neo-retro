@@ -18,7 +18,10 @@
   bind:ref
   data-slot="navigation-menu"
   data-viewport={viewport}
-  class={cn('group/navigation-menu relative flex max-w-max flex-1 items-center justify-center', className)}
+  class={cn(
+    'group/navigation-menu relative flex max-w-max flex-1 items-center justify-center border border-border bg-secondary-background text-foreground shadow-shadow',
+    className,
+  )}
   {...restProps}
 >
   {@render children?.()}

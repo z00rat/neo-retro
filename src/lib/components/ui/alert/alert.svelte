@@ -2,20 +2,25 @@
   import { type VariantProps, tv } from 'tailwind-variants';
 
   export const alertVariants = tv({
-    base: 'relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg border px-4 py-3 text-sm has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current',
+    base: 'relative w-full border-1 border-border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current',
     variants: {
       variant: {
-        default: 'bg-card text-card-foreground',
-        destructive:
-          'text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 [&>svg]:text-current',
+        default: 'bg-secondary-background text-foreground',
+        primary: 'bg-primary text-primary-foreground',
+        secondary: 'bg-secondary text-secondary-foreground',
+        accent: 'bg-accent text-accent-foreground',
+        destructive: 'bg-destructive text-destructive-foreground',
+      },
+      noshadow: {
+        false: 'shadow-shadow',
+        true: '',
       },
     },
     defaultVariants: {
       variant: 'default',
+      noshadow: false,
     },
   });
-
-  export type AlertVariant = VariantProps<typeof alertVariants>['variant'];
 </script>
 
 <script lang="ts">
@@ -26,13 +31,21 @@
     ref = $bindable(null),
     class: className,
     variant = 'default',
+    noshadow = false,
     children,
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
-    variant?: AlertVariant;
+    variant?: VariantProps<typeof alertVariants>['variant'];
+    noshadow?: VariantProps<typeof alertVariants>['noshadow'];
   } = $props();
 </script>
 
-<div bind:this={ref} data-slot="alert" class={cn(alertVariants({ variant }), className)} {...restProps} role="alert">
+<div
+  bind:this={ref}
+  data-slot="alert"
+  class={cn(alertVariants({ variant, noshadow }), className)}
+  {...restProps}
+  role="alert"
+>
   {@render children?.()}
 </div>

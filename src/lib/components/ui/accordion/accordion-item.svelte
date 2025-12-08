@@ -8,6 +8,6 @@
 <AccordionPrimitive.Item
   bind:ref
   data-slot="accordion-item"
-  class={cn('border-b last:border-b-0', className)}
+  class={cn('overflow-hidden border border-border shadow-shadow', className)}
   {...restProps}
 />

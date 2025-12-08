@@ -14,15 +14,15 @@
   bind:ref
   data-slot="radio-group-item"
   class={cn(
-    'aspect-square size-4 shrink-0 rounded-full border border-input text-primary shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:bg-input/30 dark:aria-invalid:ring-destructive/40',
+    'aspect-square size-4 rounded-full border border-border bg-primary text-primary-foreground shadow-shadow focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
     className,
   )}
   {...restProps}
 >
   {#snippet children({ checked })}
-    <div data-slot="radio-group-indicator" class="relative flex items-center justify-center">
+    <div data-slot="radio-group-indicator" class="flex items-center justify-center">
       {#if checked}
-        <CircleIcon class="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-primary" />
+        <CircleIcon class="size-2 fill-current text-current" />
       {/if}
     </div>
   {/snippet}

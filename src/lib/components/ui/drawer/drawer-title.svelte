@@ -8,6 +8,6 @@
 <DrawerPrimitive.Title
   bind:ref
   data-slot="drawer-title"
-  class={cn('font-semibold text-foreground', className)}
+  class={cn('text-lg leading-none font-heading tracking-tight', className)}
   {...restProps}
 />

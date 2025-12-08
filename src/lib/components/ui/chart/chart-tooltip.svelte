@@ -33,7 +33,7 @@
     hideIndicator?: boolean;
     labelClassName?: string;
     labelFormatter?: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ((value: any, payload: TooltipPayload[]) => string | number | Snippet) | null;
+      ((value: any, payload: TooltipPayload[]) => string | number | Snippet) | null;
     formatter?: Snippet<
       [
         {
@@ -86,7 +86,7 @@
 <TooltipPrimitive.Root variant="none">
   <div
     class={cn(
-      'grid min-w-[9rem] items-start gap-1.5 rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-xs shadow-xl',
+      'grid min-w-36 items-start gap-1.5 rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-xs shadow-xl',
       className,
     )}
     {...restProps}
@@ -101,7 +101,7 @@
         {@const indicatorColor = color || item.payload?.color || item.color}
         <div
           class={cn(
-            'flex w-full flex-wrap items-stretch gap-2 [&>svg]:size-2.5 [&>svg]:text-muted-foreground',
+            'flex w-full flex-wrap items-stretch gap-2 [&>svg]:size-2.5 [&>svg]:text-foreground/50',
             indicator === 'dot' && 'items-center',
           )}
         >
@@ -134,7 +134,7 @@
                 {#if nestLabel}
                   {@render TooltipLabel()}
                 {/if}
-                <span class="text-muted-foreground">
+                <span class="text-foreground/50">
                   {itemConfig?.label || item.name}
                 </span>
               </div>

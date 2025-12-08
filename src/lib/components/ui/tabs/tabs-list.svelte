@@ -9,7 +9,7 @@
   bind:ref
   data-slot="tabs-list"
   class={cn(
-    'inline-flex h-9 w-fit items-center justify-center rounded-lg bg-muted p-[3px] text-muted-foreground',
+    'rounded-base inline-flex h-12 items-center justify-center border-2 border-border bg-background p-1 text-foreground',
     className,
   )}
   {...restProps}

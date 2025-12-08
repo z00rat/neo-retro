@@ -20,6 +20,9 @@
   bind:value
   bind:ref
   data-slot="command"
-  class={cn('flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground', className)}
+  class={cn(
+    'rounded-base flex h-full w-full flex-col overflow-hidden border border-border bg-primary font-base text-primary-foreground shadow-shadow',
+    className,
+  )}
   {...restProps}
 />

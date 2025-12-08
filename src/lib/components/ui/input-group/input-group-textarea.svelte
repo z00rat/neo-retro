@@ -14,8 +14,9 @@
 <Textarea
   bind:ref
   data-slot="input-group-control"
+  noShadow={true}
   class={cn(
-    'flex-1 resize-none rounded-none border-0 bg-transparent py-3 shadow-none focus-visible:ring-0 dark:bg-transparent',
+    'flex-1 resize-none rounded-none border-none bg-transparent py-3 shadow-none dark:bg-transparent',
     className,
   )}
   bind:value

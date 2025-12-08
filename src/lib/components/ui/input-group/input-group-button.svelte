@@ -29,7 +29,7 @@
     class: className,
     children,
     type = 'button',
-    variant = 'ghost',
+    variant = 'default',
     size = 'xs',
     ...restProps
   }: Omit<ComponentProps<typeof Button>, 'href' | 'size'> & {

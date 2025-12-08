@@ -1,13 +1,18 @@
 <script lang="ts">
   import { cn, type WithElementRef } from '$lib/utils.js';
   import type { HTMLAttributes } from 'svelte/elements';
+  import Button from '$lib/components/ui/button/button.svelte';
+  import { Dialog as DialogPrimitive } from 'bits-ui';
 
   let {
     ref = $bindable(null),
     class: className,
+    showCloseButton = true,
     children,
     ...restProps
-  }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props();
+  }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
+    showCloseButton?: boolean;
+  } = $props();
 </script>
 
 <div
@@ -17,4 +22,9 @@
   {...restProps}
 >
   {@render children?.()}
+  {#if showCloseButton}
+    <DialogPrimitive.Close class="block sm:hidden">
+      <Button variant="destructive" class="w-full">Cancel</Button>
+    </DialogPrimitive.Close>
+  {/if}
 </div>
