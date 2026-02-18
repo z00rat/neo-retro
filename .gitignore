@@ -43,3 +43,6 @@ vite.config.ts.timestamp-*
 # OS
 .DS_Store
 Thumbs.db
+
+#
+static/r

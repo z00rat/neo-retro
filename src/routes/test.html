@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>Neoretro Base Styles Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body class="p-6 md:p-10">
+    <header class="mb-8 neoretro-shadow rounded-sm neoretro-border neoretro-secondary p-4">
+      <h1>Neoretro Design System</h1>
+      <p class="mt-2">
+        A quick tour of <strong>base styles</strong>, semantic tags, and
+        <a href="#" class="neoretro-link">interactive elements</a>.
+      </p>
+      <nav class="mt-3">
+        <a href="#typography">Typography</a>
+        <span>•</span>
+        <a href="#lists">Lists</a>
+        <span>•</span>
+        <a href="#code">Code</a>
+        <span>•</span>
+        <a href="#media">Media</a>
+        <span>•</span>
+        <a href="#table">Table</a>
+        <span>•</span>
+        <a href="#form">Form</a>
+        <span>•</span>
+        <a href="#misc">Misc</a>
+      </nav>
+    </header>
+
+    <main>
+      <article id="typography">
+        <section class="mb-6 rounded-sm neoretro-border p-4">
+          <h2>Typography &amp; Headings</h2>
+          <p>
+            This is a paragraph with some <em>emphasis</em>, some <strong>strong text</strong>, a bit of
+            <mark>highlighted</mark>
+            content, and even a small footnote<sup>1</sup>.
+          </p>
+          <p>And here’s a bit of <small>small print</small> right in the flow.</p>
+
+          <h3>Level 3 heading</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid cumque deserunt.</p>
+
+          <h4>Level 4 heading</h4>
+          <p>Shorter paragraph for contrast.</p>
+
+          <h5>Level 5 heading</h5>
+          <p>Yet another paragraph to show rhythm.</p>
+
+          <h6>Level 6 heading</h6>
+          <p>Used for really small section labels.</p>
+
+          <blockquote>“Good design is as little design as possible.” – Dieter Rams</blockquote>
+
+          <p>Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save, or hit <kbd>Cmd</kbd> + <kbd>S</kbd> on macOS.</p>
+        </section>
+      </article>
+
+      <article id="lists" class="mb-6">
+        <section class="mb-4 rounded-sm neoretro-border p-4">
+          <h2>Lists &amp; Descriptions</h2>
+
+          <h3>Unordered list</h3>
+          <ul>
+            <li>Neon-infused palette</li>
+            <li>Pixel-perfect borders</li>
+            <li>Retro-styled shadows</li>
+          </ul>
+
+          <h3>Ordered list</h3>
+          <ol>
+            <li>Initialize theme variables</li>
+            <li>Apply base styles</li>
+            <li>Ship the experience</li>
+          </ol>
+
+          <h3>Description list</h3>
+          <dl>
+            <dt>Neoretro</dt>
+            <dd>A throwback aesthetic with modern ergonomics.</dd>
+            <dt>Accent</dt>
+            <dd>Used to highlight interactive or special content.</dd>
+          </dl>
+        </section>
+      </article>
+
+      <article id="code" class="mb-6">
+        <section class="mb-4 rounded-sm neoretro-border p-4">
+          <h2>Code &amp; Preformatted Text</h2>
+          <p>
+            Inline code example:
+            <code>const theme = "neoretro"</code>.
+          </p>
+
+          <pre><code>// Simple JS snippet
+function greet(name) {
+  console.log(`Hello, ${name} 👋`);
+}
+
+greet("Neoretro");</code></pre>
+        </section>
+      </article>
+
+      <article id="media" class="mb-6">
+        <section class="mb-4 rounded-sm neoretro-border p-4">
+          <h2>Media &amp; Figure</h2>
+          <figure>
+            <img
+              src="https://via.placeholder.com/400x200.png?text=Neoretro+Image"
+              alt="Placeholder neoretro graphic"
+              class="mx-auto rounded-sm neoretro-border"
+            />
+            <figcaption>Figure 1. A highly realistic placeholder image.</figcaption>
+          </figure>
+        </section>
+      </article>
+
+      <article id="table" class="mb-6">
+        <section class="mb-4 rounded-sm neoretro-border p-4">
+          <h2>Table</h2>
+          <table>
+            <caption>
+              Component status overview
+            </caption>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Status</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Buttons</td>
+                <td>Complete</td>
+                <td>Includes neoretro-focus &amp; shadow.</td>
+              </tr>
+              <tr>
+                <td>Forms</td>
+                <td>In progress</td>
+                <td>Validation styles pending.</td>
+              </tr>
+              <tr>
+                <td>Charts</td>
+                <td>Planned</td>
+                <td>Uses chart color tokens.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </article>
+
+      <article id="form" class="mb-6">
+        <section class="mb-4 rounded-sm neoretro-border p-4">
+          <h2>Form Elements</h2>
+
+          <form class="space-y-4">
+            <fieldset>
+              <legend>Profile</legend>
+
+              <div class="grid gap-4 md:grid-cols-2">
+                <div>
+                  <label for="name">Name</label>
+                  <input id="name" name="name" type="text" placeholder="Jane Doe" />
+                </div>
+
+                <div>
+                  <label for="role">Role</label>
+                  <select id="role" name="role">
+                    <option value="">Select a role</option>
+                    <option>Designer</option>
+                    <option>Developer</option>
+                    <option>Product Manager</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <label for="bio">Short Bio</label>
+                <textarea id="bio" name="bio" placeholder="Tell us something neoretro about you..."></textarea>
+              </div>
+            </fieldset>
+
+            <div class="flex flex-wrap gap-3">
+              <button type="submit">Submit</button>
+              <button type="button" class="neoretro-border neoretro-secondary">Secondary</button>
+              <button type="button" disabled class="neoretro-border neoretro-destructive">Disabled</button>
+            </div>
+
+            <p class="mt-2 text-xs">
+              By submitting, you agree to our
+              <a href="#">terms &amp; conditions</a>.
+            </p>
+          </form>
+        </section>
+      </article>
+
+      <article id="misc" class="mb-6">
+        <section class="mb-4 rounded-sm neoretro-border p-4">
+          <h2>Misc Tags &amp; Details</h2>
+
+          <details open>
+            <summary>Click to toggle more info</summary>
+            <p class="mt-2">
+              This <code>&lt;details&gt;</code> block uses base styles applied to <code>&lt;details&gt;</code> and
+              <code>&lt;summary&gt;</code> for a cohesive look.
+            </p>
+          </details>
+
+          <aside>
+            <p>
+              <strong>Side note:</strong> This is rendered using <code>&lt;aside&gt;</code>, useful for supplementary
+              content.
+            </p>
+          </aside>
+
+          <hr />
+
+          <p class="mt-4 text-xs">
+            <sup>1</sup> Footnotes are just regular <code>&lt;sup&gt;</code> tags with smaller text.
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <footer
+      class="mt-10 flex flex-wrap items-center justify-between gap-2 rounded-sm neoretro-border neoretro-accent p-4 text-xs"
+    >
+      <span>&copy; 2025 Neoretro Labs</span>
+      <span>Built with <code>tailwindcss</code> and good vibes.</span>
+    </footer>
+  </body>
+</html>

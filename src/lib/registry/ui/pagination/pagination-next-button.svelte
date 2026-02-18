@@ -1,0 +1,35 @@
+<script lang="ts">
+  import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
+  import { Pagination as PaginationPrimitive } from 'bits-ui';
+
+  import { buttonVariants } from '$lib/registry/ui/button/index.ts';
+  import { cn } from '$lib/utils.js';
+
+  let {
+    ref = $bindable(null),
+    class: className,
+    children,
+    ...restProps
+  }: PaginationPrimitive.NextButtonProps = $props();
+</script>
+
+{#snippet Fallback()}
+  <span>Next</span>
+  <ChevronRightIcon class="size-4" />
+{/snippet}
+
+<PaginationPrimitive.NextButton
+  bind:ref
+  aria-label="Go to next page"
+  data-pressable
+  class={cn(
+    buttonVariants({
+      size: 'default',
+      variant: 'default',
+      class: 'gap-1 px-2.5 sm:pr-2.5',
+    }),
+    className,
+  )}
+  children={children || Fallback}
+  {...restProps}
+/>

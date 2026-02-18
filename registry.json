@@ -1,0 +1,69 @@
+{
+  "$schema": "https://shadcn-svelte.com/schema.json",
+  "name": "neo-retro",
+  "homepage": "https://neo-retro.zurat.dev",
+  "aliases": {
+    "lib": "$lib/registry/lib",
+    "ui": "$lib/registry/ui",
+    "components": "./components",
+    "utils": "$lib/utils",
+    "hooks": "$lib/registry/hooks"
+  },
+  "items": [
+    {
+      "name": "init",
+      "type": "registry:style",
+      "devDependencies": ["tailwind-variants", "@lucide/svelte", "tw-animate-css"],
+      "registryDependencies": ["utils"],
+      "files": []
+    },
+    {
+      "name": "is-mobile",
+      "type": "registry:hook",
+      "registryDependencies": [],
+      "files": [
+        {
+          "type": "registry:hook",
+          "path": "src/lib/registry/hooks/is-mobile.svelte.ts"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "registryDependencies": [],
+      "files": [
+        {
+          "type": "registry:lib",
+          "path": "src/lib/registry/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "registryDependencies": [],
+      "files": [
+        {
+          "type": "registry:file",
+          "path": "src/lib/registry/ui/button/button.svelte"
+        },
+        {
+          "type": "registry:file",
+          "path": "src/lib/registry/ui/button/index.ts"
+        }
+      ]
+    },
+    {
+      "name": "BUTTONS",
+      "type": "registry:block",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "type": "registry:component",
+          "path": "src/lib/registry/blocks/buttons.svelte"
+        }
+      ]
+    }
+  ]
+}

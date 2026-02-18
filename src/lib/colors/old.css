@@ -1,0 +1,77 @@
+.light[data-theme='oldone'] {
+  --black: #282a36;
+  --red: #ff5555;
+  --green: #50fa7b;
+  --yellow: #f1fa8c;
+  --blue: #6272a4;
+  --magenta: #a985ff;
+  --cyan: #8be9fd;
+  --white: #f8f8f2;
+
+  --the-background: #eee6fe;
+
+  --background: #d7d0e7;
+  --foreground: #000000;
+
+  --primary: var(--magenta);
+  --primary-foreground: #000000;
+
+  --secondary: var(--green);
+  --secondary-foreground: #000000;
+
+  --accent: var(--yellow);
+  --accent-foreground: #000000;
+
+  --destructive: var(--red);
+  --destructive-foreground: #000000;
+
+  --border: #000000;
+
+  --chart-1: var(--blue);
+  --chart-2: var(--green);
+  --chart-3: var(--yellow);
+  --chart-4: var(--magenta);
+  --chart-5: var(--cyan);
+  --chart-active-dot: #000000;
+
+  --ring: var(--blue);
+}
+
+.dark[data-theme='oldone'] {
+  --black: #1e1f29;
+  --red: #ff5555;
+  --green: #50fa7b;
+  --yellow: #f1fa8c;
+  --blue: #bd93f9;
+  --magenta: #a985ff;
+  --cyan: #8be9fd;
+  --white: #f8f8f2;
+
+  --the-background: #332352;
+
+  --background: #1f1f1f;
+  --foreground: #e6e6e6;
+
+  --primary: var(--magenta);
+  --primary-foreground: #000000;
+
+  --secondary: var(--green);
+  --secondary-foreground: #000000;
+
+  --accent: var(--yellow);
+  --accent-foreground: #000000;
+
+  --destructive: var(--red);
+  --destructive-foreground: #000000;
+
+  --border: #000000;
+
+  --chart-1: var(--blue);
+  --chart-2: var(--green);
+  --chart-3: var(--yellow);
+  --chart-4: var(--magenta);
+  --chart-5: var(--cyan);
+  --chart-active-dot: #ffffff;
+
+  --ring: var(--cyan);
+}
