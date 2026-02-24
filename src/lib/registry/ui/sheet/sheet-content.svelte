@@ -2,7 +2,7 @@
   import { tv, type VariantProps } from 'tailwind-variants';
 
   export const sheetVariants = tv({
-    base: 'neoretro-the-default data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 neoretro-border transition ease-in-out duration-400',
+    base: 'data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 neoretro-border transition ease-in-out duration-400',
     variants: {
       side: {
         top: 'data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top inset-x-0 top-0 h-auto border-b',
@@ -25,6 +25,7 @@
   import { Dialog as SheetPrimitive } from 'bits-ui';
   import type { Snippet } from 'svelte';
 
+  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   import SheetOverlay from './sheet-overlay.svelte';
@@ -32,11 +33,13 @@
   let {
     ref = $bindable(null),
     class: className,
+    color,
     side = 'right',
     portalProps,
     children,
     ...restProps
   }: WithoutChildrenOrChild<SheetPrimitive.ContentProps> & {
+    color: ThemeColor;
     portalProps?: SheetPrimitive.PortalProps;
     side?: Side;
     children: Snippet;
@@ -48,7 +51,7 @@
   <SheetPrimitive.Content
     bind:ref
     data-slot="sheet-content"
-    class={cn(sheetVariants({ side }), className)}
+    class={cn(sheetVariants({ side }), colorMap[color], className)}
     {...restProps}
   >
     {@render children?.()}

@@ -1,16 +1,22 @@
 <script lang="ts">
   import { AlertDialog as AlertDialogPrimitive } from 'bits-ui';
 
+  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { buttonVariants } from '$lib/registry/ui/button/index.js';
   import { cn } from '$lib/utils.js';
 
-  let { ref = $bindable(null), class: className, ...restProps }: AlertDialogPrimitive.CancelProps = $props();
+  let {
+    ref = $bindable(null),
+    class: className,
+    color,
+    ...restProps
+  }: AlertDialogPrimitive.CancelProps & { color: ThemeColor } = $props();
 </script>
 
 <AlertDialogPrimitive.Cancel
   bind:ref
   data-slot="alert-dialog-cancel"
-  class={cn(buttonVariants({ variant: 'destructive' }), className)}
+  class={cn(buttonVariants(), colorMap[color], className)}
   data-pressable
   {...restProps}
 />

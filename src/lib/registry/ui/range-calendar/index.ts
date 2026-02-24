@@ -21,6 +21,7 @@ const GridHead = RangeCalendarPrimitive.GridHead;
 const GridBody = RangeCalendarPrimitive.GridBody;
 
 export {
+  Root,
   Day,
   Cell,
   Grid,

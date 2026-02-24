@@ -5,48 +5,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@utility neoretro-none {
-  @apply bg-transparent text-foreground selection:bg-foreground selection:text-background;
-}
-
-@utility neoretro-default {
-  @apply bg-background text-foreground selection:bg-foreground selection:text-background;
-}
-
-@utility neoretro-the-default {
-  @apply bg-the-background text-foreground selection:bg-foreground selection:text-the-background;
-}
-
-@utility neoretro-primary {
-  @apply bg-primary text-primary-foreground selection:bg-primary-foreground selection:text-primary;
-}
-
-@utility neoretro-secondary {
-  @apply bg-secondary text-secondary-foreground selection:bg-secondary-foreground selection:text-secondary;
-}
-
-@utility neoretro-accent {
-  @apply bg-accent text-accent-foreground selection:bg-accent-foreground selection:text-accent;
-}
-
-@utility neoretro-destructive {
-  @apply bg-destructive text-destructive-foreground selection:bg-destructive-foreground selection:text-destructive;
-}
-@utility neoretro-destructive-text {
-  @apply text-destructive selection:bg-destructive selection:text-destructive-foreground;
-}
-
 @utility neoretro-overlay {
   @apply fixed inset-0 z-50 bg-black/50 backdrop-blur-xs;
-}
-
-@utility neoretro-hover {
-  /* @apply bg-accent text-accent-foreground; */
-  @apply bg-accent/10 text-accent dark:bg-accent/20;
-}
-
-@utility neoretro-hover-destructive {
-  @apply bg-destructive/10 text-destructive dark:bg-destructive/20;
 }
 
 @utility neoretro-link {
@@ -59,6 +19,10 @@
 
 @utility neoretro-border-b {
   @apply border-b-2 border-border;
+}
+
+@utility neoretro-border-l {
+  @apply border-l-2 border-border;
 }
 
 @utility neoretro-shadow {
@@ -88,105 +52,42 @@
 }
 
 @utility neoretro-disable {
-  @apply relative cursor-not-allowed overflow-hidden;
-
-  @apply before:pointer-events-none before:absolute before:inset-0 before:z-1;
-  @apply before:bg-[rgba(255,0,0,0.33)];
-  @apply before:backdrop-blur-[0.5px];
-
-  @apply border border-neoretro-red;
-
-  /* @apply after:border-neoretro-red after:text-neoretro-red;
-  @apply after:absolute after:right-2 after:bottom-1 after:z-2;
-  @apply after:border after:bg-black after:px-1 after:py-px;
-  @apply after:text-[10px] after:tracking-[0.25em] after:uppercase after:content-['DISABLED']; */
+  @apply cursor-not-allowed opacity-50 grayscale;
 }
 
 @utility neoretro-focus {
-  @apply relative origin-center transform-gpu outline-hidden;
-  @apply focus-visible:relative focus-visible:z-10;
-
-  &:not([aria-disabled='true']):focus-visible {
-    animation: neoretro-focus-pulse 180ms ease-out 1;
-  }
-
-  &:not([aria-disabled='true'])::after {
-    content: '';
-    pointer-events: none;
-    position: absolute;
-    z-index: 10;
-    right: -1.5rem;
-    bottom: -1.5rem;
-    width: 2rem;
-    height: 2rem;
-    background-repeat: no-repeat;
-    background-size: contain;
-    opacity: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='%23ffffff' stroke='%23212121' stroke-width='2' stroke-linecap='solid' stroke-linejoin='round'%3E%3Cpath d='M12.586 12.586 19 19'/%3E%3Cpath d='M3.688 3.037a.497.497 0 0 0-.651.651l6.5 15.999a.501.501 0 0 0 .947-.062l1.569-6.083a2 2 0 0 1 1.448-1.479l6.124-1.579a.5.5 0 0 0 .063-.947z'/%3E%3C/svg%3E");
-  }
-
-  &:not([aria-disabled='true']):focus-visible::after {
-    opacity: 1;
-  }
-}
-
-@utility neoretro-focus-simple {
-  @apply focus-visible:ring-4 focus-visible:ring-primary focus-visible:outline-hidden;
-}
-
-@keyframes neoretro-focus-pulse {
-  0% {
-    transform: translateZ(0) scale(1);
-  }
-  60% {
-    transform: translateZ(0) scale(1.12);
-  }
-  100% {
-    transform: translateZ(0) scale(1);
-  }
+  @apply focus-visible:relative focus-visible:z-10 focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-ring;
 }
 
 @theme inline {
-  --radius: 0px;
+  --radius: 8px;
 
-  --color-the-background: var(--the-background);
+  --color-background: var(--primary-background);
+  --color-foreground: var(--primary-foreground);
 
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-
-  --color-border: var(--border);
-  --shadow-shadow: 4px 4px 0px 0px var(--border);
+  --color-border: #000000;
+  --shadow-shadow: 4px 4px 0px 0px #000000;
   --spacing-boxShadowX: 4px;
   --spacing-boxShadowY: 4px;
-
   --color-ring: var(--ring);
 
-  --color-neoretro-black: var(--black);
-  --color-neoretro-red: var(--red);
-  --color-neoretro-green: var(--green);
-  --color-neoretro-yellow: var(--yellow);
-  --color-neoretro-blue: var(--blue);
-  --color-neoretro-magenta: var(--magenta);
-  --color-neoretro-cyan: var(--cyan);
-  --color-neoretro-white: var(--white);
+  --color-black: var(--black);
+  --color-red: var(--red);
+  --color-green: var(--green);
+  --color-yellow: var(--yellow);
+  --color-blue: var(--blue);
+  --color-magenta: var(--magenta);
+  --color-cyan: var(--cyan);
+  --color-white: var(--white);
 
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
+  --color-on-black: var(--text-on-black);
+  --color-on-red: var(--text-on-red);
+  --color-on-green: var(--text-on-green);
+  --color-on-yellow: var(--text-on-yellow);
+  --color-on-blue: var(--text-on-blue);
+  --color-on-magenta: var(--text-on-magenta);
+  --color-on-cyan: var(--text-on-cyan);
+  --color-on-white: var(--text-on-white);
 }
 
 @layer base {
@@ -199,9 +100,10 @@
   }
 
   body {
-    @apply min-h-screen neoretro-the-default;
+    @apply min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background;
   }
 
+  /* Headings */
   h1 {
     @apply mb-4 text-4xl leading-tight font-black tracking-tight md:text-5xl;
   }
@@ -225,20 +127,14 @@
   h6 {
     @apply mt-3 mb-2 text-sm leading-snug font-black tracking-wide;
   }
-}
 
-/* 
-@layer base {
-  Headings
-
-
-  Text & inline
+  /* Text & inline */
   p {
     @apply mb-4 leading-relaxed;
   }
 
   a {
-    @apply neoretro-link text-primary;
+    @apply font-bold neoretro-link;
   }
 
   strong,
@@ -256,7 +152,7 @@
   }
 
   mark {
-    @apply bg-yellow-300 text-black px-1 rounded-sm;
+    @apply rounded-sm bg-yellow-300 px-1 text-black;
   }
 
   sup {
@@ -267,47 +163,22 @@
     @apply align-sub text-[0.7em];
   }
 
-  Lists
-  ul {
-    @apply list-disc list-inside space-y-1 mb-4;
-  }
-
-  ol {
-    @apply list-decimal list-inside space-y-1 mb-4;
-  }
-
-  li {
-    @apply leading-relaxed;
-  }
-
-  dl {
-    @apply space-y-2 mb-4;
-  }
-
-  dt {
-    @apply font-semibold;
-  }
-
-  dd {
-    @apply ml-4 text-sm;
-  }
-
-  Block content
+  /* Block content */
   blockquote {
-    @apply neoretro-border border-l-4 pl-4 ml-0 italic text-sm md:text-base my-4 py-2;
+    @apply my-4 ml-0 neoretro-border border-l-4 py-2 pl-4 text-sm italic md:text-base;
   }
 
   hr {
-    @apply border-t border-border my-6;
+    @apply my-6 border-t border-border;
   }
 
-  Code-related
+  /* Code-related */
   code {
-    @apply rounded-sm border border-border bg-secondary/50 px-1 py-0.5 text-xs font-mono;
+    @apply rounded-sm border border-border px-1 py-0.5 font-mono text-xs;
   }
 
   pre {
-    @apply neoretro-border bg-black/60 text-neoretro-green text-xs md:text-sm font-mono p-4 rounded-md overflow-x-auto my-4;
+    @apply my-4 overflow-x-auto rounded-md neoretro-border bg-black/60 p-4 font-mono text-xs text-green md:text-sm;
   }
 
   pre code {
@@ -315,15 +186,15 @@
   }
 
   kbd {
-    @apply border border-border bg-black/70 rounded-sm px-1.5 py-0.5 text-[0.7rem] font-mono uppercase tracking-widest;
+    @apply rounded-sm border border-border bg-black/70 px-1.5 py-0.5 font-mono text-[0.7rem] tracking-widest uppercase;
   }
 
-  Images & media
+  /* Images & media */
   img,
   video,
   canvas,
   svg {
-    @apply max-w-full h-auto;
+    @apply h-auto max-w-full;
   }
 
   figure {
@@ -334,40 +205,17 @@
     @apply mt-2 text-xs text-foreground/70;
   }
 
-  Tables
-  table {
-    @apply w-full border-collapse text-sm my-4;
-  }
+  /* Tables removed - now fully component driven in $lib/registry/ui/table */
 
-  thead {
-    @apply bg-secondary/60;
-  }
-
-  th {
-    @apply neoretro-border px-3 py-2 text-left font-semibold;
-  }
-
-  td {
-    @apply neoretro-border px-3 py-2 align-top;
-  }
-
-  tbody tr:nth-child(even) {
-    @apply bg-background/60;
-  }
-
-  caption {
-    @apply text-xs text-foreground/70 mb-2;
-  }
-
-  Forms
+  /* Forms */
   label {
-    @apply block text-xs font-semibold uppercase tracking-wide mb-1;
+    @apply mb-1 block text-xs font-semibold tracking-wide uppercase;
   }
 
   input,
   textarea,
   select {
-    @apply neoretro-border neoretro-focus w-full bg-background text-foreground px-3 py-2 rounded-sm text-sm outline-none;
+    @apply neoretro-focus w-full rounded-sm neoretro-border bg-background px-3 py-2 text-sm text-foreground outline-none;
   }
 
   textarea {
@@ -384,18 +232,11 @@
   }
 
   fieldset {
-    @apply neoretro-border rounded-md p-3 mb-4;
+    @apply mb-4 rounded-md neoretro-border p-3;
   }
 
   legend {
-    @apply px-1 text-xs font-semibold uppercase tracking-wide;
-  }
-
-  button,
-  [type='button'],
-  [type='submit'],
-  [type='reset'] {
-    @apply neoretro-primary neoretro-border neoretro-shadow neoretro-focus inline-flex items-center justify-center gap-1 rounded-sm px-4 py-2 text-xs font-semibold uppercase tracking-wide cursor-pointer;
+    @apply px-1 text-xs font-semibold tracking-wide uppercase;
   }
 
   button:disabled,
@@ -405,16 +246,16 @@
     @apply neoretro-disable;
   }
 
-  Details / summary
+  /* Details / summary */
   details {
-    @apply neoretro-border rounded-md p-3 mb-4 bg-background/80;
+    @apply mb-4 rounded-md neoretro-border bg-background/80 p-3;
   }
 
   summary {
-    @apply cursor-pointer font-semibold flex items-center gap-2;
+    @apply flex cursor-pointer items-center gap-2 font-semibold;
   }
 
-  Misc layout-ish tags
+  /* Misc layout-ish tags */
   main {
     @apply block;
   }
@@ -439,4 +280,4 @@
   aside {
     @apply text-sm opacity-90;
   }
-} */
+}

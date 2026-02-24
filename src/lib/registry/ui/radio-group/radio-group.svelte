@@ -1,14 +1,21 @@
 <script lang="ts">
   import { RadioGroup as RadioGroupPrimitive } from 'bits-ui';
+  import { setContext } from 'svelte';
 
+  import type { ThemeColor } from '$lib/colors.js';
   import { cn } from '$lib/utils.js';
 
   let {
     ref = $bindable(null),
     class: className,
+    color = 'cyan',
     value = $bindable(''),
     ...restProps
-  }: RadioGroupPrimitive.RootProps = $props();
+  }: RadioGroupPrimitive.RootProps & {
+    color?: ThemeColor;
+  } = $props();
+
+  setContext('radioGroupColor', () => color);
 </script>
 
 <RadioGroupPrimitive.Root

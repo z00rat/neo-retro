@@ -1,19 +1,22 @@
 <script lang="ts">
   import { Dialog as SheetPrimitive } from 'bits-ui';
 
-  import { buttonVariants, type ButtonVariant } from '$lib/registry/ui/button/index.ts';
+  import { colorMap, type ThemeColor } from '$lib/colors.js';
+  import { buttonVariants } from '$lib/registry/ui/button/index.ts';
+  import { cn } from '$lib/utils.js';
 
   let {
     ref = $bindable(null),
-    variant,
+    class: className,
+    color,
     ...restProps
-  }: SheetPrimitive.CloseProps & { variant?: ButtonVariant } = $props();
+  }: SheetPrimitive.CloseProps & { color: ThemeColor } = $props();
 </script>
 
 <SheetPrimitive.Close
   bind:ref
   data-slot="sheet-close"
   data-pressable
-  class={buttonVariants({ variant })}
+  class={cn(buttonVariants(), colorMap[color], className)}
   {...restProps}
 />

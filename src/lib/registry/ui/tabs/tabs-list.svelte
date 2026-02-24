@@ -9,9 +9,6 @@
 <TabsPrimitive.List
   bind:ref
   data-slot="tabs-list"
-  class={cn(
-    'flex h-12 w-full neoretro-shadow items-center gap-0.5 rounded neoretro-border neoretro-default',
-    className,
-  )}
+  class={cn('flex h-12 w-full neoretro-shadow items-center rounded neoretro-border', className)}
   {...restProps}
 />

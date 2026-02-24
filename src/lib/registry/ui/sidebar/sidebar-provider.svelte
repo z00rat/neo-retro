@@ -1,16 +1,27 @@
 <script lang="ts">
+  import { setContext } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
+  import type { ThemeColor } from '$lib/colors.js';
   import * as Tooltip from '$lib/registry/ui/tooltip/index.js';
   import { cn, type WithElementRef } from '$lib/utils.js';
 
   import { SIDEBAR_COOKIE_MAX_AGE, SIDEBAR_COOKIE_NAME, SIDEBAR_WIDTH, SIDEBAR_WIDTH_ICON } from './constants.js';
   import { setSidebar } from './context.svelte.js';
 
+  export type SidebarThemeColors = {
+    base: ThemeColor;
+    active: ThemeColor;
+    trigger: ThemeColor;
+  };
+
   let {
     ref = $bindable(null),
     open = $bindable(true),
     onOpenChange = () => {},
+    baseColor = 'white',
+    activeColor = 'black',
+    triggerColor = 'white',
     class: className,
     style,
     children,
@@ -18,7 +29,16 @@
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
+    baseColor?: ThemeColor;
+    activeColor?: ThemeColor;
+    triggerColor?: ThemeColor;
   } = $props();
+
+  setContext('sidebarColor', () => ({
+    base: baseColor,
+    active: activeColor,
+    trigger: triggerColor,
+  }));
 
   const sidebar = setSidebar({
     open: () => open,
@@ -38,7 +58,7 @@
   <div
     data-slot="sidebar-wrapper"
     style="--sidebar-width: {SIDEBAR_WIDTH}; --sidebar-width-icon: {SIDEBAR_WIDTH_ICON}; {style}"
-    class={cn('flex min-h-svh w-full has-data-[variant=inset]:neoretro-default', className)}
+    class={cn('flex min-h-svh w-full', className)}
     bind:this={ref}
     {...restProps}
   >

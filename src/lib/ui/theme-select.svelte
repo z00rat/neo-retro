@@ -16,8 +16,12 @@
   }
 </script>
 
-<label class="inline-flex neoretro-shadow items-center gap-2 rounded neoretro-border neoretro-primary text-sm">
-  <select class="neoretro-focus neoretro-default px-2 py-1 text-sm" value={theme.current ?? ''} onchange={handleChange}>
+<label class="inline-flex neoretro-shadow items-center gap-2 rounded neoretro-border bg-cyan text-sm text-on-cyan">
+  <select
+    class="neoretro-focus bg-background px-2 py-1 text-sm text-foreground"
+    value={theme.current ?? ''}
+    onchange={handleChange}
+  >
     {#each themes as t}
       <option value={t.id}>{t.label}</option>
     {/each}

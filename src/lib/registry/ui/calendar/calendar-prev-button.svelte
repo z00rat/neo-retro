@@ -1,19 +1,16 @@
 <script lang="ts">
   import ChevronLeftIcon from '@lucide/svelte/icons/chevron-left';
   import { Calendar as CalendarPrimitive } from 'bits-ui';
+  import { getContext } from 'svelte';
 
-  import { buttonVariants, type ButtonVariant } from '$lib/registry/ui/button/index.ts';
+  import { colorMap, type ThemeColor } from '$lib/colors.js';
+  import { buttonVariants } from '$lib/registry/ui/button/index.ts';
   import { cn } from '$lib/utils.js';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    children,
-    variant = 'primary',
-    ...restProps
-  }: CalendarPrimitive.PrevButtonProps & {
-    variant?: ButtonVariant;
-  } = $props();
+  let { ref = $bindable(null), class: className, children, ...restProps }: CalendarPrimitive.PrevButtonProps = $props();
+
+  const getColors = getContext<() => { navColor: ThemeColor }>('calendarColors');
+  const navColor = $derived(colorMap[getColors().navColor]);
 </script>
 
 {#snippet Fallback()}
@@ -24,7 +21,8 @@
   bind:ref
   data-pressable
   class={cn(
-    buttonVariants({ variant, size: 'icon', noShadow: false }),
+    buttonVariants({ size: 'icon', noShadow: false }),
+    navColor,
     'size-(--cell-size) p-0 select-none rtl:rotate-180',
     className,
   )}

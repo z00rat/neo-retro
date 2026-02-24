@@ -2,6 +2,7 @@
   import type { Command as CommandPrimitive, Dialog as DialogPrimitive } from 'bits-ui';
   import type { Snippet } from 'svelte';
 
+  import type { ThemeColor } from '$lib/colors.js';
   import * as Dialog from '$lib/registry/ui/dialog/index.ts';
   import type { WithoutChildrenOrChild } from '$lib/utils.js';
 
@@ -11,6 +12,7 @@
     open = $bindable(false),
     ref = $bindable(null),
     value = $bindable(''),
+    color,
     title = 'Command Palette',
     description = 'Search for a command to run',
     portalProps,
@@ -18,6 +20,7 @@
     ...restProps
   }: WithoutChildrenOrChild<DialogPrimitive.RootProps> &
     WithoutChildrenOrChild<CommandPrimitive.RootProps> & {
+      color: ThemeColor;
       portalProps?: DialogPrimitive.PortalProps;
       children: Snippet;
       title?: string;
@@ -30,8 +33,9 @@
     <Dialog.Title>{title}</Dialog.Title>
     <Dialog.Description>{description}</Dialog.Description>
   </Dialog.Header>
-  <Dialog.Content class="overflow-hidden p-0" {portalProps}>
+  <Dialog.Content {color} class="overflow-hidden p-0" {portalProps}>
     <Command
+      {color}
       class="**:data-command-group:px-2 **:data-command-input:h-12 **:data-command-item:px-2 **:data-command-item:py-3 **:data-[slot=command-input-wrapper]:h-12 [&_[data-command-group]:not([hidden])_~[data-command-group]]:pt-0 [&_[data-command-input-wrapper]_svg]:h-5 [&_[data-command-input-wrapper]_svg]:w-5 [&_[data-command-item]_svg]:h-5 [&_[data-command-item]_svg]:w-5"
       {...restProps}
       bind:value

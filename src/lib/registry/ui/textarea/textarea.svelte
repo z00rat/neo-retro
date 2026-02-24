@@ -19,7 +19,7 @@
   bind:this={ref}
   data-slot={dataSlot}
   class={cn(
-    'flex min-h-[80px] w-full rounded neoretro-border neoretro-default px-3 py-2 text-sm neoretro-focus-simple placeholder:text-current/50 disabled:neoretro-disable',
+    'flex min-h-[80px] w-full rounded neoretro-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-current/50 focus-visible:neoretro-focus disabled:neoretro-disable aria-invalid:border-red aria-invalid:ring-red/20',
     className,
     !noShadow && 'neoretro-shadow',
   )}

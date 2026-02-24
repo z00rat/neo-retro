@@ -1,11 +1,14 @@
 <script lang="ts">
+  import { getContext } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
+  import { colorMap } from '$lib/colors.js';
   import * as Sheet from '$lib/registry/ui/sheet/index.js';
   import { cn, type WithElementRef } from '$lib/utils.js';
 
   import { SIDEBAR_WIDTH_MOBILE } from './constants.js';
   import { useSidebar } from './context.svelte.js';
+  import type { SidebarThemeColors } from './sidebar-provider.svelte';
 
   let {
     ref = $bindable(null),
@@ -22,11 +25,17 @@
   } = $props();
 
   const sidebar = useSidebar();
+  const sidebarColor = getContext<() => SidebarThemeColors>('sidebarColor');
+  const themeColors = $derived(sidebarColor?.() ?? { base: 'white', active: 'black', trigger: 'white' });
 </script>
 
 {#if collapsible === 'none'}
   <div
-    class={cn('flex h-full w-(--sidebar-width) flex-col neoretro-default', className)}
+    class={cn(
+      'min-h-svh w-(--sidebar-width) flex-col neoretro-border bg-background',
+      colorMap[themeColors.base],
+      className,
+    )}
     bind:this={ref}
     {...restProps}
   >
@@ -38,7 +47,8 @@
       data-sidebar="sidebar"
       data-slot="sidebar"
       data-mobile="true"
-      class="w-(--sidebar-width) neoretro-default p-0 [&>button]:hidden"
+      color={themeColors.base}
+      class={cn('w-(--sidebar-width) p-0 [&>button]:hidden', colorMap[themeColors.base])}
       style="--sidebar-width: {SIDEBAR_WIDTH_MOBILE};"
       {side}
     >
@@ -91,7 +101,10 @@
       <div
         data-sidebar="sidebar"
         data-slot="sidebar-inner"
-        class="flex h-full w-full flex-col neoretro-default group-data-[variant=floating]:rounded group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
+        class={cn(
+          'flex h-full w-full flex-col bg-background group-data-[variant=floating]:neoretro-shadow group-data-[variant=floating]:rounded group-data-[variant=floating]:neoretro-border',
+          colorMap[themeColors.base],
+        )}
       >
         {@render children?.()}
       </div>

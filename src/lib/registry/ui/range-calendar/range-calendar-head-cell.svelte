@@ -6,4 +6,11 @@
   let { ref = $bindable(null), class: className, ...restProps }: RangeCalendarPrimitive.HeadCellProps = $props();
 </script>
 
-<RangeCalendarPrimitive.HeadCell bind:ref class={cn('w-(--cell-size) text-sm font-normal', className)} {...restProps} />
+<RangeCalendarPrimitive.HeadCell
+  bind:ref
+  class={cn(
+    'text-muted-foreground flex size-(--cell-size) w-full items-center justify-center p-0 text-sm font-normal',
+    className,
+  )}
+  {...restProps}
+/>

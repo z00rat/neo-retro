@@ -1,8 +1,11 @@
 <script lang="ts">
+  import { getContext } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
   import { Skeleton } from '$lib/registry/ui/skeleton/index.js';
   import { cn, type WithElementRef } from '$lib/utils.js';
+
+  import type { SidebarThemeColors } from './sidebar-provider.svelte';
 
   let {
     ref = $bindable(null),
@@ -13,6 +16,9 @@
   }: WithElementRef<HTMLAttributes<HTMLElement>> & {
     showIcon?: boolean;
   } = $props();
+
+  const sidebarColor = getContext<() => SidebarThemeColors>('sidebarColor');
+  const themeColors = $derived(sidebarColor?.() ?? { base: 'white', active: 'black', trigger: 'white' });
 
   // Random width between 50% and 90%
   const width = `${Math.floor(Math.random() * 40) + 50}%`;
@@ -26,9 +32,10 @@
   {...restProps}
 >
   {#if showIcon}
-    <Skeleton class="size-4 rounded" data-sidebar="menu-skeleton-icon" />
+    <Skeleton color={themeColors.base} class="size-4 rounded" data-sidebar="menu-skeleton-icon" />
   {/if}
   <Skeleton
+    color={themeColors.base}
     class="h-4 max-w-(--skeleton-width) flex-1"
     data-sidebar="menu-skeleton-text"
     style="--skeleton-width: {width};"

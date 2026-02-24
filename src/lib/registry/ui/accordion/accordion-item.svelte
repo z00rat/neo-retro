@@ -9,6 +9,6 @@
 <AccordionPrimitive.Item
   bind:ref
   data-slot="accordion-item"
-  class={cn('neoretro-shadow rounded neoretro-border neoretro-default', className)}
+  class={cn('neoretro-shadow rounded neoretro-border bg-background text-foreground', className)}
   {...restProps}
 />

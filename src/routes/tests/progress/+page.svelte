@@ -1,0 +1,74 @@
+<script lang="ts">
+  import type { ThemeColor } from '$lib/colors.js';
+  import { Progress } from '$lib/registry/ui/progress';
+
+  const colors: ThemeColor[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+</script>
+
+<h1>Progress</h1>
+
+<!-- All indicator colors with default track -->
+<section>
+  <h3>Indicator Colors</h3>
+  <div class="space-y-4">
+    {#each colors as color}
+      <div class="space-y-2">
+        <label for="progress-{color}" class="text-sm font-medium">{color} indicator</label>
+        <Progress id="progress-{color}" value={45} indicatorColor={color} />
+      </div>
+    {/each}
+  </div>
+</section>
+
+<!-- Different Track and Indicator Colors -->
+<section>
+  <h3>Different Indicator &amp; Track Colors</h3>
+  <div class="space-y-4">
+    <div class="space-y-2">
+      <label for="progress-red-yellow" class="text-sm font-medium">Red indicator, yellow track</label>
+      <Progress id="progress-red-yellow" value={20} indicatorColor="red" trackColor="yellow" />
+    </div>
+    <div class="space-y-2">
+      <label for="progress-blue-cyan" class="text-sm font-medium">Blue indicator, cyan track</label>
+      <Progress id="progress-blue-cyan" value={40} indicatorColor="blue" trackColor="cyan" />
+    </div>
+    <div class="space-y-2">
+      <label for="progress-magenta-white" class="text-sm font-medium">Magenta indicator, white track</label>
+      <Progress id="progress-magenta-white" value={80} indicatorColor="magenta" trackColor="white" />
+    </div>
+  </div>
+</section>
+
+<!-- No Shadow -->
+<section>
+  <h3>No Shadow</h3>
+  <div class="space-y-4">
+    <div class="space-y-2">
+      <label for="progress-no-shadow-1" class="text-sm font-medium">Green indicator without shadow</label>
+      <Progress id="progress-no-shadow-1" value={60} indicatorColor="green" noShadow />
+    </div>
+    <div class="space-y-2">
+      <label for="progress-no-shadow-2" class="text-sm font-medium">Yellow indicator without shadow</label>
+      <Progress id="progress-no-shadow-2" value={80} indicatorColor="yellow" noShadow />
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+<section>
+  <h3>Different Values</h3>
+  <div class="space-y-4">
+    <div class="space-y-2">
+      <label for="progress-0" class="text-sm font-medium">0%</label>
+      <Progress id="progress-0" value={0} indicatorColor="black" />
+    </div>
+    <div class="space-y-2">
+      <label for="progress-50" class="text-sm font-medium">50%</label>
+      <Progress id="progress-50" value={50} indicatorColor="black" />
+    </div>
+    <div class="space-y-2">
+      <label for="progress-100" class="text-sm font-medium">100%</label>
+      <Progress id="progress-100" value={100} indicatorColor="black" />
+    </div>
+  </div>
+</section>

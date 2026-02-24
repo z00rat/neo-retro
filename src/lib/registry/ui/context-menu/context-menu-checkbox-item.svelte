@@ -1,8 +1,9 @@
 <script lang="ts">
   import CheckIcon from '@lucide/svelte/icons/check';
   import { ContextMenu as ContextMenuPrimitive } from 'bits-ui';
-  import type { Snippet } from 'svelte';
+  import { getContext, type Snippet } from 'svelte';
 
+  import { invertedHighlightColorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   let {
@@ -15,6 +16,9 @@
   }: WithoutChildrenOrChild<ContextMenuPrimitive.CheckboxItemProps> & {
     children?: Snippet;
   } = $props();
+
+  const getColor = getContext<() => ThemeColor | undefined>('contextMenuColor');
+  const color = $derived(getColor?.() ?? 'black');
 </script>
 
 <ContextMenuPrimitive.CheckboxItem
@@ -23,7 +27,8 @@
   bind:indeterminate
   data-slot="context-menu-checkbox-item"
   class={cn(
-    "relative flex items-center gap-2 rounded py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-disabled:neoretro-disable data-highlighted:neoretro-accent [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+    "relative flex items-center gap-2 rounded py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-disabled:neoretro-disable [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+    invertedHighlightColorMap[color],
     className,
   )}
   {...restProps}

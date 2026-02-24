@@ -17,7 +17,7 @@
   <CommandPrimitive.Input
     data-slot="command-input"
     class={cn(
-      'flex h-full w-full rounded bg-transparent text-sm neoretro-focus-simple placeholder:opacity-80 data-[disabled=true]:neoretro-disable',
+      'neoretro-focus-simple flex h-full w-full rounded bg-transparent text-sm placeholder:opacity-80 data-[disabled=true]:neoretro-disable',
       className,
     )}
     bind:ref

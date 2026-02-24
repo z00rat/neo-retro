@@ -2,8 +2,9 @@
   import CheckIcon from '@lucide/svelte/icons/check';
   import MinusIcon from '@lucide/svelte/icons/minus';
   import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
-  import type { Snippet } from 'svelte';
+  import { getContext, type Snippet } from 'svelte';
 
+  import { invertedHighlightColorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   let {
@@ -16,6 +17,9 @@
   }: WithoutChildrenOrChild<DropdownMenuPrimitive.CheckboxItemProps> & {
     children?: Snippet;
   } = $props();
+
+  const getColor = getContext<() => ThemeColor | undefined>('dropdownMenuColor');
+  const color = $derived(getColor?.() ?? 'black');
 </script>
 
 <DropdownMenuPrimitive.CheckboxItem
@@ -24,18 +28,14 @@
   bind:indeterminate
   data-slot="dropdown-menu-checkbox-item"
   class={cn(
-    'relative flex items-center gap-2 rounded py-1.5 ps-8 pe-2 text-sm outline-hidden select-none focus:neoretro-hover data-disabled:neoretro-disable',
+    'relative flex items-center gap-2 rounded py-1.5 ps-8 pe-2 text-sm outline-hidden select-none data-disabled:neoretro-disable',
+    invertedHighlightColorMap[color],
     className,
   )}
   {...restProps}
 >
   {#snippet children({ checked, indeterminate })}
-    <span
-      class={cn(
-        'pointer-events-none absolute start-2 flex size-5 items-center justify-center neoretro-border',
-        checked || indeterminate ? 'neoretro-primary' : 'neoretro-default',
-      )}
-    >
+    <span class="pointer-events-none absolute start-2 flex size-3.5 items-center justify-center">
       {#if checked}
         <div class="size-3 bg-current"></div>
       {:else if indeterminate}

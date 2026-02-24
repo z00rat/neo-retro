@@ -11,8 +11,8 @@
   bind:ref
   data-slot="input-otp-slot"
   class={cn(
-    'relative flex size-9 items-center justify-center border-t border-r border-b border-border neoretro-default text-sm transition-all outline-none first:rounded-l first:border-l last:rounded-r aria-invalid:border-destructive',
-    cell.isActive && 'z-10 neoretro-focus-simple aria-invalid:border-destructive',
+    'relative flex size-12 items-center justify-center border-y-2 border-r-2 border-border bg-background text-sm text-foreground transition-all outline-none first:rounded-l first:border-l-2 last:rounded-r aria-invalid:border-red',
+    cell.isActive && 'z-10 focus-visible:neoretro-focus aria-invalid:border-red',
     className,
   )}
   {...restProps}

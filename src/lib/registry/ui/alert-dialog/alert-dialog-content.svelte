@@ -2,6 +2,7 @@
   import { AlertDialog as AlertDialogPrimitive } from 'bits-ui';
   import type { ComponentProps } from 'svelte';
 
+  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChild, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   import AlertDialogOverlay from './alert-dialog-overlay.svelte';
@@ -10,9 +11,11 @@
   let {
     ref = $bindable(null),
     class: className,
+    color,
     portalProps,
     ...restProps
   }: WithoutChild<AlertDialogPrimitive.ContentProps> & {
+    color: ThemeColor;
     portalProps?: WithoutChildrenOrChild<ComponentProps<typeof AlertDialogPortal>>;
   } = $props();
 </script>
@@ -23,7 +26,8 @@
     bind:ref
     data-slot="alert-dialog-content"
     class={cn(
-      'fixed start-[50%] top-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded neoretro-border neoretro-the-default p-6 duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg',
+      'fixed start-[50%] top-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded neoretro-border p-6 duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg',
+      colorMap[color],
       className,
     )}
     {...restProps}

@@ -1,9 +1,9 @@
 <script lang="ts">
   import { isEqualMonth, type DateValue } from '@internationalized/date';
   import { Calendar as CalendarPrimitive } from 'bits-ui';
-  import type { Snippet } from 'svelte';
+  import { setContext, type Snippet } from 'svelte';
 
-  import type { ButtonVariant } from '$lib/registry/ui/button/index.ts';
+  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   import * as Calendar from './index.js';
@@ -14,7 +14,9 @@
     placeholder = $bindable(),
     class: className,
     weekdayFormat = 'short',
-    buttonVariant = 'primary',
+    color,
+    selectedColor,
+    todayColor,
     captionLayout = 'label',
     locale = 'en-US',
     months: monthsProp,
@@ -25,7 +27,9 @@
     disableDaysOutsideMonth = false,
     ...restProps
   }: WithoutChildrenOrChild<CalendarPrimitive.RootProps> & {
-    buttonVariant?: ButtonVariant;
+    color: ThemeColor;
+    selectedColor: ThemeColor;
+    todayColor: ThemeColor;
     captionLayout?: 'dropdown' | 'dropdown-months' | 'dropdown-years' | 'label';
     months?: CalendarPrimitive.MonthSelectProps['months'];
     years?: CalendarPrimitive.YearSelectProps['years'];
@@ -33,6 +37,13 @@
     yearFormat?: CalendarPrimitive.YearSelectProps['yearFormat'];
     day?: Snippet<[{ day: DateValue; outsideMonth: boolean }]>;
   } = $props();
+
+  setContext('calendarColors', () => ({
+    color,
+    selectedColor,
+    todayColor,
+    navColor: selectedColor,
+  }));
 
   const monthFormat = $derived.by(() => {
     if (monthFormatProp) return monthFormatProp;
@@ -48,7 +59,8 @@
   {weekdayFormat}
   {disableDaysOutsideMonth}
   class={cn(
-    'group/calendar neoretro-default p-3 [--cell-size:--spacing(8)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent',
+    'group/calendar neoretro-shadow rounded-md neoretro-border bg-background p-3 [--cell-size:--spacing(8)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent [&_td]:border-none [&_th]:border-none [&_thead]:bg-transparent [&_tr:nth-child(even)]:bg-transparent',
+    colorMap[color],
     className,
   )}
   {locale}
@@ -59,8 +71,8 @@
   {#snippet children({ months, weekdays })}
     <Calendar.Months>
       <Calendar.Nav>
-        <Calendar.PrevButton variant={buttonVariant} />
-        <Calendar.NextButton variant={buttonVariant} />
+        <Calendar.PrevButton />
+        <Calendar.NextButton />
       </Calendar.Nav>
       {#each months as month, monthIndex (month)}
         <Calendar.Month>

@@ -1,38 +1,31 @@
 <script lang="ts" module>
-  import { tv, type VariantProps } from 'tailwind-variants';
+  import { tv } from 'tailwind-variants';
+
+  import type { ThemeColor } from '$lib/colors.js';
 
   export const badgeVariants = tv({
     base: 'inline-flex items-center justify-center rounded neoretro-border neoretro-focus px-2.5 py-0.5 text-xs font-base w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none',
-    variants: {
-      variant: {
-        default: 'neoretro-default',
-        primary: 'neoretro-primary',
-        secondary: 'neoretro-secondary',
-        accent: 'neoretro-accent',
-        destructive: 'neoretro-destructive',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-    },
   });
+
+  export type BadgeProps = {
+    color: ThemeColor;
+  };
 </script>
 
 <script lang="ts">
   import type { HTMLAnchorAttributes } from 'svelte/elements';
 
+  import { colorMap } from '$lib/colors.js';
   import { cn, type WithElementRef } from '$lib/utils.js';
 
   let {
     ref = $bindable(null),
     href,
     class: className,
-    variant = 'default',
+    color,
     children,
     ...restProps
-  }: WithElementRef<HTMLAnchorAttributes> & {
-    variant?: VariantProps<typeof badgeVariants>['variant'];
-  } = $props();
+  }: WithElementRef<HTMLAnchorAttributes> & BadgeProps = $props();
 </script>
 
 <svelte:element
@@ -40,7 +33,7 @@
   bind:this={ref}
   data-slot="badge"
   {href}
-  class={cn(badgeVariants({ variant }), className)}
+  class={cn(badgeVariants(), colorMap[color], className)}
   {...restProps}
 >
   {@render children?.()}

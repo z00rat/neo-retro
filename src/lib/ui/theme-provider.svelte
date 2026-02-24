@@ -14,6 +14,6 @@
   }>();
 </script>
 
-<ModeWatcher {defaultTheme} lightClassNames={['light']} darkClassNames={['dark']} />
+<ModeWatcher {defaultTheme} />
 
 {@render children?.()}

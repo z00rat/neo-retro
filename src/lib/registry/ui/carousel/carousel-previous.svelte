@@ -3,18 +3,25 @@
   import ArrowUpIcon from '@lucide/svelte/icons/arrow-up';
   import type { WithoutChildren } from 'bits-ui';
 
+  import type { ThemeColor } from '$lib/colors.js';
   import { Button, type Props } from '$lib/registry/ui/button/index.ts';
 
   import { getEmblaContext } from './context.js';
 
-  let { ref = $bindable(null), variant = 'primary', size = 'icon', ...restProps }: WithoutChildren<Props> = $props();
+  let {
+    ref = $bindable(null),
+    color,
+    size = 'icon',
+    ...restProps
+  }: Omit<WithoutChildren<Props>, 'color'> & { color?: ThemeColor } = $props();
 
   const emblaCtx = getEmblaContext('<Carousel.Previous/>');
+  const buttonColor = $derived(color ?? emblaCtx.color);
 </script>
 
 <Button
   data-slot="carousel-previous"
-  {variant}
+  color={buttonColor}
   {size}
   disabled={!emblaCtx.canScrollPrev}
   onclick={emblaCtx.scrollPrev}

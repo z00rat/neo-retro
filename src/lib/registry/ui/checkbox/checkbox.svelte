@@ -1,23 +1,29 @@
 <script lang="ts">
+  // import CheckIcon from '@lucide/svelte/icons/check';
+  // import MinusIcon from '@lucide/svelte/icons/minus';
   import { Checkbox as CheckboxPrimitive } from 'bits-ui';
 
+  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   let {
     ref = $bindable(null),
+    color = 'cyan',
     checked = $bindable(false),
     indeterminate = $bindable(false),
     class: className,
     ...restProps
-  }: WithoutChildrenOrChild<CheckboxPrimitive.RootProps> = $props();
+  }: WithoutChildrenOrChild<CheckboxPrimitive.RootProps> & {
+    color?: ThemeColor;
+  } = $props();
 </script>
 
 <CheckboxPrimitive.Root
   bind:ref
   data-slot="checkbox"
   class={cn(
-    'peer size-5 shrink-0 neoretro-border focus-visible:neoretro-focus disabled:neoretro-disable',
-    checked || indeterminate ? 'neoretro-primary' : 'neoretro-default',
+    'peer flex size-5 shrink-0 items-center justify-center rounded-sm neoretro-border transition-none focus-visible:neoretro-focus disabled:neoretro-disable',
+    checked || indeterminate ? colorMap[color] : 'bg-background',
     className,
   )}
   bind:checked
@@ -27,9 +33,11 @@
   {#snippet children({ checked, indeterminate })}
     <div data-slot="checkbox-indicator" class="flex size-full items-center justify-center">
       {#if checked}
-        <div class="size-3 bg-current"></div>
+        <!-- <CheckIcon class="size-3.5" /> -->
+        <div class="size-2.5 rounded-sm bg-current"></div>
       {:else if indeterminate}
-        <div class="h-1 w-3 bg-current"></div>
+        <!-- <MinusIcon class="size-3.5" /> -->
+        <div class="h-1 w-2.5 rounded-sm bg-current"></div>
       {/if}
     </div>
   {/snippet}

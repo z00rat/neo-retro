@@ -2,8 +2,9 @@
   import CheckIcon from '@lucide/svelte/icons/check';
   import MinusIcon from '@lucide/svelte/icons/minus';
   import { Menubar as MenubarPrimitive } from 'bits-ui';
-  import type { Snippet } from 'svelte';
+  import { getContext, type Snippet } from 'svelte';
 
+  import { invertedHighlightColorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   let {
@@ -16,6 +17,9 @@
   }: WithoutChildrenOrChild<MenubarPrimitive.CheckboxItemProps> & {
     children?: Snippet;
   } = $props();
+
+  const getColor = getContext<() => ThemeColor | undefined>('menubarColor');
+  const color = $derived(getColor?.() ?? 'white');
 </script>
 
 <MenubarPrimitive.CheckboxItem
@@ -24,7 +28,8 @@
   bind:indeterminate
   data-slot="menubar-checkbox-item"
   class={cn(
-    "neoretro-focus relative flex cursor-default items-center gap-2 rounded py-1.5 pr-2 pl-8 text-sm outline-hidden select-none hover:neoretro-hover data-disabled:neoretro-disable [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+    "relative flex cursor-default items-center gap-2 rounded py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-disabled:neoretro-disable [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+    invertedHighlightColorMap[color],
     className,
   )}
   {...restProps}

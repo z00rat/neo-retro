@@ -5,6 +5,7 @@
 
   let {
     ref = $bindable(null),
+    color = 'black',
     opts = {},
     plugins = [],
     setApi = () => {},
@@ -15,15 +16,24 @@
   }: WithElementRef<CarouselProps> = $props();
 
   let carouselState = $state<EmblaContext>({
+    get color() {
+      return color;
+    },
+    get orientation() {
+      return orientation;
+    },
+    get options() {
+      return opts;
+    },
+    get plugins() {
+      return plugins;
+    },
     api: undefined,
     scrollPrev,
     scrollNext,
-    orientation,
     canScrollNext: false,
     canScrollPrev: false,
     handleKeyDown,
-    options: opts,
-    plugins,
     onInit,
     scrollSnaps: [],
     selectedIndex: 0,

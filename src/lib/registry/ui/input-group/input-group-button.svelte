@@ -2,12 +2,12 @@
   import { tv, type VariantProps } from 'tailwind-variants';
 
   const inputGroupButtonVariants = tv({
-    base: 'flex items-center gap-2 text-sm neoretro-shadow neoretro-border neoretro-default',
+    base: 'flex items-center gap-2 text-sm z-10',
     variants: {
       size: {
-        xs: "h-6 gap-1 rounded-[calc(var(--radius)-5px)] px-2 has-[>svg]:px-2 [&>svg:not([class*='size-'])]:size-3.5",
-        sm: 'h-8 gap-1.5 rounded px-2.5 has-[>svg]:px-2.5',
-        'icon-xs': 'size-6 rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0',
+        xs: "h-6 gap-1 px-2 has-[>svg]:px-2 [&>svg:not([class*='size-'])]:size-3.5",
+        sm: 'h-8 gap-1.5 px-2.5 has-[>svg]:px-2.5',
+        'icon-xs': 'size-6 p-0 has-[>svg]:p-0',
         'icon-sm': 'size-8 p-0 has-[>svg]:p-0',
       },
     },
@@ -22,6 +22,7 @@
 <script lang="ts">
   import type { ComponentProps } from 'svelte';
 
+  import type { ThemeColor } from '$lib/colors.js';
   import { Button } from '$lib/registry/ui/button/index.ts';
   import { cn } from '$lib/utils.js';
 
@@ -30,11 +31,12 @@
     class: className,
     children,
     type = 'button',
-    variant = 'default',
+    color = 'cyan',
     size = 'xs',
     ...restProps
   }: Omit<ComponentProps<typeof Button>, 'href' | 'size'> & {
     size?: InputGroupButtonSize;
+    color?: ThemeColor;
   } = $props();
 </script>
 
@@ -42,7 +44,8 @@
   bind:ref
   {type}
   data-size={size}
-  {variant}
+  {color}
+  noShadow
   class={cn(inputGroupButtonVariants({ size }), className)}
   {...restProps}
 >

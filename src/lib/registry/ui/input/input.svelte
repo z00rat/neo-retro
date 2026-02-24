@@ -28,7 +28,7 @@
     bind:this={ref}
     data-slot={dataSlot}
     class={cn(
-      'file:font-heading flex h-10 w-full rounded neoretro-border neoretro-default px-3 py-2 text-sm neoretro-focus-simple file:border-0 file:bg-transparent file:text-sm placeholder:text-current/50 disabled:neoretro-disable',
+      'file:font-heading flex h-10 w-full rounded neoretro-border bg-background px-3 py-2 text-sm text-foreground file:border-0 file:bg-transparent file:text-sm placeholder:text-current/50 focus-visible:neoretro-focus disabled:neoretro-disable aria-invalid:border-red aria-invalid:ring-red/20',
       className,
       noShadow ? '' : 'neoretro-shadow',
     )}
@@ -42,7 +42,7 @@
     bind:this={ref}
     data-slot={dataSlot}
     class={cn(
-      'file:font-heading flex h-10 w-full rounded neoretro-border neoretro-default px-3 py-2 text-sm neoretro-focus-simple file:border-0 file:bg-transparent file:text-sm placeholder:text-current/50 disabled:neoretro-disable',
+      'file:font-heading flex h-10 w-full rounded neoretro-border bg-background px-3 py-2 text-sm text-foreground file:border-0 file:bg-transparent file:text-sm placeholder:text-current/50 focus-visible:neoretro-focus disabled:neoretro-disable aria-invalid:border-red aria-invalid:ring-red/20',
       className,
       noShadow ? '' : 'neoretro-shadow',
     )}

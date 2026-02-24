@@ -1,9 +1,14 @@
 <script lang="ts">
   import { NavigationMenu as NavigationMenuPrimitive } from 'bits-ui';
+  import { getContext } from 'svelte';
 
+  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn } from '$lib/utils.js';
 
   let { ref = $bindable(null), class: className, ...restProps }: NavigationMenuPrimitive.ViewportProps = $props();
+
+  const getColor = getContext<() => ThemeColor | undefined>('navigationMenuColor');
+  const color = $derived(getColor?.() ?? 'white');
 </script>
 
 <div class={cn('absolute top-full left-0 isolate z-50 flex justify-center')}>
@@ -11,7 +16,8 @@
     bind:ref
     data-slot="navigation-menu-viewport"
     class={cn(
-      'relative mt-1.5 h-(--bits-navigation-menu-viewport-height) w-full overflow-hidden rounded neoretro-border neoretro-primary data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:zoom-in-90 md:w-(--bits-navigation-menu-viewport-width)',
+      'relative z-50 mt-1.5 h-(--bits-navigation-menu-viewport-height) w-full neoretro-shadow overflow-hidden rounded neoretro-border data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:zoom-in-90 md:w-(--bits-navigation-menu-viewport-width)',
+      colorMap[color],
       className,
     )}
     {...restProps}
