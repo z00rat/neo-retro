@@ -172,14 +172,14 @@
                 <InputGroup.Button {...props} color="black">Auto</InputGroup.Button>
               {/snippet}
             </DropdownMenu.Trigger>
-            <DropdownMenu.Content side="top" align="start" class="[--radius:0.95rem]">
+            <DropdownMenu.Content side="top" align="start" class="[--radius:0.95rem]" color="yellow">
               <DropdownMenu.Item>Auto</DropdownMenu.Item>
               <DropdownMenu.Item>Agent</DropdownMenu.Item>
               <DropdownMenu.Item>Manual</DropdownMenu.Item>
             </DropdownMenu.Content>
           </DropdownMenu.Root>
           <InputGroup.Text class="ms-auto">52% used</InputGroup.Text>
-          <Separator orientation="vertical" class="h-4!" />
+          <Separator color="black" orientation="vertical" class="h-4!" />
           <InputGroup.Button color="red" class="rounded-full" size="icon-xs" disabled>
             <ArrowUpIcon />
             <span class="sr-only">Send</span>

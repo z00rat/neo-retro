@@ -1,7 +1,6 @@
 <script lang="ts">
   import { AlertDialog as AlertDialogPrimitive } from 'bits-ui';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { buttonVariants } from '$lib/registry/ui/button/index.js';
   import { cn } from '$lib/utils.js';
 
@@ -10,13 +9,16 @@
     class: className,
     color,
     ...restProps
-  }: AlertDialogPrimitive.ActionProps & { color: ThemeColor } = $props();
+  }: AlertDialogPrimitive.ActionProps & {
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+  } = $props();
 </script>
 
 <AlertDialogPrimitive.Action
   bind:ref
   data-slot="alert-dialog-action"
-  class={cn(buttonVariants(), colorMap[color], className)}
+  data-color={color}
+  class={cn(buttonVariants(), className)}
   data-pressable
   {...restProps}
 />

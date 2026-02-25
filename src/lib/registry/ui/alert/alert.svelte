@@ -1,10 +1,8 @@
 <script lang="ts" module>
   import { tv, type VariantProps } from 'tailwind-variants';
 
-  import type { ThemeColor } from '$lib/colors.js';
-
   export const alertVariants = tv({
-    base: 'neoretro-border rounded relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 px-4 py-3 has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-1 [&>svg]:text-current',
+    base: 'neoretro-clr neoretro-border rounded relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 px-4 py-3 has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-1 [&>svg]:text-current',
     variants: {
       noShadow: {
         false: 'shadow-shadow',
@@ -19,7 +17,7 @@
   export type AlertNoshadow = VariantProps<typeof alertVariants>['noShadow'];
 
   export type AlertProps = {
-    color: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     noShadow?: AlertNoshadow;
   };
 </script>
@@ -27,7 +25,6 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { colorMap } from '$lib/colors.js';
   import { cn, type WithElementRef } from '$lib/utils.js';
 
   let {
@@ -43,7 +40,8 @@
 <div
   bind:this={ref}
   data-slot="alert"
-  class={cn(alertVariants({ noShadow }), colorMap[color], className)}
+  data-color={color}
+  class={cn(alertVariants({ noShadow }), className)}
   {...restProps}
   role="alert"
 >

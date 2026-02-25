@@ -17,6 +17,7 @@
       items?: {
         title: string;
         url: string;
+        isActive?: boolean;
       }[];
     }[];
   } = $props();
@@ -46,7 +47,7 @@
               <Sidebar.MenuSub>
                 {#each item.items ?? [] as subItem (subItem.title)}
                   <Sidebar.MenuSubItem>
-                    <Sidebar.MenuSubButton>
+                    <Sidebar.MenuSubButton isActive={subItem.isActive}>
                       {#snippet child({ props })}
                         <a href={subItem.url} {...props}>
                           <span>{subItem.title}</span>

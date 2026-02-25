@@ -70,7 +70,7 @@
 
 <section>
   <div class="neoretro-shadow overflow-hidden rounded neoretro-border">
-    <Table.Root>
+    <Table.Root headerColor="blue" rowColor="white">
       <Table.Header>
         {#each table.getHeaderGroups() as headerGroup (headerGroup.id)}
           <Table.Row>

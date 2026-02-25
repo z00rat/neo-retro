@@ -2,11 +2,10 @@
   import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
   import { tv, type VariantProps } from 'tailwind-variants';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithElementRef } from '$lib/utils.js';
 
   export const buttonVariants = tv({
-    base: 'neoretro-border aria-disabled:neoretro-disable neoretro-focus rounded cursor-pointer select-none inline-flex items-center justify-center whitespace-nowrap font-bold ring-offset-white transition-all gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+    base: 'neoretro-clr neoretro-border aria-disabled:neoretro-disable disabled:neoretro-disable data-disabled:neoretro-disable neoretro-focus rounded cursor-pointer disabled:cursor-not-allowed data-disabled:cursor-not-allowed aria-disabled:cursor-not-allowed select-none inline-flex items-center justify-center whitespace-nowrap font-bold ring-offset-white transition-all gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
     variants: {
       size: {
         default: 'h-10 px-4 py-2',
@@ -30,7 +29,7 @@
 
   export type ButtonProps = WithElementRef<HTMLButtonAttributes> &
     WithElementRef<HTMLAnchorAttributes> & {
-      color: ThemeColor;
+      color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
       size?: ButtonSize;
       noShadow?: ButtonNoshadow;
     };
@@ -55,7 +54,8 @@
   <a
     bind:this={ref}
     data-slot="button"
-    class={cn(buttonVariants({ size, noShadow }), colorMap[color], className)}
+    data-color={color}
+    class={cn(buttonVariants({ size, noShadow }), className)}
     href={disabled ? undefined : href}
     aria-disabled={disabled ? 'true' : undefined}
     data-pressable
@@ -69,7 +69,8 @@
   <button
     bind:this={ref}
     data-slot="button"
-    class={cn(buttonVariants({ size, noShadow }), colorMap[color], className)}
+    data-color={color}
+    class={cn(buttonVariants({ size, noShadow }), className)}
     aria-disabled={disabled ? 'true' : undefined}
     data-pressable
     {type}

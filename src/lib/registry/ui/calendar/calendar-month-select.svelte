@@ -2,7 +2,6 @@
   import { Calendar as CalendarPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import type { ThemeColor } from '$lib/colors.js';
   import * as Select from '$lib/registry/ui/select/index.ts';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
@@ -25,8 +24,13 @@
     onchange?.(event);
   }
 
-  const getColors =
-    getContext<() => { color: ThemeColor; navColor: ThemeColor; selectedColor: ThemeColor }>('calendarColors');
+  const getColors = getContext<
+    () => {
+      color: any;
+      navColor: any;
+      selectedColor: any;
+    }
+  >('calendarColors');
   const colors = $derived(getColors?.());
 </script>
 
@@ -52,7 +56,7 @@
       {#key value ?? selectedMonthItem.value}
         <Select.Root
           type="single"
-          hoverColor={colors?.navColor ?? 'cyan'}
+          hoverColor={colors?.navColor}
           name={props.name}
           disabled={props.disabled}
           value={String(value ?? selectedMonthItem.value)}
@@ -61,7 +65,7 @@
           }}
         >
           <Select.Trigger
-            color={colors?.selectedColor ?? 'black'}
+            color={colors?.selectedColor}
             class="flex h-8 items-center gap-1 pr-1 pl-2 text-sm font-medium select-none [&>svg]:size-3.5"
           >
             {#if monthItems && monthItems.length}
@@ -70,7 +74,7 @@
             {/if}
           </Select.Trigger>
 
-          <Select.Content color={colors?.selectedColor ?? 'black'}>
+          <Select.Content color={colors?.selectedColor}>
             <Select.Group>
               {#each monthItems as monthItem (monthItem.value)}
                 <Select.Item value={String(monthItem.value)} label={monthItem.label} disabled={monthItem.disabled}>

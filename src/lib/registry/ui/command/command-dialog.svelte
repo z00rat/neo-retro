@@ -2,7 +2,6 @@
   import type { Command as CommandPrimitive, Dialog as DialogPrimitive } from 'bits-ui';
   import type { Snippet } from 'svelte';
 
-  import type { ThemeColor } from '$lib/colors.js';
   import * as Dialog from '$lib/registry/ui/dialog/index.ts';
   import type { WithoutChildrenOrChild } from '$lib/utils.js';
 
@@ -20,7 +19,7 @@
     ...restProps
   }: WithoutChildrenOrChild<DialogPrimitive.RootProps> &
     WithoutChildrenOrChild<CommandPrimitive.RootProps> & {
-      color: ThemeColor;
+      color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
       portalProps?: DialogPrimitive.PortalProps;
       children: Snippet;
       title?: string;

@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import type { ThemeColor } from '$lib/colors.js';
   import { cn, type WithElementRef } from '$lib/utils.js';
 
   import Close from './sheet-close.svelte';
@@ -13,7 +12,7 @@
     children,
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
-    closeColor?: ThemeColor;
+    closeColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 </script>
 

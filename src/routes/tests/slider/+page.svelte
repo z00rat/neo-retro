@@ -1,11 +1,10 @@
 <script lang="ts">
-  import type { ThemeColor } from '$lib/colors.js';
   import * as Slider from '$lib/registry/ui/slider/index.js';
 
   let singleValue = [50];
   let multiValue = [25, 75];
 
-  const colors: ThemeColor[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
 <h1>Slider</h1>

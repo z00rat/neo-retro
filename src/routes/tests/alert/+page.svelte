@@ -6,10 +6,9 @@
   import PopcornIcon from '@lucide/svelte/icons/popcorn';
   import TriangleAlert from '@lucide/svelte/icons/triangle-alert';
 
-  import type { ThemeColor } from '$lib/colors.js';
   import * as Alert from '$lib/registry/ui/alert';
 
-  const colors: ThemeColor[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
 <h1>Alert</h1>

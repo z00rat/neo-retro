@@ -2,7 +2,6 @@
   import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import type { ThemeColor } from '$lib/colors.js';
   import * as Select from '$lib/registry/ui/select/index.ts';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
@@ -28,8 +27,7 @@
     onchange?.(event);
   }
 
-  const getColors =
-    getContext<() => { color: ThemeColor; navColor: ThemeColor; selectedColor: ThemeColor }>('calendarColors');
+  const getColors = getContext<() => { color: any; navColor: any; selectedColor: any }>('calendarColors');
   const colors = $derived(getColors?.());
 </script>
 

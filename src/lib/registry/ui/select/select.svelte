@@ -3,8 +3,6 @@
   import { setContext } from 'svelte';
   import type { Snippet } from 'svelte';
 
-  import type { ThemeColor } from '$lib/colors.js';
-
   let {
     hoverColor,
     children,
@@ -12,7 +10,7 @@
     type,
     ...restProps
   }: SelectPrimitive.RootProps & {
-    hoverColor?: ThemeColor;
+    hoverColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 
   setContext('selectHoverColor', () => hoverColor);

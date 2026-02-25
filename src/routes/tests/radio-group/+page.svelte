@@ -13,7 +13,7 @@
         <Card.Title>Default Radio Group (Cyan)</Card.Title>
       </Card.Header>
       <Card.Content>
-        <RadioGroup.Root value="comfortable">
+        <RadioGroup.Root value="comfortable" color="cyan">
           <div class="flex items-center space-x-2">
             <RadioGroup.Item value="default" id="r1" />
             <Label for="r1">Default</Label>

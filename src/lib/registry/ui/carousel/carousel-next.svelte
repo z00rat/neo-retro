@@ -2,21 +2,17 @@
   import ArrowDownIcon from '@lucide/svelte/icons/arrow-down';
   import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
   import type { WithoutChildren } from 'bits-ui';
+  import { getContext } from 'svelte';
 
-  import type { ThemeColor } from '$lib/colors.js';
   import { Button, type Props } from '$lib/registry/ui/button/index.ts';
 
   import { getEmblaContext } from './context.js';
 
-  let {
-    ref = $bindable(null),
-    color,
-    size = 'icon',
-    ...restProps
-  }: Omit<WithoutChildren<Props>, 'color'> & { color?: ThemeColor } = $props();
+  let { ref = $bindable(null), size = 'icon', ...restProps }: Omit<WithoutChildren<Props>, 'color'> = $props();
 
   const emblaCtx = getEmblaContext('<Carousel.Next/>');
-  const buttonColor = $derived(color ?? emblaCtx.color);
+  const getColor = getContext<() => any>('carouselColor');
+  const buttonColor = $derived(getColor());
 </script>
 
 <Button

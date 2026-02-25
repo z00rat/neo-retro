@@ -2,8 +2,6 @@
   import { Accordion as AccordionPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
 
-  import type { ThemeColor } from '$lib/colors.js';
-
   let {
     ref = $bindable(null),
     value = $bindable(),
@@ -11,8 +9,8 @@
     contentColor,
     ...restProps
   }: AccordionPrimitive.RootProps & {
-    triggerColor: ThemeColor;
-    contentColor: ThemeColor;
+    triggerColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    contentColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 
   setContext('accordionTriggerColor', () => triggerColor);

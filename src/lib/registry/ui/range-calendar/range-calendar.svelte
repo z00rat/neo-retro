@@ -3,7 +3,6 @@
   import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
   import { setContext, type Snippet } from 'svelte';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   import * as RangeCalendar from './index.js';
@@ -16,7 +15,6 @@
     class: className,
     color,
     selectedColor,
-    todayColor,
     captionLayout = 'label',
     locale = 'en-US',
     months: monthsProp,
@@ -27,9 +25,8 @@
     disableDaysOutsideMonth = false,
     ...restProps
   }: WithoutChildrenOrChild<RangeCalendarPrimitive.RootProps> & {
-    color: ThemeColor;
-    selectedColor: ThemeColor;
-    todayColor: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    selectedColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     captionLayout?: 'dropdown' | 'dropdown-months' | 'dropdown-years' | 'label';
     months?: RangeCalendarPrimitive.MonthSelectProps['months'];
     years?: RangeCalendarPrimitive.YearSelectProps['years'];
@@ -41,7 +38,6 @@
   setContext('calendarColors', () => ({
     color,
     selectedColor,
-    todayColor,
     navColor: selectedColor,
   }));
 
@@ -58,9 +54,9 @@
   bind:placeholder
   {weekdayFormat}
   {disableDaysOutsideMonth}
+  data-color={color}
   class={cn(
-    'group/calendar neoretro-shadow rounded-md neoretro-border bg-background p-3 [--cell-size:--spacing(8)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent [&_td]:border-none [&_th]:border-none [&_thead]:bg-transparent [&_tr:nth-child(even)]:bg-transparent',
-    colorMap[color],
+    'group/calendar neoretro-shadow rounded-md neoretro-border neoretro-clr p-3 [--cell-size:--spacing(8)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent [&_td]:border-none [&_th]:border-none [&_thead]:bg-transparent [&_tr:nth-child(even)]:bg-transparent',
     className,
   )}
   {locale}

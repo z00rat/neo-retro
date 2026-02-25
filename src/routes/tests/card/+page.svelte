@@ -1,9 +1,8 @@
 <script lang="ts">
-  import type { ThemeColor } from '$lib/colors.js';
   import { Button } from '$lib/registry/ui/button';
   import * as Card from '$lib/registry/ui/card';
 
-  const colors: ThemeColor[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
 <h1>Card</h1>

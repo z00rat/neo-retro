@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { ThemeColor } from '$lib/colors.js';
   import * as Card from '$lib/registry/ui/card/index.ts';
   import * as Carousel from '$lib/registry/ui/carousel/index.ts';
 
@@ -22,10 +21,7 @@
           {#each items as item, i (i)}
             <Carousel.Item class="md:basis-1/2 lg:basis-1/3">
               <div class="p-1">
-                <Card.Root
-                  color="black"
-                  class="flex aspect-square neoretro-shadow items-center justify-center bg-black p-6 text-on-black"
-                >
+                <Card.Root color="magenta" class="flex aspect-square neoretro-shadow items-center justify-center p-6">
                   <span class="text-2xl font-semibold">{i + 1}</span>
                 </Card.Root>
               </div>
@@ -46,10 +42,7 @@
           {#each items as item, i (i)}
             <Carousel.Item class="pt-1 md:basis-1/2">
               <div class="p-1">
-                <Card.Root
-                  color="black"
-                  class="flex neoretro-shadow items-center justify-center bg-black p-6 text-on-black"
-                >
+                <Card.Root color="magenta" class="flex neoretro-shadow items-center justify-center p-6">
                   <span class="text-2xl font-semibold">{item.title}</span>
                 </Card.Root>
               </div>
@@ -64,15 +57,15 @@
   <div>
     <h2 class="mb-6 text-2xl font-bold">Magenta Carousel (Single basis)</h2>
     <div class="flex justify-center">
-      <Carousel.Root class="w-full max-w-sm" color="magenta">
+      <Carousel.Root class="w-full max-w-sm" color="green">
         <Carousel.Previous />
         <Carousel.Content>
           {#each items as item, i (i)}
             <Carousel.Item>
               <div class="p-1">
                 <Card.Root
-                  color="black"
-                  class="flex min-h-[150px] neoretro-shadow flex-col items-center justify-center gap-2 bg-black p-6 text-on-black"
+                  color="magenta"
+                  class="flex min-h-[150px] neoretro-shadow flex-col items-center justify-center gap-2 p-6"
                 >
                   <span class="text-3xl font-bold">{item.title}</span>
                   <p class="text-center">{item.description}</p>

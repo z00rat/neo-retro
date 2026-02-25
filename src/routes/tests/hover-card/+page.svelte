@@ -10,7 +10,7 @@
   <div class="flex flex-wrap gap-6">
     <HoverCard.Root>
       <HoverCard.Trigger>
-        <span class="cursor-pointer underline">Red hover card</span>
+        <span class="cursor-pointer neoretro-link">Red hover card</span>
       </HoverCard.Trigger>
       <HoverCard.Content color="red">
         <p>This is a red hover card.</p>
@@ -19,7 +19,7 @@
 
     <HoverCard.Root>
       <HoverCard.Trigger>
-        <span class="cursor-pointer underline">Blue hover card</span>
+        <span class="cursor-pointer neoretro-link">Blue hover card</span>
       </HoverCard.Trigger>
       <HoverCard.Content color="blue">
         <p>This is a blue hover card.</p>
@@ -28,7 +28,7 @@
 
     <HoverCard.Root>
       <HoverCard.Trigger>
-        <span class="cursor-pointer underline">Cyan hover card</span>
+        <span class="cursor-pointer neoretro-link">Cyan hover card</span>
       </HoverCard.Trigger>
       <HoverCard.Content color="cyan">
         <p>This is a cyan hover card.</p>
@@ -37,7 +37,7 @@
 
     <HoverCard.Root>
       <HoverCard.Trigger>
-        <span class="cursor-pointer underline">Yellow hover card</span>
+        <span class="cursor-pointer neoretro-link">Yellow hover card</span>
       </HoverCard.Trigger>
       <HoverCard.Content color="yellow">
         <p>This is a yellow hover card.</p>
@@ -46,7 +46,7 @@
 
     <HoverCard.Root>
       <HoverCard.Trigger>
-        <span class="cursor-pointer underline">White hover card</span>
+        <span class="cursor-pointer neoretro-link">White hover card</span>
       </HoverCard.Trigger>
       <HoverCard.Content color="white">
         <p>This is a white hover card.</p>
@@ -55,7 +55,7 @@
 
     <HoverCard.Root>
       <HoverCard.Trigger>
-        <span class="cursor-pointer underline">Black hover card</span>
+        <span class="cursor-pointer neoretro-link">Black hover card</span>
       </HoverCard.Trigger>
       <HoverCard.Content color="black">
         <p>This is a black hover card.</p>
@@ -69,7 +69,7 @@
   <h3>Rich Content</h3>
   <HoverCard.Root>
     <HoverCard.Trigger>
-      <span class="cursor-pointer underline">Hover for details</span>
+      <span class="cursor-pointer neoretro-link">Hover for details</span>
     </HoverCard.Trigger>
     <HoverCard.Content color="magenta">
       <div class="space-y-2">

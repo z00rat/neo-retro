@@ -14,7 +14,7 @@
       </Card.Header>
       <Card.Content class="flex flex-col gap-6">
         <div class="flex items-center space-x-2">
-          <Switch id="airplane-mode" />
+          <Switch id="airplane-mode" color="cyan" />
           <Label for="airplane-mode">Airplane Mode (Default Cyan)</Label>
         </div>
 
@@ -36,7 +36,7 @@
       </Card.Header>
       <Card.Content class="flex flex-col gap-6">
         <div class="flex items-center space-x-2">
-          <Switch id="d1" disabled />
+          <Switch id="d1" disabled color="cyan" />
           <Label for="d1" class="opacity-50">Disabled Unchecked</Label>
         </div>
 

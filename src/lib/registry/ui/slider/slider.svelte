@@ -1,7 +1,6 @@
 <script lang="ts">
   import { Slider as SliderPrimitive } from 'bits-ui';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   let {
@@ -10,7 +9,7 @@
     type = 'multiple',
     orientation = 'horizontal',
     noShadow = false,
-    color = 'black',
+    color,
     class: className,
     onValueChange,
     onValueCommit,
@@ -21,7 +20,7 @@
     onValueChange?: (value: number[]) => void;
     onValueCommit?: (value: number[]) => void;
     noShadow?: boolean;
-    color?: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 </script>
 
@@ -50,9 +49,10 @@
     >
       <SliderPrimitive.Range
         data-slot="slider-range"
+        data-color={color}
         class={cn(
           'absolute rounded data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full',
-          colorMap[color].split(' ')[0], // Automatically use the matching bg-color from colorMap
+          'neoretro-clr',
         )}
       />
     </span>

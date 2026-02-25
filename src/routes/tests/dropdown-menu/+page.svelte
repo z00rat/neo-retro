@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Button } from '$lib/registry/ui/button/index.ts';
   import * as DropdownMenu from '$lib/registry/ui/dropdown-menu/index.ts';
 </script>
 
@@ -7,14 +6,13 @@
   <h1 class="text-3xl font-bold">Dropdown Menu Tests</h1>
 
   <div class="flex w-full max-w-2xl gap-8">
-    <!-- Default (Black) Dropdown Menu -->
     <DropdownMenu.Root>
       <DropdownMenu.Trigger
-        class="h-10 neoretro-shadow rounded-md neoretro-border bg-black px-4 py-2 font-bold text-on-black"
+        class="h-10 neoretro-shadow rounded neoretro-border bg-yellow px-4 py-2 font-bold text-on-yellow"
       >
-        Open Default (Black)
+        Open Default
       </DropdownMenu.Trigger>
-      <DropdownMenu.Content class="w-64">
+      <DropdownMenu.Content color="yellow" class="w-64">
         <DropdownMenu.Item inset>
           Back
           <DropdownMenu.Shortcut>⌘[</DropdownMenu.Shortcut>
@@ -55,7 +53,6 @@
       </DropdownMenu.Content>
     </DropdownMenu.Root>
 
-    <!-- Magenta Dropdown Menu -->
     <DropdownMenu.Root>
       <DropdownMenu.Trigger
         class="h-10 neoretro-shadow rounded-md neoretro-border bg-magenta px-4 py-2 font-bold text-on-magenta"

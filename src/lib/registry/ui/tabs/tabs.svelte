@@ -2,7 +2,6 @@
   import { Tabs as TabsPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
 
-  import type { ThemeColor } from '$lib/colors.js';
   import { cn } from '$lib/utils.js';
 
   let {
@@ -13,8 +12,8 @@
     inactiveColor,
     ...restProps
   }: TabsPrimitive.RootProps & {
-    activeColor: ThemeColor;
-    inactiveColor: ThemeColor;
+    activeColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    inactiveColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 
   setContext('tabsActiveColor', () => activeColor);

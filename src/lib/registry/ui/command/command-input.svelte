@@ -12,12 +12,12 @@
   }: CommandPrimitive.InputProps = $props();
 </script>
 
-<div class="flex h-full items-center gap-2 neoretro-border-b px-3" data-slot="command-input-wrapper">
+<div class="flex h-full items-center gap-2 px-3" data-slot="command-input-wrapper">
   <SearchIcon class="size-4 shrink-0 opacity-80" />
   <CommandPrimitive.Input
     data-slot="command-input"
     class={cn(
-      'neoretro-focus-simple flex h-full w-full rounded bg-transparent text-sm placeholder:opacity-80 data-[disabled=true]:neoretro-disable',
+      'flex h-full w-full rounded bg-transparent text-sm outline-none placeholder:opacity-90 data-[disabled=true]:neoretro-disable',
       className,
     )}
     bind:ref

@@ -3,7 +3,6 @@
   import { Select as SelectPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { hoverOutlineMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChild } from '$lib/utils.js';
 
   let {
@@ -15,7 +14,7 @@
     ...restProps
   }: WithoutChild<SelectPrimitive.ItemProps> = $props();
 
-  const getHoverColor = getContext<() => ThemeColor | undefined>('selectHoverColor');
+  const getHoverColor = getContext<() => any>('selectHoverColor');
   const hoverColor = $derived(getHoverColor?.());
 </script>
 
@@ -23,9 +22,10 @@
   bind:ref
   {value}
   data-slot="select-item"
+  data-hover-color={hoverColor}
   class={cn(
     "neoretro-focus relative flex w-full cursor-pointer items-center gap-2 rounded py-1.5 pr-8 pl-2 text-sm outline-none select-none data-disabled:neoretro-disable [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
-    hoverColor ? hoverOutlineMap[hoverColor] : '',
+    'neoretro-hover',
     className,
   )}
   {...restProps}

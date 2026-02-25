@@ -1,12 +1,11 @@
 <script lang="ts">
-  import type { ThemeColor } from '$lib/colors.js';
   import * as Menubar from '$lib/registry/ui/menubar';
 
   let showToolbar = false;
   let showFullUrls = true;
   let panel = 'top';
 
-  const colors: ThemeColor[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
 <h1>Menubar</h1>

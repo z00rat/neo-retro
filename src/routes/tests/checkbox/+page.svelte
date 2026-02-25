@@ -5,7 +5,7 @@
 
 <div class="space-y-12 p-8">
   <section class="space-y-4">
-    <h2 class="text-2xl font-bold">Default Checkbox (Cyan)</h2>
+    <h2 class="text-2xl font-bold">Default Checkbox</h2>
     <div class="flex items-center space-x-2">
       <Checkbox id="terms1" color="cyan" />
       <Label
@@ -20,7 +20,7 @@
   <section class="space-y-4">
     <h2 class="text-2xl font-bold">Disabled Checkbox</h2>
     <div class="flex items-center space-x-2">
-      <Checkbox id="terms2" disabled />
+      <Checkbox id="terms2" color="cyan" disabled />
       <Label
         for="terms2"
         class="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"

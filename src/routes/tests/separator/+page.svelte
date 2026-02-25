@@ -13,13 +13,13 @@
       </Card.Header>
       <Card.Content class="space-y-4">
         Default (sm):
-        <Separator />
+        <Separator color="black" />
         Extra Small (xs):
-        <Separator thickness="xs" />
+        <Separator thickness="xs" color="black" />
         Medium (md):
-        <Separator thickness="md" />
+        <Separator thickness="md" color="black" />
         Large (lg):
-        <Separator thickness="lg" />
+        <Separator thickness="lg" color="black" />
       </Card.Content>
     </Card.Root>
 

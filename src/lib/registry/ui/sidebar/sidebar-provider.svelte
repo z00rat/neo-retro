@@ -2,26 +2,18 @@
   import { setContext } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import type { ThemeColor } from '$lib/colors.js';
   import * as Tooltip from '$lib/registry/ui/tooltip/index.js';
   import { cn, type WithElementRef } from '$lib/utils.js';
 
   import { SIDEBAR_COOKIE_MAX_AGE, SIDEBAR_COOKIE_NAME, SIDEBAR_WIDTH, SIDEBAR_WIDTH_ICON } from './constants.js';
   import { setSidebar } from './context.svelte.js';
 
-  export type SidebarThemeColors = {
-    base: ThemeColor;
-    active: ThemeColor;
-    trigger: ThemeColor;
-  };
-
   let {
     ref = $bindable(null),
     open = $bindable(true),
     onOpenChange = () => {},
-    baseColor = 'white',
-    activeColor = 'black',
-    triggerColor = 'white',
+    color,
+    activeColor,
     class: className,
     style,
     children,
@@ -29,16 +21,11 @@
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
-    baseColor?: ThemeColor;
-    activeColor?: ThemeColor;
-    triggerColor?: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    activeColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 
-  setContext('sidebarColor', () => ({
-    base: baseColor,
-    active: activeColor,
-    trigger: triggerColor,
-  }));
+  setContext('sidebarColor', () => ({ color, activeColor }));
 
   const sidebar = setSidebar({
     open: () => open,

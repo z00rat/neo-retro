@@ -1,8 +1,6 @@
 <script lang="ts" module>
-  import type { ThemeColor } from '$lib/colors.js';
-
   export type CardProps = {
-    color: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     noShadow?: boolean;
   };
 </script>
@@ -10,7 +8,6 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { colorMap } from '$lib/colors.js';
   import { cn, type WithElementRef } from '$lib/utils.js';
 
   let {
@@ -26,10 +23,10 @@
 <div
   bind:this={ref}
   data-slot="card"
+  data-color={color}
   class={cn(
-    'flex flex-col gap-6 rounded neoretro-border py-6',
+    'flex flex-col gap-6 rounded neoretro-border neoretro-clr py-6',
     noShadow ? '' : 'neoretro-shadow',
-    colorMap[color],
     className,
   )}
   {...restProps}

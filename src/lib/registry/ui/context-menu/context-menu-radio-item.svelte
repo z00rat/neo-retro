@@ -3,7 +3,6 @@
   import { ContextMenu as ContextMenuPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { invertedHighlightColorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChild } from '$lib/utils.js';
 
   let {
@@ -13,16 +12,17 @@
     ...restProps
   }: WithoutChild<ContextMenuPrimitive.RadioItemProps> = $props();
 
-  const getColor = getContext<() => ThemeColor | undefined>('contextMenuColor');
+  const getColor = getContext<() => any>('contextMenuColor');
   const color = $derived(getColor?.() ?? 'black');
 </script>
 
 <ContextMenuPrimitive.RadioItem
   bind:ref
   data-slot="context-menu-radio-item"
+  data-highlighted-color={color}
   class={cn(
     "relative flex items-center gap-2 rounded py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-disabled:neoretro-disable [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-    invertedHighlightColorMap[color],
+    'neoretro-highlighted',
     className,
   )}
   {...restProps}

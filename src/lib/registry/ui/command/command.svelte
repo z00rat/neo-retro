@@ -2,7 +2,6 @@
   import { Command as CommandPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn } from '$lib/utils.js';
 
   export type CommandRootApi = CommandPrimitive.Root;
@@ -13,15 +12,13 @@
     value = $bindable(''),
     class: className,
     color,
-    hoverColor,
     ...restProps
   }: CommandPrimitive.RootProps & {
-    color: ThemeColor;
-    hoverColor?: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     api?: CommandRootApi | null;
   } = $props();
 
-  setContext('commandHoverColor', () => hoverColor);
+  setContext('commandColor', () => color);
 </script>
 
 <CommandPrimitive.Root
@@ -29,9 +26,9 @@
   bind:value
   bind:ref
   data-slot="command"
+  data-color={color}
   class={cn(
-    'font-base flex h-full w-full neoretro-shadow flex-col overflow-hidden rounded border-none',
-    colorMap[color],
+    'font-base flex h-full w-full neoretro-shadow flex-col overflow-hidden rounded border-none neoretro-clr',
     className,
   )}
   {...restProps}

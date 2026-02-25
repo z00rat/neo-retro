@@ -1,8 +1,7 @@
 <script lang="ts">
-  import type { ThemeColor } from '$lib/colors.js';
   import { Progress } from '$lib/registry/ui/progress';
 
-  const colors: ThemeColor[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
 <h1>Progress</h1>
@@ -14,7 +13,7 @@
     {#each colors as color}
       <div class="space-y-2">
         <label for="progress-{color}" class="text-sm font-medium">{color} indicator</label>
-        <Progress id="progress-{color}" value={45} indicatorColor={color} />
+        <Progress id="progress-{color}" value={45} indicatorColor={color} trackColor="white" />
       </div>
     {/each}
   </div>
@@ -45,11 +44,11 @@
   <div class="space-y-4">
     <div class="space-y-2">
       <label for="progress-no-shadow-1" class="text-sm font-medium">Green indicator without shadow</label>
-      <Progress id="progress-no-shadow-1" value={60} indicatorColor="green" noShadow />
+      <Progress id="progress-no-shadow-1" value={60} indicatorColor="green" noShadow trackColor="white" />
     </div>
     <div class="space-y-2">
       <label for="progress-no-shadow-2" class="text-sm font-medium">Yellow indicator without shadow</label>
-      <Progress id="progress-no-shadow-2" value={80} indicatorColor="yellow" noShadow />
+      <Progress id="progress-no-shadow-2" value={80} indicatorColor="yellow" noShadow trackColor="white" />
     </div>
   </div>
 </section>
@@ -60,15 +59,15 @@
   <div class="space-y-4">
     <div class="space-y-2">
       <label for="progress-0" class="text-sm font-medium">0%</label>
-      <Progress id="progress-0" value={0} indicatorColor="black" />
+      <Progress id="progress-0" value={0} indicatorColor="black" trackColor="white" />
     </div>
     <div class="space-y-2">
       <label for="progress-50" class="text-sm font-medium">50%</label>
-      <Progress id="progress-50" value={50} indicatorColor="black" />
+      <Progress id="progress-50" value={50} indicatorColor="black" trackColor="white" />
     </div>
     <div class="space-y-2">
       <label for="progress-100" class="text-sm font-medium">100%</label>
-      <Progress id="progress-100" value={100} indicatorColor="black" />
+      <Progress id="progress-100" value={100} indicatorColor="black" trackColor="white" />
     </div>
   </div>
 </section>

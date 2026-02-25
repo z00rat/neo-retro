@@ -1,12 +1,11 @@
 <script lang="ts">
   import Plus from '@lucide/svelte/icons/plus';
 
-  import type { ThemeColor } from '$lib/colors.js';
   import * as Avatar from '$lib/registry/ui/avatar';
   import { Button } from '$lib/registry/ui/button';
   import * as Item from '$lib/registry/ui/item';
 
-  const colors: ThemeColor[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 
   const models = [
     {
@@ -70,7 +69,7 @@
   <h3>With Media</h3>
   <div class="max-w-md space-y-3">
     <Item.Root color="cyan">
-      <Item.Media variant="icon">📦</Item.Media>
+      <Item.Media color="cyan" variant="icon">📦</Item.Media>
       <Item.Content>
         <Item.Title>Icon media</Item.Title>
         <Item.Description>Item with an icon, no background.</Item.Description>
@@ -101,7 +100,7 @@
       </Item.Content>
     </Item.Root>
     <Item.Root color="white">
-      <Item.Media variant="image">
+      <Item.Media color="white" variant="image">
         <img src="https://picsum.photos/seed/neo1/80/80" alt="sample" />
       </Item.Media>
       <Item.Content>
@@ -110,7 +109,7 @@
       </Item.Content>
     </Item.Root>
     <Item.Root color="cyan">
-      <Item.Media variant="image">
+      <Item.Media color="cyan" variant="image">
         <img src="https://picsum.photos/seed/neo2/160/160" alt="sample" />
       </Item.Media>
       <Item.Content>
@@ -173,14 +172,14 @@
         <Item.Description>First item in group.</Item.Description>
       </Item.Content>
     </Item.Root>
-    <Item.Separator />
+    <Item.Separator color="black" />
     <Item.Root color="green" noShadow border={0}>
       <Item.Content>
         <Item.Title>Second</Item.Title>
         <Item.Description>Second item in group.</Item.Description>
       </Item.Content>
     </Item.Root>
-    <Item.Separator />
+    <Item.Separator color="black" />
     <Item.Root color="green" noShadow border={0}>
       <Item.Content>
         <Item.Title>Third</Item.Title>
@@ -216,7 +215,7 @@
   <Item.Group>
     {#each people as person, index (person.username)}
       <Item.Root color="blue">
-        <Item.Media>
+        <Item.Media color="black">
           <Avatar.Root>
             <Avatar.Image src={person.avatar} class="grayscale" />
             <Avatar.Fallback>{person.username.charAt(0)}</Avatar.Fallback>
@@ -227,13 +226,13 @@
           <Item.Description>{person.email}</Item.Description>
         </Item.Content>
         <Item.Actions>
-          <Button color="black" size="icon" class="rounded-full">
+          <Button color="cyan" size="icon" class="rounded-full">
             <Plus />
           </Button>
         </Item.Actions>
       </Item.Root>
       {#if index !== people.length - 1}
-        <Item.Separator />
+        <Item.Separator color="black" class="my-4" />
       {/if}
     {/each}
   </Item.Group>

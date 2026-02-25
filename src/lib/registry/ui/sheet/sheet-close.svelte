@@ -1,7 +1,6 @@
 <script lang="ts">
   import { Dialog as SheetPrimitive } from 'bits-ui';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { buttonVariants } from '$lib/registry/ui/button/index.ts';
   import { cn } from '$lib/utils.js';
 
@@ -10,13 +9,16 @@
     class: className,
     color,
     ...restProps
-  }: SheetPrimitive.CloseProps & { color: ThemeColor } = $props();
+  }: SheetPrimitive.CloseProps & {
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+  } = $props();
 </script>
 
 <SheetPrimitive.Close
   bind:ref
   data-slot="sheet-close"
   data-pressable
-  class={cn(buttonVariants(), colorMap[color], className)}
+  data-color={color}
+  class={cn(buttonVariants(), 'neoretro-clr', className)}
   {...restProps}
 />

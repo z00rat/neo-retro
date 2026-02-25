@@ -44,6 +44,7 @@
         align="start"
         side={sidebar.isMobile ? 'bottom' : 'right'}
         sideOffset={4}
+        color="magenta"
       >
         <DropdownMenu.Label class="text-muted-foreground text-xs">Teams</DropdownMenu.Label>
         {#each teams as team, index (team.name)}

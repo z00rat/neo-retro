@@ -36,7 +36,7 @@
             <div class="grid grid-cols-2 gap-4">
               <Field.Field>
                 <Field.Label for="checkout-7j9-exp-month-ts6">Month</Field.Label>
-                <Select.Root type="single" bind:value={month}>
+                <Select.Root hoverColor="blue" type="single" bind:value={month}>
                   <Select.Trigger color="cyan" id="checkout-7j9-exp-month-ts6">
                     {month || 'MM'}
                   </Select.Trigger>
@@ -58,7 +58,7 @@
               </Field.Field>
               <Field.Field>
                 <Field.Label for="checkout-7j9-exp-year-f59">Year</Field.Label>
-                <Select.Root type="single" bind:value={year}>
+                <Select.Root hoverColor="blue" type="single" bind:value={year}>
                   <Select.Trigger color="blue" id="checkout-7j9-exp-year-f59">
                     {year || 'YYYY'}
                   </Select.Trigger>
@@ -75,20 +75,20 @@
             </div>
           </Field.Group>
         </Field.Set>
-        <Field.Separator />
+        <Field.Separator color="black" />
         <Field.Set>
           <Field.Legend>Billing Address</Field.Legend>
           <Field.Description>The billing address associated with your payment method</Field.Description>
           <Field.Group>
             <Field.Field orientation="horizontal">
-              <Checkbox id="checkout-7j9-same-as-shipping-wgm" checked={true} />
+              <Checkbox id="checkout-7j9-same-as-shipping-wgm" checked={true} color="cyan" />
               <Field.Label for="checkout-7j9-same-as-shipping-wgm" class="font-normal">
                 Same as shipping address
               </Field.Label>
             </Field.Field>
           </Field.Group>
         </Field.Set>
-        <Field.Separator />
+        <Field.Separator color="black" />
         <Field.Set>
           <Field.Group>
             <Field.Field>

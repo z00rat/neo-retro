@@ -2,13 +2,11 @@
   import { getContext } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { colorMap } from '$lib/colors.js';
   import * as Sheet from '$lib/registry/ui/sheet/index.js';
   import { cn, type WithElementRef } from '$lib/utils.js';
 
   import { SIDEBAR_WIDTH_MOBILE } from './constants.js';
   import { useSidebar } from './context.svelte.js';
-  import type { SidebarThemeColors } from './sidebar-provider.svelte';
 
   let {
     ref = $bindable(null),
@@ -25,17 +23,14 @@
   } = $props();
 
   const sidebar = useSidebar();
-  const sidebarColor = getContext<() => SidebarThemeColors>('sidebarColor');
-  const themeColors = $derived(sidebarColor?.() ?? { base: 'white', active: 'black', trigger: 'white' });
+  const sidebarColor = getContext<() => any>('sidebarColor');
+  const themeColors = $derived(sidebarColor() as { color: any; activeColor: any });
 </script>
 
 {#if collapsible === 'none'}
   <div
-    class={cn(
-      'min-h-svh w-(--sidebar-width) flex-col neoretro-border bg-background',
-      colorMap[themeColors.base],
-      className,
-    )}
+    data-color={themeColors.color}
+    class={cn('min-h-svh w-(--sidebar-width) flex-col neoretro-border neoretro-clr', className)}
     bind:this={ref}
     {...restProps}
   >
@@ -47,8 +42,9 @@
       data-sidebar="sidebar"
       data-slot="sidebar"
       data-mobile="true"
-      color={themeColors.base}
-      class={cn('w-(--sidebar-width) p-0 [&>button]:hidden', colorMap[themeColors.base])}
+      color={themeColors.color}
+      data-color={themeColors.color}
+      class={cn('w-(--sidebar-width) neoretro-clr p-0 [&>button]:hidden')}
       style="--sidebar-width: {SIDEBAR_WIDTH_MOBILE};"
       {side}
     >
@@ -101,9 +97,9 @@
       <div
         data-sidebar="sidebar"
         data-slot="sidebar-inner"
+        data-color={themeColors.color}
         class={cn(
-          'flex h-full w-full flex-col bg-background group-data-[variant=floating]:neoretro-shadow group-data-[variant=floating]:rounded group-data-[variant=floating]:neoretro-border',
-          colorMap[themeColors.base],
+          'flex h-full w-full flex-col neoretro-clr group-data-[variant=floating]:neoretro-shadow group-data-[variant=floating]:rounded group-data-[variant=floating]:neoretro-border',
         )}
       >
         {@render children?.()}

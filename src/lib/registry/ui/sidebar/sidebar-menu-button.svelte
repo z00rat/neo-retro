@@ -10,13 +10,10 @@
   import type { ComponentProps, Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import type { ThemeColor } from '$lib/colors.js';
-  import { hoverColorMap, invertedHighlightColorMap } from '$lib/colors.js';
   import * as Tooltip from '$lib/registry/ui/tooltip/index.js';
   import { cn, type WithElementRef, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   import { useSidebar } from './context.svelte.js';
-  import type { SidebarThemeColors } from './sidebar-provider.svelte';
 
   let {
     ref = $bindable(null),
@@ -37,20 +34,21 @@
   } = $props();
 
   const sidebar = useSidebar();
-  const sidebarColor = getContext<() => SidebarThemeColors>('sidebarColor');
-  const themeColors = $derived(sidebarColor?.() ?? { base: 'white', active: 'black', trigger: 'white' });
+  const sidebarColor = getContext<() => any>('sidebarColor');
+  const themeColors = $derived(sidebarColor() as { color: any; activeColor: any });
 
   const buttonProps = $derived({
     class: cn(
-      'outline-hidden group-has-data-[sidebar=menu-action]/menu-item:pr-8 flex w-full items-center gap-2 overflow-hidden rounded p-2 text-left text-sm transition-[width,height,padding] focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0',
+      'outline-hidden group-has-data-[sidebar=menu-action]/menu-item:pr-8 flex w-full items-center gap-2 overflow-hidden rounded p-2 text-left text-sm transition-[width,height,padding,color,background-color] focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0',
       'group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2!',
       size === 'default' && 'h-8 text-sm',
       size === 'sm' && 'h-7 text-xs',
       size === 'lg' && 'group-data-[collapsible=icon]:p-0! h-12 text-sm',
-      hoverColorMap[themeColors.base],
-      isActive && invertedHighlightColorMap[themeColors.active], // Force Neobrutalist Active selection
+      'hover:bg-on-clr hover:text-clr',
+      isActive && 'bg-clr text-on-clr',
       className,
     ),
+    'data-color': isActive ? themeColors.activeColor : themeColors.color,
     'data-slot': 'sidebar-menu-button',
     'data-sidebar': 'menu-button',
     'data-size': size,
@@ -82,7 +80,7 @@
     <Tooltip.Content
       side="right"
       align="center"
-      color={themeColors.base}
+      color={themeColors.color}
       hidden={sidebar.state !== 'collapsed' || sidebar.isMobile}
       {...tooltipContentProps}
     >

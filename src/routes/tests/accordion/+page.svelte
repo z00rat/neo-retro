@@ -1,8 +1,7 @@
 <script lang="ts">
-  import type { ThemeColor } from '$lib/colors.js';
   import * as Accordion from '$lib/registry/ui/accordion';
 
-  const colors: ThemeColor[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
 <h1>Accordion</h1>

@@ -25,7 +25,6 @@
   import { Dialog as SheetPrimitive } from 'bits-ui';
   import type { Snippet } from 'svelte';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   import SheetOverlay from './sheet-overlay.svelte';
@@ -39,7 +38,7 @@
     children,
     ...restProps
   }: WithoutChildrenOrChild<SheetPrimitive.ContentProps> & {
-    color: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     portalProps?: SheetPrimitive.PortalProps;
     side?: Side;
     children: Snippet;
@@ -51,7 +50,8 @@
   <SheetPrimitive.Content
     bind:ref
     data-slot="sheet-content"
-    class={cn(sheetVariants({ side }), colorMap[color], className)}
+    data-color={color}
+    class={cn(sheetVariants({ side }), 'neoretro-clr', className)}
     {...restProps}
   >
     {@render children?.()}

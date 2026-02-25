@@ -12,7 +12,7 @@
         <Card.Title>Basic Table</Card.Title>
       </Card.Header>
       <Card.Content>
-        <Table.Root>
+        <Table.Root headerColor="cyan" rowColor="white">
           <Table.Caption>A list of your recent invoices.</Table.Caption>
           <Table.Header>
             <Table.Row>

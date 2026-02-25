@@ -5,7 +5,6 @@
 
   import * as Card from '$lib/registry/ui/card/index.js';
   import * as ToggleGroup from '$lib/registry/ui/toggle-group/index.js';
-  import { Toggle } from '$lib/registry/ui/toggle/index.js';
 </script>
 
 <div class="flex min-h-[500px] flex-col items-center justify-center gap-12 p-12">
@@ -62,7 +61,7 @@
         <Card.Title>Disabled State</Card.Title>
       </Card.Header>
       <Card.Content class="flex gap-4">
-        <ToggleGroup.Root type="single" disabled>
+        <ToggleGroup.Root type="single" disabled color="white">
           <ToggleGroup.Item value="x">X</ToggleGroup.Item>
           <ToggleGroup.Item value="y">Y</ToggleGroup.Item>
         </ToggleGroup.Root>

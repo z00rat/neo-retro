@@ -2,8 +2,6 @@
 <script lang="ts" module>
   import { tv, type VariantProps } from 'tailwind-variants';
 
-  import type { ThemeColor } from '$lib/colors.js';
-
   export const itemVariants = tv({
     base: 'group/item neoretro-focus flex flex-wrap items-center rounded text-sm outline-none transition-colors duration-100',
     variants: {
@@ -33,7 +31,7 @@
   export type ItemBorder = VariantProps<typeof itemVariants>['border'];
 
   export type ItemProps = {
-    color: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     size?: ItemSize;
     noShadow?: ItemNoshadow;
     border?: 0 | 1 | 2;
@@ -47,7 +45,6 @@
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { colorMap } from '$lib/colors.js';
   import { cn, type WithElementRef } from '$lib/utils.js';
 
   let {
@@ -75,7 +72,8 @@
   }
 
   const mergedProps = $derived({
-    class: cn(itemVariants({ size, noShadow, border }), colorMap[color], className),
+    class: cn(itemVariants({ size, noShadow, border }), 'neoretro-clr', className),
+    'data-color': color,
     'data-slot': 'item',
     'data-size': size,
     ...(pressable ? { 'data-pressable': '' } : {}),

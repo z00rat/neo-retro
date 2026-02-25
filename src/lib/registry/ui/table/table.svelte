@@ -2,17 +2,19 @@
   import { setContext } from 'svelte';
   import type { HTMLTableAttributes } from 'svelte/elements';
 
-  import type { ThemeColor } from '$lib/colors.js';
   import { cn, type WithElementRef } from '$lib/utils.js';
 
   let {
     ref = $bindable(null),
     class: className,
     children,
-    headerColor = 'cyan',
-    rowColor = 'magenta',
+    headerColor,
+    rowColor,
     ...restProps
-  }: WithElementRef<HTMLTableAttributes> & { headerColor?: ThemeColor; rowColor?: ThemeColor } = $props();
+  }: WithElementRef<HTMLTableAttributes> & {
+    headerColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    rowColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+  } = $props();
 
   setContext('tableHeaderColor', () => headerColor);
   setContext('tableRowColor', () => rowColor);

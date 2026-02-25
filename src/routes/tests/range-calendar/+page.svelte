@@ -8,7 +8,7 @@
 <section>
   <h3>Basic</h3>
   <div class="flex flex-wrap gap-6">
-    <RangeCalendar.Root color="white" selectedColor="blue" todayColor="cyan" />
+    <RangeCalendar.Root color="white" selectedColor="blue" />
   </div>
 </section>
 
@@ -16,7 +16,7 @@
 <section>
   <h3>Color Combos</h3>
   <div class="flex flex-wrap gap-6">
-    <RangeCalendar.Root color="yellow" selectedColor="black" todayColor="red" />
-    <RangeCalendar.Root color="black" selectedColor="cyan" todayColor="magenta" />
+    <RangeCalendar.Root color="yellow" selectedColor="black" />
+    <RangeCalendar.Root color="black" selectedColor="cyan" />
   </div>
 </section>

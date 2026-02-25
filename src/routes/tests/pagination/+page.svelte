@@ -12,7 +12,7 @@
         <Card.Title>Default Pagination</Card.Title>
       </Card.Header>
       <Card.Content>
-        <Pagination.Root count={100} perPage={10}>
+        <Pagination.Root activeColor="cyan" inactiveColor="blue" count={100} perPage={10}>
           {#snippet children({ pages, currentPage })}
             <Pagination.Content>
               <Pagination.Item>
@@ -45,7 +45,7 @@
         <Card.Title>Custom Colored Pagination</Card.Title>
       </Card.Header>
       <Card.Content>
-        <Pagination.Root count={100} perPage={10} activeColor="magenta" inactiveColor="green">
+        <Pagination.Root count={100} perPage={10} activeColor="red" inactiveColor="green">
           {#snippet children({ pages, currentPage })}
             <Pagination.Content>
               <Pagination.Item>

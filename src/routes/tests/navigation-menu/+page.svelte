@@ -4,15 +4,13 @@
   import CircleHelpIcon from '@lucide/svelte/icons/circle-help';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import type { ThemeColor } from '$lib/colors.js';
   import { IsMobile } from '$lib/registry/hooks/is-mobile.svelte.js';
   import * as NavigationMenu from '$lib/registry/ui/navigation-menu/index.js';
-  import { navigationMenuTriggerStyle } from '$lib/registry/ui/navigation-menu/navigation-menu-trigger.svelte';
   import { cn } from '$lib/utils.js';
 
   const isMobile = new IsMobile();
 
-  const colors: ThemeColor[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 
   const components: { title: string; href: string; description: string }[] = [
     {
@@ -143,7 +141,7 @@
             <NavigationMenu.Item>
               <NavigationMenu.Link>
                 {#snippet child()}
-                  <a href="/docs" class={navigationMenuTriggerStyle()}>Docs</a>
+                  <a href="/docs">Docs</a>
                 {/snippet}
               </NavigationMenu.Link>
             </NavigationMenu.Item>

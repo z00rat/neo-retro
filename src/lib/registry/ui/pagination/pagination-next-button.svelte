@@ -3,7 +3,6 @@
   import { Pagination as PaginationPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { buttonVariants } from '$lib/registry/ui/button/index.js';
   import { cn } from '$lib/utils.js';
 
@@ -14,7 +13,7 @@
     ...restProps
   }: PaginationPrimitive.NextButtonProps = $props();
 
-  const getInactiveColor = getContext<() => ThemeColor>('paginationInactiveColor');
+  const getInactiveColor = getContext<() => any>('paginationInactiveColor');
 </script>
 
 {#snippet Fallback()}
@@ -26,14 +25,8 @@
   bind:ref
   aria-label="Go to next page"
   data-pressable
-  class={cn(
-    buttonVariants({
-      size: 'default',
-      class: 'gap-1 px-2.5 sm:pr-2.5',
-    }),
-    colorMap[getInactiveColor() || 'white'],
-    className,
-  )}
+  data-color={getInactiveColor()}
+  class={cn(buttonVariants({ size: 'default', class: 'gap-1 px-2.5 sm:pr-2.5' }), 'neoretro-clr', className)}
   children={children || Fallback}
   {...restProps}
 />

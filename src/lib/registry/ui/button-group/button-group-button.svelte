@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { HTMLButtonAttributes } from 'svelte/elements';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { buttonVariants, type ButtonSize } from '$lib/registry/ui/button/index.js';
   import { cn, type WithElementRef } from '$lib/utils.js';
 
@@ -15,7 +14,7 @@
     children,
     ...restProps
   }: WithElementRef<HTMLButtonAttributes> & {
-    color: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     size?: ButtonSize;
   } = $props();
 </script>
@@ -24,7 +23,8 @@
   bind:this={ref}
   data-slot="button"
   data-pressable
-  class={cn(buttonVariants({ size, noShadow: false }), colorMap[color], className)}
+  data-color={color}
+  class={cn(buttonVariants({ size, noShadow: false }), className)}
   aria-disabled={disabled ? 'true' : undefined}
   {type}
   {disabled}

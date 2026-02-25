@@ -5,8 +5,6 @@
   import { Skeleton } from '$lib/registry/ui/skeleton/index.js';
   import { cn, type WithElementRef } from '$lib/utils.js';
 
-  import type { SidebarThemeColors } from './sidebar-provider.svelte';
-
   let {
     ref = $bindable(null),
     class: className,
@@ -17,8 +15,8 @@
     showIcon?: boolean;
   } = $props();
 
-  const sidebarColor = getContext<() => SidebarThemeColors>('sidebarColor');
-  const themeColors = $derived(sidebarColor?.() ?? { base: 'white', active: 'black', trigger: 'white' });
+  const sidebarColor = getContext<() => any>('sidebarColor');
+  const themeColors = $derived(sidebarColor());
 
   // Random width between 50% and 90%
   const width = `${Math.floor(Math.random() * 40) + 50}%`;

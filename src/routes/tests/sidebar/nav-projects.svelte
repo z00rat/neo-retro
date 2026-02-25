@@ -48,6 +48,7 @@
             class="w-48 rounded-lg"
             side={sidebar.isMobile ? 'bottom' : 'right'}
             align={sidebar.isMobile ? 'end' : 'start'}
+            color="yellow"
           >
             <DropdownMenu.Item>
               <FolderIcon class="text-muted-foreground" />

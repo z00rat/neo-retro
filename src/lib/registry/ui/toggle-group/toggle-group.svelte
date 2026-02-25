@@ -1,7 +1,6 @@
 <script lang="ts" module>
   import { tv, type VariantProps } from 'tailwind-variants';
 
-  import type { ThemeColor } from '$lib/colors.js';
   import type { ToggleVariants } from '$lib/registry/ui/toggle/index.ts';
 
   export const toggleGroupVariants = tv({
@@ -32,12 +31,15 @@
     ref = $bindable(null),
     value = $bindable(),
     class: className,
-    color = 'cyan',
+    color,
     size = 'default',
     orientation = 'horizontal',
     ...restProps
   }: ToggleGroupPrimitive.RootProps &
-    ToggleVariants & { color?: ThemeColor; orientation?: ToggleGroupOrientation } = $props();
+    ToggleVariants & {
+      color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+      orientation?: ToggleGroupOrientation;
+    } = $props();
 
   setContext('toggleGroup', () => ({
     size,

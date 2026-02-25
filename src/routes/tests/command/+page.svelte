@@ -72,7 +72,7 @@
 <section>
   <h3>Colors</h3>
   <div class="max-w-md space-y-4">
-    <Command.Root color="cyan" hoverColor="blue" class="neoretro-border">
+    <Command.Root color="cyan" class="neoretro-border">
       <Command.Input placeholder="Search..." />
       <Command.List>
         <Command.Empty>Nothing here.</Command.Empty>
@@ -83,7 +83,7 @@
       </Command.List>
     </Command.Root>
 
-    <Command.Root color="black" hoverColor="cyan" class="neoretro-border">
+    <Command.Root color="black" class="neoretro-border">
       <Command.Input placeholder="Search..." />
       <Command.List>
         <Command.Empty>Nothing here.</Command.Empty>

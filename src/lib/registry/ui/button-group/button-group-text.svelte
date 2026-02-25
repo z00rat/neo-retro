@@ -2,7 +2,6 @@
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithElementRef } from '$lib/utils.js';
 
   let {
@@ -12,15 +11,14 @@
     child,
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
-    color: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     child?: Snippet<[{ props: Record<string, unknown> }]>;
   } = $props();
 
   const mergedProps = $derived({
     ...restProps,
     class: cn(
-      "neoretro-shadow neoretro-border flex items-center gap-2 px-4 text-sm font-medium [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
-      colorMap[color],
+      "neoretro-shadow neoretro-border neoretro-clr flex items-center gap-2 px-4 text-sm font-medium [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
       className,
     ),
   });

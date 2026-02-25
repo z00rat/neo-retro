@@ -2,12 +2,11 @@
   import { NavigationMenu as NavigationMenuPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn } from '$lib/utils.js';
 
   let { ref = $bindable(null), class: className, ...restProps }: NavigationMenuPrimitive.IndicatorProps = $props();
 
-  const getColor = getContext<() => ThemeColor | undefined>('navigationMenuColor');
+  const getColor = getContext<() => any>('navigationMenuColor');
   const color = $derived(getColor?.() ?? 'white');
 </script>
 
@@ -20,5 +19,8 @@
   )}
   {...restProps}
 >
-  <div class={cn('relative top-[60%] h-2 w-2 rotate-45 rounded-tl neoretro-border', colorMap[color])}></div>
+  <div
+    data-color={color}
+    class={cn('relative top-[60%] h-2 w-2 rotate-45 rounded-tl neoretro-border neoretro-clr')}
+  ></div>
 </NavigationMenuPrimitive.Indicator>

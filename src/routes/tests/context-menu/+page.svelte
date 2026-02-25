@@ -6,14 +6,13 @@
   <h1 class="text-3xl font-bold">Context Menu Tests</h1>
 
   <div class="flex w-full max-w-2xl gap-8">
-    <!-- Default (Black) Context Menu -->
     <ContextMenu.Root>
       <ContextMenu.Trigger
         class="flex h-[200px] w-full flex-1 items-center justify-center rounded-md neoretro-border border-dashed bg-black text-on-black"
       >
-        Right click here (Default Black)
+        Right click here
       </ContextMenu.Trigger>
-      <ContextMenu.Content class="w-64">
+      <ContextMenu.Content color="yellow" class="w-64">
         <ContextMenu.Item inset>
           Back
           <ContextMenu.Shortcut>⌘[</ContextMenu.Shortcut>

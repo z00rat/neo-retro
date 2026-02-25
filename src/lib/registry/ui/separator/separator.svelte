@@ -3,8 +3,6 @@
   import type { Snippet } from 'svelte';
   import { tv, type VariantProps } from 'tailwind-variants';
 
-  import type { ThemeColor } from '$lib/colors.js';
-
   export const separatorVariants = tv({
     base: 'shrink-0 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full',
     variants: {
@@ -23,20 +21,19 @@
   export type SeparatorThickness = VariantProps<typeof separatorVariants>['thickness'];
 
   export type SeparatorProps = Omit<SeparatorPrimitive.RootProps, 'color'> & {
-    color?: ThemeColor | any;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     thickness?: SeparatorThickness;
     children?: Snippet;
   };
 </script>
 
 <script lang="ts">
-  import { bgColorMap } from '$lib/colors.js';
   import { cn } from '$lib/utils.js';
 
   let {
     ref = $bindable(null),
     class: className,
-    color,
+    color = 'black',
     thickness,
     orientation = 'horizontal',
     children,
@@ -57,14 +54,14 @@
   bind:ref
   {orientation}
   data-slot={dataSlot}
-  class={children
-    ? containerClasses
-    : cn(separatorVariants({ thickness }), color ? bgColorMap[color as ThemeColor] : 'bg-border', className)}
+  data-color={color}
+  class={children ? containerClasses : cn(separatorVariants({ thickness }), color ? 'bg-clr' : 'bg-border', className)}
   {...restProps}
 >
   {#if children}
     <div
-      class={cn('flex-1', separatorVariants({ thickness }), color ? bgColorMap[color as ThemeColor] : 'bg-border')}
+      data-color={color}
+      class={cn('flex-1', separatorVariants({ thickness }), color ? 'bg-clr' : 'bg-border')}
       data-orientation={orientation}
     ></div>
 
@@ -73,7 +70,8 @@
     </div>
 
     <div
-      class={cn('flex-1', separatorVariants({ thickness }), color ? bgColorMap[color as ThemeColor] : 'bg-border')}
+      data-color={color}
+      class={cn('flex-1', separatorVariants({ thickness }), color ? 'bg-clr' : 'bg-border')}
       data-orientation={orientation}
     ></div>
   {/if}

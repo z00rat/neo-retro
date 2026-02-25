@@ -1,7 +1,6 @@
 <script lang="ts">
   import { Tooltip as TooltipPrimitive } from 'bits-ui';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn } from '$lib/utils.js';
 
   let {
@@ -14,7 +13,7 @@
     arrowClasses,
     ...restProps
   }: TooltipPrimitive.ContentProps & {
-    color: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     arrowClasses?: string;
   } = $props();
 </script>
@@ -25,9 +24,10 @@
     data-slot="tooltip-content"
     {sideOffset}
     {side}
+    data-color={color}
     class={cn(
-      'z-50 origin-(--radix-tooltip-content-transform-origin) animate-in overflow-hidden rounded neoretro-border px-3 py-1.5 text-sm fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
-      colorMap[color],
+      'z-50 m-1 origin-(--radix-tooltip-content-transform-origin) animate-in overflow-hidden rounded neoretro-border px-3 py-1.5 text-sm fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
+      'neoretro-clr',
       className,
     )}
     {...restProps}
@@ -35,18 +35,7 @@
     {@render children?.()}
     <TooltipPrimitive.Arrow>
       {#snippet child({ props })}
-        <div
-          class={cn(
-            'z-50 size-2.5 rotate-45 rounded-[2px]',
-            colorMap[color],
-            'data-[side=top]:translate-x-1/2 data-[side=top]:translate-y-[calc(-50%+2px)]',
-            'data-[side=bottom]:-translate-x-1/2 data-[side=bottom]:-translate-y-[calc(-50%+1px)]',
-            'data-[side=right]:translate-x-[calc(50%+2px)] data-[side=right]:translate-y-1/2',
-            'data-[side=left]:-translate-y-[calc(50%-3px)]',
-            arrowClasses,
-          )}
-          {...props}
-        ></div>
+        <div data-color={color} class={cn('z-50 rotate-45 rounded', 'neoretro-clr', arrowClasses)} {...props}></div>
       {/snippet}
     </TooltipPrimitive.Arrow>
   </TooltipPrimitive.Content>

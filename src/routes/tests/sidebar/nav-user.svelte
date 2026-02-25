@@ -42,6 +42,7 @@
         side={sidebar.isMobile ? 'bottom' : 'right'}
         align="end"
         sideOffset={4}
+        color="cyan"
       >
         <DropdownMenu.Label class="p-0 font-normal">
           <div class="flex items-center gap-2 px-1 py-1.5 text-start text-sm">

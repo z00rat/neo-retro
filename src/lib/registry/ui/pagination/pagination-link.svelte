@@ -2,7 +2,6 @@
   import { Pagination as PaginationPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { buttonVariants, type ButtonSize } from '$lib/registry/ui/button/index.js';
   import { cn } from '$lib/utils.js';
 
@@ -19,8 +18,8 @@
     size?: ButtonSize;
   } = $props();
 
-  const getActiveColor = getContext<() => ThemeColor>('paginationActiveColor');
-  const getInactiveColor = getContext<() => ThemeColor>('paginationInactiveColor');
+  const getActiveColor = getContext<() => any>('paginationActiveColor');
+  const getInactiveColor = getContext<() => any>('paginationInactiveColor');
 </script>
 
 {#snippet Fallback()}
@@ -34,11 +33,8 @@
   data-slot="pagination-link"
   {...isActive ? {} : { 'data-pressable': '' }}
   data-active={isActive}
-  class={cn(
-    buttonVariants({ size }),
-    isActive ? colorMap[getActiveColor() || 'cyan'] : colorMap[getInactiveColor() || 'white'],
-    className,
-  )}
+  data-color={isActive ? getActiveColor() : getInactiveColor()}
+  class={cn(buttonVariants({ size }), 'neoretro-clr', className)}
   children={children || Fallback}
   {...restProps}
 />

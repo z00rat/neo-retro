@@ -2,7 +2,6 @@
   import { Dialog as DialogPrimitive } from 'bits-ui';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import type { ThemeColor } from '$lib/colors.js';
   import { Button } from '$lib/registry/ui/button/index.ts';
   import { cn, type WithElementRef } from '$lib/utils.js';
 
@@ -15,7 +14,7 @@
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
     showCloseButton?: boolean;
-    closeColor?: ThemeColor;
+    closeColor?: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 </script>
 

@@ -1,7 +1,6 @@
 <script lang="ts">
   import { Select as SelectPrimitive } from 'bits-ui';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChild } from '$lib/utils.js';
 
   import SelectScrollDownButton from './select-scroll-down-button.svelte';
@@ -17,7 +16,7 @@
     children,
     ...restProps
   }: WithoutChild<SelectPrimitive.ContentProps> & {
-    color: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     portalProps?: SelectPrimitive.PortalProps;
     noShadow?: boolean;
   } = $props();
@@ -28,9 +27,9 @@
     bind:ref
     {sideOffset}
     data-slot="select-content"
+    data-color={color}
     class={cn(
-      'relative z-50 max-h-96 min-w-32 overflow-hidden rounded neoretro-border data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
-      colorMap[color],
+      'relative z-50 max-h-96 min-w-32 overflow-hidden rounded neoretro-border neoretro-clr data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
       className,
       noShadow ? '' : 'neoretro-shadow',
     )}

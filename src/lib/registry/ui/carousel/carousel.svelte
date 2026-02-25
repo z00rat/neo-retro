@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { setContext } from 'svelte';
+
   import { cn, type WithElementRef } from '$lib/utils.js';
 
   import { setEmblaContext, type CarouselAPI, type CarouselProps, type EmblaContext } from './context.js';
@@ -16,9 +18,6 @@
   }: WithElementRef<CarouselProps> = $props();
 
   let carouselState = $state<EmblaContext>({
-    get color() {
-      return color;
-    },
     get orientation() {
       return orientation;
     },
@@ -41,6 +40,7 @@
   });
 
   setEmblaContext(carouselState);
+  setContext('carouselColor', () => color);
 
   function scrollPrev() {
     carouselState.api?.scrollPrev();

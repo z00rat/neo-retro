@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { Button } from '$lib/registry/ui/button';
+  import * as ButtonGroup from '$lib/registry/ui/button-group';
+
   // Programmatically find all test pages
   const modules = import.meta.glob('./**/+page.svelte');
 
@@ -12,9 +15,7 @@
     .sort() as string[];
 
   // Function to get colors
-  const colors = ['bg-yellow', 'bg-red', 'bg-green', 'bg-blue', 'bg-magenta', 'bg-cyan'];
-  const getCardColor = (index: number) => colors[index % colors.length];
-  const getTextColor = (index: number) => `text-on-${colors[index % colors.length].replace('bg-', '')}`;
+  const colors = ['yellow', 'red', 'green', 'blue', 'magenta', 'cyan'] as (typeof ButtonGroup.Button.prototype.color)[];
 </script>
 
 <svelte:head>
@@ -22,28 +23,23 @@
   <meta name="description" content="Overview of all component test pages in the Neo Retro project." />
 </svelte:head>
 
-<div class="animate-in space-y-6 duration-400 fade-in slide-in-from-bottom-2">
-  <div class="border-b-4 border-black pb-4">
+<div class="mx-auto max-w-md animate-in space-y-6 duration-400 fade-in slide-in-from-bottom-2">
+  <div class="border-b-4 border-black pb-4 text-center">
     <h1 class="m-0 text-3xl font-black tracking-tighter uppercase">
       Test <span class="text-blue italic">Registry</span>
     </h1>
   </div>
 
-  <div class="flex flex-wrap gap-3">
+  <ButtonGroup.Root orientation="vertical" class="w-full">
     {#each testRoutes as route, i}
-      <a
-        href="/tests/{route}"
-        class="group flex items-center gap-2 {getCardColor(i)} {getTextColor(
-          i,
-        )} neoretro-border px-3 py-1.5 transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-none"
-      >
-        <span class="text-sm font-black tracking-tight capitalize">
+      <Button href="/tests/{route}" color={colors[i % colors.length]} class="justify-center px-6 py-6">
+        <span class="text-lg font-black tracking-tight capitalize">
           {route.replace(/-/g, ' ')}
         </span>
-        <span class="text-xs opacity-50 transition-transform group-hover:translate-x-0.5">→</span>
-      </a>
+        <span class="text-xl opacity-50 transition-transform group-hover:translate-x-1">→</span>
+      </Button>
     {/each}
-  </div>
+  </ButtonGroup.Root>
 
   {#if testRoutes.length === 0}
     <div class="neoretro-border bg-black/5 p-4 text-center text-sm italic">No test pages found.</div>

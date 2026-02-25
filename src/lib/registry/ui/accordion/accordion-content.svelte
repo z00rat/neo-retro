@@ -2,7 +2,6 @@
   import { Accordion as AccordionPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChild } from '$lib/utils.js';
 
   let {
@@ -12,15 +11,15 @@
     ...restProps
   }: WithoutChild<AccordionPrimitive.ContentProps> = $props();
 
-  const getColor = getContext<() => ThemeColor>('accordionContentColor');
+  const getColor = getContext<() => any>('accordionContentColor');
 </script>
 
 <AccordionPrimitive.Content
   bind:ref
   data-slot="accordion-content"
+  data-color={getColor()}
   class={cn(
-    'overflow-hidden rounded text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
-    colorMap[getColor()],
+    'overflow-hidden rounded-b-[calc(var(--radius)-2px)] neoretro-clr text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
   )}
   {...restProps}
 >

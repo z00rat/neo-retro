@@ -4,7 +4,6 @@
   import { Menubar as MenubarPrimitive } from 'bits-ui';
   import { getContext, type Snippet } from 'svelte';
 
-  import { invertedHighlightColorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   let {
@@ -18,7 +17,7 @@
     children?: Snippet;
   } = $props();
 
-  const getColor = getContext<() => ThemeColor | undefined>('menubarColor');
+  const getColor = getContext<() => any>('menubarColor');
   const color = $derived(getColor?.() ?? 'white');
 </script>
 
@@ -27,9 +26,10 @@
   bind:checked
   bind:indeterminate
   data-slot="menubar-checkbox-item"
+  data-highlighted-color={color}
   class={cn(
     "relative flex cursor-default items-center gap-2 rounded py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-disabled:neoretro-disable [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-    invertedHighlightColorMap[color],
+    'neoretro-highlighted',
     className,
   )}
   {...restProps}

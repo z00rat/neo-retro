@@ -58,11 +58,11 @@
 <section>
   <h3>Many Buttons</h3>
   <ButtonGroup.Root>
-    <ButtonGroup.Button color="black">1</ButtonGroup.Button>
-    <ButtonGroup.Button color="black">2</ButtonGroup.Button>
-    <ButtonGroup.Button color="black">3</ButtonGroup.Button>
-    <ButtonGroup.Button color="black">4</ButtonGroup.Button>
-    <ButtonGroup.Button color="black">5</ButtonGroup.Button>
+    <ButtonGroup.Button color="green">1</ButtonGroup.Button>
+    <ButtonGroup.Button color="green">2</ButtonGroup.Button>
+    <ButtonGroup.Button color="green">3</ButtonGroup.Button>
+    <ButtonGroup.Button color="green">4</ButtonGroup.Button>
+    <ButtonGroup.Button color="green">5</ButtonGroup.Button>
   </ButtonGroup.Root>
 </section>
 

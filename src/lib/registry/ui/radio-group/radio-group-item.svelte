@@ -3,7 +3,6 @@
   import { RadioGroup as RadioGroupPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { checkedColorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   let {
@@ -12,16 +11,17 @@
     ...restProps
   }: WithoutChildrenOrChild<RadioGroupPrimitive.ItemProps> = $props();
 
-  let colorFn = getContext<() => ThemeColor>('radioGroupColor');
+  let colorFn = getContext<() => any>('radioGroupColor');
   let color = $derived(colorFn ? colorFn() : 'cyan');
 </script>
 
 <RadioGroupPrimitive.Item
   bind:ref
   data-slot="radio-group-item"
+  data-color={color}
   class={cn(
     'aspect-square size-4 rounded neoretro-border bg-background text-foreground focus-visible:neoretro-focus disabled:neoretro-disable',
-    checkedColorMap[color],
+    'data-[state=checked]:bg-clr data-[state=checked]:text-on-clr data-[state=checked]:selection:bg-on-clr data-[state=checked]:selection:text-clr',
     className,
   )}
   {...restProps}

@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithElementRef, type WithoutChildren } from '$lib/utils.js';
 
   let {
@@ -11,7 +10,7 @@
     noShadow,
     ...restProps
   }: WithoutChildren<WithElementRef<HTMLAttributes<HTMLDivElement>>> & {
-    color: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     noShadow?: boolean;
   } = $props();
 </script>
@@ -19,10 +18,10 @@
 <div
   bind:this={ref}
   data-slot="skeleton"
+  data-color={color}
   class={cn(
-    'rounded neoretro-border p-2',
+    'rounded neoretro-border neoretro-clr p-2',
     noShadow ? 'animate-pulse' : 'neoretro-shadow neoretro-shadow-bob',
-    colorMap[color],
     className,
   )}
   {...restProps}

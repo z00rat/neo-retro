@@ -3,7 +3,6 @@
   import { Menubar as MenubarPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { invertedHighlightColorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChild } from '$lib/utils.js';
 
   let {
@@ -16,7 +15,7 @@
     inset?: boolean;
   } = $props();
 
-  const getColor = getContext<() => ThemeColor | undefined>('menubarColor');
+  const getColor = getContext<() => any>('menubarColor');
   const color = $derived(getColor?.() ?? 'white');
 </script>
 
@@ -24,9 +23,10 @@
   bind:ref
   data-slot="menubar-sub-trigger"
   data-inset={inset}
+  data-highlighted-color={color}
   class={cn(
     'flex cursor-default items-center rounded px-2 py-1.5 text-sm outline-none select-none data-inset:pl-8',
-    invertedHighlightColorMap[color],
+    'neoretro-highlighted',
     className,
   )}
   {...restProps}

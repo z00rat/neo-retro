@@ -27,21 +27,20 @@
 <script lang="ts">
   import { Toggle as TogglePrimitive } from 'bits-ui';
 
-  import { onColorMap, type ThemeColor } from '$lib/colors.js';
   import { cn } from '$lib/utils.js';
 
   let {
     ref = $bindable(null),
     pressed = $bindable(false),
     class: className,
-    color = 'cyan',
+    color,
     noShadow,
     size,
     ...restProps
   }: TogglePrimitive.RootProps & {
     size?: ToggleSize;
     noShadow?: boolean;
-    color?: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 </script>
 
@@ -50,6 +49,11 @@
   bind:pressed
   data-slot="toggle"
   data-pressable
-  class={cn(toggleVariants({ size, noShadow }), onColorMap[color], className)}
+  data-color={color}
+  class={cn(
+    toggleVariants({ size, noShadow }),
+    'data-[state=on]:bg-clr data-[state=on]:text-on-clr data-[state=on]:selection:bg-on-clr data-[state=on]:selection:text-clr',
+    className,
+  )}
   {...restProps}
 />

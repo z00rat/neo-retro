@@ -3,7 +3,6 @@
   import { ContextMenu as ContextMenuPrimitive } from 'bits-ui';
   import { getContext, type Snippet } from 'svelte';
 
-  import { invertedHighlightColorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   let {
@@ -17,7 +16,7 @@
     children?: Snippet;
   } = $props();
 
-  const getColor = getContext<() => ThemeColor | undefined>('contextMenuColor');
+  const getColor = getContext<() => any>('contextMenuColor');
   const color = $derived(getColor?.() ?? 'black');
 </script>
 
@@ -26,9 +25,10 @@
   bind:checked
   bind:indeterminate
   data-slot="context-menu-checkbox-item"
+  data-highlighted-color={color}
   class={cn(
     "relative flex items-center gap-2 rounded py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-disabled:neoretro-disable [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-    invertedHighlightColorMap[color],
+    'neoretro-highlighted',
     className,
   )}
   {...restProps}

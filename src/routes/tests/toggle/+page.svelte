@@ -18,15 +18,15 @@
       </Card.Header>
       <Card.Content class="flex items-center gap-6">
         <!-- Colored Single Toggles -->
-        <Toggle aria-label="Toggle bold">
+        <Toggle aria-label="Toggle bold" color="cyan">
           <BoldIcon />
         </Toggle>
 
-        <Toggle color="yellow" aria-label="Toggle italic">
+        <Toggle aria-label="Toggle italic" color="yellow">
           <ItalicIcon /> Yellow
         </Toggle>
 
-        <Toggle color="red" aria-label="Toggle underline">
+        <Toggle aria-label="Toggle underline" color="red">
           <UnderlineIcon /> Red
         </Toggle>
       </Card.Content>
@@ -37,7 +37,7 @@
         <Card.Title>Disabled State</Card.Title>
       </Card.Header>
       <Card.Content class="flex gap-4">
-        <Toggle disabled>Disabled</Toggle>
+        <Toggle disabled color="green">Disabled</Toggle>
       </Card.Content>
     </Card.Root>
   </div>

@@ -28,7 +28,7 @@
   <h3>Colors</h3>
   <div class="flex flex-wrap gap-4">
     <div class="w-40">
-      <Select.Root type="single">
+      <Select.Root type="single" hoverColor="cyan">
         <Select.Trigger color="cyan">Cyan</Select.Trigger>
         <Select.Content color="cyan">
           <Select.Group>
@@ -39,7 +39,7 @@
       </Select.Root>
     </div>
     <div class="w-40">
-      <Select.Root type="single">
+      <Select.Root type="single" hoverColor="yellow">
         <Select.Trigger color="yellow">Yellow</Select.Trigger>
         <Select.Content color="yellow">
           <Select.Group>
@@ -50,7 +50,7 @@
       </Select.Root>
     </div>
     <div class="w-40">
-      <Select.Root type="single">
+      <Select.Root type="single" hoverColor="black">
         <Select.Trigger color="black">Black</Select.Trigger>
         <Select.Content color="black">
           <Select.Group>

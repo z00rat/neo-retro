@@ -2,16 +2,15 @@
   import { Menubar as MenubarPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn } from '$lib/utils.js';
 
   let {
     ref = $bindable(null),
     class: className,
-    color = 'white',
+    color,
     ...restProps
   }: MenubarPrimitive.RootProps & {
-    color?: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 
   setContext('menubarColor', () => color);
@@ -20,6 +19,7 @@
 <MenubarPrimitive.Root
   bind:ref
   data-slot="menubar"
-  class={cn('flex h-9 neoretro-shadow items-center gap-1 rounded neoretro-border p-1', colorMap[color], className)}
+  data-color={color}
+  class={cn('flex h-9 neoretro-shadow items-center gap-1 rounded neoretro-border neoretro-clr p-1', className)}
   {...restProps}
 />

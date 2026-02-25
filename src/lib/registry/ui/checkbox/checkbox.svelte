@@ -3,27 +3,27 @@
   // import MinusIcon from '@lucide/svelte/icons/minus';
   import { Checkbox as CheckboxPrimitive } from 'bits-ui';
 
-  import { colorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   let {
     ref = $bindable(null),
-    color = 'cyan',
+    color,
     checked = $bindable(false),
     indeterminate = $bindable(false),
     class: className,
     ...restProps
   }: WithoutChildrenOrChild<CheckboxPrimitive.RootProps> & {
-    color?: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 </script>
 
 <CheckboxPrimitive.Root
   bind:ref
   data-slot="checkbox"
+  data-color={color}
   class={cn(
     'peer flex size-5 shrink-0 items-center justify-center rounded-sm neoretro-border transition-none focus-visible:neoretro-focus disabled:neoretro-disable',
-    checked || indeterminate ? colorMap[color] : 'bg-background',
+    checked || indeterminate ? 'bg-clr' : 'bg-background',
     className,
   )}
   bind:checked

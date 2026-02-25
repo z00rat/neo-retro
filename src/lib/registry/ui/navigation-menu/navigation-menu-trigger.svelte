@@ -1,19 +1,11 @@
 <script lang="ts" module>
-  import { tv } from 'tailwind-variants';
-
   import { cn } from '$lib/utils.js';
-
-  export const navigationMenuTriggerStyle = tv({
-    base: 'neoretro-focus group inline-flex h-9 w-max items-center justify-center rounded text-sm font-medium outline-none transition-[color,box-shadow] disabled:neoretro-disable px-2 py-2',
-  });
 </script>
 
 <script lang="ts">
   import ChevronDownIcon from '@lucide/svelte/icons/chevron-down';
   import { NavigationMenu as NavigationMenuPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
-
-  import { invertedHighlightColorMap, invertedHoverColorMap, type ThemeColor } from '$lib/colors.js';
 
   let {
     ref = $bindable(null),
@@ -22,17 +14,19 @@
     ...restProps
   }: NavigationMenuPrimitive.TriggerProps = $props();
 
-  const getColor = getContext<() => ThemeColor | undefined>('navigationMenuColor');
-  const color = $derived(getColor?.() ?? 'white');
+  const getColor = getContext<() => any>('navigationMenuColor');
+  const color = $derived(getColor());
 </script>
 
 <NavigationMenuPrimitive.Trigger
   bind:ref
   data-slot="navigation-menu-trigger"
+  data-hover-color={color}
+  data-highlighted-color={color}
   class={cn(
-    navigationMenuTriggerStyle(),
-    invertedHighlightColorMap[color],
-    invertedHoverColorMap[color],
+    'group neoretro-focus m-1 inline-flex h-9 w-max items-center justify-center rounded p-1 text-sm font-medium transition-[color,box-shadow] outline-none disabled:neoretro-disable',
+    'neoretro-highlighted',
+    'neoretro-hover',
     'group',
     className,
   )}

@@ -28,9 +28,9 @@
 @utility neoretro-shadow {
   @apply shadow-shadow;
 
-  @apply data-pressable:not-aria-disabled:not-data-disabled:active:translate-x-boxShadowX;
-  @apply data-pressable:not-aria-disabled:not-data-disabled:active:translate-y-boxShadowY;
-  @apply data-pressable:not-aria-disabled:not-data-disabled:active:shadow-none;
+  @apply data-pressable:not-disabled:not-aria-disabled:not-data-disabled:active:translate-x-boxShadowX;
+  @apply data-pressable:not-disabled:not-aria-disabled:not-data-disabled:active:translate-y-boxShadowY;
+  @apply data-pressable:not-disabled:not-aria-disabled:not-data-disabled:active:shadow-none;
 }
 
 @utility neoretro-shadow-bob {
@@ -57,6 +57,71 @@
 
 @utility neoretro-focus {
   @apply focus-visible:relative focus-visible:z-10 focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-ring;
+}
+
+/* prettier-ignore */
+@layer base {
+  [data-color='black']{--clr:var(--color-black);--on-clr:var(--color-on-black);}
+  [data-color='red']{--clr:var(--color-red);--on-clr:var(--color-on-red);}
+  [data-color='green']{--clr:var(--color-green);--on-clr:var(--color-on-green);}
+  [data-color='yellow']{--clr:var(--color-yellow);--on-clr:var(--color-on-yellow);}
+  [data-color='blue']{--clr:var(--color-blue);--on-clr:var(--color-on-blue);}
+  [data-color='magenta']{--clr:var(--color-magenta);--on-clr:var(--color-on-magenta);}
+  [data-color='cyan']{--clr:var(--color-cyan);--on-clr:var(--color-on-cyan);}
+  [data-color='white']{--clr:var(--color-white);--on-clr:var(--color-on-white);}
+
+  [data-active-color='black']{--clr-active:var(--color-black);--on-clr-active:var(--color-on-black);}
+  [data-active-color='red']{--clr-active:var(--color-red);--on-clr-active:var(--color-on-red);}
+  [data-active-color='green']{--clr-active:var(--color-green);--on-clr-active:var(--color-on-green);}
+  [data-active-color='yellow']{--clr-active:var(--color-yellow);--on-clr-active:var(--color-on-yellow);}
+  [data-active-color='blue']{--clr-active:var(--color-blue);--on-clr-active:var(--color-on-blue);}
+  [data-active-color='magenta']{--clr-active:var(--color-magenta);--on-clr-active:var(--color-on-magenta);}
+  [data-active-color='cyan']{--clr-active:var(--color-cyan);--on-clr-active:var(--color-on-cyan);}
+  [data-active-color='white']{--clr-active:var(--color-white);--on-clr-active:var(--color-on-white);}
+
+  [data-inactive-color='black']{--clr-inactive:var(--color-black);--on-clr-inactive:var(--color-on-black);}
+  [data-inactive-color='red']{--clr-inactive:var(--color-red);--on-clr-inactive:var(--color-on-red);}
+  [data-inactive-color='green']{--clr-inactive:var(--color-green);--on-clr-inactive:var(--color-on-green);}
+  [data-inactive-color='yellow']{--clr-inactive:var(--color-yellow);--on-clr-inactive:var(--color-on-yellow);}
+  [data-inactive-color='blue']{--clr-inactive:var(--color-blue);--on-clr-inactive:var(--color-on-blue);}
+  [data-inactive-color='magenta']{--clr-inactive:var(--color-magenta);--on-clr-inactive:var(--color-on-magenta);}
+  [data-inactive-color='cyan']{--clr-inactive:var(--color-cyan);--on-clr-inactive:var(--color-on-cyan);}
+  [data-inactive-color='white']{--clr-inactive:var(--color-white);--on-clr-inactive:var(--color-on-white);}
+
+  [data-hover-color='black']{--clr-hover:var(--color-black);--on-clr-hover:var(--color-on-black);}
+  [data-hover-color='red']{--clr-hover:var(--color-red);--on-clr-hover:var(--color-on-red);}
+  [data-hover-color='green']{--clr-hover:var(--color-green);--on-clr-hover:var(--color-on-green);}
+  [data-hover-color='yellow']{--clr-hover:var(--color-yellow);--on-clr-hover:var(--color-on-yellow);}
+  [data-hover-color='blue']{--clr-hover:var(--color-blue);--on-clr-hover:var(--color-on-blue);}
+  [data-hover-color='magenta']{--clr-hover:var(--color-magenta);--on-clr-hover:var(--color-on-magenta);}
+  [data-hover-color='cyan']{--clr-hover:var(--color-cyan);--on-clr-hover:var(--color-on-cyan);}
+  [data-hover-color='white']{--clr-hover:var(--color-white);--on-clr-hover:var(--color-on-white);}
+
+  [data-highlighted-color='black']{--clr-highlighted:var(--color-black);--on-clr-highlighted:var(--color-on-black);}
+  [data-highlighted-color='red']{--clr-highlighted:var(--color-red);--on-clr-highlighted:var(--color-on-red);}
+  [data-highlighted-color='green']{--clr-highlighted:var(--color-green);--on-clr-highlighted:var(--color-on-green);}
+  [data-highlighted-color='yellow']{--clr-highlighted:var(--color-yellow);--on-clr-highlighted:var(--color-on-yellow);}
+  [data-highlighted-color='blue']{--clr-highlighted:var(--color-blue);--on-clr-highlighted:var(--color-on-blue);}
+  [data-highlighted-color='magenta']{--clr-highlighted:var(--color-magenta);--on-clr-highlighted:var(--color-on-magenta);}
+  [data-highlighted-color='cyan']{--clr-highlighted:var(--color-cyan);--on-clr-highlighted:var(--color-on-cyan);}
+  [data-highlighted-color='white']{--clr-highlighted:var(--color-white);--on-clr-highlighted:var(--color-on-white);}
+}
+/* prettier-ignore-end */
+
+@utility neoretro-clr {
+  @apply bg-clr text-on-clr selection:bg-on-clr selection:text-clr;
+}
+
+@utility neoretro-hover {
+  @apply hover:bg-on-clr-hover hover:text-clr-hover hover:selection:bg-clr-hover hover:selection:text-on-clr-hover;
+}
+
+@utility neoretro-selected {
+  @apply data-selected:bg-clr-hover data-selected:text-on-clr-hover data-selected:selection:bg-on-clr-hover data-selected:selection:text-clr-hover;
+}
+
+@utility neoretro-highlighted {
+  @apply data-highlighted:bg-on-clr-highlighted data-highlighted:text-clr-highlighted data-[state=open]:bg-on-clr-highlighted data-[state=open]:text-clr-highlighted;
 }
 
 @theme inline {
@@ -88,6 +153,17 @@
   --color-on-magenta: var(--text-on-magenta);
   --color-on-cyan: var(--text-on-cyan);
   --color-on-white: var(--text-on-white);
+
+  --color-clr: var(--clr);
+  --color-on-clr: var(--on-clr);
+  --color-clr-active: var(--clr-active);
+  --color-on-clr-active: var(--on-clr-active);
+  --color-clr-inactive: var(--clr-inactive);
+  --color-on-clr-inactive: var(--on-clr-inactive);
+  --color-clr-hover: var(--clr-hover);
+  --color-on-clr-hover: var(--on-clr-hover);
+  --color-clr-highlighted: var(--clr-highlighted);
+  --color-on-clr-highlighted: var(--on-clr-highlighted);
 }
 
 @layer base {
@@ -134,7 +210,8 @@
   }
 
   a {
-    @apply font-bold neoretro-link;
+    /* @apply font-bold neoretro-link; */
+    @apply font-bold;
   }
 
   strong,

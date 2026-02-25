@@ -2,7 +2,6 @@ import type { default as emblaCarouselSvelte, EmblaCarouselSvelteType } from 'em
 import { getContext, hasContext, setContext } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
 
-import type { ThemeColor } from '$lib/colors.js';
 import type { WithElementRef } from '$lib/utils.js';
 
 export type CarouselAPI =
@@ -20,17 +19,16 @@ export type CarouselPlugins = EmblaCarouselConfig['plugins'];
 ////
 
 export type CarouselProps = {
-  color: ThemeColor;
+  color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   opts?: CarouselOptions;
   plugins?: CarouselPlugins;
   setApi?: (api: CarouselAPI | undefined) => void;
   orientation?: 'horizontal' | 'vertical';
 } & WithElementRef<HTMLAttributes<HTMLDivElement>>;
 
-const EMBLA_CAROUSEL_CONTEXT = Symbol('EMBLA_CAROUSEL_CONTEXT');
+export const EMBLA_CAROUSEL_CONTEXT = Symbol('EMBLA_CAROUSEL_CONTEXT');
 
 export type EmblaContext = {
-  color: ThemeColor;
   api: CarouselAPI | undefined;
   orientation: 'horizontal' | 'vertical';
   scrollNext: () => void;

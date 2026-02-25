@@ -1,16 +1,17 @@
 <script lang="ts">
   import { Switch as SwitchPrimitive } from 'bits-ui';
 
-  import { checkedColorMap, type ThemeColor } from '$lib/colors.js';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
 
   let {
     ref = $bindable(null),
     class: className,
-    color = 'cyan',
+    color,
     checked = $bindable(false),
     ...restProps
-  }: WithoutChildrenOrChild<SwitchPrimitive.RootProps> & { color?: ThemeColor } = $props();
+  }: WithoutChildrenOrChild<SwitchPrimitive.RootProps> & {
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+  } = $props();
 </script>
 
 <SwitchPrimitive.Root
@@ -18,9 +19,10 @@
   bind:checked
   data-slot="switch"
   data-pressable
+  data-color={color}
   class={cn(
     'peer inline-flex h-6 w-12 shrink-0 neoretro-shadow cursor-pointer items-center rounded neoretro-border bg-background text-foreground transition-colors focus-visible:neoretro-focus disabled:cursor-not-allowed',
-    checkedColorMap[color],
+    'data-[state=checked]:bg-clr data-[state=checked]:text-on-clr data-[state=checked]:selection:bg-on-clr data-[state=checked]:selection:text-clr',
     className,
   )}
   {...restProps}

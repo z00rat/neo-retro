@@ -22,7 +22,6 @@
 <script lang="ts">
   import type { ComponentProps } from 'svelte';
 
-  import type { ThemeColor } from '$lib/colors.js';
   import { Button } from '$lib/registry/ui/button/index.ts';
   import { cn } from '$lib/utils.js';
 
@@ -31,12 +30,12 @@
     class: className,
     children,
     type = 'button',
-    color = 'cyan',
+    color,
     size = 'xs',
     ...restProps
   }: Omit<ComponentProps<typeof Button>, 'href' | 'size'> & {
     size?: InputGroupButtonSize;
-    color?: ThemeColor;
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 </script>
 
