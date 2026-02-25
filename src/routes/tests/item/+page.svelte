@@ -140,47 +140,25 @@
   </div>
 </section>
 
-<!-- Outline & None -->
-<section>
-  <h3>Outline &amp; None</h3>
-  <div class="max-w-md space-y-3">
-    <Item.Root color="magenta">
-      <Item.Content>
-        <Item.Title>Normal</Item.Title>
-      </Item.Content>
-    </Item.Root>
-    <Item.Root color="magenta" outline>
-      <Item.Content>
-        <Item.Title>Outline</Item.Title>
-      </Item.Content>
-    </Item.Root>
-    <Item.Root color="magenta" none>
-      <Item.Content>
-        <Item.Title>None</Item.Title>
-      </Item.Content>
-    </Item.Root>
-  </div>
-</section>
-
 <!-- Group with separator -->
 <section>
   <h3>Group</h3>
   <Item.Group class="max-w-md">
-    <Item.Root color="green" noShadow border={0}>
+    <Item.Root color="green" noShadow>
       <Item.Content>
         <Item.Title>First</Item.Title>
         <Item.Description>First item in group.</Item.Description>
       </Item.Content>
     </Item.Root>
     <Item.Separator color="black" />
-    <Item.Root color="green" noShadow border={0}>
+    <Item.Root color="green" noShadow>
       <Item.Content>
         <Item.Title>Second</Item.Title>
         <Item.Description>Second item in group.</Item.Description>
       </Item.Content>
     </Item.Root>
     <Item.Separator color="black" />
-    <Item.Root color="green" noShadow border={0}>
+    <Item.Root color="green" noShadow>
       <Item.Content>
         <Item.Title>Third</Item.Title>
         <Item.Description>Third item in group.</Item.Description>

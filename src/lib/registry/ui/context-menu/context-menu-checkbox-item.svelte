@@ -1,5 +1,4 @@
 <script lang="ts">
-  import CheckIcon from '@lucide/svelte/icons/check';
   import { ContextMenu as ContextMenuPrimitive } from 'bits-ui';
   import { getContext, type Snippet } from 'svelte';
 
@@ -17,7 +16,7 @@
   } = $props();
 
   const getColor = getContext<() => any>('contextMenuColor');
-  const color = $derived(getColor?.() ?? 'black');
+  const color = $derived(getColor());
 </script>
 
 <ContextMenuPrimitive.CheckboxItem
@@ -27,16 +26,18 @@
   data-slot="context-menu-checkbox-item"
   data-highlighted-color={color}
   class={cn(
-    "relative flex items-center gap-2 rounded py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-disabled:neoretro-disable [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+    'relative flex items-center gap-2 rounded py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-disabled:neoretro-disable',
     'neoretro-highlighted',
     className,
   )}
   {...restProps}
 >
-  {#snippet children({ checked })}
+  {#snippet children({ checked, indeterminate })}
     <span class="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
-      {#if checked}
-        <CheckIcon class="size-4" />
+      {#if checked === true}
+        <div class="size-2.5 rounded-sm bg-current"></div>
+      {:else if indeterminate}
+        <div class="h-1 w-2.5 rounded-sm bg-current"></div>
       {/if}
     </span>
     {@render childrenProp?.()}

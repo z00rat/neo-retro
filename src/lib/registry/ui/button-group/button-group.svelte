@@ -1,24 +1,3 @@
-<script lang="ts" module>
-  import { tv, type VariantProps } from 'tailwind-variants';
-
-  export const buttonGroupVariants = tv({
-    base: "rounded flex w-fit items-stretch has-[>[data-slot=button-group]]:gap-2 [&>*]:relative [&>*]:focus-visible:z-20 has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-e [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1",
-    variants: {
-      orientation: {
-        horizontal:
-          '[&>*:not(:first-child)]:-ml-[2px] [&>*:not(:first-child)]:rounded-s-none [&>*:not(:last-child)]:rounded-e-none',
-        vertical:
-          'flex-col [&>*:not(:first-child)]:-mt-[2px] [&>*:not(:first-child)]:rounded-t-none [&>*:not(:last-child)]:rounded-b-none',
-      },
-    },
-    defaultVariants: {
-      orientation: 'horizontal',
-    },
-  });
-
-  export type ButtonGroupOrientation = VariantProps<typeof buttonGroupVariants>['orientation'];
-</script>
-
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
@@ -31,7 +10,7 @@
     orientation = 'horizontal',
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
-    orientation?: ButtonGroupOrientation;
+    orientation?: 'horizontal' | 'vertical';
   } = $props();
 </script>
 
@@ -40,7 +19,13 @@
   role="group"
   data-slot="button-group"
   data-orientation={orientation}
-  class={cn(buttonGroupVariants({ orientation }), className)}
+  class={cn(
+    "flex w-fit items-stretch rounded *:relative *:focus-visible:z-20 has-[>[data-slot=button-group]]:gap-2 has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-e [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1",
+    orientation === 'horizontal'
+      ? '[&>*:not(:first-child)]:-ml-[2px] [&>*:not(:first-child)]:rounded-s-none [&>*:not(:last-child)]:rounded-e-none'
+      : 'flex-col [&>*:not(:first-child)]:-mt-[2px] [&>*:not(:first-child)]:rounded-t-none [&>*:not(:last-child)]:rounded-b-none',
+    className,
+  )}
   {...restProps}
 >
   {@render children?.()}

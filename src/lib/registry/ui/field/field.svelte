@@ -1,31 +1,3 @@
-<script lang="ts" module>
-  import { tv, type VariantProps } from 'tailwind-variants';
-
-  export const fieldVariants = tv({
-    base: 'group/field data-[invalid=true]:text-red flex w-full gap-3',
-    variants: {
-      orientation: {
-        vertical: 'flex-col [&>*]:w-full [&>.sr-only]:w-auto',
-        horizontal: [
-          'flex-row items-center',
-          '[&>[data-slot=field-label]]:flex-auto',
-          'has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px has-[>[data-slot=field-content]]:items-start',
-        ],
-        responsive: [
-          '@md/field-group:flex-row @md/field-group:items-center @md/field-group:[&>*]:w-auto flex-col [&>*]:w-full [&>.sr-only]:w-auto',
-          '@md/field-group:[&>[data-slot=field-label]]:flex-auto',
-          '@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px',
-        ],
-      },
-    },
-    defaultVariants: {
-      orientation: 'vertical',
-    },
-  });
-
-  export type FieldOrientation = VariantProps<typeof fieldVariants>['orientation'];
-</script>
-
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
@@ -38,7 +10,7 @@
     children,
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
-    orientation?: FieldOrientation;
+    orientation?: 'vertical' | 'horizontal' | 'responsive';
   } = $props();
 </script>
 
@@ -47,7 +19,15 @@
   role="group"
   data-slot="field"
   data-orientation={orientation}
-  class={cn(fieldVariants({ orientation }), className)}
+  class={cn(
+    'group/field flex w-full gap-3 data-[invalid=true]:text-red',
+    orientation === 'vertical' && 'flex-col *:w-full [&>.sr-only]:w-auto',
+    orientation === 'horizontal' &&
+      'flex-row items-center has-[>[data-slot=field-content]]:items-start *:data-[slot=field-label]:flex-auto has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px',
+    orientation === 'responsive' &&
+      'flex-col *:w-full @md/field-group:flex-row @md/field-group:items-center @md/field-group:*:w-auto @md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:*:data-[slot=field-label]:flex-auto [&>.sr-only]:w-auto @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px',
+    className,
+  )}
   {...restProps}
 >
   {@render children?.()}

@@ -56,7 +56,7 @@
   {disableDaysOutsideMonth}
   data-color={color}
   class={cn(
-    'group/calendar neoretro-shadow rounded-md neoretro-border neoretro-clr p-3 [--cell-size:--spacing(8)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent [&_td]:border-none [&_th]:border-none [&_thead]:bg-transparent [&_tr:nth-child(even)]:bg-transparent',
+    'group/calendar neoretro-shadow rounded neoretro-border neoretro-clr p-3 [--cell-size:--spacing(8)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent [&_td]:border-none [&_th]:border-none [&_thead]:bg-transparent [&_tr:nth-child(even)]:bg-transparent',
     className,
   )}
   {locale}

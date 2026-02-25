@@ -16,7 +16,7 @@
   } = $props();
 
   const getColor = getContext<() => any>('dropdownMenuColor');
-  const color = $derived(getColor?.() ?? 'black');
+  const color = $derived(getColor());
 </script>
 
 <DropdownMenuPrimitive.CheckboxItem
@@ -34,10 +34,10 @@
 >
   {#snippet children({ checked, indeterminate })}
     <span class="pointer-events-none absolute start-2 flex size-3.5 items-center justify-center">
-      {#if checked}
-        <div class="size-3 bg-current"></div>
+      {#if checked === true}
+        <div class="size-2.5 rounded-sm bg-current"></div>
       {:else if indeterminate}
-        <div class="h-1 w-3 bg-current"></div>
+        <div class="h-1 w-2.5 rounded-sm bg-current"></div>
       {/if}
     </span>
     {@render childrenProp?.()}

@@ -14,7 +14,7 @@
   let {
     ref = $bindable(null),
     value = $bindable(),
-    noShadow,
+    noShadow = false,
     type,
     files = $bindable(),
     class: className,

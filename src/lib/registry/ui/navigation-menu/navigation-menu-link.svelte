@@ -7,7 +7,7 @@
   let { ref = $bindable(null), class: className, ...restProps }: NavigationMenuPrimitive.LinkProps = $props();
 
   const getColor = getContext<() => any>('navigationMenuColor');
-  const color = $derived(getColor?.() ?? 'white');
+  const color = $derived(getColor());
 </script>
 
 <NavigationMenuPrimitive.Link

@@ -7,7 +7,7 @@
   let { ref = $bindable(null), class: className, ...restProps }: MenubarPrimitive.TriggerProps = $props();
 
   const getColor = getContext<() => any>('menubarColor');
-  const color = $derived(getColor?.() ?? 'white');
+  const color = $derived(getColor());
 </script>
 
 <MenubarPrimitive.Trigger

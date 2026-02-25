@@ -1,15 +1,3 @@
-<script lang="ts" module>
-  import { tv } from 'tailwind-variants';
-
-  export const badgeVariants = tv({
-    base: 'neoretro-clr inline-flex items-center justify-center rounded neoretro-border neoretro-focus px-2.5 py-0.5 text-xs font-base w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none',
-  });
-
-  export type BadgeProps = {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-  };
-</script>
-
 <script lang="ts">
   import type { HTMLAnchorAttributes } from 'svelte/elements';
 
@@ -22,7 +10,9 @@
     color,
     children,
     ...restProps
-  }: WithElementRef<HTMLAnchorAttributes> & BadgeProps = $props();
+  }: WithElementRef<HTMLAnchorAttributes> & {
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+  } = $props();
 </script>
 
 <svelte:element
@@ -31,7 +21,10 @@
   data-slot="badge"
   {href}
   data-color={color}
-  class={cn(badgeVariants(), className)}
+  class={cn(
+    'font-base neoretro-focus inline-flex w-fit shrink-0 items-center justify-center gap-1 rounded neoretro-border neoretro-clr px-2.5 py-0.5 text-xs whitespace-nowrap [&>svg]:pointer-events-none [&>svg]:size-3',
+    className,
+  )}
   {...restProps}
 >
   {@render children?.()}

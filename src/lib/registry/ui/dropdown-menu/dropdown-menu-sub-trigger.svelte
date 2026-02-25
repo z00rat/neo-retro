@@ -16,7 +16,7 @@
   } = $props();
 
   const getColor = getContext<() => any>('dropdownMenuColor');
-  const color = $derived(getColor?.() ?? 'black');
+  const color = $derived(getColor());
 </script>
 
 <DropdownMenuPrimitive.SubTrigger

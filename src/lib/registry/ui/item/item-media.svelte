@@ -1,23 +1,3 @@
-<script lang="ts" module>
-  import { tv, type VariantProps } from 'tailwind-variants';
-
-  export const itemMediaVariants = tv({
-    base: 'flex shrink-0 items-center justify-center gap-2 group-has-[[data-slot=item-description]]/item:translate-y-0.5 group-has-[[data-slot=item-description]]/item:self-start [&_svg]:pointer-events-none',
-    variants: {
-      variant: {
-        default: 'bg-transparent',
-        icon: "size-8 rounded neoretro-border [&_svg:not([class*='size-'])]:size-4",
-        image: 'size-10 overflow-hidden rounded neoretro-border [&_img]:size-full [&_img]:object-cover',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-    },
-  });
-
-  export type ItemMediaVariant = VariantProps<typeof itemMediaVariants>['variant'];
-</script>
-
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
@@ -31,7 +11,7 @@
     color,
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
-    variant?: ItemMediaVariant;
+    variant?: 'default' | 'icon' | 'image';
     color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 </script>
@@ -41,7 +21,14 @@
   data-slot="item-media"
   data-variant={variant}
   data-color={color}
-  class={cn(itemMediaVariants({ variant }), color ? 'neoretro-clr' : '', className)}
+  class={cn(
+    'flex shrink-0 items-center justify-center gap-2 *:pointer-events-none group-has-data-[slot=item-description]/item:translate-y-0.5 group-has-data-[slot=item-description]/item:self-start',
+    variant === 'default' && 'bg-transparent',
+    variant === 'icon' && '*:not([class*="size-"]):size-4 size-8 rounded neoretro-border',
+    variant === 'image' && '*:is(img):size-full *:is(img):object-cover size-10 overflow-hidden rounded neoretro-border',
+    color && 'neoretro-clr',
+    className,
+  )}
   {...restProps}
 >
   {@render children?.()}

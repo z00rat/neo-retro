@@ -1,9 +1,3 @@
-<script lang="ts" module>
-  import { tv, type VariantProps } from 'tailwind-variants';
-
-  export type SidebarMenuButtonSize = 'default' | 'sm' | 'lg';
-</script>
-
 <script lang="ts">
   import { mergeProps } from 'bits-ui';
   import { getContext } from 'svelte';
@@ -27,7 +21,7 @@
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
     isActive?: boolean;
-    size?: SidebarMenuButtonSize;
+    size?: 'default' | 'sm' | 'lg';
     tooltipContent?: Snippet | string;
     tooltipContentProps?: WithoutChildrenOrChild<ComponentProps<typeof Tooltip.Content>>;
     child?: Snippet<[{ props: Record<string, unknown> }]>;

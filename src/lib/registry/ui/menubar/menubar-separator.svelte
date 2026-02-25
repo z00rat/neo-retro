@@ -9,6 +9,6 @@
 <MenubarPrimitive.Separator
   bind:ref
   data-slot="menubar-separator"
-  class={cn('-mx-1 my-1 h-px neoretro-border-b', className)}
+  class={cn('-mx-1 my-1 h-px bg-border', className)}
   {...restProps}
 />

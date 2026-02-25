@@ -23,7 +23,7 @@
     'has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3',
     'has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3',
     // Error state.
-    'has-[[data-slot][aria-invalid=true]]:border-red has-[[data-slot][aria-invalid=true]]:ring-red/20 dark:has-[[data-slot][aria-invalid=true]]:ring-red/40',
+    'has-data-slot:aria-invalid:border-red has-data-slot:aria-invalid:ring-red/20',
     className,
   )}
   {...props}

@@ -53,17 +53,6 @@
           "path": "src/lib/registry/ui/button/index.ts"
         }
       ]
-    },
-    {
-      "name": "BUTTONS",
-      "type": "registry:block",
-      "registryDependencies": ["button"],
-      "files": [
-        {
-          "type": "registry:component",
-          "path": "src/lib/registry/blocks/buttons.svelte"
-        }
-      ]
     }
   ]
 }

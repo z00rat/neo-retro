@@ -15,33 +15,33 @@
   const components: { title: string; href: string; description: string }[] = [
     {
       title: 'Alert Dialog',
-      href: '/docs/components/alert-dialog',
+      href: '#docs/components/alert-dialog',
       description: 'A modal dialog that interrupts the user with important content and expects a response.',
     },
     {
       title: 'Hover Card',
-      href: '/docs/components/hover-card',
+      href: '#docs/components/hover-card',
       description: 'For sighted users to preview content available behind a link.',
     },
     {
       title: 'Progress',
-      href: '/docs/components/progress',
+      href: '#docs/components/progress',
       description:
         'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
     },
     {
       title: 'Scroll-area',
-      href: '/docs/components/scroll-area',
+      href: '#docs/components/scroll-area',
       description: 'Visually or semantically separates content.',
     },
     {
       title: 'Tabs',
-      href: '/docs/components/tabs',
+      href: '#docs/components/tabs',
       description: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
     },
     {
       title: 'Tooltip',
-      href: '/docs/components/tooltip',
+      href: '#docs/components/tooltip',
       description:
         'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
     },
@@ -106,17 +106,17 @@
                     </NavigationMenu.Link>
                   </li>
                   {@render ListItem({
-                    href: '/docs',
+                    href: '#docs',
                     title: 'Introduction',
                     content: 'Re-usable components built using Bits UI and Tailwind CSS.',
                   })}
                   {@render ListItem({
-                    href: '/docs/installation',
+                    href: '#docs/installation',
                     title: 'Installation',
                     content: 'How to install dependencies and structure your app.',
                   })}
                   {@render ListItem({
-                    href: '/docs/components/typography',
+                    href: '#docs/components/typography',
                     title: 'Typography',
                     content: 'Styles for headings, paragraphs, lists...etc',
                   })}
@@ -141,7 +141,7 @@
             <NavigationMenu.Item>
               <NavigationMenu.Link>
                 {#snippet child()}
-                  <a href="/docs">Docs</a>
+                  <a href="#docs">Docs</a>
                 {/snippet}
               </NavigationMenu.Link>
             </NavigationMenu.Item>
@@ -171,7 +171,7 @@
               <NavigationMenu.Content>
                 <ul class="grid w-[200px] gap-4 p-2">
                   <li>
-                    <NavigationMenu.Link href="##">Components</NavigationMenu.Link>
+                    <NavigationMenu.Link href="##" id="docs">Components</NavigationMenu.Link>
                     <NavigationMenu.Link href="##">Documentation</NavigationMenu.Link>
                     <NavigationMenu.Link href="##">Blocks</NavigationMenu.Link>
                   </li>
@@ -208,3 +208,5 @@
     </div>
   {/each}
 </section>
+
+<h1 id="docs">Docs</h1>
