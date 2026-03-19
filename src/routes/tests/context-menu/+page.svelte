@@ -2,13 +2,13 @@
   import * as ContextMenu from '$lib/registry/ui/context-menu/index.ts';
 </script>
 
-<div class="flex min-h-[500px] flex-col items-center justify-center gap-8 p-12">
+<div class="gap-8 p-12 flex min-h-[500px] flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Context Menu Tests</h1>
 
-  <div class="flex w-full max-w-2xl gap-8">
+  <div class="max-w-2xl gap-8 flex w-full">
     <ContextMenu.Root>
       <ContextMenu.Trigger
-        class="flex h-[200px] w-full flex-1 items-center justify-center rounded-md neoretro-border border-dashed bg-black text-on-black"
+        class="rounded-md neoretro-border bg-black text-on-black flex h-[200px] w-full flex-1 items-center justify-center border-dashed"
       >
         Right click here
       </ContextMenu.Trigger>
@@ -56,7 +56,7 @@
     <!-- Cyan Context Menu -->
     <ContextMenu.Root>
       <ContextMenu.Trigger
-        class="flex h-[200px] w-full flex-1 items-center justify-center rounded-md neoretro-border border-dashed bg-cyan text-on-cyan"
+        class="rounded-md neoretro-border bg-cyan text-on-cyan flex h-[200px] w-full flex-1 items-center justify-center border-dashed"
       >
         Right click here (Cyan)
       </ContextMenu.Trigger>
@@ -72,7 +72,7 @@
           </ContextMenu.SubContent>
         </ContextMenu.Sub>
         <ContextMenu.Separator />
-        <ContextMenu.Item inset variant="destructive">Delete Project</ContextMenu.Item>
+        <ContextMenu.Item inset color="red">Delete Project</ContextMenu.Item>
       </ContextMenu.Content>
     </ContextMenu.Root>
   </div>

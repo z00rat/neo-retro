@@ -8,11 +8,11 @@
 <!-- Basic -->
 <section>
   <h3>Basic</h3>
-  <AlertDialog.Root>
+  <AlertDialog.Root color="white" cancleColor="white" actionColor="red">
     <AlertDialog.Trigger>
       <Button color="red">Delete Account</Button>
     </AlertDialog.Trigger>
-    <AlertDialog.Content color="white">
+    <AlertDialog.Content>
       <AlertDialog.Header>
         <AlertDialog.Title>Are you absolutely sure?</AlertDialog.Title>
         <AlertDialog.Description>
@@ -20,8 +20,8 @@
         </AlertDialog.Description>
       </AlertDialog.Header>
       <AlertDialog.Footer>
-        <AlertDialog.Cancel color="white">Cancel</AlertDialog.Cancel>
-        <AlertDialog.Action color="red">Delete</AlertDialog.Action>
+        <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+        <AlertDialog.Action>Delete</AlertDialog.Action>
       </AlertDialog.Footer>
     </AlertDialog.Content>
   </AlertDialog.Root>
@@ -30,28 +30,28 @@
 <!-- Color combos -->
 <section>
   <h3>Color Combos</h3>
-  <div class="flex flex-wrap gap-4">
-    <AlertDialog.Root>
+  <div class="gap-4 flex flex-wrap">
+    <AlertDialog.Root color="cyan" cancleColor="white" actionColor="blue">
       <AlertDialog.Trigger>
         <Button color="cyan">Cyan dialog</Button>
       </AlertDialog.Trigger>
-      <AlertDialog.Content color="cyan">
+      <AlertDialog.Content>
         <AlertDialog.Header>
           <AlertDialog.Title>Information</AlertDialog.Title>
           <AlertDialog.Description>This is an informational alert dialog on a cyan background.</AlertDialog.Description>
         </AlertDialog.Header>
         <AlertDialog.Footer>
-          <AlertDialog.Cancel color="white">Dismiss</AlertDialog.Cancel>
-          <AlertDialog.Action color="blue">Got it</AlertDialog.Action>
+          <AlertDialog.Cancel>Dismiss</AlertDialog.Cancel>
+          <AlertDialog.Action>Got it</AlertDialog.Action>
         </AlertDialog.Footer>
       </AlertDialog.Content>
     </AlertDialog.Root>
 
-    <AlertDialog.Root>
+    <AlertDialog.Root color="yellow" cancleColor="white" actionColor="green">
       <AlertDialog.Trigger>
         <Button color="yellow">Yellow dialog</Button>
       </AlertDialog.Trigger>
-      <AlertDialog.Content color="yellow">
+      <AlertDialog.Content>
         <AlertDialog.Header>
           <AlertDialog.Title>Warning</AlertDialog.Title>
           <AlertDialog.Description
@@ -59,24 +59,24 @@
           >
         </AlertDialog.Header>
         <AlertDialog.Footer>
-          <AlertDialog.Cancel color="white">Go back</AlertDialog.Cancel>
-          <AlertDialog.Action color="green">Continue</AlertDialog.Action>
+          <AlertDialog.Cancel>Go back</AlertDialog.Cancel>
+          <AlertDialog.Action>Continue</AlertDialog.Action>
         </AlertDialog.Footer>
       </AlertDialog.Content>
     </AlertDialog.Root>
 
-    <AlertDialog.Root>
+    <AlertDialog.Root color="magenta" cancleColor="white" actionColor="green">
       <AlertDialog.Trigger>
-        <Button color="black">Black dialog</Button>
+        <Button color="magenta">Magenta dialog</Button>
       </AlertDialog.Trigger>
-      <AlertDialog.Content color="black">
+      <AlertDialog.Content>
         <AlertDialog.Header>
           <AlertDialog.Title>Confirm</AlertDialog.Title>
           <AlertDialog.Description>Are you sure you want to proceed?</AlertDialog.Description>
         </AlertDialog.Header>
         <AlertDialog.Footer>
-          <AlertDialog.Cancel color="white">No</AlertDialog.Cancel>
-          <AlertDialog.Action color="green">Yes</AlertDialog.Action>
+          <AlertDialog.Cancel>No</AlertDialog.Cancel>
+          <AlertDialog.Action>Yes</AlertDialog.Action>
         </AlertDialog.Footer>
       </AlertDialog.Content>
     </AlertDialog.Root>

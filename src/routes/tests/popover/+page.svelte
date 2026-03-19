@@ -8,7 +8,7 @@
 <!-- Colors -->
 <section>
   <h3>Colors</h3>
-  <div class="flex flex-wrap gap-4">
+  <div class="gap-4 flex flex-wrap">
     <Popover.Root>
       <Popover.Trigger>
         <Button color="red">Red popover</Button>
@@ -56,10 +56,10 @@
 
     <Popover.Root>
       <Popover.Trigger>
-        <Button color="black">Black popover</Button>
+        <Button color="green">Green popover</Button>
       </Popover.Trigger>
-      <Popover.Content color="black">
-        <p class="text-sm">This is a black popover.</p>
+      <Popover.Content color="green">
+        <p class="text-sm">This is a green popover.</p>
       </Popover.Content>
     </Popover.Root>
   </div>
@@ -81,7 +81,7 @@
             id="name"
             type="text"
             placeholder="Enter name"
-            class="w-full rounded neoretro-border px-2 py-1 text-sm"
+            class="rounded neoretro-border px-2 py-1 text-sm w-full"
           />
         </div>
         <div>
@@ -90,10 +90,10 @@
             id="email"
             type="email"
             placeholder="Enter email"
-            class="w-full rounded neoretro-border px-2 py-1 text-sm"
+            class="rounded neoretro-border px-2 py-1 text-sm w-full"
           />
         </div>
-        <Button color="black" size="sm" class="w-full">Save</Button>
+        <Button color="green" size="sm" class="w-full">Save</Button>
       </div>
     </Popover.Content>
   </Popover.Root>

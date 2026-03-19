@@ -1,9 +1,9 @@
 <script lang="ts">
   import { ScrollArea as ScrollAreaPrimitive } from 'bits-ui';
 
-  import { cn, type WithoutChild } from '$lib/utils.js';
+  import { cn, type WithoutChild } from '$lib/utils.ts';
 
-  import { Scrollbar } from './index.js';
+  import { Scrollbar } from './index.ts';
 
   let {
     ref = $bindable(null),
@@ -26,7 +26,7 @@
   <ScrollAreaPrimitive.Viewport
     bind:ref={viewportRef}
     data-slot="scroll-area-viewport"
-    class="neoretro-focus size-full rounded-[inherit] transition-[color,box-shadow]"
+    class="neoretro-focus rounded size-full transition-[color,box-shadow]"
   >
     {@render children?.()}
   </ScrollAreaPrimitive.Viewport>

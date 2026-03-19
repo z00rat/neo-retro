@@ -4,4 +4,4 @@
   let { ref = $bindable(null), ...restProps }: AlertDialogPrimitive.TriggerProps = $props();
 </script>
 
-<AlertDialogPrimitive.Trigger bind:ref data-slot="alert-dialog-trigger" {...restProps} />
+<AlertDialogPrimitive.Trigger tabindex={-1} bind:ref data-slot="alert-dialog-trigger" {...restProps} />

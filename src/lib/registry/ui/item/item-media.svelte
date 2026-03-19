@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -22,10 +22,10 @@
   data-variant={variant}
   data-color={color}
   class={cn(
-    'flex shrink-0 items-center justify-center gap-2 *:pointer-events-none group-has-data-[slot=item-description]/item:translate-y-0.5 group-has-data-[slot=item-description]/item:self-start',
+    'gap-2 group-has-data-[slot=item-description]/item:translate-y-0.5 flex shrink-0 items-center justify-center *:pointer-events-none group-has-data-[slot=item-description]/item:self-start',
     variant === 'default' && 'bg-transparent',
     variant === 'icon' && '*:not([class*="size-"]):size-4 size-8 rounded neoretro-border',
-    variant === 'image' && '*:is(img):size-full *:is(img):object-cover size-10 overflow-hidden rounded neoretro-border',
+    variant === 'image' && '*:is(img):size-full *:is(img):object-cover size-10 rounded neoretro-border overflow-hidden',
     color && 'neoretro-clr',
     className,
   )}

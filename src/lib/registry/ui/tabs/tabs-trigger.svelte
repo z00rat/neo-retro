@@ -2,7 +2,7 @@
   import { Tabs as TabsPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { cn } from '$lib/utils.js';
+  import { cn } from '$lib/utils.ts';
 
   let { ref = $bindable(null), class: className, ...restProps }: TabsPrimitive.TriggerProps = $props();
 
@@ -16,9 +16,7 @@
   data-active-color={getActiveColor()}
   data-inactive-color={getInactiveColor()}
   class={cn(
-    'neoretro-focus inline-flex h-full min-w-0 flex-1 basis-0 items-center justify-center gap-1.5 font-medium whitespace-nowrap transition-all first:rounded-l-[calc(var(--radius)-2px)] last:rounded-r-[calc(var(--radius)-2px)] disabled:neoretro-disable',
-    'data-[state=active]:bg-clr-active data-[state=active]:text-on-clr-active',
-    'data-[state=inactive]:bg-clr-inactive data-[state=inactive]:text-on-clr-inactive',
+    'neoretro-focus min-w-0 basis-0 gap-1.5 font-medium disabled:neoretro-disable data-[state=active]:bg-clr-active data-[state=active]:font-bold data-[state=active]:text-on-clr-active data-[state=inactive]:bg-clr-inactive data-[state=inactive]:text-on-clr-inactive inline-flex h-full flex-1 cursor-pointer items-center justify-center whitespace-nowrap transition-all first:rounded-l-[calc(var(--radius)-2px)] last:rounded-r-[calc(var(--radius)-2px)]',
     className,
   )}
   {...restProps}

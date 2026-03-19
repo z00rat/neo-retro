@@ -1,9 +1,9 @@
 <script lang="ts">
   import { setContext } from 'svelte';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
-  import { setEmblaContext, type CarouselAPI, type CarouselProps, type EmblaContext } from './context.js';
+  import { setEmblaContext, type CarouselAPI, type CarouselProps, type EmblaContext } from './context.ts';
 
   let {
     ref = $bindable(null),
@@ -92,7 +92,7 @@
   data-slot="carousel"
   class={cn(
     'relative w-full',
-    carouselState.orientation === 'horizontal' ? 'flex items-center gap-2' : 'flex flex-col items-center gap-2',
+    carouselState.orientation === 'horizontal' ? 'gap-2 flex items-center' : 'gap-2 flex flex-col items-center',
     className,
   )}
   role="region"

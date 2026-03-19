@@ -1,7 +1,8 @@
 <script lang="ts">
   import { Select as SelectPrimitive } from 'bits-ui';
+  import { getContext } from 'svelte';
 
-  import { cn, type WithoutChild } from '$lib/utils.js';
+  import { cn, type WithoutChild } from '$lib/utils.ts';
 
   import SelectScrollDownButton from './select-scroll-down-button.svelte';
   import SelectScrollUpButton from './select-scroll-up-button.svelte';
@@ -9,17 +10,17 @@
   let {
     ref = $bindable(null),
     class: className,
-    color,
     sideOffset = 4,
     portalProps,
     noShadow,
     children,
     ...restProps
   }: WithoutChild<SelectPrimitive.ContentProps> & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     portalProps?: SelectPrimitive.PortalProps;
     noShadow?: boolean;
   } = $props();
+
+  const getColor = getContext<() => any>('selectColor');
 </script>
 
 <SelectPrimitive.Portal {...portalProps}>
@@ -27,18 +28,17 @@
     bind:ref
     {sideOffset}
     data-slot="select-content"
-    data-color={color}
+    data-color={getColor()}
     class={cn(
-      'relative z-50 max-h-96 min-w-32 overflow-hidden rounded neoretro-border neoretro-clr data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
-      className,
+      'max-h-96 rounded neoretro-border neoretro-clr data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 relative z-50 w-(--bits-select-anchor-width) overflow-hidden',
       noShadow ? '' : 'neoretro-shadow',
+      className,
     )}
+    align="start"
     {...restProps}
   >
     <SelectScrollUpButton />
-    <SelectPrimitive.Viewport
-      class={cn('h-(--bits-select-anchor-height) w-full min-w-(--bits-select-anchor-width) scroll-my-1 p-1')}
-    >
+    <SelectPrimitive.Viewport class={cn('scroll-my-1 p-1 h-(--bits-select-anchor-height) w-full')}>
       {@render children?.()}
     </SelectPrimitive.Viewport>
     <SelectScrollDownButton />

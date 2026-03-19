@@ -2,7 +2,7 @@
   import type { ComponentProps } from 'svelte';
 
   import { Textarea } from '$lib/registry/ui/textarea/index.ts';
-  import { cn } from '$lib/utils.js';
+  import { cn } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -16,7 +16,7 @@
   bind:ref
   data-slot="input-group-control"
   noShadow={true}
-  class={cn('flex-1 resize-none rounded-none border-none bg-transparent py-3 shadow-none', className)}
+  class={cn('py-3 flex-1 resize-none rounded-none border-none bg-transparent shadow-none', className)}
   bind:value
   {...props}
 />

@@ -1,22 +1,22 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   import Close from './sheet-close.svelte';
 
   let {
     ref = $bindable(null),
     class: className,
-    closeColor,
+    closeColor = 'red',
     children,
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
-    closeColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    closeColor?: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 </script>
 
-<div bind:this={ref} data-slot="sheet-footer" class={cn('mt-auto flex flex-col gap-2 p-4', className)} {...restProps}>
+<div bind:this={ref} data-slot="sheet-footer" class={cn('gap-2 p-4 mt-auto flex flex-col', className)} {...restProps}>
   {#if closeColor}
     <Close color={closeColor}>Cancel</Close>
   {/if}

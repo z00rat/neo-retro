@@ -1,24 +1,24 @@
 <script lang="ts">
-  import * as Card from '$lib/registry/ui/card/index.js';
-  import { Label } from '$lib/registry/ui/label/index.js';
-  import { Textarea } from '$lib/registry/ui/textarea/index.js';
+  import * as Card from '$lib/registry/ui/card/index.ts';
+  import { Label } from '$lib/registry/ui/label/index.ts';
+  import { Textarea } from '$lib/registry/ui/textarea/index.ts';
 </script>
 
-<div class="flex min-h-[500px] flex-col items-center justify-center gap-12 p-12">
+<div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Textarea Tests</h1>
 
-  <div class="flex w-full max-w-lg flex-col gap-10">
+  <div class="max-w-lg gap-10 flex w-full flex-col">
     <Card.Root color="green">
       <Card.Header>
         <Card.Title>Basic Textareas</Card.Title>
       </Card.Header>
-      <Card.Content class="flex flex-col gap-6">
-        <div class="flex flex-col gap-2">
+      <Card.Content class="gap-6 flex flex-col">
+        <div class="gap-2 flex flex-col">
           <Label for="bio">Bio</Label>
           <Textarea id="bio" placeholder="Tell us about yourself." />
         </div>
 
-        <div class="flex flex-col gap-2">
+        <div class="gap-2 flex flex-col">
           <Label for="bio-flat">No Shadow Variant</Label>
           <Textarea id="bio-flat" placeholder="Flat input without floating shadow." noShadow />
         </div>
@@ -29,14 +29,14 @@
       <Card.Header>
         <Card.Title>Validation States</Card.Title>
       </Card.Header>
-      <Card.Content class="flex flex-col gap-6">
-        <div class="flex flex-col gap-2">
+      <Card.Content class="gap-6 flex flex-col">
+        <div class="gap-2 flex flex-col">
           <Label for="msg-invalid" class="text-red">Feedback (Invalid)</Label>
           <Textarea id="msg-invalid" value="This is an error..." aria-invalid="true" />
           <p class="text-sm text-red">Please enter valid feedback.</p>
         </div>
 
-        <div class="flex flex-col gap-2">
+        <div class="gap-2 flex flex-col">
           <Label for="msg-disabled">Notes (Disabled)</Label>
           <Textarea id="msg-disabled" placeholder="Cannot type here..." disabled />
         </div>

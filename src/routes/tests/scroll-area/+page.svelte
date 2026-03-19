@@ -18,10 +18,10 @@
 <section>
   <h3>Horizontal</h3>
   <ScrollArea.Root orientation="horizontal" class="w-64 rounded neoretro-border bg-background p-4">
-    <div class="flex gap-4">
+    <div class="gap-4 flex">
       {#each Array.from({ length: 20 }, (_, i) => i + 1) as n}
         <div
-          class="flex h-20 w-28 shrink-0 items-center justify-center rounded neoretro-border bg-foreground text-sm font-bold text-background"
+          class="h-20 w-28 rounded neoretro-border bg-foreground text-sm font-bold text-background flex shrink-0 items-center justify-center"
         >
           {n}
         </div>

@@ -3,20 +3,19 @@
   import ItalicIcon from '@lucide/svelte/icons/italic';
   import UnderlineIcon from '@lucide/svelte/icons/underline';
 
-  import * as Card from '$lib/registry/ui/card/index.js';
-  import * as ToggleGroup from '$lib/registry/ui/toggle-group/index.js';
-  import { Toggle } from '$lib/registry/ui/toggle/index.js';
+  import * as Card from '$lib/registry/ui/card/index.ts';
+  import { Toggle } from '$lib/registry/ui/toggle/index.ts';
 </script>
 
-<div class="flex min-h-[500px] flex-col items-center justify-center gap-12 p-12">
+<div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Toggle Tests</h1>
 
-  <div class="flex w-full max-w-lg flex-col gap-10">
+  <div class="max-w-lg gap-10 flex w-full flex-col">
     <Card.Root color="magenta">
       <Card.Header>
         <Card.Title>Single Toggles</Card.Title>
       </Card.Header>
-      <Card.Content class="flex items-center gap-6">
+      <Card.Content class="gap-6 flex items-center">
         <!-- Colored Single Toggles -->
         <Toggle aria-label="Toggle bold" color="cyan">
           <BoldIcon />
@@ -36,7 +35,7 @@
       <Card.Header>
         <Card.Title>Disabled State</Card.Title>
       </Card.Header>
-      <Card.Content class="flex gap-4">
+      <Card.Content class="gap-4 flex">
         <Toggle disabled color="green">Disabled</Toggle>
       </Card.Content>
     </Card.Root>

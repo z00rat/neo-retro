@@ -15,6 +15,6 @@
   bind:ref
   bind:loadingStatus
   data-slot="avatar"
-  class={cn('relative flex size-10 shrink-0 overflow-hidden rounded', className)}
+  class={cn('size-8 rounded relative flex shrink-0 overflow-hidden', className)}
   {...restProps}
 />

@@ -2,7 +2,7 @@ import type { default as emblaCarouselSvelte, EmblaCarouselSvelteType } from 'em
 import { getContext, hasContext, setContext } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
 
-import type { WithElementRef } from '$lib/utils.js';
+import type { WithElementRef } from '$lib/utils.ts';
 
 export type CarouselAPI =
   NonNullable<NonNullable<EmblaCarouselSvelteType['$$_attributes']>['on:emblaInit']> extends (

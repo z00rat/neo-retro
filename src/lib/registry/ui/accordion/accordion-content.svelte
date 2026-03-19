@@ -2,7 +2,7 @@
   import { Accordion as AccordionPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { cn, type WithoutChild } from '$lib/utils.js';
+  import { cn, type WithoutChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -19,11 +19,9 @@
   data-slot="accordion-content"
   data-color={getColor()}
   class={cn(
-    'overflow-hidden rounded-b-[calc(var(--radius)-2px)] neoretro-clr text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
+    'neoretro-clr text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden rounded-none group-last:rounded-b-[calc(var(--radius)-2px)]',
   )}
   {...restProps}
 >
-  <div class={cn('p-4', className)}>
-    {@render children?.()}
-  </div>
+  <div class={cn('p-4', className)}>{@render children?.()}</div>
 </AccordionPrimitive.Content>

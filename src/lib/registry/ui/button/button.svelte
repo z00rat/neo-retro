@@ -2,7 +2,7 @@
   import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
   import { tv, type VariantProps } from 'tailwind-variants';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   export const buttonVariants = tv({
     base: 'neoretro-clr neoretro-border aria-disabled:neoretro-disable disabled:neoretro-disable data-disabled:neoretro-disable neoretro-focus rounded cursor-pointer disabled:cursor-not-allowed data-disabled:cursor-not-allowed aria-disabled:cursor-not-allowed select-none inline-flex items-center justify-center whitespace-nowrap font-bold ring-offset-white transition-all gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
@@ -29,7 +29,7 @@
 
   export type ButtonProps = WithElementRef<HTMLButtonAttributes> &
     WithElementRef<HTMLAnchorAttributes> & {
-      color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+      color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
       size?: ButtonSize;
       noShadow?: ButtonNoshadow;
     };
@@ -44,7 +44,7 @@
     href = undefined,
     type = 'button',
     disabled,
-    noShadow,
+    noShadow = false,
     children,
     ...restProps
   }: ButtonProps = $props();
@@ -55,10 +55,10 @@
     bind:this={ref}
     data-slot="button"
     data-color={color}
+    data-pressable
     class={cn(buttonVariants({ size, noShadow }), className)}
     href={disabled ? undefined : href}
     aria-disabled={disabled ? 'true' : undefined}
-    data-pressable
     role={disabled ? 'link' : undefined}
     tabindex={disabled ? -1 : undefined}
     {...restProps}
@@ -70,9 +70,9 @@
     bind:this={ref}
     data-slot="button"
     data-color={color}
+    data-pressable
     class={cn(buttonVariants({ size, noShadow }), className)}
     aria-disabled={disabled ? 'true' : undefined}
-    data-pressable
     {type}
     {disabled}
     {...restProps}

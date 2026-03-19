@@ -1,18 +1,18 @@
 <script lang="ts">
-  import * as Card from '$lib/registry/ui/card/index.js';
-  import * as Table from '$lib/registry/ui/table/index.js';
+  import * as Card from '$lib/registry/ui/card/index.ts';
+  import * as Table from '$lib/registry/ui/table/index.ts';
 </script>
 
-<div class="flex min-h-[500px] flex-col items-center justify-center gap-12 p-12">
+<div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Table Tests</h1>
 
-  <div class="flex w-full max-w-4xl flex-col gap-10">
-    <Card.Root color="cyan">
+  <div class="max-w-4xl gap-10 flex w-full flex-col">
+    <Card.Root color="green">
       <Card.Header>
         <Card.Title>Basic Table</Card.Title>
       </Card.Header>
       <Card.Content>
-        <Table.Root headerColor="cyan" rowColor="white">
+        <Table.Root headerColor="blue" rowColor="cyan">
           <Table.Caption>A list of your recent invoices.</Table.Caption>
           <Table.Header>
             <Table.Row>
@@ -51,7 +51,7 @@
         <Card.Title>Custom Colored Table</Card.Title>
       </Card.Header>
       <Card.Content>
-        <Table.Root headerColor="magenta" rowColor="green">
+        <Table.Root headerColor="magenta" rowColor="green" noShadow>
           <Table.Header>
             <Table.Row>
               <Table.Head class="w-[100px]">Invoice</Table.Head>

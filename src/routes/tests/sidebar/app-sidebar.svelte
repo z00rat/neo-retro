@@ -145,7 +145,7 @@
 <script lang="ts">
   import type { ComponentProps } from 'svelte';
 
-  import * as Sidebar from '$lib/registry/ui/sidebar/index.js';
+  import * as Sidebar from '$lib/registry/ui/sidebar/index.ts';
 
   import NavMain from './nav-main.svelte';
   import NavProjects from './nav-projects.svelte';

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { HourglassIcon, Loader2Icon } from '@lucide/svelte';
+  import { HourglassIcon } from '@lucide/svelte';
   import type { ComponentProps } from 'svelte';
 
-  import { cn } from '$lib/utils.js';
+  import { cn } from '$lib/utils.ts';
 
   let {
     class: className,

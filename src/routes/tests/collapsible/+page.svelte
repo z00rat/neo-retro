@@ -32,10 +32,10 @@
   <h3>With List</h3>
   <div class="max-w-sm">
     <Collapsible.Root>
-      <div class="flex items-center justify-between rounded neoretro-border bg-background px-4 py-2">
+      <div class="rounded neoretro-border bg-background px-4 py-2 flex items-center justify-between">
         <span class="text-sm font-bold">3 items</span>
         <Collapsible.Trigger>
-          <Button color="black" size="icon" noShadow>
+          <Button color="red" size="icon" noShadow>
             <ChevronsUpDown class="size-4" />
           </Button>
         </Collapsible.Trigger>

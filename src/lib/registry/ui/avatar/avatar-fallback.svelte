@@ -3,7 +3,7 @@
   import { createAvatar } from '@dicebear/core';
   import { Avatar as AvatarPrimitive } from 'bits-ui';
 
-  import { cn } from '$lib/utils.js';
+  import { cn } from '$lib/utils.ts';
 
   export const DICEBEAR_CONFIG = {
     style: botttsNeutral,

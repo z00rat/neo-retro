@@ -43,7 +43,7 @@
       </Breadcrumb.List>
     </Breadcrumb.Root>
     <Breadcrumb.Root>
-      <Breadcrumb.List color="black">
+      <Breadcrumb.List color="red">
         <Breadcrumb.Item><Breadcrumb.Link href="#">Home</Breadcrumb.Link></Breadcrumb.Item>
         <Breadcrumb.Separator />
         <Breadcrumb.Item><Breadcrumb.Page>Page</Breadcrumb.Page></Breadcrumb.Item>

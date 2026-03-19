@@ -2,7 +2,7 @@
   import EllipsisIcon from '@lucide/svelte/icons/ellipsis';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef, type WithoutChildren } from '$lib/utils.js';
+  import { cn, type WithElementRef, type WithoutChildren } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -15,7 +15,7 @@
   bind:this={ref}
   aria-hidden="true"
   data-slot="pagination-ellipsis"
-  class={cn('flex size-10 items-center justify-center', className)}
+  class={cn('size-10 flex items-center justify-center', className)}
   {...restProps}
 >
   <EllipsisIcon class="size-4" />

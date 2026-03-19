@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLTextareaAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef, type WithoutChildren } from '$lib/utils.js';
+  import { cn, type WithElementRef, type WithoutChildren } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -19,9 +19,9 @@
   bind:this={ref}
   data-slot={dataSlot}
   class={cn(
-    'flex min-h-[80px] w-full rounded neoretro-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-current/50 focus-visible:neoretro-focus disabled:neoretro-disable aria-invalid:border-red aria-invalid:ring-red/20',
-    className,
+    'rounded neoretro-border bg-background p-2 text-sm text-foreground focus-visible:neoretro-focus disabled:neoretro-disable aria-invalid:border-red aria-invalid:ring-red flex min-h-[80px] w-full placeholder:text-current/50',
     !noShadow && 'neoretro-shadow',
+    className,
   )}
   bind:value
   {...restProps}

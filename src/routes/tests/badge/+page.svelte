@@ -9,7 +9,7 @@
 <!-- All colors -->
 <section>
   <h3>Colors</h3>
-  <div class="flex flex-wrap gap-3">
+  <div class="gap-3 flex flex-wrap">
     {#each colors as color}
       <Badge {color}>{color}</Badge>
     {/each}
@@ -19,7 +19,7 @@
 <!-- As link -->
 <section>
   <h3>As Link</h3>
-  <div class="flex flex-wrap gap-3">
+  <div class="gap-3 flex flex-wrap">
     <Badge color="blue" href="#">Clickable</Badge>
     <Badge color="cyan" href="#">Another link</Badge>
   </div>
@@ -28,7 +28,7 @@
 <!-- With icons -->
 <section>
   <h3>With Text</h3>
-  <div class="flex flex-wrap gap-3">
+  <div class="gap-3 flex flex-wrap">
     <Badge color="green">✓ Approved</Badge>
     <Badge color="red">✗ Rejected</Badge>
     <Badge color="yellow">⚠ Pending</Badge>

@@ -3,7 +3,7 @@
   import { getContext } from 'svelte';
 
   import { toggleVariants, type ToggleVariants } from '$lib/registry/ui/toggle/index.ts';
-  import { cn } from '$lib/utils.js';
+  import { cn } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -15,7 +15,6 @@
 
   const getToggleGroup = getContext<() => any>('toggleGroup');
   let ctx = $derived(getToggleGroup());
-  let resolvedColor = $derived(ctx.color);
 </script>
 
 <ToggleGroupPrimitive.Item
@@ -23,13 +22,10 @@
   data-slot="toggle-group-item"
   data-size={ctx.size || size}
   data-pressable
-  data-color={resolvedColor}
+  data-color={ctx.color}
   class={cn(
-    toggleVariants({
-      size: ctx.size || size,
-      noShadow: ctx.noShadow,
-    }),
     'data-[state=on]:bg-clr data-[state=on]:text-on-clr data-[state=on]:selection:bg-on-clr data-[state=on]:selection:text-clr',
+    toggleVariants({ size: ctx.size || size, noShadow: ctx.noShadow }),
     ctx.orientation === 'vertical' && 'w-full',
     className,
   )}

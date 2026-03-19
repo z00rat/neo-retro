@@ -6,18 +6,17 @@
 
   import { Button, type Props } from '$lib/registry/ui/button/index.ts';
 
-  import { getEmblaContext } from './context.js';
+  import { getEmblaContext } from './context.ts';
 
   let { ref = $bindable(null), size = 'icon', ...restProps }: Omit<WithoutChildren<Props>, 'color'> = $props();
 
   const emblaCtx = getEmblaContext('<Carousel.Previous/>');
   const getColor = getContext<() => any>('carouselColor');
-  const buttonColor = $derived(getColor());
 </script>
 
 <Button
   data-slot="carousel-previous"
-  color={buttonColor}
+  color={getColor()}
   {size}
   disabled={!emblaCtx.canScrollPrev}
   onclick={emblaCtx.scrollPrev}

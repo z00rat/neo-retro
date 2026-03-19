@@ -3,7 +3,7 @@
   import { Accordion as AccordionPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { cn, type WithoutChild } from '$lib/utils.js';
+  import { cn, type WithoutChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -20,16 +20,16 @@
 
 <AccordionPrimitive.Header {level} class="flex">
   <AccordionPrimitive.Trigger
-    data-slot="accordion-trigger"
     bind:ref
+    data-slot="accordion-trigger"
     data-color={getColor()}
     class={cn(
-      'neoretro-focus flex flex-1 items-center justify-between rounded-[calc(var(--radius)-2px)] neoretro-clr p-4 text-left font-medium transition-all aria-disabled:neoretro-disable data-[state=open]:rounded-b-none data-[state=open]:neoretro-border-b [&[data-state=open]>svg]:rotate-180',
+      'neoretro-focus neoretro-clr p-4 font-medium aria-disabled:neoretro-disable data-[state=open]:neoretro-border-b flex flex-1 items-center justify-between rounded-none text-left group-first:rounded-t-[calc(var(--radius)-2px)] group-last:data-[state=closed]:rounded-b-[calc(var(--radius)-2px)] [&[data-state=open]>svg]:rotate-180',
       className,
     )}
     {...restProps}
   >
     {@render children?.()}
-    <ChevronDownIcon class="pointer-events-none size-4 shrink-0 transition-transform duration-200" />
+    <ChevronDownIcon class="size-6 pointer-events-none shrink-0 transition-transform duration-200" />
   </AccordionPrimitive.Trigger>
 </AccordionPrimitive.Header>

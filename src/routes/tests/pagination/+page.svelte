@@ -1,12 +1,12 @@
 <script lang="ts">
-  import * as Card from '$lib/registry/ui/card/index.js';
-  import * as Pagination from '$lib/registry/ui/pagination/index.js';
+  import * as Card from '$lib/registry/ui/card/index.ts';
+  import * as Pagination from '$lib/registry/ui/pagination/index.ts';
 </script>
 
-<div class="flex min-h-[500px] flex-col items-center justify-center gap-12 p-12">
+<div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Pagination Tests</h1>
 
-  <div class="flex w-full max-w-2xl flex-col gap-10">
+  <div class="max-w-2xl gap-10 flex w-full flex-col">
     <Card.Root color="cyan">
       <Card.Header>
         <Card.Title>Default Pagination</Card.Title>
@@ -16,7 +16,7 @@
           {#snippet children({ pages, currentPage })}
             <Pagination.Content>
               <Pagination.Item>
-                <Pagination.PrevButton />
+                <Pagination.Previous />
               </Pagination.Item>
               {#each pages as page (page.key)}
                 {#if page.type === 'ellipsis'}
@@ -32,7 +32,7 @@
                 {/if}
               {/each}
               <Pagination.Item>
-                <Pagination.NextButton />
+                <Pagination.Next />
               </Pagination.Item>
             </Pagination.Content>
           {/snippet}
@@ -49,7 +49,7 @@
           {#snippet children({ pages, currentPage })}
             <Pagination.Content>
               <Pagination.Item>
-                <Pagination.PrevButton />
+                <Pagination.Previous />
               </Pagination.Item>
               {#each pages as page (page.key)}
                 {#if page.type === 'ellipsis'}
@@ -65,7 +65,7 @@
                 {/if}
               {/each}
               <Pagination.Item>
-                <Pagination.NextButton />
+                <Pagination.Next />
               </Pagination.Item>
             </Pagination.Content>
           {/snippet}

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Skeleton } from '$lib/registry/ui/skeleton';
 
-  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
 <h1>Skeleton</h1>

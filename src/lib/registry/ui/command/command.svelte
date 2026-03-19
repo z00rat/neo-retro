@@ -2,7 +2,7 @@
   import { Command as CommandPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
 
-  import { cn } from '$lib/utils.js';
+  import { cn } from '$lib/utils.ts';
 
   export type CommandRootApi = CommandPrimitive.Root;
 
@@ -27,9 +27,6 @@
   bind:ref
   data-slot="command"
   data-color={color}
-  class={cn(
-    'font-base flex h-full w-full neoretro-shadow flex-col overflow-hidden rounded border-none neoretro-clr',
-    className,
-  )}
+  class={cn('rounded neoretro-clr flex h-full w-full flex-col overflow-hidden', className)}
   {...restProps}
 />

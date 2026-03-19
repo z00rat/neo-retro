@@ -3,7 +3,7 @@
   import { Menubar as MenubarPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { cn, type WithoutChild } from '$lib/utils.js';
+  import { cn, type WithoutChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -16,21 +16,20 @@
   } = $props();
 
   const getColor = getContext<() => any>('menubarColor');
-  const color = $derived(getColor());
 </script>
 
 <MenubarPrimitive.SubTrigger
   bind:ref
   data-slot="menubar-sub-trigger"
   data-inset={inset}
-  data-highlighted-color={color}
+  data-highlighted-color={getColor()}
   class={cn(
-    'flex cursor-default items-center rounded px-2 py-1.5 text-sm outline-none select-none data-inset:pl-8',
+    'rounded px-2 py-1.5 text-sm data-inset:pl-8 flex cursor-default items-center outline-none select-none',
     'neoretro-highlighted',
     className,
   )}
   {...restProps}
 >
   {@render children?.()}
-  <ChevronRightIcon class="ml-auto size-4" />
+  <ChevronRightIcon class="size-4 ml-auto" />
 </MenubarPrimitive.SubTrigger>

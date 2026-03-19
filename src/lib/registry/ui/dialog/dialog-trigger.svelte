@@ -4,4 +4,4 @@
   let { ref = $bindable(null), ...restProps }: DialogPrimitive.TriggerProps = $props();
 </script>
 
-<DialogPrimitive.Trigger bind:ref data-slot="dialog-trigger" {...restProps} />
+<DialogPrimitive.Trigger tabindex={-1} bind:ref data-slot="dialog-trigger" {...restProps} />

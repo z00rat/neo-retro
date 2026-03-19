@@ -2,21 +2,19 @@
   import { Menubar as MenubarPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { cn } from '$lib/utils.js';
+  import { cn } from '$lib/utils.ts';
 
   let { ref = $bindable(null), class: className, ...restProps }: MenubarPrimitive.TriggerProps = $props();
 
   const getColor = getContext<() => any>('menubarColor');
-  const color = $derived(getColor());
 </script>
 
 <MenubarPrimitive.Trigger
   bind:ref
   data-slot="menubar-trigger"
-  data-highlighted-color={color}
+  data-highlighted-color={getColor()}
   class={cn(
-    'neoretro-focus flex items-center rounded px-2 py-1 text-sm font-medium outline-hidden select-none',
-    'neoretro-highlighted',
+    'neoretro-focus rounded neoretro-highlighted px-2 py-1 text-sm font-medium flex items-center outline-hidden select-none',
     className,
   )}
   {...restProps}

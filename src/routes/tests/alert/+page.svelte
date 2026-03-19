@@ -8,7 +8,7 @@
 
   import * as Alert from '$lib/registry/ui/alert';
 
-  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
 <h1>Alert</h1>
@@ -64,8 +64,8 @@
 </section>
 
 <h3>DOC</h3>
-<div class="grid w-full max-w-xl items-start gap-4">
-  <Alert.Root color="black">
+<div class="max-w-xl gap-4 grid w-full items-start">
+  <Alert.Root color="blue">
     <CheckCircle2Icon />
     <Alert.Title>Success! Your changes have been saved</Alert.Title>
     <Alert.Description>This is an alert with icon, title and description.</Alert.Description>
@@ -79,7 +79,7 @@
     <Alert.Title>Unable to process your payment.</Alert.Title>
     <Alert.Description>
       <p>Please verify your billing information and try again.</p>
-      <ul class="list-inside list-disc text-sm">
+      <ul class="text-sm list-inside list-disc">
         <li>Check your card details</li>
         <li>Ensure sufficient funds</li>
         <li>Verify billing address</li>

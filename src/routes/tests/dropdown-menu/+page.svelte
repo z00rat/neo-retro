@@ -2,10 +2,10 @@
   import * as DropdownMenu from '$lib/registry/ui/dropdown-menu/index.ts';
 </script>
 
-<div class="flex min-h-[500px] flex-col items-center justify-center gap-8 p-12">
+<div class="gap-8 p-12 flex min-h-[500px] flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Dropdown Menu Tests</h1>
 
-  <div class="flex w-full max-w-2xl gap-8">
+  <div class="max-w-2xl gap-8 flex w-full">
     <DropdownMenu.Root>
       <DropdownMenu.Trigger
         class="h-10 neoretro-shadow rounded neoretro-border bg-yellow px-4 py-2 font-bold text-on-yellow"
@@ -80,7 +80,7 @@
         </DropdownMenu.Sub>
         <DropdownMenu.CheckboxItem checked indeterminate>Mixed Check</DropdownMenu.CheckboxItem>
         <DropdownMenu.Separator />
-        <DropdownMenu.Item inset variant="destructive">Log out</DropdownMenu.Item>
+        <DropdownMenu.Item inset color="red">Log out</DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>
   </div>

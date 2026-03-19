@@ -1,11 +1,9 @@
-<script lang="ts" module>
-  import { cn } from '$lib/utils.js';
-</script>
-
 <script lang="ts">
   import ChevronDownIcon from '@lucide/svelte/icons/chevron-down';
   import { NavigationMenu as NavigationMenuPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
+
+  import { cn } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -15,19 +13,15 @@
   }: NavigationMenuPrimitive.TriggerProps = $props();
 
   const getColor = getContext<() => any>('navigationMenuColor');
-  const color = $derived(getColor());
 </script>
 
 <NavigationMenuPrimitive.Trigger
   bind:ref
   data-slot="navigation-menu-trigger"
-  data-hover-color={color}
-  data-highlighted-color={color}
+  data-hover-color={getColor()}
+  data-highlighted-color={getColor()}
   class={cn(
-    'group neoretro-focus m-1 inline-flex h-9 w-max items-center justify-center rounded p-1 text-sm font-medium transition-[color,box-shadow] outline-none disabled:neoretro-disable',
-    'neoretro-highlighted',
-    'neoretro-hover',
-    'group',
+    'group group neoretro-focus m-1 h-8 rounded neoretro-hover neoretro-highlighted px-2 py-1 text-sm font-medium disabled:neoretro-disable inline-flex w-max items-center justify-center transition-[color,box-shadow] outline-none',
     className,
   )}
   {...restProps}
@@ -35,7 +29,7 @@
   {@render children?.()}
 
   <ChevronDownIcon
-    class="relative top-px ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
+    class="ml-1 size-4 relative top-px transition duration-300 group-data-[state=open]:rotate-180"
     aria-hidden="true"
   />
 </NavigationMenuPrimitive.Trigger>

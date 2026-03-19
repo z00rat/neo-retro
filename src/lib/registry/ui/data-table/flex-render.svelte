@@ -2,7 +2,7 @@
   import type { CellContext, ColumnDefTemplate, HeaderContext } from '@tanstack/table-core';
   import type { Attachment } from 'svelte/attachments';
 
-  import { RenderComponentConfig, RenderSnippetConfig } from './render-helpers.js';
+  import { RenderComponentConfig, RenderSnippetConfig } from './render-helpers.ts';
 
   type Props = {
     /** The cell or header field of the current cell's column definition. */

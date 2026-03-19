@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLOlAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -11,7 +11,7 @@
     children,
     ...restProps
   }: WithElementRef<HTMLOlAttributes> & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     noShadow?: boolean;
   } = $props();
 </script>
@@ -21,8 +21,8 @@
   data-slot="breadcrumb-list"
   data-color={color}
   class={cn(
-    'font-base flex list-none flex-wrap items-center gap-1.5 neoretro-clr px-2.5 py-0.5 text-sm wrap-break-word sm:gap-2.5',
-    noShadow ? '' : 'neoretro-shadow rounded neoretro-border',
+    'gap-1.5 rounded neoretro-border neoretro-clr px-2.5 py-0.5 sm:gap-2.5 flex list-none flex-wrap items-center wrap-break-word',
+    noShadow ? '' : 'neoretro-shadow',
     className,
   )}
   {...restProps}

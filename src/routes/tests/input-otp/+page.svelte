@@ -7,19 +7,19 @@
   let otpValue3 = $state('123');
 </script>
 
-<div class="flex min-h-[500px] flex-col items-center justify-center gap-12 p-12">
+<div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Input OTP Tests</h1>
 
-  <div class="flex w-full max-w-lg flex-col gap-10">
+  <div class="max-w-lg gap-10 flex w-full flex-col">
     <Card.Root color="magenta">
       <Card.Header>
         <Card.Title>OTP Verification Examples</Card.Title>
       </Card.Header>
-      <Card.Content class="flex flex-col gap-10">
+      <Card.Content class="gap-10 flex flex-col">
         <!-- Standard 6-digit OTP -->
-        <div class="flex flex-col gap-2">
+        <div class="gap-2 flex flex-col">
           <h2 class="text-lg font-bold">6-Digit Verification Code</h2>
-          <p class="text-muted-foreground text-sm">Enter the code sent to your device.</p>
+          <p class="text-sm">Enter the code sent to your device.</p>
           <InputOTP.Root maxlength={6} bind:value={otpValue}>
             {#snippet children({ cells })}
               <InputOTP.Group>
@@ -35,15 +35,15 @@
               </InputOTP.Group>
             {/snippet}
           </InputOTP.Root>
-          <p class="text-muted-foreground text-xs">
-            Value: <code class="bg-muted rounded px-1 py-0.5 font-mono text-foreground">{otpValue || '(empty)'}</code>
+          <p class="text-xs">
+            Value: <code class="rounded px-1 py-0.5 font-mono">{otpValue || '(empty)'}</code>
           </p>
         </div>
 
         <!-- 4-digit PIN -->
-        <div class="flex flex-col gap-2">
+        <div class="gap-2 flex flex-col">
           <h2 class="text-lg font-bold">4-Digit PIN</h2>
-          <p class="text-muted-foreground text-sm">A short PIN for quick auth.</p>
+          <p class="text-sm">A short PIN for quick auth.</p>
           <InputOTP.Root maxlength={4} bind:value={otpValue2}>
             {#snippet children({ cells })}
               <InputOTP.Group>
@@ -53,15 +53,15 @@
               </InputOTP.Group>
             {/snippet}
           </InputOTP.Root>
-          <p class="text-muted-foreground text-xs">
-            Value: <code class="bg-muted rounded px-1 py-0.5 font-mono text-foreground">{otpValue2 || '(empty)'}</code>
+          <p class="text-xs">
+            Value: <code class="rounded px-1 py-0.5 font-mono">{otpValue2 || '(empty)'}</code>
           </p>
         </div>
 
         <!-- Pre-filled + Disabled OTP -->
-        <div class="flex flex-col gap-2">
+        <div class="gap-2 flex flex-col">
           <h2 class="text-lg font-bold">Disabled (Pre-filled)</h2>
-          <p class="text-muted-foreground text-sm">A locked OTP field with a pre-set value.</p>
+          <p class="text-sm">A locked OTP field with a pre-set value.</p>
           <InputOTP.Root maxlength={6} value="123456" disabled>
             {#snippet children({ cells })}
               <InputOTP.Group>
@@ -80,9 +80,9 @@
         </div>
 
         <!-- Invalid OTP -->
-        <div class="flex flex-col gap-2">
+        <div class="gap-2 flex flex-col">
           <h2 class="text-lg font-bold text-red">Invalid State</h2>
-          <p class="text-muted-foreground text-sm">This OTP failed validation.</p>
+          <p class="text-sm">This OTP failed validation.</p>
           <InputOTP.Root maxlength={4} bind:value={otpValue3}>
             {#snippet children({ cells })}
               <InputOTP.Group>

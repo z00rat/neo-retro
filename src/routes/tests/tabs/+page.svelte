@@ -31,7 +31,7 @@
 <section>
   <h3>Color Combos</h3>
   <div class="max-w-md space-y-4">
-    <Tabs.Root activeColor="cyan" inactiveColor="black" value="a">
+    <Tabs.Root activeColor="cyan" inactiveColor="blue" value="a">
       <Tabs.List>
         <Tabs.Trigger value="a">Alpha</Tabs.Trigger>
         <Tabs.Trigger value="b">Beta</Tabs.Trigger>

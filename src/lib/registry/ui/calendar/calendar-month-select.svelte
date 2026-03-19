@@ -3,7 +3,7 @@
   import { getContext } from 'svelte';
 
   import * as Select from '$lib/registry/ui/select/index.ts';
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
+  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -31,12 +31,15 @@
       selectedColor: any;
     }
   >('calendarColors');
-  const colors = $derived(getColors?.());
 </script>
 
 <span class={cn('relative flex', className)}>
   <CalendarPrimitive.MonthSelect bind:ref {...restProps}>
-    {#snippet child({ props, monthItems, selectedMonthItem }: {
+    {#snippet child({
+      props,
+      monthItems,
+      selectedMonthItem,
+    }: {
       props: {
         name?: string;
         disabled?: boolean;
@@ -56,7 +59,7 @@
       {#key value ?? selectedMonthItem.value}
         <Select.Root
           type="single"
-          hoverColor={colors?.navColor}
+          color={getColors().navColor}
           name={props.name}
           disabled={props.disabled}
           value={String(value ?? selectedMonthItem.value)}
@@ -64,17 +67,14 @@
             handleSelectChange(val, props.onchange);
           }}
         >
-          <Select.Trigger
-            color={colors?.selectedColor}
-            class="flex h-8 items-center gap-1 pr-1 pl-2 text-sm font-medium select-none [&>svg]:size-3.5"
-          >
+          <Select.Trigger class="h-8 gap-1 pr-1 pl-2 font-medium [&>svg]:size-4 flex items-center select-none">
             {#if monthItems && monthItems.length}
               {monthItems.find((item) => item.value === (value ?? selectedMonthItem.value))?.label ??
                 selectedMonthItem.label}
             {/if}
           </Select.Trigger>
 
-          <Select.Content color={colors?.selectedColor}>
+          <Select.Content>
             <Select.Group>
               {#each monthItems as monthItem (monthItem.value)}
                 <Select.Item value={String(monthItem.value)} label={monthItem.label} disabled={monthItem.disabled}>

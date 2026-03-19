@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -14,7 +14,7 @@
 <nav
   {...restProps}
   bind:this={ref}
-  class={cn('absolute inset-x-0 top-0 flex w-full items-center justify-between gap-1', className)}
+  class={cn('inset-x-0 top-0 gap-1 absolute flex w-full items-center justify-between', className)}
 >
   {@render children?.()}
 </nav>

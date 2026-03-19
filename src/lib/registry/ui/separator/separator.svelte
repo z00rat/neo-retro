@@ -7,34 +7,43 @@
     base: 'shrink-0 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full',
     variants: {
       thickness: {
-        xs: 'data-[orientation=horizontal]:h-px data-[orientation=vertical]:w-px',
-        sm: 'data-[orientation=horizontal]:h-[2px] data-[orientation=vertical]:w-[2px]',
-        md: 'data-[orientation=horizontal]:h-1 data-[orientation=vertical]:w-1',
-        lg: 'data-[orientation=horizontal]:h-2 data-[orientation=vertical]:w-2',
+        xs: 'data-[orientation=horizontal]:border-t-px data-[orientation=vertical]:border-l-px',
+        sm: 'data-[orientation=horizontal]:border-t-[2px] data-[orientation=vertical]:border-l-[2px]',
+        md: 'data-[orientation=horizontal]:border-t-[4px] data-[orientation=vertical]:border-l-[4px]',
+        lg: 'data-[orientation=horizontal]:border-t-[8px] data-[orientation=vertical]:border-l-[8px]',
+      },
+      style: {
+        solid: 'border-solid',
+        dashed: 'border-dashed bg-transparent',
+        dotted: 'border-dotted bg-transparent',
       },
     },
     defaultVariants: {
       thickness: 'sm',
+      style: 'solid',
     },
   });
 
   export type SeparatorThickness = VariantProps<typeof separatorVariants>['thickness'];
+  export type SeparatorStyle = VariantProps<typeof separatorVariants>['style'];
 
   export type SeparatorProps = Omit<SeparatorPrimitive.RootProps, 'color'> & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color?: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     thickness?: SeparatorThickness;
+    style?: SeparatorStyle;
     children?: Snippet;
   };
 </script>
 
 <script lang="ts">
-  import { cn } from '$lib/utils.js';
+  import { cn } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
     class: className,
     color = 'black',
     thickness,
+    style = 'solid',
     orientation = 'horizontal',
     children,
     'data-slot': dataSlot = 'separator',
@@ -55,13 +64,15 @@
   {orientation}
   data-slot={dataSlot}
   data-color={color}
-  class={children ? containerClasses : cn(separatorVariants({ thickness }), color ? 'bg-clr' : 'bg-border', className)}
+  class={children
+    ? containerClasses
+    : cn(separatorVariants({ thickness, style }), color ? 'border-clr' : 'border-border', className)}
   {...restProps}
 >
   {#if children}
     <div
       data-color={color}
-      class={cn('flex-1', separatorVariants({ thickness }), color ? 'bg-clr' : 'bg-border')}
+      class={cn('flex-1', separatorVariants({ thickness, style }), color ? 'border-clr' : 'border-border')}
       data-orientation={orientation}
     ></div>
 
@@ -71,7 +82,7 @@
 
     <div
       data-color={color}
-      class={cn('flex-1', separatorVariants({ thickness }), color ? 'bg-clr' : 'bg-border')}
+      class={cn('flex-1', separatorVariants({ thickness, style }), color ? 'border-clr' : 'border-border')}
       data-orientation={orientation}
     ></div>
   {/if}

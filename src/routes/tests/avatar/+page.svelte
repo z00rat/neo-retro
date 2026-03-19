@@ -7,7 +7,7 @@
 <!-- With images -->
 <section>
   <h3>With Images</h3>
-  <div class="flex gap-4">
+  <div class="gap-4 flex">
     <Avatar.Root>
       <Avatar.Image src="https://github.com/shadcn.png" alt="shadcn" />
       <Avatar.Fallback seed="shadcn" />
@@ -26,7 +26,7 @@
 <!-- Fallback only -->
 <section>
   <h3>Fallback (DiceBear)</h3>
-  <div class="flex gap-4">
+  <div class="gap-4 flex">
     <Avatar.Root>
       <Avatar.Fallback seed="alice" />
     </Avatar.Root>
@@ -48,7 +48,7 @@
 <!-- Sizes -->
 <section>
   <h3>Sizes</h3>
-  <div class="flex items-end gap-4">
+  <div class="gap-4 flex items-end">
     <Avatar.Root class="size-8">
       <Avatar.Fallback seed="small" />
     </Avatar.Root>
@@ -67,7 +67,7 @@
 <!-- With border -->
 <section>
   <h3>With Border</h3>
-  <div class="flex gap-4">
+  <div class="gap-4 flex">
     <Avatar.Root class="neoretro-border">
       <Avatar.Image src="https://github.com/shadcn.png" alt="shadcn" />
       <Avatar.Fallback seed="shadcn" />

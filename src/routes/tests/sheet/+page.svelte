@@ -8,7 +8,7 @@
 <!-- Sides -->
 <section>
   <h3>Sides</h3>
-  <div class="flex flex-wrap gap-4">
+  <div class="gap-4 flex flex-wrap">
     <Sheet.Root>
       <Sheet.Trigger>
         <Button color="blue">Right</Button>
@@ -46,7 +46,7 @@
           <Sheet.Title>Top Sheet</Sheet.Title>
           <Sheet.Description>This slides in from the top.</Sheet.Description>
         </Sheet.Header>
-        <Sheet.Footer closeColor="black" />
+        <Sheet.Footer closeColor="blue" />
       </Sheet.Content>
     </Sheet.Root>
 
@@ -59,7 +59,7 @@
           <Sheet.Title>Bottom Sheet</Sheet.Title>
           <Sheet.Description>This slides in from the bottom.</Sheet.Description>
         </Sheet.Header>
-        <Sheet.Footer closeColor="white" />
+        <Sheet.Footer />
       </Sheet.Content>
     </Sheet.Root>
   </div>
@@ -68,14 +68,14 @@
 <!-- Colors -->
 <section>
   <h3>Colors</h3>
-  <div class="flex flex-wrap gap-4">
+  <div class="gap-4 flex flex-wrap">
     <Sheet.Root>
       <Sheet.Trigger>
-        <Button color="black">Black sheet</Button>
+        <Button color="green">Green sheet</Button>
       </Sheet.Trigger>
-      <Sheet.Content color="black">
+      <Sheet.Content color="green">
         <Sheet.Header>
-          <Sheet.Title>Black Sheet</Sheet.Title>
+          <Sheet.Title>Green Sheet</Sheet.Title>
           <Sheet.Description>Dark themed sheet.</Sheet.Description>
         </Sheet.Header>
         <Sheet.Footer closeColor="white">

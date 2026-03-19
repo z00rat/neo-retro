@@ -5,12 +5,12 @@
   let showFullUrls = true;
   let panel = 'top';
 
-  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
 <h1>Menubar</h1>
 
-<section class="flex min-h-svh flex-col items-start space-y-6">
+<section class="space-y-6 flex min-h-svh flex-col items-start">
   {#each colors as color}
     <div>
       <h3 class="mb-2 capitalize">{color} Theme</h3>
@@ -39,7 +39,7 @@
               Print... <Menubar.Shortcut>⌘P</Menubar.Shortcut>
             </Menubar.Item>
             <Menubar.Separator />
-            <Menubar.Item variant="destructive">
+            <Menubar.Item color="red">
               Delete File <Menubar.Shortcut>⌘Del</Menubar.Shortcut>
             </Menubar.Item>
           </Menubar.Content>

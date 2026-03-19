@@ -2,7 +2,7 @@
   import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
   import { getContext, type Snippet } from 'svelte';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
+  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -16,7 +16,6 @@
   } = $props();
 
   const getColor = getContext<() => any>('dropdownMenuColor');
-  const color = $derived(getColor());
 </script>
 
 <DropdownMenuPrimitive.CheckboxItem
@@ -24,20 +23,19 @@
   bind:checked
   bind:indeterminate
   data-slot="dropdown-menu-checkbox-item"
-  data-highlighted-color={color}
+  data-highlighted-color={getColor()}
   class={cn(
-    'relative flex items-center gap-2 rounded py-1.5 ps-8 pe-2 text-sm outline-hidden select-none data-disabled:neoretro-disable',
-    'neoretro-highlighted',
+    'gap-2 rounded neoretro-highlighted py-1.5 ps-8 pe-2 text-sm data-disabled:neoretro-disable relative flex items-center outline-hidden select-none',
     className,
   )}
   {...restProps}
 >
   {#snippet children({ checked, indeterminate })}
-    <span class="pointer-events-none absolute start-2 flex size-3.5 items-center justify-center">
+    <span class="start-2 size-3.5 pointer-events-none absolute flex items-center justify-center">
       {#if checked === true}
-        <div class="size-2.5 rounded-sm bg-current"></div>
+        <div class="size-2 rounded-sm bg-current"></div>
       {:else if indeterminate}
-        <div class="h-1 w-2.5 rounded-sm bg-current"></div>
+        <div class="h-1 w-2 rounded-sm bg-current"></div>
       {/if}
     </span>
     {@render childrenProp?.()}

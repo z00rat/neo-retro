@@ -1,23 +1,19 @@
 <script lang="ts">
   import { AlertDialog as AlertDialogPrimitive } from 'bits-ui';
+  import { getContext } from 'svelte';
 
-  import { buttonVariants } from '$lib/registry/ui/button/index.js';
-  import { cn } from '$lib/utils.js';
+  import { buttonVariants } from '$lib/registry/ui/button/index.ts';
+  import { cn } from '$lib/utils.ts';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    color,
-    ...restProps
-  }: AlertDialogPrimitive.CancelProps & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-  } = $props();
+  let { ref = $bindable(null), class: className, ...restProps }: AlertDialogPrimitive.CancelProps = $props();
+
+  const getColor = getContext<() => any>('alertDialogCancleColor');
 </script>
 
 <AlertDialogPrimitive.Cancel
   bind:ref
   data-slot="alert-dialog-cancel"
-  data-color={color}
+  data-color={getColor()}
   class={cn(buttonVariants(), className)}
   data-pressable
   {...restProps}

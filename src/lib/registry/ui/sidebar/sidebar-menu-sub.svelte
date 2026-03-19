@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -16,8 +16,7 @@
   data-slot="sidebar-menu-sub"
   data-sidebar="menu-sub"
   class={cn(
-    'mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l px-2.5 py-0.5',
-    'group-data-[collapsible=icon]:hidden',
+    'mx-3.5 min-w-0 gap-1 px-2.5 py-0.5 flex translate-x-px flex-col border-l group-data-[collapsible=icon]:hidden',
     className,
   )}
   {...restProps}

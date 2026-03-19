@@ -1,7 +1,7 @@
 <script lang="ts">
   import * as Accordion from '$lib/registry/ui/accordion';
 
-  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
 <h1>Accordion</h1>
@@ -39,10 +39,10 @@
         <Accordion.Content>I have a cyan background!</Accordion.Content>
       </Accordion.Item>
     </Accordion.Root>
-    <Accordion.Root type="single" triggerColor="magenta" contentColor="white">
+    <Accordion.Root type="single" triggerColor="magenta" contentColor="green">
       <Accordion.Item value="1">
-        <Accordion.Trigger>Magenta trigger, white content</Accordion.Trigger>
-        <Accordion.Content>I have a white background!</Accordion.Content>
+        <Accordion.Trigger>Magenta trigger, green content</Accordion.Trigger>
+        <Accordion.Content>I have a green background!</Accordion.Content>
       </Accordion.Item>
     </Accordion.Root>
   </div>
@@ -51,38 +51,34 @@
 <!-- Multiple items -->
 <section>
   <h3>Multiple Items</h3>
-  <Accordion.Root type="single" triggerColor="cyan" contentColor="black">
-    <div class="space-y-2">
-      <Accordion.Item value="1">
-        <Accordion.Trigger>First item</Accordion.Trigger>
-        <Accordion.Content>Content for the first item.</Accordion.Content>
-      </Accordion.Item>
-      <Accordion.Item value="2">
-        <Accordion.Trigger>Second item</Accordion.Trigger>
-        <Accordion.Content>Content for the second item.</Accordion.Content>
-      </Accordion.Item>
-      <Accordion.Item value="3">
-        <Accordion.Trigger>Third item</Accordion.Trigger>
-        <Accordion.Content>Content for the third item.</Accordion.Content>
-      </Accordion.Item>
-    </div>
+  <Accordion.Root type="single" triggerColor="cyan" contentColor="green">
+    <Accordion.Item value="1">
+      <Accordion.Trigger>First item</Accordion.Trigger>
+      <Accordion.Content>Content for the first item.</Accordion.Content>
+    </Accordion.Item>
+    <Accordion.Item value="2">
+      <Accordion.Trigger>Second item</Accordion.Trigger>
+      <Accordion.Content>Content for the second item.</Accordion.Content>
+    </Accordion.Item>
+    <Accordion.Item value="3">
+      <Accordion.Trigger>Third item</Accordion.Trigger>
+      <Accordion.Content>Content for the third item.</Accordion.Content>
+    </Accordion.Item>
   </Accordion.Root>
 </section>
 
 <!-- Multiple open -->
 <section>
   <h3>Multiple Open</h3>
-  <Accordion.Root type="multiple" triggerColor="magenta" contentColor="magenta">
-    <div class="space-y-2">
-      <Accordion.Item value="a">
-        <Accordion.Trigger>Item A</Accordion.Trigger>
-        <Accordion.Content>Can open multiple at once.</Accordion.Content>
-      </Accordion.Item>
-      <Accordion.Item value="b">
-        <Accordion.Trigger>Item B</Accordion.Trigger>
-        <Accordion.Content>This one too!</Accordion.Content>
-      </Accordion.Item>
-    </div>
+  <Accordion.Root type="multiple" triggerColor="magenta" contentColor="white">
+    <Accordion.Item value="a">
+      <Accordion.Trigger>Item A</Accordion.Trigger>
+      <Accordion.Content>Can open multiple at once.</Accordion.Content>
+    </Accordion.Item>
+    <Accordion.Item value="b">
+      <Accordion.Trigger>Item B</Accordion.Trigger>
+      <Accordion.Content>This one too!</Accordion.Content>
+    </Accordion.Item>
   </Accordion.Root>
 </section>
 
@@ -90,16 +86,14 @@
 <section>
   <h3>Disabled</h3>
   <Accordion.Root type="single" triggerColor="red" contentColor="red">
-    <div class="space-y-2">
-      <Accordion.Item value="1">
-        <Accordion.Trigger>Enabled item</Accordion.Trigger>
-        <Accordion.Content>This one works fine.</Accordion.Content>
-      </Accordion.Item>
-      <Accordion.Item value="2" disabled>
-        <Accordion.Trigger disabled>Disabled item</Accordion.Trigger>
-        <Accordion.Content>You should not see this.</Accordion.Content>
-      </Accordion.Item>
-    </div>
+    <Accordion.Item value="1">
+      <Accordion.Trigger>Enabled item</Accordion.Trigger>
+      <Accordion.Content>This one works fine.</Accordion.Content>
+    </Accordion.Item>
+    <Accordion.Item value="2" disabled>
+      <Accordion.Trigger disabled>Disabled item</Accordion.Trigger>
+      <Accordion.Content>You should not see this.</Accordion.Content>
+    </Accordion.Item>
   </Accordion.Root>
 </section>
 

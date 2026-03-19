@@ -27,7 +27,7 @@
 <section>
   <h3>Inline</h3>
   <div class="max-w-md">
-    <Command.Root color="white" class="neoretro-border">
+    <Command.Root color="white">
       <Command.Input placeholder="Type a command or search..." />
       <Command.List>
         <Command.Empty>No results found.</Command.Empty>
@@ -72,7 +72,7 @@
 <section>
   <h3>Colors</h3>
   <div class="max-w-md space-y-4">
-    <Command.Root color="cyan" class="neoretro-border">
+    <Command.Root color="cyan">
       <Command.Input placeholder="Search..." />
       <Command.List>
         <Command.Empty>Nothing here.</Command.Empty>
@@ -83,7 +83,7 @@
       </Command.List>
     </Command.Root>
 
-    <Command.Root color="black" class="neoretro-border">
+    <Command.Root color="red">
       <Command.Input placeholder="Search..." />
       <Command.List>
         <Command.Empty>Nothing here.</Command.Empty>
@@ -102,7 +102,7 @@
   <p class="mb-2 text-sm">
     Press
     <kbd
-      class="pointer-events-none inline-flex h-5 items-center gap-1 rounded neoretro-border bg-background px-1.5 font-mono text-[10px] font-medium opacity-100 select-none"
+      class="h-5 gap-1 rounded bg-background px-1.5 font-mono font-medium pointer-events-none inline-flex items-center text-[10px] opacity-100 select-none"
     >
       <span class="text-xs">⌘</span>K
     </kbd>

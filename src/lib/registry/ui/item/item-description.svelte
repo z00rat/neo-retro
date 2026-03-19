@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -14,7 +14,7 @@
 <p
   bind:this={ref}
   data-slot="item-description"
-  class={cn('line-clamp-2 text-sm leading-normal font-normal [&>a]:neoretro-link', className)}
+  class={cn('text-sm leading-normal font-normal [&>a]:neoretro-link line-clamp-2', className)}
   {...restProps}
 >
   {@render children?.()}

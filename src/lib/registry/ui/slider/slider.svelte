@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Slider as SliderPrimitive } from 'bits-ui';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
+  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -20,7 +20,7 @@
     onValueChange?: (value: number[]) => void;
     onValueCommit?: (value: number[]) => void;
     noShadow?: boolean;
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 </script>
 
@@ -33,7 +33,7 @@
   {onValueChange}
   {onValueCommit}
   class={cn(
-    'relative flex w-full touch-none items-center rounded select-none data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col',
+    'rounded data-[orientation=vertical]:min-h-44 relative flex w-full touch-none items-center select-none data-[orientation=vertical]:h-full data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col',
     className,
   )}
   {...restProps}
@@ -43,17 +43,14 @@
       data-orientation={orientation}
       data-slot="slider-track"
       class={cn(
-        'relative z-10 w-full grow overflow-hidden rounded neoretro-border bg-background data-[orientation=horizontal]:h-3 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-3',
+        'rounded neoretro-border bg-background data-[orientation=horizontal]:h-3 data-[orientation=vertical]:w-3 relative z-10 w-full grow overflow-hidden data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full',
         noShadow ? '' : 'neoretro-shadow',
       )}
     >
       <SliderPrimitive.Range
         data-slot="slider-range"
         data-color={color}
-        class={cn(
-          'absolute rounded data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full',
-          'neoretro-clr',
-        )}
+        class="neoretro-clr absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
       />
     </span>
 
@@ -64,7 +61,7 @@
           {#if !noShadow}
             <!-- Ghost shadow under the Z-10 track -->
             <div
-              class="pointer-events-none absolute z-0 block h-5 w-5 neoretro-shadow rounded outline-hidden"
+              class="h-5 w-5 neoretro-shadow rounded pointer-events-none absolute z-0 block outline-hidden"
               style={props.style as string}
             ></div>
           {/if}
@@ -73,7 +70,8 @@
           <span
             {...props}
             data-slot="slider-thumb"
-            class="neoretro-focus absolute z-20 block h-5 w-5 rounded neoretro-border border-2 bg-background transition-colors data-disabled:neoretro-disable data-disabled:cursor-not-allowed"
+            data-color={color}
+            class="neoretro-focus h-5 w-5 rounded neoretro-border neoretro-clr data-disabled:neoretro-disable absolute z-20 block border-2 data-disabled:cursor-not-allowed"
           ></span>
         {/snippet}
       </SliderPrimitive.Thumb>

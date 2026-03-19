@@ -1,32 +1,37 @@
 <script lang="ts">
-  import * as Slider from '$lib/registry/ui/slider/index.js';
+  import * as Card from '$lib/registry/ui/card';
+  import { Label } from '$lib/registry/ui/label';
+  import * as Slider from '$lib/registry/ui/slider/index.ts';
 
   let singleValue = [50];
   let multiValue = [25, 75];
 
-  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
 <h1>Slider</h1>
 
-<section class="flex min-h-svh flex-col items-start space-y-12 pb-32">
+<section class="space-y-12 pb-32 flex min-h-svh flex-col items-start">
   {#each colors as color}
-    <div class="w-full max-w-md">
-      <h3 class="mb-4 capitalize">{color} Theme</h3>
-      <div class="space-y-8">
+    <Card.Root class="max-w-md w-full" color={colors[Math.floor(Math.random() * colors.length)]}>
+      <Card.Header>
+        <Card.Title>{color} Theme</Card.Title>
+        <Card.Description>A {color} card.</Card.Description>
+      </Card.Header>
+      <Card.Content>
         <div>
-          <h4 class="mb-2 text-sm text-foreground/70">Single Value</h4>
+          <Label class="my-2">Single Value</Label>
           <Slider.Root bind:value={singleValue} max={100} step={1} {color} />
         </div>
         <div>
-          <h4 class="mb-2 text-sm text-foreground/70">Multi Value / Ranged</h4>
+          <Label class="my-2">Multi Value / Ranged</Label>
           <Slider.Root bind:value={multiValue} max={100} step={1} {color} />
         </div>
         <div>
-          <h4 class="mb-2 text-sm text-foreground/70">No Shadow</h4>
+          <Label class="my-2">No Shadow</Label>
           <Slider.Root bind:value={singleValue} max={100} step={1} {color} noShadow />
         </div>
-      </div>
-    </div>
+      </Card.Content>
+    </Card.Root>
   {/each}
 </section>

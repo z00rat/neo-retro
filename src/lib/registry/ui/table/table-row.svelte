@@ -2,7 +2,7 @@
   import { getContext } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -12,17 +12,15 @@
   }: WithElementRef<HTMLAttributes<HTMLTableRowElement>> = $props();
 
   const getRowColor = getContext<() => any>('tableRowColor');
-  let resolvedColor = $derived(getRowColor());
 </script>
 
 <tr
   bind:this={ref}
   data-slot="table-row"
-  data-color={resolvedColor}
-  data-hover-color={resolvedColor}
+  data-color={getRowColor()}
+  data-hover-color={getRowColor()}
   class={cn(
-    'font-base border-b-2 border-border transition-colors in-data-table-body:hover:cursor-pointer in-data-table-body:hover:bg-none',
-    'neoretro-clr neoretro-hover',
+    'border-border neoretro-clr neoretro-hover border-b-2 transition-colors in-data-table-body:hover:cursor-pointer in-data-table-body:hover:bg-none',
     className,
   )}
   {...restProps}

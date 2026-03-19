@@ -3,7 +3,7 @@
   import { getContext } from 'svelte';
 
   import * as Select from '$lib/registry/ui/select/index.ts';
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
+  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -34,7 +34,6 @@
       selectedColor: any;
     }
   >('calendarColors');
-  const colors = $derived(getColors?.());
 </script>
 
 <span class={cn('relative flex', className)}>
@@ -42,7 +41,7 @@
     {#snippet child({
       props,
       yearItems,
-      selectedYearItem
+      selectedYearItem,
     }: {
       props: {
         name?: string;
@@ -63,7 +62,7 @@
       {#key value ?? selectedYearItem.value}
         <Select.Root
           type="single"
-          hoverColor={colors?.navColor}
+          color={getColors().navColor}
           name={props.name}
           disabled={props.disabled}
           value={String(value ?? selectedYearItem.value)}
@@ -71,17 +70,14 @@
             handleSelectChange(val, props.onchange);
           }}
         >
-          <Select.Trigger
-            color={colors?.selectedColor}
-            class="flex h-8 items-center gap-1 pr-1 pl-2 text-sm font-medium select-none [&>svg]:size-3.5"
-          >
+          <Select.Trigger class="h-8 gap-1 pr-1 pl-2 font-medium [&>svg]:size-4 flex items-center select-none">
             {#if yearItems && yearItems.length}
               {yearItems.find((item) => item.value === (value ?? selectedYearItem.value))?.label ??
                 selectedYearItem.label}
             {/if}
           </Select.Trigger>
 
-          <Select.Content color={colors?.selectedColor}>
+          <Select.Content>
             <Select.Group>
               {#each yearItems as yearItem (yearItem.value)}
                 <Select.Item value={String(yearItem.value)} label={yearItem.label} disabled={yearItem.disabled}>

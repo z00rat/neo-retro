@@ -2,7 +2,7 @@
   import { setContext } from 'svelte';
   import type { HTMLTableAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -10,19 +10,21 @@
     children,
     headerColor,
     rowColor,
+    noShadow,
     ...restProps
   }: WithElementRef<HTMLTableAttributes> & {
-    headerColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-    rowColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    headerColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    rowColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    noShadow?: boolean;
   } = $props();
 
   setContext('tableHeaderColor', () => headerColor);
   setContext('tableRowColor', () => rowColor);
 </script>
 
-<div class="relative w-full neoretro-shadow overflow-clip rounded neoretro-border">
+<div class={cn('rounded neoretro-border relative w-full overflow-clip', noShadow ? '' : 'neoretro-shadow')}>
   <div class="w-full overflow-auto">
-    <table bind:this={ref} data-slot="table" class={cn('w-full caption-bottom text-sm', className)} {...restProps}>
+    <table bind:this={ref} data-slot="table" class={cn('text-sm w-full caption-bottom', className)} {...restProps}>
       {@render children?.()}
     </table>
   </div>

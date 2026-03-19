@@ -2,21 +2,19 @@
   import { getContext } from 'svelte';
   import type { HTMLThAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let { ref = $bindable(null), class: className, children, ...restProps }: WithElementRef<HTMLThAttributes> = $props();
 
   const getHeaderColor = getContext<() => any>('tableHeaderColor');
-  let resolvedColor = $derived(getHeaderColor());
 </script>
 
 <th
   bind:this={ref}
   data-slot="table-head"
-  data-color={resolvedColor}
+  data-color={getHeaderColor()}
   class={cn(
-    'font-heading h-12 px-4 text-left align-middle font-semibold not-first:border-l-2 not-first:border-border [&:has([role=checkbox])]:pr-0',
-    'neoretro-clr',
+    'font-heading h-12 neoretro-clr px-4 font-semibold not-first:border-border [&:has([role=checkbox])]:pr-0 text-left align-middle not-first:border-l-2',
     className,
   )}
   {...restProps}

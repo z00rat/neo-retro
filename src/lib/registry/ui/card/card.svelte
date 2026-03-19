@@ -1,14 +1,7 @@
-<script lang="ts" module>
-  export type CardProps = {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-    noShadow?: boolean;
-  };
-</script>
-
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -17,7 +10,10 @@
     noShadow = false,
     children,
     ...restProps
-  }: WithElementRef<HTMLAttributes<HTMLDivElement>> & CardProps = $props();
+  }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
+    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    noShadow?: boolean;
+  } = $props();
 </script>
 
 <div
@@ -25,7 +21,7 @@
   data-slot="card"
   data-color={color}
   class={cn(
-    'flex flex-col gap-6 rounded neoretro-border neoretro-clr py-6',
+    'gap-4 rounded neoretro-border neoretro-clr py-4 flex flex-col',
     noShadow ? '' : 'neoretro-shadow',
     className,
   )}

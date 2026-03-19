@@ -3,9 +3,9 @@
   import PlusIcon from '@lucide/svelte/icons/plus';
   import { untrack } from 'svelte';
 
-  import * as DropdownMenu from '$lib/registry/ui/dropdown-menu/index.js';
-  import * as Sidebar from '$lib/registry/ui/sidebar/index.js';
-  import { useSidebar } from '$lib/registry/ui/sidebar/index.js';
+  import * as DropdownMenu from '$lib/registry/ui/dropdown-menu/index.ts';
+  import * as Sidebar from '$lib/registry/ui/sidebar/index.ts';
+  import { useSidebar } from '$lib/registry/ui/sidebar/index.ts';
 
   // This should be `Component` after @lucide/svelte updates types
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -19,37 +19,31 @@
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
         {#snippet child({ props })}
-          <Sidebar.MenuButton
-            {...props}
-            size="lg"
-            class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-          >
-            <div
-              class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
-            >
+          <Sidebar.MenuButton {...props} size="lg" class="data-[state=open]:bg-black data-[state=open]:text-white">
+            <div class="size-8 rounded-lg flex aspect-square items-center justify-center">
               <activeTeam.logo class="size-4" />
             </div>
-            <div class="grid flex-1 text-start text-sm leading-tight">
-              <span class="truncate font-medium">
+            <div class="text-sm leading-tight grid flex-1 text-start">
+              <span class="font-medium truncate">
                 {activeTeam.name}
               </span>
-              <span class="truncate text-xs">{activeTeam.plan}</span>
+              <span class="text-xs truncate">{activeTeam.plan}</span>
             </div>
             <ChevronsUpDownIcon class="ms-auto" />
           </Sidebar.MenuButton>
         {/snippet}
       </DropdownMenu.Trigger>
       <DropdownMenu.Content
-        class="w-(--bits-dropdown-menu-anchor-width) min-w-56 rounded-lg"
+        class="min-w-56 rounded-lg w-(--bits-dropdown-menu-anchor-width)"
         align="start"
         side={sidebar.isMobile ? 'bottom' : 'right'}
         sideOffset={4}
         color="magenta"
       >
-        <DropdownMenu.Label class="text-muted-foreground text-xs">Teams</DropdownMenu.Label>
+        <DropdownMenu.Label class="text-xs">Teams</DropdownMenu.Label>
         {#each teams as team, index (team.name)}
           <DropdownMenu.Item onSelect={() => (activeTeam = team)} class="gap-2 p-2">
-            <div class="flex size-6 items-center justify-center rounded-md border">
+            <div class="size-6 rounded-md flex items-center justify-center border">
               <team.logo class="size-3.5 shrink-0" />
             </div>
             {team.name}
@@ -58,10 +52,10 @@
         {/each}
         <DropdownMenu.Separator />
         <DropdownMenu.Item class="gap-2 p-2">
-          <div class="flex size-6 items-center justify-center rounded-md border bg-transparent">
+          <div class="size-6 rounded-md flex items-center justify-center border bg-transparent">
             <PlusIcon class="size-4" />
           </div>
-          <div class="text-muted-foreground font-medium">Add team</div>
+          <div class="font-medium">Add team</div>
         </DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>

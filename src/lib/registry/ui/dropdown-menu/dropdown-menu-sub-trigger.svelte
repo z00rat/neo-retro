@@ -3,7 +3,7 @@
   import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { cn } from '$lib/utils.js';
+  import { cn } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -16,21 +16,19 @@
   } = $props();
 
   const getColor = getContext<() => any>('dropdownMenuColor');
-  const color = $derived(getColor());
 </script>
 
 <DropdownMenuPrimitive.SubTrigger
   bind:ref
   data-slot="dropdown-menu-sub-trigger"
   data-inset={inset}
-  data-highlighted-color={color}
+  data-highlighted-color={getColor()}
   class={cn(
-    'flex items-center gap-2 rounded px-2 py-1.5 text-sm outline-hidden select-none data-disabled:neoretro-disable data-inset:ps-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*="size-"])]:size-4 [&_svg:not([class*="text-"])]:text-current',
-    'neoretro-highlighted',
+    'gap-2 rounded neoretro-highlighted px-2 py-1.5 text-sm data-disabled:neoretro-disable data-inset:ps-8 [&_svg:not([class*="size-"])]:size-4 flex items-center outline-hidden select-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*="text-"])]:text-current',
     className,
   )}
   {...restProps}
 >
   {@render children?.()}
-  <ChevronRightIcon class="ms-auto size-4" />
+  <ChevronRightIcon class="size-4 ms-auto" />
 </DropdownMenuPrimitive.SubTrigger>

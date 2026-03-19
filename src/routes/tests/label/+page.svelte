@@ -6,7 +6,7 @@
 
 <section>
   <h3>Basic Label</h3>
-  <div class="flex items-center space-x-2">
+  <div class="space-x-2 flex items-center">
     <!-- Using a basic checkbox without importing the full component to simply demonstrate the label -->
     <input type="checkbox" id="terms" class="size-4 neoretro-border" />
     <Label for="terms">Accept terms and conditions</Label>
@@ -15,7 +15,7 @@
 
 <section>
   <h3>Form Group Label</h3>
-  <div class="grid w-full max-w-sm items-center gap-1.5">
+  <div class="max-w-sm gap-1.5 grid w-full items-center">
     <Label for="email">Email address</Label>
     <input type="email" id="email" placeholder="Email" class="w-full" />
   </div>
@@ -23,7 +23,7 @@
 
 <section>
   <h3>Disabled State Styling</h3>
-  <div class="flex items-center space-x-2">
+  <div class="space-x-2 flex items-center">
     <!-- Demonstrating peer-disabled styling -->
     <input type="checkbox" id="terms-disabled" disabled class="peer size-4 neoretro-border" />
     <Label for="terms-disabled">Disabled term label (should show cursor not allowed)</Label>

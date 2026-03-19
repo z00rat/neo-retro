@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -14,7 +14,7 @@
 <div
   bind:this={ref}
   data-slot="input-otp-group"
-  class={cn('flex neoretro-shadow items-center rounded', className)}
+  class={cn('neoretro-shadow rounded flex items-center', className)}
   {...restProps}
 >
   {@render children?.()}

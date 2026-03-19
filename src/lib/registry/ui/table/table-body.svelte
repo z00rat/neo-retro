@@ -1,16 +1,15 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { type WithElementRef } from '$lib/utils.js';
+  import { type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
-    class: className,
     children,
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLTableSectionElement>> = $props();
 </script>
 
-<tbody bind:this={ref} data-slot="table-body" class={className} {...restProps}>
+<tbody bind:this={ref} data-slot="table-body" {...restProps}>
   {@render children?.()}
 </tbody>

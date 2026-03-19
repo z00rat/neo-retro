@@ -3,9 +3,9 @@
   import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
   import { setContext, type Snippet } from 'svelte';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
+  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
-  import * as RangeCalendar from './index.js';
+  import * as RangeCalendar from './index.ts';
 
   let {
     ref = $bindable(null),
@@ -25,8 +25,8 @@
     disableDaysOutsideMonth = false,
     ...restProps
   }: WithoutChildrenOrChild<RangeCalendarPrimitive.RootProps> & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-    selectedColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    selectedColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     captionLayout?: 'dropdown' | 'dropdown-months' | 'dropdown-years' | 'label';
     months?: RangeCalendarPrimitive.MonthSelectProps['months'];
     years?: RangeCalendarPrimitive.YearSelectProps['years'];

@@ -1,8 +1,8 @@
 <script lang="ts">
   import { AlertDialog as AlertDialogPrimitive } from 'bits-ui';
-  import type { ComponentProps } from 'svelte';
+  import { getContext, type ComponentProps } from 'svelte';
 
-  import { cn, type WithoutChild, type WithoutChildrenOrChild } from '$lib/utils.js';
+  import { cn, type WithoutChild, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   import AlertDialogOverlay from './alert-dialog-overlay.svelte';
   import AlertDialogPortal from './alert-dialog-portal.svelte';
@@ -10,13 +10,13 @@
   let {
     ref = $bindable(null),
     class: className,
-    color,
     portalProps,
     ...restProps
   }: WithoutChild<AlertDialogPrimitive.ContentProps> & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     portalProps?: WithoutChildrenOrChild<ComponentProps<typeof AlertDialogPortal>>;
   } = $props();
+
+  const getColor = getContext<() => any>('alertDialogColor');
 </script>
 
 <AlertDialogPortal {...portalProps}>
@@ -24,9 +24,9 @@
   <AlertDialogPrimitive.Content
     bind:ref
     data-slot="alert-dialog-content"
-    data-color={color}
+    data-color={getColor()}
     class={cn(
-      'fixed start-[50%] top-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded neoretro-border neoretro-clr p-6 duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg',
+      'neoretro-shadow gap-4 rounded neoretro-border neoretro-clr p-6 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 sm:max-w-lg fixed start-[50%] top-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] duration-200',
       className,
     )}
     {...restProps}

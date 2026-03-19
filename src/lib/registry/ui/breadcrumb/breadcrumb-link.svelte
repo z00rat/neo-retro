@@ -2,7 +2,7 @@
   import type { Snippet } from 'svelte';
   import type { HTMLAnchorAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -17,7 +17,7 @@
 
   const attrs = $derived({
     'data-slot': 'breadcrumb-link',
-    class: cn('neoretro-link neoretro-focus', className),
+    class: cn('neoretro-link neoretro-focus rounded transition-none', className),
     href,
     ...restProps,
   });

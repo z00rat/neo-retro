@@ -3,14 +3,14 @@
   import ItalicIcon from '@lucide/svelte/icons/italic';
   import UnderlineIcon from '@lucide/svelte/icons/underline';
 
-  import * as Card from '$lib/registry/ui/card/index.js';
-  import * as ToggleGroup from '$lib/registry/ui/toggle-group/index.js';
+  import * as Card from '$lib/registry/ui/card/index.ts';
+  import * as ToggleGroup from '$lib/registry/ui/toggle-group/index.ts';
 </script>
 
-<div class="flex min-h-[500px] flex-col items-center justify-center gap-12 p-12">
+<div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Toggle Tests</h1>
 
-  <div class="flex w-full max-w-lg flex-col gap-10">
+  <div class="max-w-lg gap-10 flex w-full flex-col">
     <Card.Root color="cyan">
       <Card.Header>
         <Card.Title>Toggle Group (Single Mode)</Card.Title>
@@ -60,7 +60,7 @@
       <Card.Header>
         <Card.Title>Disabled State</Card.Title>
       </Card.Header>
-      <Card.Content class="flex gap-4">
+      <Card.Content class="gap-4 flex">
         <ToggleGroup.Root type="single" disabled color="white">
           <ToggleGroup.Item value="x">X</ToggleGroup.Item>
           <ToggleGroup.Item value="y">Y</ToggleGroup.Item>

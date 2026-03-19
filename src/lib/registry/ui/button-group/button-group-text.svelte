@@ -2,7 +2,7 @@
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -33,7 +33,7 @@
     bind:this={ref}
     data-color={color}
     class={cn(
-      "flex neoretro-shadow items-center gap-2 neoretro-border neoretro-clr px-4 text-sm font-medium [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
+      "neoretro-shadow gap-2 neoretro-border neoretro-clr px-4 text-sm font-medium [&_svg:not([class*='size-'])]:size-4 flex items-center [&_svg]:pointer-events-none",
       className,
     )}
     {...restProps}

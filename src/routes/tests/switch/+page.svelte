@@ -1,31 +1,47 @@
 <script lang="ts">
-  import * as Card from '$lib/registry/ui/card/index.js';
-  import { Label } from '$lib/registry/ui/label/index.js';
-  import { Switch } from '$lib/registry/ui/switch/index.js';
+  import * as Card from '$lib/registry/ui/card/index.ts';
+  import { Label } from '$lib/registry/ui/label/index.ts';
+  import { Switch } from '$lib/registry/ui/switch/index.ts';
 </script>
 
-<div class="flex min-h-[500px] flex-col items-center justify-center gap-12 p-12">
+<div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Switch Tests</h1>
 
-  <div class="flex w-full max-w-lg flex-col gap-10">
+  <div class="max-w-lg gap-10 flex w-full flex-col">
     <Card.Root color="cyan">
       <Card.Header>
         <Card.Title>Basic Switches</Card.Title>
       </Card.Header>
-      <Card.Content class="flex flex-col gap-6">
-        <div class="flex items-center space-x-2">
+      <Card.Content class="gap-6 flex flex-col">
+        <div class="space-x-2 flex items-center">
           <Switch id="airplane-mode" color="cyan" />
-          <Label for="airplane-mode">Airplane Mode (Default Cyan)</Label>
+          <Label for="airplane-mode">Airplane Mode (Cyan)</Label>
         </div>
 
-        <div class="flex items-center space-x-2">
+        <div class="space-x-2 flex items-center">
           <Switch id="wifi-mode" color="magenta" checked />
           <Label for="wifi-mode">Wi-Fi (Magenta Pre-checked)</Label>
         </div>
 
-        <div class="flex items-center space-x-2">
+        <div class="space-x-2 flex items-center">
           <Switch id="bluetooth" color="yellow" checked />
           <Label for="bluetooth">Bluetooth (Yellow)</Label>
+        </div>
+        <div class="space-x-2 flex items-center">
+          <Switch id="bluetooth" color="red" checked />
+          <Label for="bluetooth">Bluetooth (Red)</Label>
+        </div>
+        <div class="space-x-2 flex items-center">
+          <Switch id="bluetooth" color="green" checked />
+          <Label for="bluetooth">Bluetooth (Green)</Label>
+        </div>
+        <div class="space-x-2 flex items-center">
+          <Switch id="bluetooth" color="white" checked />
+          <Label for="bluetooth">Bluetooth (White)</Label>
+        </div>
+        <div class="space-x-2 flex items-center">
+          <Switch id="bluetooth" color="blue" checked />
+          <Label for="bluetooth">Bluetooth (Blue)</Label>
         </div>
       </Card.Content>
     </Card.Root>
@@ -34,13 +50,13 @@
       <Card.Header>
         <Card.Title>Disabled States</Card.Title>
       </Card.Header>
-      <Card.Content class="flex flex-col gap-6">
-        <div class="flex items-center space-x-2">
+      <Card.Content class="gap-6 flex flex-col">
+        <div class="space-x-2 flex items-center">
           <Switch id="d1" disabled color="cyan" />
           <Label for="d1" class="opacity-50">Disabled Unchecked</Label>
         </div>
 
-        <div class="flex items-center space-x-2">
+        <div class="space-x-2 flex items-center">
           <Switch id="d2" checked color="green" disabled />
           <Label for="d2" class="opacity-50">Disabled Checked</Label>
         </div>

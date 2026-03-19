@@ -2,7 +2,7 @@
   import { Dialog as SheetPrimitive } from 'bits-ui';
 
   import { buttonVariants } from '$lib/registry/ui/button/index.ts';
-  import { cn } from '$lib/utils.js';
+  import { cn } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -10,7 +10,7 @@
     color,
     ...restProps
   }: SheetPrimitive.CloseProps & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 </script>
 

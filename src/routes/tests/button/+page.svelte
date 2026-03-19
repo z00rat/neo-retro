@@ -7,8 +7,7 @@
 <!-- All colors -->
 <section>
   <h3>Colors</h3>
-  <div class="flex flex-wrap gap-4">
-    <Button color="black">Black</Button>
+  <div class="gap-4 flex flex-wrap">
     <Button color="red">Red</Button>
     <Button color="green">Green</Button>
     <Button color="yellow">Yellow</Button>
@@ -22,7 +21,7 @@
 <!-- Sizes -->
 <section>
   <h3>Sizes</h3>
-  <div class="flex flex-wrap items-center gap-4">
+  <div class="gap-4 flex flex-wrap items-center">
     <Button color="blue" size="sm">Small</Button>
     <Button color="blue" size="default">Default</Button>
     <Button color="blue" size="lg">Large</Button>
@@ -33,7 +32,7 @@
 <!-- No shadow -->
 <section>
   <h3>Shadow</h3>
-  <div class="flex flex-wrap gap-4">
+  <div class="gap-4 flex flex-wrap">
     <Button color="red">With Shadow</Button>
     <Button color="red" noShadow>No Shadow</Button>
   </div>
@@ -42,7 +41,7 @@
 <!-- Disabled -->
 <section>
   <h3>Disabled</h3>
-  <div class="flex flex-wrap gap-4">
+  <div class="gap-4 flex flex-wrap">
     <Button color="green">Enabled</Button>
     <Button color="green" disabled>Disabled</Button>
   </div>
@@ -51,7 +50,7 @@
 <!-- As link -->
 <section>
   <h3>As Link</h3>
-  <div class="flex flex-wrap gap-4">
+  <div class="gap-4 flex flex-wrap">
     <Button color="cyan" href="#">Link</Button>
     <Button color="cyan" href="#" disabled>Disabled Link</Button>
   </div>

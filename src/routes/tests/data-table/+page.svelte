@@ -69,7 +69,7 @@
 <h1>Data Table</h1>
 
 <section>
-  <div class="neoretro-shadow overflow-hidden rounded neoretro-border">
+  <div class="rounded overflow-hidden">
     <Table.Root headerColor="blue" rowColor="white">
       <Table.Header>
         {#each table.getHeaderGroups() as headerGroup (headerGroup.id)}

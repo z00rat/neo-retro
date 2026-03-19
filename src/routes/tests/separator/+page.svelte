@@ -1,12 +1,12 @@
 <script lang="ts">
-  import * as Card from '$lib/registry/ui/card/index.js';
-  import { Separator } from '$lib/registry/ui/separator/index.js';
+  import * as Card from '$lib/registry/ui/card/index.ts';
+  import { Separator } from '$lib/registry/ui/separator/index.ts';
 </script>
 
-<div class="flex min-h-[500px] flex-col items-center justify-center gap-12 p-12">
+<div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Separator Tests</h1>
 
-  <div class="flex w-full max-w-2xl flex-col gap-10">
+  <div class="max-w-2xl gap-10 flex w-full flex-col">
     <Card.Root color="cyan">
       <Card.Header>
         <Card.Title>Basic Separators</Card.Title>
@@ -25,12 +25,13 @@
 
     <Card.Root color="yellow">
       <Card.Header>
-        <Card.Title>Colored Separators</Card.Title>
+        <Card.Title>Colored & Styled Separators</Card.Title>
       </Card.Header>
       <Card.Content class="space-y-4">
         <Separator color="magenta" thickness="md" />
-        <Separator color="blue" thickness="lg" />
-        <Separator color="red" thickness="sm" />
+        <Separator color="blue" thickness="lg" style="dashed" />
+        <Separator color="red" thickness="sm" style="dotted" />
+        <Separator color="black" thickness="md" style="dashed">DASHED</Separator>
       </Card.Content>
     </Card.Root>
 
@@ -48,7 +49,7 @@
       <Card.Header>
         <Card.Title>Vertical Separator</Card.Title>
       </Card.Header>
-      <Card.Content class="flex h-32 items-center space-x-4">
+      <Card.Content class="h-32 space-x-4 flex items-center">
         <div>Left</div>
         <Separator orientation="vertical" color="yellow" thickness="md" />
         <div>Right</div>

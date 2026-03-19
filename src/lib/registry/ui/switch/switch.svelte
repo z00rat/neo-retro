@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Switch as SwitchPrimitive } from 'bits-ui';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
+  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -10,7 +10,7 @@
     checked = $bindable(false),
     ...restProps
   }: WithoutChildrenOrChild<SwitchPrimitive.RootProps> & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 </script>
 
@@ -21,16 +21,13 @@
   data-pressable
   data-color={color}
   class={cn(
-    'peer inline-flex h-6 w-12 shrink-0 neoretro-shadow cursor-pointer items-center rounded neoretro-border bg-background text-foreground transition-colors focus-visible:neoretro-focus disabled:cursor-not-allowed',
-    'data-[state=checked]:bg-clr data-[state=checked]:text-on-clr data-[state=checked]:selection:bg-on-clr data-[state=checked]:selection:text-clr',
+    'peer h-6 w-12 neoretro-shadow rounded neoretro-border bg-background text-foreground focus-visible:neoretro-focus data-[state=checked]:bg-clr data-[state=checked]:text-on-clr data-[state=checked]:selection:bg-on-clr data-[state=checked]:selection:text-clr inline-flex shrink-0 cursor-pointer items-center transition-colors disabled:cursor-not-allowed',
     className,
   )}
   {...restProps}
 >
   <SwitchPrimitive.Thumb
     data-slot="switch-thumb"
-    class={cn(
-      'pointer-events-none block h-4 w-4 rounded neoretro-border bg-foreground ring-0 transition-transform data-disabled:opacity-50 data-[state=checked]:translate-x-6 data-[state=unchecked]:translate-x-1',
-    )}
+    class="h-4 w-4 rounded neoretro-border bg-foreground data-[state=checked]:translate-x-6 data-[state=unchecked]:translate-x-1 pointer-events-none block ring-0 transition-transform data-disabled:opacity-50"
   />
 </SwitchPrimitive.Root>

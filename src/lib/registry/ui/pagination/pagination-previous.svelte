@@ -6,20 +6,10 @@
   import { buttonVariants } from '$lib/registry/ui/button/index.js';
   import { cn } from '$lib/utils.js';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    children,
-    ...restProps
-  }: PaginationPrimitive.PrevButtonProps = $props();
+  let { ref = $bindable(null), class: className, ...restProps }: PaginationPrimitive.PrevButtonProps = $props();
 
   const getInactiveColor = getContext<() => any>('paginationInactiveColor');
 </script>
-
-{#snippet Fallback()}
-  <ChevronLeftIcon class="size-4" />
-  <span>Previous</span>
-{/snippet}
 
 <PaginationPrimitive.PrevButton
   bind:ref
@@ -27,6 +17,8 @@
   data-pressable
   data-color={getInactiveColor()}
   class={cn(buttonVariants({ size: 'default', class: 'gap-1 px-2.5 sm:pl-2.5' }), 'neoretro-clr', className)}
-  children={children || Fallback}
   {...restProps}
-/>
+>
+  <span class="sm:block hidden">Previous</span>
+  <ChevronLeftIcon />
+</PaginationPrimitive.PrevButton>

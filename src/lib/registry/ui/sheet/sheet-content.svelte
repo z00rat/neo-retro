@@ -2,7 +2,7 @@
   import { Dialog as SheetPrimitive } from 'bits-ui';
   import type { Snippet } from 'svelte';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
+  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   import SheetOverlay from './sheet-overlay.svelte';
 
@@ -15,7 +15,7 @@
     children,
     ...restProps
   }: WithoutChildrenOrChild<SheetPrimitive.ContentProps> & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     portalProps?: SheetPrimitive.PortalProps;
     side?: 'top' | 'right' | 'bottom' | 'left';
     children: Snippet;
@@ -29,15 +29,15 @@
     data-slot="sheet-content"
     data-color={color}
     class={cn(
-      'fixed z-50 flex flex-col gap-4 neoretro-border neoretro-clr transition duration-400 ease-in-out data-[state=closed]:animate-out data-[state=open]:animate-in',
+      'gap-4 neoretro-border neoretro-clr ease-in-out data-[state=closed]:animate-out data-[state=open]:animate-in fixed z-50 flex flex-col transition duration-400',
       side === 'top' &&
-        'inset-x-0 top-0 h-auto border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top',
+        'inset-x-0 top-0 data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top h-auto border-b',
       side === 'right' &&
-        'inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm',
+        'inset-y-0 right-0 data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm h-full w-3/4 border-l',
       side === 'bottom' &&
-        'inset-x-0 bottom-0 h-auto border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom',
+        'inset-x-0 bottom-0 data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom h-auto border-t',
       side === 'left' &&
-        'inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm',
+        'inset-y-0 left-0 data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm h-full w-3/4 border-r',
       className,
     )}
     {...restProps}

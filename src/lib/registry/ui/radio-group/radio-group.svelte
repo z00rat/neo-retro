@@ -2,7 +2,7 @@
   import { RadioGroup as RadioGroupPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
 
-  import { cn } from '$lib/utils.js';
+  import { cn } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -21,6 +21,6 @@
   bind:ref
   bind:value
   data-slot="radio-group"
-  class={cn('grid gap-2', className)}
+  class={cn('gap-2 grid', className)}
   {...restProps}
 />

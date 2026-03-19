@@ -5,7 +5,7 @@
   import { Button } from '$lib/registry/ui/button';
   import * as Item from '$lib/registry/ui/item';
 
-  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 
   const models = [
     {
@@ -82,7 +82,7 @@
         <Item.Description>Icon with a red background.</Item.Description>
       </Item.Content>
       <Item.Actions>
-        <Button color="black" size="sm">Action</Button>
+        <Button color="white" size="sm">Action</Button>
       </Item.Actions>
     </Item.Root>
     <Item.Root color="white">
@@ -92,7 +92,7 @@
         <Item.Description>Icon with a blue background.</Item.Description>
       </Item.Content>
     </Item.Root>
-    <Item.Root color="black">
+    <Item.Root color="white">
       <Item.Media variant="icon" color="green">✓</Item.Media>
       <Item.Content>
         <Item.Title>Green icon bg</Item.Title>
@@ -167,8 +167,8 @@
   </Item.Group>
 </section>
 
-<div class="flex w-full max-w-xl flex-col gap-6">
-  <Item.Group class="grid grid-cols-3 gap-4">
+<div class="max-w-xl gap-6 flex w-full flex-col">
+  <Item.Group class="gap-4 grid grid-cols-3">
     {#each models as model (model.name)}
       <Item.Root color="cyan">
         <Item.Header>
@@ -177,7 +177,7 @@
             alt={model.name}
             width="128"
             height="128"
-            class="aspect-square w-full rounded-sm object-cover"
+            class="rounded-sm aspect-square w-full object-cover"
           />
         </Item.Header>
         <Item.Content>
@@ -189,7 +189,7 @@
   </Item.Group>
 </div>
 
-<div class="mt-8 flex w-full max-w-md flex-col gap-8">
+<div class="mt-8 max-w-md gap-8 flex w-full flex-col">
   <Item.Group>
     {#each people as person, index (person.username)}
       <Item.Root color="blue">

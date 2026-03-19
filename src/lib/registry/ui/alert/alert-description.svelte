@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -14,7 +14,7 @@
 <div
   bind:this={ref}
   data-slot="alert-description"
-  class={cn('col-start-2 grid justify-items-start gap-1 text-sm font-normal [&_p]:leading-relaxed', className)}
+  class={cn('gap-1 text-sm [&_p]:leading-relaxed col-start-2 grid justify-items-start', className)}
   {...restProps}
 >
   {@render children?.()}

@@ -27,7 +27,7 @@
 <script lang="ts">
   import { Toggle as TogglePrimitive } from 'bits-ui';
 
-  import { cn } from '$lib/utils.js';
+  import { cn } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -40,7 +40,7 @@
   }: TogglePrimitive.RootProps & {
     size?: ToggleSize;
     noShadow?: boolean;
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 </script>
 
@@ -51,8 +51,8 @@
   data-pressable
   data-color={color}
   class={cn(
-    toggleVariants({ size, noShadow }),
     'data-[state=on]:bg-clr data-[state=on]:text-on-clr data-[state=on]:selection:bg-on-clr data-[state=on]:selection:text-clr',
+    toggleVariants({ size, noShadow }),
     className,
   )}
   {...restProps}

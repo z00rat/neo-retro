@@ -9,9 +9,9 @@
 <section>
   <h3>Horizontal</h3>
   <ButtonGroup.Root>
-    <ButtonGroup.Button color="cyan">Left</ButtonGroup.Button>
-    <ButtonGroup.Button color="cyan">Center</ButtonGroup.Button>
-    <ButtonGroup.Button color="cyan">Right</ButtonGroup.Button>
+    <Button color="cyan">Left</Button>
+    <Button color="cyan">Center</Button>
+    <Button color="cyan">Right</Button>
   </ButtonGroup.Root>
 </section>
 
@@ -19,9 +19,9 @@
 <section>
   <h3>Vertical</h3>
   <ButtonGroup.Root orientation="vertical">
-    <ButtonGroup.Button color="magenta">Top</ButtonGroup.Button>
-    <ButtonGroup.Button color="magenta">Middle</ButtonGroup.Button>
-    <ButtonGroup.Button color="magenta">Bottom</ButtonGroup.Button>
+    <Button color="magenta">Top</Button>
+    <Button color="magenta">Middle</Button>
+    <Button color="magenta">Bottom</Button>
   </ButtonGroup.Root>
 </section>
 
@@ -29,9 +29,9 @@
 <section>
   <h3>With Separator</h3>
   <ButtonGroup.Root>
-    <ButtonGroup.Button color="blue">Save</ButtonGroup.Button>
-    <ButtonGroup.Separator color="blue" />
-    <ButtonGroup.Button color="blue" size="icon">▼</ButtonGroup.Button>
+    <Button color="blue">Save</Button>
+    <ButtonGroup.Separator thickness="lg" />
+    <Button color="blue" size="icon">▼</Button>
   </ButtonGroup.Root>
 </section>
 
@@ -40,7 +40,7 @@
   <h3>With Text</h3>
   <ButtonGroup.Root>
     <ButtonGroup.Text color="white">Label</ButtonGroup.Text>
-    <ButtonGroup.Button color="green">Action</ButtonGroup.Button>
+    <Button color="green">Action</Button>
   </ButtonGroup.Root>
 </section>
 
@@ -48,9 +48,9 @@
 <section>
   <h3>Mixed Colors</h3>
   <ButtonGroup.Root>
-    <ButtonGroup.Button color="green">Accept</ButtonGroup.Button>
-    <ButtonGroup.Button color="yellow">Maybe</ButtonGroup.Button>
-    <ButtonGroup.Button color="red">Reject</ButtonGroup.Button>
+    <Button color="green">Accept</Button>
+    <Button color="yellow">Maybe</Button>
+    <Button color="red">Reject</Button>
   </ButtonGroup.Root>
 </section>
 
@@ -58,11 +58,11 @@
 <section>
   <h3>Many Buttons</h3>
   <ButtonGroup.Root>
-    <ButtonGroup.Button color="green">1</ButtonGroup.Button>
-    <ButtonGroup.Button color="green">2</ButtonGroup.Button>
-    <ButtonGroup.Button color="green">3</ButtonGroup.Button>
-    <ButtonGroup.Button color="green">4</ButtonGroup.Button>
-    <ButtonGroup.Button color="green">5</ButtonGroup.Button>
+    <Button color="green">1</Button>
+    <Button color="green">2</Button>
+    <Button color="green">3</Button>
+    <Button color="green">4</Button>
+    <Button color="green">5</Button>
   </ButtonGroup.Root>
 </section>
 
@@ -70,20 +70,20 @@
 <section>
   <h3>Icon Buttons</h3>
   <ButtonGroup.Root>
-    <ButtonGroup.Button color="white" size="icon">←</ButtonGroup.Button>
-    <ButtonGroup.Button color="white" size="icon">→</ButtonGroup.Button>
-    <ButtonGroup.Button color="white" size="icon">↑</ButtonGroup.Button>
-    <ButtonGroup.Button color="white" size="icon">↓</ButtonGroup.Button>
+    <Button color="white" size="icon">←</Button>
+    <Button color="white" size="icon">→</Button>
+    <Button color="white" size="icon">↑</Button>
+    <Button color="white" size="icon">↓</Button>
   </ButtonGroup.Root>
 </section>
 
-<!-- Compare: regular Button vs ButtonGroup.Button -->
+<!-- Compare: regular Button vs Button -->
 <section>
   <h3>Comparison</h3>
   <div class="space-y-4">
     <div>
       <p class="mb-2 text-sm font-semibold">Regular Buttons (individual shadows):</p>
-      <div class="flex gap-2">
+      <div class="gap-2 flex">
         <Button color="cyan">A</Button>
         <Button color="cyan">B</Button>
         <Button color="cyan">C</Button>
@@ -92,9 +92,9 @@
     <div>
       <p class="mb-2 text-sm font-semibold">Button Group (unified shadow):</p>
       <ButtonGroup.Root>
-        <ButtonGroup.Button color="cyan">A</ButtonGroup.Button>
-        <ButtonGroup.Button color="cyan">B</ButtonGroup.Button>
-        <ButtonGroup.Button color="cyan">C</ButtonGroup.Button>
+        <Button color="cyan">A</Button>
+        <Button color="cyan">B</Button>
+        <Button color="cyan">C</Button>
       </ButtonGroup.Root>
     </div>
   </div>

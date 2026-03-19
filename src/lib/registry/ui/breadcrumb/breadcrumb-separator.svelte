@@ -2,7 +2,7 @@
   import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
   import type { HTMLLiAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let { ref = $bindable(null), class: className, children, ...restProps }: WithElementRef<HTMLLiAttributes> = $props();
 </script>
@@ -12,7 +12,7 @@
   data-slot="breadcrumb-separator"
   role="presentation"
   aria-hidden="true"
-  class={cn('[&>svg]:size-3.5', className)}
+  class={cn('[&>svg]:size-4', className)}
   {...restProps}
 >
   {#if children}

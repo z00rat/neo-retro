@@ -23,7 +23,7 @@
           id="d-name"
           type="text"
           placeholder="Enter name"
-          class="w-full rounded neoretro-border px-2 py-1 text-sm"
+          class="rounded neoretro-border px-2 py-1 text-sm w-full"
         />
       </div>
       <Dialog.Footer closeColor="red">
@@ -36,7 +36,7 @@
 <!-- Colors -->
 <section>
   <h3>Colors</h3>
-  <div class="flex flex-wrap gap-4">
+  <div class="gap-4 flex flex-wrap">
     <Dialog.Root>
       <Dialog.Trigger>
         <Button color="cyan">Cyan</Button>
@@ -47,7 +47,7 @@
           <Dialog.Description>A dialog on a cyan background.</Dialog.Description>
         </Dialog.Header>
         <Dialog.Footer closeColor="white">
-          <Button color="black">Confirm</Button>
+          <Button color="green">Confirm</Button>
         </Dialog.Footer>
       </Dialog.Content>
     </Dialog.Root>
@@ -62,19 +62,19 @@
           <Dialog.Description>A dialog on a yellow background.</Dialog.Description>
         </Dialog.Header>
         <Dialog.Footer closeColor="white">
-          <Button color="black">OK</Button>
+          <Button color="blue">OK</Button>
         </Dialog.Footer>
       </Dialog.Content>
     </Dialog.Root>
 
     <Dialog.Root>
       <Dialog.Trigger>
-        <Button color="black">Black</Button>
+        <Button color="red">Red</Button>
       </Dialog.Trigger>
-      <Dialog.Content color="black">
+      <Dialog.Content color="red">
         <Dialog.Header>
-          <Dialog.Title>Black Dialog</Dialog.Title>
-          <Dialog.Description>A dialog on a black background.</Dialog.Description>
+          <Dialog.Title>Red Dialog</Dialog.Title>
+          <Dialog.Description>A dialog on a red background.</Dialog.Description>
         </Dialog.Header>
         <Dialog.Footer closeColor="white">
           <Button color="green">Done</Button>
@@ -97,10 +97,27 @@
         <Dialog.Description>This dialog has custom footer buttons.</Dialog.Description>
       </Dialog.Header>
       <Dialog.Footer showCloseButton={false}>
-        <Dialog.Close class="w-full sm:w-auto">
+        <Dialog.Close class="sm:w-auto w-full">
           <Button color="white" class="w-full">Dismiss</Button>
         </Dialog.Close>
-        <Button color="black">Save</Button>
+        <Button color="white">Save</Button>
+      </Dialog.Footer>
+    </Dialog.Content>
+  </Dialog.Root>
+</section>
+<section>
+  <h3>No Built-in Close</h3>
+  <Dialog.Root>
+    <Dialog.Trigger>
+      <Button color="magenta">Custom footer</Button>
+    </Dialog.Trigger>
+    <Dialog.Content color="magenta">
+      <Dialog.Header>
+        <Dialog.Title>Custom Footer</Dialog.Title>
+        <Dialog.Description>This dialog has custom footer buttons.</Dialog.Description>
+      </Dialog.Header>
+      <Dialog.Footer showCloseButton closeColor="red">
+        <Button color="white">Save</Button>
       </Dialog.Footer>
     </Dialog.Content>
   </Dialog.Root>

@@ -10,7 +10,7 @@
 <!-- All colors -->
 <section>
   <h3>Colors</h3>
-  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+  <div class="gap-4 sm:grid-cols-2 lg:grid-cols-4 grid grid-cols-1">
     {#each colors as color}
       <Card.Root {color}>
         <Card.Header>
@@ -36,7 +36,7 @@
         <p>This card has a footer with actions.</p>
       </Card.Content>
       <Card.Footer>
-        <Button color="black" size="sm">Save</Button>
+        <Button color="blue" size="sm">Save</Button>
       </Card.Footer>
     </Card.Root>
   </div>
@@ -51,7 +51,7 @@
         <Card.Title>Notifications</Card.Title>
         <Card.Description>You have 3 unread messages.</Card.Description>
         <Card.Action>
-          <Button color="black" size="sm">View all</Button>
+          <Button color="green" size="sm">View all</Button>
         </Card.Action>
       </Card.Header>
       <Card.Content>Content goes here.</Card.Content>
@@ -62,16 +62,14 @@
 <!-- No shadow -->
 <section>
   <h3>Shadow</h3>
-  <div class="flex max-w-sm flex-wrap gap-4">
-    <Card.Root color="magenta">
-      <Card.Header>
-        <Card.Title>With shadow</Card.Title>
-      </Card.Header>
-    </Card.Root>
-    <Card.Root color="magenta" noShadow>
-      <Card.Header>
-        <Card.Title>No shadow</Card.Title>
-      </Card.Header>
-    </Card.Root>
-  </div>
+  <Card.Root class="my-6" color="magenta">
+    <Card.Header>
+      <Card.Title>With shadow</Card.Title>
+    </Card.Header>
+  </Card.Root>
+  <Card.Root class="my-6" color="magenta" noShadow>
+    <Card.Header>
+      <Card.Title>No shadow</Card.Title>
+    </Card.Header>
+  </Card.Root>
 </section>

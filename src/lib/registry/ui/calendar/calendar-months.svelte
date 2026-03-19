@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -11,6 +11,6 @@
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props();
 </script>
 
-<div bind:this={ref} class={cn('relative flex flex-col gap-4 md:flex-row', className)} {...restProps}>
+<div bind:this={ref} class={cn('gap-4 md:flex-row relative flex flex-col', className)} {...restProps}>
   {@render children?.()}
 </div>

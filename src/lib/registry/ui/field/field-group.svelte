@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -15,7 +15,7 @@
   bind:this={ref}
   data-slot="field-group"
   class={cn(
-    '@container/field-group flex w-full flex-col gap-7 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4',
+    'gap-7 data-[slot=checkbox-group]:gap-3 *:data-[slot=field-group]:gap-4 @container/field-group flex w-full flex-col',
     className,
   )}
   {...restProps}

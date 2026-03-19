@@ -8,9 +8,9 @@
 <section>
   <h3>Basic</h3>
   <div class="max-w-xs">
-    <Select.Root type="single" hoverColor="cyan">
-      <Select.Trigger color="white">Select a fruit</Select.Trigger>
-      <Select.Content color="white">
+    <Select.Root type="single" color="white">
+      <Select.Trigger>Select a fruit</Select.Trigger>
+      <Select.Content>
         <Select.Group>
           <Select.GroupHeading>Fruits</Select.GroupHeading>
           <Select.Item value="apple">Apple</Select.Item>
@@ -26,11 +26,11 @@
 <!-- Colors -->
 <section>
   <h3>Colors</h3>
-  <div class="flex flex-wrap gap-4">
+  <div class="gap-4 flex flex-wrap">
     <div class="w-40">
-      <Select.Root type="single" hoverColor="cyan">
-        <Select.Trigger color="cyan">Cyan</Select.Trigger>
-        <Select.Content color="cyan">
+      <Select.Root type="single" color="cyan">
+        <Select.Trigger>Cyan</Select.Trigger>
+        <Select.Content>
           <Select.Group>
             <Select.Item value="a">Option A</Select.Item>
             <Select.Item value="b">Option B</Select.Item>
@@ -39,9 +39,9 @@
       </Select.Root>
     </div>
     <div class="w-40">
-      <Select.Root type="single" hoverColor="yellow">
-        <Select.Trigger color="yellow">Yellow</Select.Trigger>
-        <Select.Content color="yellow">
+      <Select.Root type="single" color="yellow">
+        <Select.Trigger>Yellow</Select.Trigger>
+        <Select.Content>
           <Select.Group>
             <Select.Item value="a">Option A</Select.Item>
             <Select.Item value="b">Option B</Select.Item>
@@ -50,9 +50,9 @@
       </Select.Root>
     </div>
     <div class="w-40">
-      <Select.Root type="single" hoverColor="black">
-        <Select.Trigger color="black">Black</Select.Trigger>
-        <Select.Content color="black">
+      <Select.Root type="single" color="red">
+        <Select.Trigger>Red</Select.Trigger>
+        <Select.Content>
           <Select.Group>
             <Select.Item value="a">Option A</Select.Item>
             <Select.Item value="b">Option B</Select.Item>

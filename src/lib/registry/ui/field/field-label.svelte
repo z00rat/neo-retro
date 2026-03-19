@@ -2,7 +2,7 @@
   import type { ComponentProps } from 'svelte';
 
   import { Label } from '$lib/registry/ui/label/index.ts';
-  import { cn } from '$lib/utils.js';
+  import { cn } from '$lib/utils.ts';
 
   let { ref = $bindable(null), class: className, children, ...restProps }: ComponentProps<typeof Label> = $props();
 </script>
@@ -11,7 +11,7 @@
   bind:ref
   data-slot="field-label"
   class={cn(
-    'flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:neoretro-disable has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded has-[>[data-slot=field]]:neoretro-border *:data-[slot=field]:p-4',
+    'gap-2 leading-snug group-data-[disabled=true]/field:neoretro-disable has-[>[data-slot=field]]:rounded has-[>[data-slot=field]]:neoretro-border *:data-[slot=field]:p-4 flex w-fit has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col',
     className,
   )}
   {...restProps}

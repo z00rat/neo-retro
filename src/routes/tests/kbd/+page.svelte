@@ -4,12 +4,12 @@
   const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
-<h1>Keyboard/KBD</h1>
+<h1>KBD</h1>
 
 <section>
   <h3>Colors</h3>
   <div class="space-y-4">
-    <div class="flex flex-wrap gap-4">
+    <div class="gap-4 flex flex-wrap">
       {#each colors as color}
         <Kbd {color}>Ctrl+{color.charAt(0).toUpperCase() + color.slice(1)}</Kbd>
       {/each}

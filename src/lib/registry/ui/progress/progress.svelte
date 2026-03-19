@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Progress as ProgressPrimitive } from 'bits-ui';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
+  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -15,7 +15,7 @@
   }: WithoutChildrenOrChild<ProgressPrimitive.RootProps> & {
     noShadow?: boolean;
     indicatorColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-    trackColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    trackColor?: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 </script>
 
@@ -24,7 +24,7 @@
   data-slot="progress"
   data-color={trackColor}
   class={cn(
-    'relative h-4 w-full overflow-hidden rounded neoretro-border neoretro-clr',
+    'h-4 rounded neoretro-border neoretro-clr relative w-full overflow-hidden',
     noShadow ? '' : 'neoretro-shadow',
     className,
   )}
@@ -35,7 +35,7 @@
   <div
     data-slot="progress-indicator"
     data-color={indicatorColor}
-    class={cn('h-full w-full flex-1 neoretro-clr transition-all')}
+    class={cn('inset-0 rounded neoretro-clr absolute transition-all')}
     style="transform: translateX(-{100 - (100 * (value ?? 0)) / (max ?? 1)}%)"
   ></div>
 </ProgressPrimitive.Root>

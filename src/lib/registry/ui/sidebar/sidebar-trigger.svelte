@@ -3,10 +3,10 @@
   import { getContext } from 'svelte';
   import type { ComponentProps } from 'svelte';
 
-  import { Button } from '$lib/registry/ui/button/index.js';
-  import { cn } from '$lib/utils.js';
+  import { Button } from '$lib/registry/ui/button/index.ts';
+  import { cn } from '$lib/utils.ts';
 
-  import { useSidebar } from './context.svelte.js';
+  import { useSidebar } from './context.svelte.ts';
 
   let {
     ref = $bindable(null),
@@ -19,14 +19,13 @@
 
   const sidebar = useSidebar();
   const sidebarColor = getContext<() => any>('sidebarColor');
-  const themeColors = $derived(sidebarColor() as { color: any; activeColor: any });
 </script>
 
 <Button
   {...restProps}
   data-sidebar="trigger"
   data-slot="sidebar-trigger"
-  color={themeColors.color}
+  color={sidebarColor().color}
   noShadow
   size="icon"
   class={cn('size-7 hover:bg-transparent', className)}

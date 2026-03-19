@@ -2,7 +2,7 @@
   import ChevronUpIcon from '@lucide/svelte/icons/chevron-up';
   import { Select as SelectPrimitive } from 'bits-ui';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
+  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -14,7 +14,7 @@
 <SelectPrimitive.ScrollUpButton
   bind:ref
   data-slot="select-scroll-up-button"
-  class={cn('flex cursor-pointer items-center justify-center py-1', className)}
+  class={cn('py-1 flex cursor-pointer items-center justify-center', className)}
   {...restProps}
 >
   <ChevronUpIcon class="size-4" />

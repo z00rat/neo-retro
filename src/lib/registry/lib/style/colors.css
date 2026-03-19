@@ -1,5 +1,27 @@
-/* ── Dracula ── */
-:root[data-theme='dracula'] {
+[data-theme='default'] {
+  --black: #090300;
+  --red: #db2d20;
+  --green: #01a252;
+  --yellow: #fded02;
+  --blue: #01a0e4;
+  --magenta: #a16a94;
+  --cyan: #b5e4f4;
+  --white: #a5a2a2;
+
+  --text-on-black: #ffffff;
+  --text-on-red: #ffffff;
+  --text-on-green: #090300;
+  --text-on-yellow: #090300;
+  --text-on-blue: #090300;
+  --text-on-magenta: #090300;
+  --text-on-cyan: #090300;
+  --text-on-white: #090300;
+
+  --primary-background: #f7f7f7;
+  --primary-foreground: #4a4543;
+}
+
+[data-theme='dracula'] {
   --black: #282a36;
   --red: #ff5555;
   --green: #50fa7b;
@@ -20,12 +42,9 @@
 
   --primary-background: #282a36;
   --primary-foreground: #f8f8f2;
-
-  --ring: var(--cyan);
 }
 
-/* ── Gruvbox Dark ── */
-:root[data-theme='gruvbox-dark'] {
+[data-theme='gruvbox-dark'] {
   --black: #282828;
   --red: #fb4934;
   --green: #b8bb26;
@@ -46,12 +65,9 @@
 
   --primary-background: #282828;
   --primary-foreground: #ebdbb2;
-
-  --ring: var(--yellow);
 }
 
-/* ── Nord ── */
-:root[data-theme='nord'] {
+[data-theme='nord'] {
   --black: #2e3440;
   --red: #bf616a;
   --green: #a3be8c;
@@ -72,12 +88,9 @@
 
   --primary-background: #2e3440;
   --primary-foreground: #eceff4;
-
-  --ring: var(--cyan);
 }
 
-/* ── Solarized Dark ── */
-:root[data-theme='solarized-dark'] {
+[data-theme='solarized-dark'] {
   --black: #002b36;
   --red: #dc322f;
   --green: #859900;
@@ -98,12 +111,9 @@
 
   --primary-background: #002b36;
   --primary-foreground: #fdf6e3;
-
-  --ring: var(--cyan);
 }
 
-/* ── Tokyo Night ── */
-:root[data-theme='tokyo-night'] {
+[data-theme='tokyo-night'] {
   --black: #1a1b26;
   --red: #f7768e;
   --green: #9ece6a;
@@ -124,12 +134,9 @@
 
   --primary-background: #1a1b26;
   --primary-foreground: #a9b1d6;
-
-  --ring: var(--cyan);
 }
 
-/* ── Monokai ── */
-:root[data-theme='monokai'] {
+[data-theme='monokai'] {
   --black: #272822;
   --red: #f92672;
   --green: #a6e22e;
@@ -150,12 +157,9 @@
 
   --primary-background: #272822;
   --primary-foreground: #f8f8f2;
-
-  --ring: var(--cyan);
 }
 
-/* ── Catppuccin Mocha ── */
-:root[data-theme='catppuccin-mocha'] {
+[data-theme='catppuccin-mocha'] {
   --black: #1e1e2e;
   --red: #f38ba8;
   --green: #a6e3a1;
@@ -176,12 +180,9 @@
 
   --primary-background: #1e1e2e;
   --primary-foreground: #cdd6f4;
-
-  --ring: var(--magenta);
 }
 
-/* ── Solarized Light ── */
-:root[data-theme='solarized-light'] {
+[data-theme='solarized-light'] {
   --black: #073642;
   --red: #dc322f;
   --green: #859900;
@@ -202,6 +203,4 @@
 
   --primary-background: #fdf6e3;
   --primary-foreground: #657b83;
-
-  --ring: var(--cyan);
 }

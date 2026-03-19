@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -15,7 +15,7 @@
   bind:this={ref}
   data-slot="field-title"
   class={cn(
-    'flex w-fit items-center gap-2 text-sm leading-snug font-medium group-data-[disabled=true]/field:neoretro-disable',
+    'gap-2 text-sm leading-snug font-medium group-data-[disabled=true]/field:neoretro-disable flex w-fit items-center',
     className,
   )}
   {...restProps}

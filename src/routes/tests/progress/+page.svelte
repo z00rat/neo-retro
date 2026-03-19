@@ -13,7 +13,7 @@
     {#each colors as color}
       <div class="space-y-2">
         <label for="progress-{color}" class="text-sm font-medium">{color} indicator</label>
-        <Progress id="progress-{color}" value={45} indicatorColor={color} trackColor="white" />
+        <Progress id="progress-{color}" value={45} indicatorColor={color} />
       </div>
     {/each}
   </div>

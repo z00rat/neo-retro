@@ -3,7 +3,7 @@
   import { ContextMenu as ContextMenuPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { cn, type WithoutChild } from '$lib/utils.js';
+  import { cn, type WithoutChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -16,17 +16,15 @@
   } = $props();
 
   const getColor = getContext<() => any>('contextMenuColor');
-  const color = $derived(getColor());
 </script>
 
 <ContextMenuPrimitive.SubTrigger
   bind:ref
   data-slot="context-menu-sub-trigger"
-  data-highlighted-color={color}
+  data-highlighted-color={getColor()}
   data-inset={inset}
   class={cn(
-    "flex items-center gap-2 rounded px-2 py-1.5 text-sm outline-hidden select-none data-disabled:neoretro-disable data-inset:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-current",
-    'neoretro-highlighted',
+    "gap-2 rounded neoretro-highlighted px-2 py-1.5 text-sm data-disabled:neoretro-disable data-inset:pl-8 [&_svg:not([class*='size-'])]:size-4 flex items-center outline-hidden select-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='text-'])]:text-current",
     className,
   )}
   {...restProps}

@@ -2,7 +2,7 @@
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -16,17 +16,9 @@
   } = $props();
 
   const hasContent = $derived.by(() => {
-    // has slotted error
     if (children) return true;
-
-    // no errors
     if (!errors) return false;
-
-    // has an error but no message
-    if (errors.length === 1 && !errors[0]?.message) {
-      return false;
-    }
-
+    if (errors.length === 1 && !errors[0]?.message) return false;
     return true;
   });
 
@@ -47,7 +39,7 @@
     {:else if singleErrorMessage}
       {singleErrorMessage}
     {:else if isMultipleErrors}
-      <ul class="ml-4 flex list-disc flex-col gap-1">
+      <ul class="ml-4 gap-1 flex list-disc flex-col">
         {#each errors ?? [] as error, index (index)}
           {#if error?.message}
             <li>{error.message}</li>

@@ -13,39 +13,39 @@
   import SendIcon from '@lucide/svelte/icons/send';
   import StarIcon from '@lucide/svelte/icons/star';
 
-  import * as Card from '$lib/registry/ui/card/index.js';
-  import * as DropdownMenu from '$lib/registry/ui/dropdown-menu/index.js';
-  import * as InputGroup from '$lib/registry/ui/input-group/index.js';
-  import { Separator } from '$lib/registry/ui/separator/index.js';
-  import * as Tooltip from '$lib/registry/ui/tooltip/index.js';
+  import * as Card from '$lib/registry/ui/card/index.ts';
+  import * as DropdownMenu from '$lib/registry/ui/dropdown-menu/index.ts';
+  import * as InputGroup from '$lib/registry/ui/input-group/index.ts';
+  import { Separator } from '$lib/registry/ui/separator/index.ts';
+  import * as Tooltip from '$lib/registry/ui/tooltip/index.ts';
 </script>
 
-<div class="flex min-h-[500px] flex-col items-center justify-center gap-12 p-12">
+<div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Input Group Tests</h1>
 
-  <div class="flex w-full max-w-lg flex-col gap-8">
+  <div class="max-w-lg gap-8 flex w-full flex-col">
     <Card.Root color="yellow">
       <Card.Header>
         <Card.Title>Input Addons</Card.Title>
       </Card.Header>
-      <Card.Content class="flex flex-col gap-8">
+      <Card.Content class="gap-8 flex flex-col">
         <!-- Icon Addon: Inline Start -->
-        <div class="flex flex-col gap-1.5">
+        <div class="gap-1.5 flex flex-col">
           <label for="ig-email" class="text-sm font-bold">Email (Icon Addon)</label>
           <InputGroup.Root>
             <InputGroup.Addon>
-              <MailIcon class="text-muted-foreground" />
+              <MailIcon />
             </InputGroup.Addon>
             <InputGroup.Input id="ig-email" type="email" placeholder="user@neo-retro.dev" />
           </InputGroup.Root>
         </div>
 
         <!-- Text Addon: Inline Start -->
-        <div class="flex flex-col gap-1.5">
+        <div class="gap-1.5 flex flex-col">
           <label for="ig-url" class="text-sm font-bold">URL (Text Addon)</label>
           <InputGroup.Root>
             <InputGroup.Addon>
-              <LinkIcon class="text-muted-foreground" />
+              <LinkIcon />
               https://
             </InputGroup.Addon>
             <InputGroup.Input id="ig-url" type="url" placeholder="example.com" />
@@ -53,18 +53,18 @@
         </div>
 
         <!-- Icon Addon: Inline End -->
-        <div class="flex flex-col gap-1.5">
+        <div class="gap-1.5 flex flex-col">
           <label for="ig-password" class="text-sm font-bold">Password (End Icon)</label>
           <InputGroup.Root>
             <InputGroup.Input id="ig-password" type="password" placeholder="••••••••" />
             <InputGroup.Addon align="inline-end">
-              <EyeIcon class="text-muted-foreground" />
+              <EyeIcon />
             </InputGroup.Addon>
           </InputGroup.Root>
         </div>
 
         <!-- Button Addon: Search -->
-        <div class="flex flex-col gap-1.5">
+        <div class="gap-1.5 flex flex-col">
           <label for="ig-search" class="text-sm font-bold">Search (Button Addon)</label>
           <InputGroup.Root>
             <InputGroup.Input id="ig-search" type="text" placeholder="Search the universe..." />
@@ -77,15 +77,15 @@
         </div>
 
         <!-- Username with @ icon + Addon -->
-        <div class="flex flex-col gap-1.5">
+        <div class="gap-1.5 flex flex-col">
           <label for="ig-username" class="text-sm font-bold">Username</label>
           <InputGroup.Root>
             <InputGroup.Addon>
-              <AtSignIcon class="text-muted-foreground" />
+              <AtSignIcon />
             </InputGroup.Addon>
             <InputGroup.Input id="ig-username" type="text" placeholder="username" />
             <InputGroup.Addon align="inline-end">
-              <InputGroup.Button color="black" size="icon-sm">
+              <InputGroup.Button color="white" size="icon-sm">
                 <CopyIcon />
               </InputGroup.Button>
             </InputGroup.Addon>
@@ -93,18 +93,18 @@
         </div>
 
         <!-- Text suffix -->
-        <div class="flex flex-col gap-1.5">
+        <div class="gap-1.5 flex flex-col">
           <label for="ig-price" class="text-sm font-bold">Pricing (Text Suffix)</label>
           <InputGroup.Root>
             <InputGroup.Input id="ig-price" type="number" placeholder="0.00" />
             <InputGroup.Addon align="inline-end">
-              <InputGroup.Text class="text-muted-foreground">USD</InputGroup.Text>
+              <InputGroup.Text>USD</InputGroup.Text>
             </InputGroup.Addon>
           </InputGroup.Root>
         </div>
 
         <!-- Textarea variant -->
-        <div class="flex flex-col gap-1.5">
+        <div class="gap-1.5 flex flex-col">
           <label for="ig-textarea" class="text-sm font-bold">Message (Textarea)</label>
           <InputGroup.Root>
             <InputGroup.Textarea id="ig-textarea" placeholder="Write your message here..." />
@@ -117,7 +117,7 @@
         </div>
 
         <!-- Invalid state -->
-        <div class="flex flex-col gap-1.5">
+        <div class="gap-1.5 flex flex-col">
           <label for="ig-invalid" class="text-sm font-bold text-red">Invalid State</label>
           <InputGroup.Root>
             <InputGroup.Addon>
@@ -130,11 +130,11 @@
     </Card.Root>
   </div>
 
-  <Card.Root class="w-full max-w-sm" color="blue">
+  <Card.Root class="max-w-sm w-full" color="blue">
     <Card.Header>
       <Card.Title>Extended Scenarios</Card.Title>
     </Card.Header>
-    <Card.Content class="grid gap-6">
+    <Card.Content class="gap-6 grid">
       <InputGroup.Root>
         <InputGroup.Input placeholder="Search..." />
         <InputGroup.Addon>
@@ -148,31 +148,33 @@
           <InputGroup.Text>https://</InputGroup.Text>
         </InputGroup.Addon>
         <InputGroup.Addon align="inline-end">
-          <Tooltip.Root>
-            <Tooltip.Trigger>
-              {#snippet child({ props })}
-                <InputGroup.Button {...props} color="black" class="rounded-full" size="icon-xs">
-                  <InfoIcon />
-                </InputGroup.Button>
-              {/snippet}
-            </Tooltip.Trigger>
-            <Tooltip.Content color="black">This is content in a tooltip.</Tooltip.Content>
-          </Tooltip.Root>
+          <Tooltip.Provider>
+            <Tooltip.Root>
+              <Tooltip.Trigger>
+                {#snippet child({ props })}
+                  <InputGroup.Button {...props} color="blue" class="rounded-full" size="icon-xs">
+                    <InfoIcon />
+                  </InputGroup.Button>
+                {/snippet}
+              </Tooltip.Trigger>
+              <Tooltip.Content color="black">This is content in a tooltip.</Tooltip.Content>
+            </Tooltip.Root>
+          </Tooltip.Provider>
         </InputGroup.Addon>
       </InputGroup.Root>
       <InputGroup.Root>
         <InputGroup.Textarea placeholder="Ask, Search or Chat..." />
         <InputGroup.Addon align="block-end">
-          <InputGroup.Button color="black" class="rounded-full" size="icon-xs">
+          <InputGroup.Button color="blue" class="rounded-full" size="icon-xs">
             <PlusIcon />
           </InputGroup.Button>
           <DropdownMenu.Root>
             <DropdownMenu.Trigger>
               {#snippet child({ props })}
-                <InputGroup.Button {...props} color="black">Auto</InputGroup.Button>
+                <InputGroup.Button {...props} color="blue">Auto</InputGroup.Button>
               {/snippet}
             </DropdownMenu.Trigger>
-            <DropdownMenu.Content side="top" align="start" class="[--radius:0.95rem]" color="yellow">
+            <DropdownMenu.Content side="top" align="start" class="[--radius:0.95rem]" color="blue">
               <DropdownMenu.Item>Auto</DropdownMenu.Item>
               <DropdownMenu.Item>Agent</DropdownMenu.Item>
               <DropdownMenu.Item>Manual</DropdownMenu.Item>
@@ -189,7 +191,7 @@
       <InputGroup.Root>
         <InputGroup.Input placeholder="@shadcn" />
         <InputGroup.Addon align="inline-end">
-          <div class="bg-primary text-primary-foreground flex size-4 items-center justify-center rounded-full">
+          <div class="size-4 flex items-center justify-center rounded-full">
             <CheckIcon class="size-3" />
           </div>
         </InputGroup.Addon>
@@ -197,11 +199,11 @@
     </Card.Content>
   </Card.Root>
 
-  <Card.Root class="w-full max-w-sm" color="green">
+  <Card.Root class="max-w-sm w-full" color="green">
     <Card.Header>
       <Card.Title>Mixed Inputs</Card.Title>
     </Card.Header>
-    <Card.Content class="grid gap-6">
+    <Card.Content class="gap-6 grid">
       <InputGroup.Root>
         <InputGroup.Input placeholder="Search..." />
         <InputGroup.Addon>
@@ -233,11 +235,11 @@
     </Card.Content>
   </Card.Root>
 
-  <Card.Root class="w-full max-w-sm" color="white">
+  <Card.Root class="max-w-sm w-full" color="white">
     <Card.Header>
       <Card.Title>Affixes</Card.Title>
     </Card.Header>
-    <Card.Content class="grid gap-6">
+    <Card.Content class="gap-6 grid">
       <InputGroup.Root>
         <InputGroup.Addon>
           <InputGroup.Text>$</InputGroup.Text>
@@ -265,7 +267,7 @@
       <InputGroup.Root>
         <InputGroup.Textarea placeholder="Enter your message" />
         <InputGroup.Addon align="block-end">
-          <InputGroup.Text class="text-muted-foreground text-xs">120 characters left</InputGroup.Text>
+          <InputGroup.Text class="text-xs">120 characters left</InputGroup.Text>
         </InputGroup.Addon>
       </InputGroup.Root>
     </Card.Content>

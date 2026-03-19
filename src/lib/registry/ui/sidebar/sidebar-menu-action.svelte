@@ -3,7 +3,7 @@
   import type { Snippet } from 'svelte';
   import type { HTMLButtonAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.js';
+  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -18,23 +18,17 @@
   } = $props();
 
   const sidebarColor = getContext<() => any>('sidebarColor');
-  const themeColors = $derived(sidebarColor() as { color: any; activeColor: any });
 
   const mergedProps = $derived({
     class: cn(
-      'outline-hidden absolute right-1 top-1.5 flex aspect-square w-5 items-center justify-center rounded p-0 transition-[transform,color,background-color] focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
-      'hover:bg-on-clr hover:text-clr',
+      'outline-hidden absolute right-1 top-1.5 flex aspect-square w-5 items-center justify-center rounded p-0 transition-[transform,color,background-color] focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0 hover:bg-on-clr hover:text-clr',
       // Increases the hit area of the button on mobile.
-      'after:absolute after:-inset-2 md:after:hidden',
-      'peer-data-[size=sm]/menu-button:top-1',
-      'peer-data-[size=default]/menu-button:top-1.5',
-      'peer-data-[size=lg]/menu-button:top-2.5',
-      'group-data-[collapsible=icon]:hidden',
+      'after:absolute after:-inset-2 md:after:hidden peer-data-[size=sm]/menu-button:top-1 peer-data-[size=default]/menu-button:top-1.5 peer-data-[size=lg]/menu-button:top-2.5 group-data-[collapsible=icon]:hidden',
       showOnHover &&
         'group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0',
       className,
     ),
-    'data-color': themeColors.color,
+    'data-color': sidebarColor().color,
     'data-slot': 'sidebar-menu-action',
     'data-sidebar': 'menu-action',
     ...restProps,

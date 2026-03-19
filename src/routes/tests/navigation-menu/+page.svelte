@@ -4,13 +4,13 @@
   import CircleHelpIcon from '@lucide/svelte/icons/circle-help';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { IsMobile } from '$lib/registry/hooks/is-mobile.svelte.js';
-  import * as NavigationMenu from '$lib/registry/ui/navigation-menu/index.js';
-  import { cn } from '$lib/utils.js';
+  import { IsMobile } from '$lib/registry/hooks/is-mobile.svelte.ts';
+  import * as NavigationMenu from '$lib/registry/ui/navigation-menu/index.ts';
+  import { cn } from '$lib/utils.ts';
 
   const isMobile = new IsMobile();
 
-  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 
   const components: { title: string; href: string; description: string }[] = [
     {
@@ -62,14 +62,14 @@
           {href}
           {...props as any}
           class={cn(
-            'block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none',
+            'space-y-1 p-3 block leading-none no-underline transition-colors outline-none select-none',
             props.class as string,
             className,
           )}
           {...restProps}
         >
-          <div class="text-sm leading-none font-bold">{title}</div>
-          <p class="text-muted-foreground line-clamp-2 text-sm leading-snug">
+          <div class="text-sm font-bold leading-none">{title}</div>
+          <p class="text-sm leading-snug line-clamp-2">
             {content}
           </p>
         </a>
@@ -80,7 +80,7 @@
 
 <h1>Navigation Menu</h1>
 
-<section class="flex min-h-svh flex-col items-start gap-64 space-y-12 pb-32">
+<section class="gap-64 space-y-12 pb-32 flex min-h-svh flex-col items-start">
   {#each colors as color}
     <div>
       <h3 class="mb-2 capitalize">{color} Theme</h3>
@@ -90,17 +90,15 @@
             <NavigationMenu.Item>
               <NavigationMenu.Trigger>Home</NavigationMenu.Trigger>
               <NavigationMenu.Content>
-                <ul class="grid gap-2 p-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                <ul class="gap-2 p-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] grid">
                   <li class="row-span-3">
                     <NavigationMenu.Link
-                      class="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden select-none focus:shadow-md md:p-6"
+                      class="rounded p-4 focus:shadow-md md:p-6 flex h-full w-full flex-col justify-end no-underline outline-hidden select-none"
                     >
                       {#snippet child({ props })}
                         <a {...props} href="/">
                           <div class="mt-4 mb-2 text-lg font-bold">shadcn-svelte</div>
-                          <p class="text-muted-foreground text-sm leading-tight">
-                            Beautifully designed components built with Tailwind CSS.
-                          </p>
+                          <p class="text-sm leading-tight">Beautifully designed components built with Tailwind CSS.</p>
                         </a>
                       {/snippet}
                     </NavigationMenu.Link>
@@ -126,7 +124,7 @@
             <NavigationMenu.Item>
               <NavigationMenu.Trigger>Components</NavigationMenu.Trigger>
               <NavigationMenu.Content>
-                <ul class="grid w-[300px] gap-2 p-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                <ul class="gap-2 p-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px] grid w-[300px]">
                   {#each components as component, i (i)}
                     {@render ListItem({
                       href: component.href,
@@ -145,31 +143,31 @@
                 {/snippet}
               </NavigationMenu.Link>
             </NavigationMenu.Item>
-            <NavigationMenu.Item class="hidden md:block">
+            <NavigationMenu.Item class="md:block hidden">
               <NavigationMenu.Trigger>List</NavigationMenu.Trigger>
               <NavigationMenu.Content>
-                <ul class="grid w-[300px] gap-4 p-2">
+                <ul class="gap-4 p-2 grid w-[300px]">
                   <li>
                     <NavigationMenu.Link href="##">
                       <div class="font-bold">Components</div>
-                      <div class="text-muted-foreground">Browse all components in the library.</div>
+                      <div>Browse all components in the library.</div>
                     </NavigationMenu.Link>
                     <NavigationMenu.Link href="##">
                       <div class="font-bold">Documentation</div>
-                      <div class="text-muted-foreground">Learn how to use the library.</div>
+                      <div>Learn how to use the library.</div>
                     </NavigationMenu.Link>
                     <NavigationMenu.Link href="##">
                       <div class="font-bold">Blog</div>
-                      <div class="text-muted-foreground">Read our latest blog posts.</div>
+                      <div>Read our latest blog posts.</div>
                     </NavigationMenu.Link>
                   </li>
                 </ul>
               </NavigationMenu.Content>
             </NavigationMenu.Item>
-            <NavigationMenu.Item class="hidden md:block">
+            <NavigationMenu.Item class="md:block hidden">
               <NavigationMenu.Trigger>Simple</NavigationMenu.Trigger>
               <NavigationMenu.Content>
-                <ul class="grid w-[200px] gap-4 p-2">
+                <ul class="gap-4 p-2 grid w-[200px]">
                   <li>
                     <NavigationMenu.Link href="##" id="docs">Components</NavigationMenu.Link>
                     <NavigationMenu.Link href="##">Documentation</NavigationMenu.Link>
@@ -178,23 +176,23 @@
                 </ul>
               </NavigationMenu.Content>
             </NavigationMenu.Item>
-            <NavigationMenu.Item class="hidden md:block">
+            <NavigationMenu.Item class="md:block hidden">
               <NavigationMenu.Trigger>With Icon</NavigationMenu.Trigger>
 
               <NavigationMenu.Content>
-                <ul class="grid w-[200px] gap-4 p-2">
+                <ul class="gap-4 p-2 grid w-[200px]">
                   <li>
-                    <NavigationMenu.Link href="##" class="flex-row items-center gap-2">
+                    <NavigationMenu.Link href="##" class="gap-2 flex-row items-center">
                       <CircleHelpIcon />
                       Backlog
                     </NavigationMenu.Link>
 
-                    <NavigationMenu.Link href="##" class="flex-row items-center gap-2">
+                    <NavigationMenu.Link href="##" class="gap-2 flex-row items-center">
                       <CircleIcon />
                       To Do
                     </NavigationMenu.Link>
 
-                    <NavigationMenu.Link href="##" class="flex-row items-center gap-2">
+                    <NavigationMenu.Link href="##" class="gap-2 flex-row items-center">
                       <CircleCheckIcon />
                       Done
                     </NavigationMenu.Link>

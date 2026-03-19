@@ -3,9 +3,9 @@
   import { Calendar as CalendarPrimitive } from 'bits-ui';
   import { setContext, type Snippet } from 'svelte';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
+  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
-  import * as Calendar from './index.js';
+  import * as Calendar from './index.ts';
 
   let {
     ref = $bindable(null),
@@ -25,8 +25,8 @@
     disableDaysOutsideMonth = false,
     ...restProps
   }: WithoutChildrenOrChild<CalendarPrimitive.RootProps> & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-    selectedColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    selectedColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     captionLayout?: 'dropdown' | 'dropdown-months' | 'dropdown-years' | 'label';
     months?: CalendarPrimitive.MonthSelectProps['months'];
     years?: CalendarPrimitive.YearSelectProps['years'];
@@ -56,8 +56,7 @@
   {disableDaysOutsideMonth}
   data-color={color}
   class={cn(
-    'group/calendar neoretro-shadow rounded neoretro-border  p-3 [--cell-size:--spacing(8)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent [&_td]:border-none [&_th]:border-none [&_thead]:bg-transparent [&_tr:nth-child(even)]:bg-transparent',
-    'neoretro-clr',
+    'group/calendar neoretro-shadow rounded neoretro-border neoretro-clr p-3 [--cell-size:--spacing(8)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent [&_td]:border-none [&_th]:border-none [&_thead]:bg-transparent [&_tr:nth-child(even)]:bg-transparent',
     className,
   )}
   {locale}

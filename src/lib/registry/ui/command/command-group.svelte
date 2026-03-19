@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Command as CommandPrimitive, useId } from 'bits-ui';
 
-  import { cn } from '$lib/utils.js';
+  import { cn } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -19,7 +19,7 @@
   bind:ref
   data-slot="command-group"
   class={cn(
-    'overflow-hidden p-2 **:[[cmdk-group-heading]]:px-4 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-lg **:[[cmdk-group-heading]]:font-bold',
+    'p-2 **:[[cmdk-group-heading]]:px-4 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-lg **:[[cmdk-group-heading]]:font-bold overflow-hidden',
     className,
   )}
   value={value ?? heading ?? `----${useId()}`}
