@@ -10,7 +10,10 @@
     "sourceMap": true,
     "strict": true,
     "module": "ESNext",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "types": [
+      "./worker-configuration.d.ts"
+    ]
   },
   "extends": "./.svelte-kit/tsconfig.json"
 }
