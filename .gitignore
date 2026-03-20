@@ -44,5 +44,6 @@ vite.config.ts.timestamp-*
 .DS_Store
 Thumbs.db
 
-#
+# shadcn
+!static/r/colors/
 static/r

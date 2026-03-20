@@ -1,6 +1,6 @@
 <script lang="ts">
-  import ThemeInit from '$lib/registry/lib/style/theme-init.svelte';
-  import ThemePicker from '$lib/registry/lib/style/theme-picker.svelte';
+  import ThemeInit from '$lib/registry/ui/style/theme-init.svelte';
+  import ThemePicker from '$lib/registry/ui/style/theme-picker.svelte';
 
   let { children } = $props();
 </script>

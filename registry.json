@@ -40,32 +40,44 @@
       ]
     },
     {
+      "name": "copy-to-clipboard",
+      "type": "registry:lib",
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "type": "registry:lib",
+          "path": "src/lib/registry/lib/copy-to-clipboard.ts"
+        }
+      ]
+    },
+    {
       "devDependencies": ["mode-watcher"],
       "files": [
         {
           "type": "registry:file",
-          "path": "src/lib/registry/lib/style/theme-init.svelte"
+          "path": "src/lib/registry/ui/style/theme-init.svelte"
         },
         {
           "type": "registry:file",
-          "path": "src/lib/registry/lib/style/theme-picker.svelte"
+          "path": "src/lib/registry/ui/style/theme-picker.svelte"
         },
         {
           "type": "registry:file",
-          "path": "src/lib/registry/lib/style/themes.ts"
+          "path": "src/lib/registry/ui/style/themes.ts"
         },
         {
           "type": "registry:file",
-          "path": "src/lib/registry/lib/style/colors.css"
+          "path": "src/lib/registry/ui/style/colors.css"
         },
         {
           "type": "registry:file",
-          "path": "src/lib/registry/lib/style/tailwind.css"
+          "path": "src/lib/registry/ui/style/tailwind.css"
         }
       ],
       "name": "style",
       "registryDependencies": ["button", "dialog", "input-group"],
-      "type": "registry:lib"
+      "type": "registry:ui"
     },
     {
       "name": "accordion",
