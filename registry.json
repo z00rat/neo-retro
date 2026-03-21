@@ -80,6 +80,21 @@
       "type": "registry:ui"
     },
     {
+      "name": "errors",
+      "type": "registry:ui",
+      "registryDependencies": [],
+      "files": [
+        {
+          "type": "registry:file",
+          "path": "src/lib/registry/ui/errors/errors.svelte"
+        },
+        {
+          "path": "src/lib/registry/ui/errors/index.ts",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
       "name": "accordion",
       "type": "registry:ui",
       "registryDependencies": [],
