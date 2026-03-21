@@ -49,61 +49,25 @@
 
   <div class="mt-4 space-y-12">
     <div class="space-y-10">
-      <!-- Section 1 -->
-      <Card.Root color="yellow">
+      <Card.Root color="magenta">
         <Card.Header>
-          <Card.Title>1. Initialization</Card.Title>
-          <Card.Description>Bootstrap the project with the shadcn-svelte CLI.</Card.Description>
+          <Card.Title>Neo-Retro</Card.Title>
         </Card.Header>
         <Card.Content class="space-y-6">
-          Run
-          <InputGroup.Root class="px-2 w-full">
-            <InputGroup.Text color="white" class="font-mono text-xs flex-1 truncate">
-              bun x shadcn-svelte@1.1.1 init
-            </InputGroup.Text>
-            <InputGroup.Button
-              color="green"
-              size="icon-sm"
-              onclick={() => handleCopy('bun x shadcn-svelte@1.1.1 init', 'init')}
-            >
-              {#if copiedStates['init']}
-                <Check class="size-4" />
-              {:else}
-                <Copy class="size-4" />
-              {/if}
-            </InputGroup.Button>
-          </InputGroup.Root>
-          and select <Badge color="white" class="font-mono">neutral</Badge> for color.
-          <br />
-          Change registry to
-          <InputGroup.Root class="px-2 w-full">
-            <InputGroup.Text color="white" class="font-mono text-xs flex-1 truncate">
-              https://neo-retro.zurat.dev/r
-            </InputGroup.Text>
-            <InputGroup.Button
-              color="green"
-              size="icon-sm"
-              onclick={() => handleCopy('https://neo-retro.zurat.dev/r', 'link')}
-            >
-              {#if copiedStates['link']}
-                <Check class="size-4" />
-              {:else}
-                <Copy class="size-4" />
-              {/if}
-            </InputGroup.Button>
-          </InputGroup.Root>
+          <p class="leading-relaxed font-medium">An oxymoronic design system: not modern, yet not old-school.</p>
+          <p class="leading-relaxed">A UI component registry for Svelte, based on shadcn-svelte.</p>
         </Card.Content>
       </Card.Root>
 
-      <!-- Section 2 -->
-      <Card.Root color="magenta">
+      <Card.Root color="yellow">
         <Card.Header>
-          <Card.Title>2. Global Setup</Card.Title>
+          <Card.Title>1. Initialization</Card.Title>
           <Card.Description>
-            Configure your <Badge color="white">components.json</Badge> file.
+            Create a <Badge color="white" class="font-mono">components.json</Badge> file in your project root with the following
+            configuration.
           </Card.Description>
         </Card.Header>
-        <Card.Content class="space-y-4">
+        <Card.Content class="space-y-6">
           <div class="group relative">
             <pre class="m-0 neoretro-clr text-xs p-4 neoretro-shadow neoretro-border rounded" data-color="black"><code
                 class="font-mono">{componentsJson}</code
@@ -122,19 +86,41 @@
               {/if}
             </Button>
           </div>
+          <div class="space-y-2 mt-4 inline-block w-full">
+            Once saved, run the initialization command:
+            <InputGroup.Root class="px-2 mt-2 w-full">
+              <InputGroup.Text color="white" class="font-mono text-xs flex-1 truncate">
+                bun x shadcn-svelte@1.1.1 init
+              </InputGroup.Text>
+              <InputGroup.Button
+                color="green"
+                size="icon-sm"
+                onclick={() => handleCopy('bun x shadcn-svelte@1.1.1 init', 'init')}
+              >
+                {#if copiedStates['init']}
+                  <Check class="size-4" />
+                {:else}
+                  <Copy class="size-4" />
+                {/if}
+              </InputGroup.Button>
+            </InputGroup.Root>
+          </div>
         </Card.Content>
       </Card.Root>
 
-      <!-- Section 3 -->
       <Card.Root color="cyan">
         <Card.Header>
-          <Card.Title>3. Execution</Card.Title>
-          <Card.Description>Adding components from the neo-retro registry.</Card.Description>
+          <Card.Title>2. Add Components</Card.Title>
+          <Card.Description>
+            Run the add command to choose which components to install. You can press <Badge
+              color="white"
+              class="font-mono">a</Badge
+            > to select all of them at once.
+          </Card.Description>
         </Card.Header>
         <Card.Content class="space-y-6">
-          Pull components into your project
           <InputGroup.Root class="px-2 w-full">
-            <InputGroup.Text color="white" class="font-mono text-xs flex-1">
+            <InputGroup.Text color="white" class="font-mono text-xs flex-1 truncate">
               bun x shadcn-svelte@1.1.1 add
             </InputGroup.Text>
             <InputGroup.Button
