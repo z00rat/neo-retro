@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Kbd, KbdGroup } from '$lib/registry/ui/kbd';
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
@@ -10,7 +11,7 @@
   <h3>Colors</h3>
   <div class="space-y-4">
     <div class="gap-4 flex flex-wrap">
-      {#each colors as color}
+      {#each colors as color (color)}
         <Kbd {color}>Ctrl+{color.charAt(0).toUpperCase() + color.slice(1)}</Kbd>
       {/each}
     </div>

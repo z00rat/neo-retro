@@ -22,7 +22,7 @@
             <Carousel.Item class="md:basis-1/2 lg:basis-1/3">
               <div class="p-1">
                 <Card.Root color="magenta" class="neoretro-shadow p-6 flex aspect-square items-center justify-center">
-                  <span class="text-2xl font-semibold">{i + 1}</span>
+                  <span class="text-2xl font-semibold" title={item.title}>{i + 1}</span>
                 </Card.Root>
               </div>
             </Carousel.Item>

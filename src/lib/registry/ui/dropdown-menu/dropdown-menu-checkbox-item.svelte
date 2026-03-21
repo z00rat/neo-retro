@@ -15,7 +15,7 @@
     children?: Snippet;
   } = $props();
 
-  const getColor = getContext<() => any>('dropdownMenuColor');
+  const getColor = getContext<() => string>('dropdownMenuColor');
 </script>
 
 <DropdownMenuPrimitive.CheckboxItem

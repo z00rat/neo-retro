@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Skeleton } from '$lib/registry/ui/skeleton';
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
@@ -10,7 +11,7 @@
 <section>
   <h3>Colors (with bob animation)</h3>
   <div class="space-y-4">
-    {#each colors as color}
+    {#each colors as color (color)}
       <Skeleton {color} class="h-10 w-48" />
     {/each}
   </div>

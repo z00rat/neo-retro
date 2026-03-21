@@ -20,7 +20,7 @@
     noShadow?: boolean;
   } = $props();
 
-  const getColor = getContext<() => any>('selectColor');
+  const getColor = getContext<() => string>('selectColor');
 </script>
 
 <SelectPrimitive.Portal {...portalProps}>

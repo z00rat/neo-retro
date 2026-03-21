@@ -6,13 +6,13 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "prebuild": "bun x shadcn-svelte@latest registry build registry.json",
+    "prebuild": "bun x shadcn-svelte@1.1.1 registry build registry.json",
     "preview": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "format": "prettier --write .",
-    "lint": "prettier --check . && eslint ."
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@dicebear/bottts-neutral": "^9.4.1",

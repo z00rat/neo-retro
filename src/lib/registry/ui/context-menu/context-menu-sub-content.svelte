@@ -6,7 +6,7 @@
 
   let { ref = $bindable(null), class: className, ...restProps }: ContextMenuPrimitive.SubContentProps = $props();
 
-  const getColor = getContext<() => any>('contextMenuColor');
+  const getColor = getContext<() => string>('contextMenuColor');
 </script>
 
 <ContextMenuPrimitive.SubContent

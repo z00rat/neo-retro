@@ -15,7 +15,7 @@
     inset?: boolean;
   } = $props();
 
-  const getColor = getContext<() => any>('contextMenuColor');
+  const getColor = getContext<() => string>('contextMenuColor');
 </script>
 
 <ContextMenuPrimitive.SubTrigger

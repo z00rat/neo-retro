@@ -15,7 +15,7 @@
     color?: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 
-  const getColor = getContext<() => any>('menubarColor');
+  const getColor = getContext<() => string>('menubarColor');
 </script>
 
 <MenubarPrimitive.Item

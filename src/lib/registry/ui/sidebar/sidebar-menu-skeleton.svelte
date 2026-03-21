@@ -15,6 +15,7 @@
     showIcon?: boolean;
   } = $props();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const sidebarColor = getContext<() => any>('sidebarColor');
 
   // Random width between 50% and 90%

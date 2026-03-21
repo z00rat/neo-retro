@@ -18,8 +18,8 @@
     size?: ButtonSize;
   } = $props();
 
-  const getActiveColor = getContext<() => any>('paginationActiveColor');
-  const getInactiveColor = getContext<() => any>('paginationInactiveColor');
+  const getActiveColor = getContext<() => string>('paginationActiveColor');
+  const getInactiveColor = getContext<() => string>('paginationInactiveColor');
 </script>
 
 {#snippet Fallback()}

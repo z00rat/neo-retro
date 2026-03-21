@@ -6,7 +6,7 @@
 
   let { ref = $bindable(null), class: className, ...restProps }: CalendarPrimitive.DayProps = $props();
 
-  const getColors = getContext<() => { selectedColor: any; color: any }>('calendarColors');
+  const getColors = getContext<() => { selectedColor: string; color: string }>('calendarColors');
 </script>
 
 <CalendarPrimitive.Day

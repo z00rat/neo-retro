@@ -16,7 +16,7 @@
     portalProps?: WithoutChildrenOrChild<ComponentProps<typeof AlertDialogPortal>>;
   } = $props();
 
-  const getColor = getContext<() => any>('alertDialogColor');
+  const getColor = getContext<() => string>('alertDialogColor');
 </script>
 
 <AlertDialogPortal {...portalProps}>

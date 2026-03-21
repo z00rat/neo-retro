@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Badge } from '$lib/registry/ui/badge';
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
@@ -10,7 +11,7 @@
 <section>
   <h3>Colors</h3>
   <div class="gap-3 flex flex-wrap">
-    {#each colors as color}
+    {#each colors as color (color)}
       <Badge {color}>{color}</Badge>
     {/each}
   </div>

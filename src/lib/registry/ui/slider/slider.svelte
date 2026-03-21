@@ -26,7 +26,7 @@
 
 <SliderPrimitive.Root
   bind:ref
-  bind:value={value as any}
+  bind:value={value as never}
   data-slot="slider"
   {orientation}
   {type}
@@ -38,7 +38,7 @@
   )}
   {...restProps}
 >
-  {#snippet children({ thumbs })}
+  {#snippet children({ thumbItems: thumbs })}
     <span
       data-orientation={orientation}
       data-slot="slider-track"
@@ -54,9 +54,9 @@
       />
     </span>
 
-    {#each thumbs as thumb (thumb)}
+    {#each thumbs as thumb (thumb.index)}
       <!-- Child snippet lets us map the properties natively while cloning position for the z-0 shadow -->
-      <SliderPrimitive.Thumb index={thumb}>
+      <SliderPrimitive.Thumb index={thumb.index}>
         {#snippet child({ props })}
           {#if !noShadow}
             <!-- Ghost shadow under the Z-10 track -->

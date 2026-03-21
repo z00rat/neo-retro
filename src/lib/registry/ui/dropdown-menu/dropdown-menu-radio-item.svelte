@@ -11,7 +11,7 @@
     ...restProps
   }: WithoutChild<DropdownMenuPrimitive.RadioItemProps> = $props();
 
-  const getColor = getContext<() => any>('dropdownMenuColor');
+  const getColor = getContext<() => string>('dropdownMenuColor');
 </script>
 
 <DropdownMenuPrimitive.RadioItem

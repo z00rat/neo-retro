@@ -5,6 +5,7 @@
   import { Button } from '$lib/registry/ui/button';
   import * as Item from '$lib/registry/ui/item';
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 
   const models = [
@@ -53,7 +54,7 @@
 <section>
   <h3>Colors</h3>
   <div class="max-w-md space-y-3">
-    {#each colors as color}
+    {#each colors as color (color)}
       <Item.Root {color}>
         <Item.Content>
           <Item.Title>{color} item</Item.Title>

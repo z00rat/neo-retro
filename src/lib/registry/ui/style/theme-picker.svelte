@@ -7,11 +7,11 @@
   import * as Dialog from '$lib/registry/ui/dialog';
   import * as InputGroup from '$lib/registry/ui/input-group';
 
-  import { applyTheme, defaultTheme, themes } from './themes.ts';
+  import { applyTheme, defaultTheme, Themes } from './themes.ts';
 
   let searchQuery = $state('');
 
-  let filteredThemes = $derived(themes.filter((t) => t.label.toLowerCase().includes(searchQuery.trim().toLowerCase())));
+  let filteredThemes = $derived(Themes.filter((t) => t.label.toLowerCase().includes(searchQuery.trim().toLowerCase())));
 </script>
 
 <Dialog.Root>
@@ -25,7 +25,7 @@
     <Dialog.Header>
       <Dialog.Title>Theme</Dialog.Title>
       <Dialog.Description>
-        Select a theme. (Current: {themes.find((t) => t.id === theme.current)?.label ?? 'Unknown'})
+        Select a theme. (Current: {Themes.find((t) => t.id === theme.current)?.label ?? 'Unknown'})
       </Dialog.Description>
     </Dialog.Header>
 
@@ -47,7 +47,7 @@
       {#if filteredThemes.length === 0}
         <p class="py-6 text-sm font-semibold col-span-full text-center opacity-80">No themes found.</p>
       {:else}
-        {#each filteredThemes as t}
+        {#each filteredThemes as t (t.id)}
           <button
             data-theme={t.id}
             data-pressable

@@ -15,7 +15,7 @@
     level?: AccordionPrimitive.HeaderProps['level'];
   } = $props();
 
-  const getColor = getContext<() => any>('accordionTriggerColor');
+  const getColor = getContext<() => string>('accordionTriggerColor');
 </script>
 
 <AccordionPrimitive.Header {level} class="flex">

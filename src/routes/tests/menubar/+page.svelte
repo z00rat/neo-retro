@@ -5,13 +5,14 @@
   let showFullUrls = true;
   let panel = 'top';
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
 <h1>Menubar</h1>
 
 <section class="space-y-6 flex min-h-svh flex-col items-start">
-  {#each colors as color}
+  {#each colors as color (color)}
     <div>
       <h3 class="mb-2 capitalize">{color} Theme</h3>
       <Menubar.Root {color}>

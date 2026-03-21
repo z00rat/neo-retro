@@ -6,8 +6,8 @@
 
   let { ref = $bindable(null), class: className, ...restProps }: TabsPrimitive.TriggerProps = $props();
 
-  const getActiveColor = getContext<() => any>('tabsActiveColor');
-  const getInactiveColor = getContext<() => any>('tabsInactiveColor');
+  const getActiveColor = getContext<() => string>('tabsActiveColor');
+  const getInactiveColor = getContext<() => string>('tabsInactiveColor');
 </script>
 
 <TabsPrimitive.Trigger

@@ -11,7 +11,7 @@
   import { Separator } from '$lib/registry/ui/separator';
 
   const componentsJson = `{
-	"$schema": "https://neo-retro.zurat.dev/registry.json",
+	"$schema": "https://shadcn-svelte.com/schema.json",
 	"tailwind": {
 		"css": "src/routes/layout.css",
 		"baseColor": "neutral"

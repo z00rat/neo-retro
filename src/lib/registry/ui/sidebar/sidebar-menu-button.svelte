@@ -28,7 +28,12 @@
   } = $props();
 
   const sidebar = useSidebar();
-  const sidebarColor = getContext<() => any>('sidebarColor');
+  const sidebarColor = getContext<
+    () => {
+      color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+      activeColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    }
+  >('sidebarColor');
 
   const buttonProps = $derived({
     class: cn(
@@ -48,12 +53,12 @@
   });
 </script>
 
-{#snippet Button({ props = {} })}
-  {@const mergedProps = mergeProps(buttonProps, props as any)}
+{#snippet Button({ props = {} }: { props?: Record<string, unknown> })}
+  {@const mergedProps = mergeProps(buttonProps, props as Record<string, unknown>)}
   {#if child}
-    {@render child({ props: mergedProps as any })}
+    {@render child({ props: mergedProps as Record<string, unknown> })}
   {:else}
-    <button bind:this={ref} {...mergedProps as any}>
+    <button bind:this={ref} {...mergedProps as HTMLAttributes<HTMLButtonElement>}>
       {@render children?.()}
     </button>
   {/if}

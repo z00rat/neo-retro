@@ -6,7 +6,7 @@
 
   let { ref = $bindable(null), class: className, ...restProps }: NavigationMenuPrimitive.ViewportProps = $props();
 
-  const getColor = getContext<() => any>('navigationMenuColor');
+  const getColor = getContext<() => string>('navigationMenuColor');
 </script>
 
 <div class={cn('left-0 absolute top-full isolate z-50 flex justify-center')}>

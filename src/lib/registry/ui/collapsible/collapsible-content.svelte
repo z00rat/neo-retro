@@ -7,9 +7,7 @@
     ref = $bindable(null),
     class: className,
     ...restProps
-  }: CollapsiblePrimitive.ContentProps & {
-    className?: any;
-  } = $props();
+  }: CollapsiblePrimitive.ContentProps & { className?: string } = $props();
 </script>
 
 <CollapsiblePrimitive.Content

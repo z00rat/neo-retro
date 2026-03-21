@@ -8,6 +8,7 @@
 
   import * as Alert from '$lib/registry/ui/alert';
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
@@ -17,7 +18,7 @@
 <section>
   <h3>Colors</h3>
   <div class="space-y-4">
-    {#each colors as color}
+    {#each colors as color (color)}
       <Alert.Root {color}>
         <Alert.Title>{color} alert</Alert.Title>
         <Alert.Description>This is a {color} alert description.</Alert.Description>

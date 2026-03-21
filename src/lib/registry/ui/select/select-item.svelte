@@ -13,7 +13,7 @@
     ...restProps
   }: WithoutChild<SelectPrimitive.ItemProps> = $props();
 
-  const getColor = getContext<() => any>('selectColor');
+  const getColor = getContext<() => string>('selectColor');
 </script>
 
 <SelectPrimitive.Item

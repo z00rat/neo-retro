@@ -6,7 +6,7 @@
 
   let { ref = $bindable(null), class: className, ...restProps }: CommandPrimitive.ItemProps = $props();
 
-  const getColor = getContext<() => any>('commandColor');
+  const getColor = getContext<() => string>('commandColor');
 </script>
 
 <CommandPrimitive.Item

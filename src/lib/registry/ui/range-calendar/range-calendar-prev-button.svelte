@@ -13,7 +13,7 @@
     ...restProps
   }: RangeCalendarPrimitive.PrevButtonProps = $props();
 
-  const getColors = getContext<() => { navColor: any }>('calendarColors');
+  const getColors = getContext<() => { navColor: string }>('calendarColors');
 </script>
 
 {#snippet Fallback()}

@@ -11,7 +11,7 @@
     ...restProps
   }: WithoutChild<AccordionPrimitive.ContentProps> = $props();
 
-  const getColor = getContext<() => any>('accordionContentColor');
+  const getColor = getContext<() => string>('accordionContentColor');
 </script>
 
 <AccordionPrimitive.Content

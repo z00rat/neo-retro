@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Progress } from '$lib/registry/ui/progress';
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
@@ -10,7 +11,7 @@
 <section>
   <h3>Indicator Colors</h3>
   <div class="space-y-4">
-    {#each colors as color}
+    {#each colors as color (color)}
       <div class="space-y-2">
         <label for="progress-{color}" class="text-sm font-medium">{color} indicator</label>
         <Progress id="progress-{color}" value={45} indicatorColor={color} />

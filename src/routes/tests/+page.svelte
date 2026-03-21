@@ -12,7 +12,8 @@
     .filter((route) => route !== null && route !== 'tests')
     .sort() as string[];
 
-  const colors = ['yellow', 'red', 'green', 'blue', 'magenta', 'cyan'] as any[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const colors: any[] = ['yellow', 'red', 'green', 'blue', 'magenta', 'cyan'];
 </script>
 
 <svelte:head>
@@ -28,7 +29,7 @@
   </div>
 
   <ButtonGroup.Root orientation="vertical" class="w-full">
-    {#each testRoutes as route, i}
+    {#each testRoutes as route, i (route)}
       <Button href="/tests/{route}" color={colors[i % colors.length]} class="px-6 py-6 justify-center">
         <span class="text-lg font-black tracking-tight capitalize">
           {route.replace(/-/g, ' ')}

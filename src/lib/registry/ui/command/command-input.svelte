@@ -11,7 +11,7 @@
     value = $bindable(''),
     ...restProps
   }: CommandPrimitive.InputProps = $props();
-  const getColor = getContext<() => any>('commandColor');
+  const getColor = getContext<() => string>('commandColor');
 </script>
 
 <div class="gap-2 px-4 flex h-full items-center" data-slot="command-input-wrapper">

@@ -15,6 +15,6 @@
   setContext('selectColor', () => color);
 </script>
 
-<SelectPrimitive.Root bind:value={value as any} type={type as any} {...restProps}>
+<SelectPrimitive.Root bind:value={value as never} type={type as never} {...restProps}>
   {@render children?.()}
 </SelectPrimitive.Root>

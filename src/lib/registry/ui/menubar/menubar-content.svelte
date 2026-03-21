@@ -17,7 +17,7 @@
     portalProps?: MenubarPrimitive.PortalProps;
   } = $props();
 
-  const getColor = getContext<() => any>('menubarColor');
+  const getColor = getContext<() => string>('menubarColor');
 </script>
 
 <MenubarPrimitive.Portal {...portalProps}>

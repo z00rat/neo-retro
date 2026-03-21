@@ -12,7 +12,7 @@
     ...restProps
   }: NavigationMenuPrimitive.TriggerProps = $props();
 
-  const getColor = getContext<() => any>('navigationMenuColor');
+  const getColor = getContext<() => string>('navigationMenuColor');
 </script>
 
 <NavigationMenuPrimitive.Trigger

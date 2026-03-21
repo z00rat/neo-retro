@@ -10,7 +10,7 @@
     ...restProps
   }: WithoutChildrenOrChild<RadioGroupPrimitive.ItemProps> = $props();
 
-  let getColor = getContext<() => any>('radioGroupColor');
+  let getColor = getContext<() => string>('radioGroupColor');
 </script>
 
 <RadioGroupPrimitive.Item

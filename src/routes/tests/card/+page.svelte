@@ -2,6 +2,7 @@
   import { Button } from '$lib/registry/ui/button';
   import * as Card from '$lib/registry/ui/card';
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
@@ -11,7 +12,7 @@
 <section>
   <h3>Colors</h3>
   <div class="gap-4 sm:grid-cols-2 lg:grid-cols-4 grid grid-cols-1">
-    {#each colors as color}
+    {#each colors as color (color)}
       <Card.Root {color}>
         <Card.Header>
           <Card.Title>{color}</Card.Title>

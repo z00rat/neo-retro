@@ -11,6 +11,7 @@
   let { ref = $bindable(null), size = 'icon', ...restProps }: Omit<WithoutChildren<Props>, 'color'> = $props();
 
   const emblaCtx = getEmblaContext('<Carousel.Next/>');
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getColor = getContext<() => any>('carouselColor');
 </script>
 

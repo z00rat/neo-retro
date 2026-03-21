@@ -4,7 +4,7 @@
 
   import { cn, type WithElementRef } from '$lib/utils.ts';
 
-  const getHeaderColor = getContext<() => any>('tableHeaderColor');
+  const getHeaderColor = getContext<() => string>('tableHeaderColor');
 
   let {
     ref = $bindable(null),

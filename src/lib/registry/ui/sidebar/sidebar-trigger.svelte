@@ -18,6 +18,7 @@
   } = $props();
 
   const sidebar = useSidebar();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const sidebarColor = getContext<() => any>('sidebarColor');
 </script>
 

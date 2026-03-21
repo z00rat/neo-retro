@@ -2,7 +2,7 @@ import { setMode, setTheme } from 'mode-watcher';
 
 export type ThemeOption = { id: string; label: string; mode: 'light' | 'dark' };
 
-export const themes: ThemeOption[] = [
+export const Themes: ThemeOption[] = [
   { id: 'default', label: 'Default', mode: 'light' },
   { id: 'dracula', label: 'Dracula', mode: 'dark' },
   { id: 'gruvbox-dark', label: 'Gruvbox', mode: 'dark' },
@@ -14,10 +14,10 @@ export const themes: ThemeOption[] = [
   { id: 'catppuccin-mocha', label: 'Mocha', mode: 'dark' },
 ];
 
-export const themeMap = new Map(themes.map((t) => [t.id, t]));
+export const themeMap = new Map(Themes.map((t) => [t.id, t]));
 
-export const defaultTheme = themes[0].id;
-export const defaultMode = themes[0].mode;
+export const defaultTheme = Themes[0].id;
+export const defaultMode = Themes[0].mode;
 
 export function applyTheme(id: string) {
   setTheme(id);

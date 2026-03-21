@@ -7,7 +7,7 @@
 
   let { ref = $bindable(null), class: className, ...restProps }: AlertDialogPrimitive.ActionProps = $props();
 
-  const getColor = getContext<() => any>('alertDialogActionColor');
+  const getColor = getContext<() => string>('alertDialogActionColor');
 </script>
 
 <AlertDialogPrimitive.Action

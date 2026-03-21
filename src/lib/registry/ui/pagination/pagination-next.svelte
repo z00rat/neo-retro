@@ -8,7 +8,7 @@
 
   let { ref = $bindable(null), class: className, ...restProps }: PaginationPrimitive.NextButtonProps = $props();
 
-  const getInactiveColor = getContext<() => any>('paginationInactiveColor');
+  const getInactiveColor = getContext<() => string>('paginationInactiveColor');
 </script>
 
 <PaginationPrimitive.NextButton

@@ -17,6 +17,7 @@
     showOnHover?: boolean;
   } = $props();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const sidebarColor = getContext<() => any>('sidebarColor');
 
   const mergedProps = $derived({

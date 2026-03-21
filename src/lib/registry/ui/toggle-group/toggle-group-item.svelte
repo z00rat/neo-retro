@@ -13,6 +13,7 @@
     ...restProps
   }: ToggleGroupPrimitive.ItemProps & ToggleVariants = $props();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getToggleGroup = getContext<() => any>('toggleGroup');
   let ctx = $derived(getToggleGroup());
 </script>

@@ -11,7 +11,7 @@
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLTableRowElement>> = $props();
 
-  const getRowColor = getContext<() => any>('tableRowColor');
+  const getRowColor = getContext<() => string>('tableRowColor');
 </script>
 
 <tr

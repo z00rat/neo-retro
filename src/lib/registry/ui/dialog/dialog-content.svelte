@@ -12,13 +12,11 @@
     color,
     portalProps,
     children,
-    showCloseButton = true,
     ...restProps
   }: WithoutChildrenOrChild<DialogPrimitive.ContentProps> & {
     color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     portalProps?: DialogPrimitive.PortalProps;
     children: Snippet;
-    showCloseButton?: boolean;
   } = $props();
 </script>
 

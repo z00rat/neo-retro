@@ -6,7 +6,7 @@
 
   let { ref = $bindable(null), class: className, ...restProps }: NavigationMenuPrimitive.IndicatorProps = $props();
 
-  const getColor = getContext<() => any>('navigationMenuColor');
+  const getColor = getContext<() => string>('navigationMenuColor');
 </script>
 
 <NavigationMenuPrimitive.Indicator

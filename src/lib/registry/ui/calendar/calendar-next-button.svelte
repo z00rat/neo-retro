@@ -8,7 +8,7 @@
 
   let { ref = $bindable(null), class: className, children, ...restProps }: CalendarPrimitive.NextButtonProps = $props();
 
-  const getColors = getContext<() => { navColor: any }>('calendarColors');
+  const getColors = getContext<() => { navColor: string }>('calendarColors');
 </script>
 
 {#snippet Fallback()}

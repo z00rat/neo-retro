@@ -10,6 +10,7 @@
 
   const isMobile = new IsMobile();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 
   const components: { title: string; href: string; description: string }[] = [
@@ -60,7 +61,7 @@
       {#snippet child({ props })}
         <a
           {href}
-          {...props as any}
+          {...props}
           class={cn(
             'space-y-1 p-3 block leading-none no-underline transition-colors outline-none select-none',
             props.class as string,
@@ -81,7 +82,7 @@
 <h1>Navigation Menu</h1>
 
 <section class="gap-64 space-y-12 pb-32 flex min-h-svh flex-col items-start">
-  {#each colors as color}
+  {#each colors as color (color)}
     <div>
       <h3 class="mb-2 capitalize">{color} Theme</h3>
       <div class="flex w-full justify-center">

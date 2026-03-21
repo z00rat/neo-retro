@@ -15,7 +15,7 @@
     color?: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 
-  const getColor = getContext<() => any>('contextMenuColor');
+  const getColor = getContext<() => string>('contextMenuColor');
 </script>
 
 <ContextMenuPrimitive.Item

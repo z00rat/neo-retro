@@ -6,7 +6,7 @@
 
   let { ref = $bindable(null), class: className, ...restProps }: MenubarPrimitive.SubContentProps = $props();
 
-  const getColor = getContext<() => any>('menubarColor');
+  const getColor = getContext<() => string>('menubarColor');
 </script>
 
 <MenubarPrimitive.SubContent

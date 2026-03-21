@@ -5,6 +5,11 @@
   import * as Select from '$lib/registry/ui/select/index.ts';
   import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
+  type MonthSelectChangeEvent = {
+    currentTarget: { value: string };
+    target: { value: string };
+  };
+
   let {
     ref = $bindable(null),
     class: className,
@@ -12,11 +17,11 @@
     onchange,
     ...restProps
   }: WithoutChildrenOrChild<RangeCalendarPrimitive.MonthSelectProps> & {
-    onchange?: (event: any) => void;
+    onchange?: (event: MonthSelectChangeEvent) => void;
   } = $props();
 
-  function handleSelectChange(newValue: string, bitsOnChange?: (event: any) => void) {
-    const event: any = {
+  function handleSelectChange(newValue: string, bitsOnChange?: (event: MonthSelectChangeEvent) => void) {
+    const event: MonthSelectChangeEvent = {
       currentTarget: { value: newValue },
       target: { value: newValue },
     };
@@ -24,6 +29,7 @@
     onchange?.(event);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getColors = getContext<() => { color: any; navColor: any; selectedColor: any }>('calendarColors');
 </script>
 
@@ -37,7 +43,7 @@
       props: {
         name?: string;
         disabled?: boolean;
-        onchange?: (event: any) => void;
+        onchange?: (event: MonthSelectChangeEvent) => void;
       };
       monthItems: {
         value: number;

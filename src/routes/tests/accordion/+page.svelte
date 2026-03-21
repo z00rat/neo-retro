@@ -1,6 +1,7 @@
 <script lang="ts">
   import * as Accordion from '$lib/registry/ui/accordion';
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
 </script>
 
@@ -10,7 +11,7 @@
 <section>
   <h3>Colors</h3>
   <div class="space-y-4">
-    {#each colors as color}
+    {#each colors as color (color)}
       <Accordion.Root type="single" triggerColor={color} contentColor={color}>
         <Accordion.Item value="1">
           <Accordion.Trigger>{color} accordion</Accordion.Trigger>

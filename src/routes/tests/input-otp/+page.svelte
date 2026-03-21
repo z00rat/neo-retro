@@ -23,13 +23,13 @@
           <InputOTP.Root maxlength={6} bind:value={otpValue}>
             {#snippet children({ cells })}
               <InputOTP.Group>
-                {#each cells.slice(0, 3) as cell}
+                {#each cells.slice(0, 3) as cell, i (i)}
                   <InputOTP.Slot {cell} />
                 {/each}
               </InputOTP.Group>
               <InputOTP.Separator />
               <InputOTP.Group>
-                {#each cells.slice(3, 6) as cell}
+                {#each cells.slice(3, 6) as cell, i (i)}
                   <InputOTP.Slot {cell} />
                 {/each}
               </InputOTP.Group>
@@ -47,7 +47,7 @@
           <InputOTP.Root maxlength={4} bind:value={otpValue2}>
             {#snippet children({ cells })}
               <InputOTP.Group>
-                {#each cells as cell}
+                {#each cells as cell, i (i)}
                   <InputOTP.Slot {cell} />
                 {/each}
               </InputOTP.Group>
@@ -65,13 +65,13 @@
           <InputOTP.Root maxlength={6} value="123456" disabled>
             {#snippet children({ cells })}
               <InputOTP.Group>
-                {#each cells.slice(0, 3) as cell}
+                {#each cells.slice(0, 3) as cell, i (i)}
                   <InputOTP.Slot {cell} />
                 {/each}
               </InputOTP.Group>
               <InputOTP.Separator />
               <InputOTP.Group>
-                {#each cells.slice(3, 6) as cell}
+                {#each cells.slice(3, 6) as cell, i (i)}
                   <InputOTP.Slot {cell} />
                 {/each}
               </InputOTP.Group>
@@ -86,7 +86,7 @@
           <InputOTP.Root maxlength={4} bind:value={otpValue3}>
             {#snippet children({ cells })}
               <InputOTP.Group>
-                {#each cells as cell}
+                {#each cells as cell, i (i)}
                   <InputOTP.Slot {cell} aria-invalid="true" />
                 {/each}
               </InputOTP.Group>

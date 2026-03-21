@@ -6,7 +6,7 @@
 
   let { ref = $bindable(null), class: className, children, ...restProps }: WithElementRef<HTMLThAttributes> = $props();
 
-  const getHeaderColor = getContext<() => any>('tableHeaderColor');
+  const getHeaderColor = getContext<() => string>('tableHeaderColor');
 </script>
 
 <th
