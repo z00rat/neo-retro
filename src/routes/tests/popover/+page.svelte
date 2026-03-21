@@ -11,7 +11,9 @@
   <div class="gap-4 flex flex-wrap">
     <Popover.Root>
       <Popover.Trigger>
-        <Button color="red">Red popover</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="red">Red popover</Button>
+        {/snippet}
       </Popover.Trigger>
       <Popover.Content color="red">
         <p class="text-sm">This is a red popover.</p>
@@ -20,7 +22,9 @@
 
     <Popover.Root>
       <Popover.Trigger>
-        <Button color="blue">Blue popover</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="blue">Blue popover</Button>
+        {/snippet}
       </Popover.Trigger>
       <Popover.Content color="blue">
         <p class="text-sm">This is a blue popover.</p>
@@ -29,7 +33,9 @@
 
     <Popover.Root>
       <Popover.Trigger>
-        <Button color="cyan">Cyan popover</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="cyan">Cyan popover</Button>
+        {/snippet}
       </Popover.Trigger>
       <Popover.Content color="cyan">
         <p class="text-sm">This is a cyan popover.</p>
@@ -38,7 +44,9 @@
 
     <Popover.Root>
       <Popover.Trigger>
-        <Button color="yellow">Yellow popover</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="yellow">Yellow popover</Button>
+        {/snippet}
       </Popover.Trigger>
       <Popover.Content color="yellow">
         <p class="text-sm">This is a yellow popover.</p>
@@ -47,7 +55,9 @@
 
     <Popover.Root>
       <Popover.Trigger>
-        <Button color="white">White popover</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="white">White popover</Button>
+        {/snippet}
       </Popover.Trigger>
       <Popover.Content color="white">
         <p class="text-sm">This is a white popover.</p>
@@ -56,7 +66,9 @@
 
     <Popover.Root>
       <Popover.Trigger>
-        <Button color="green">Green popover</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="green">Green popover</Button>
+        {/snippet}
       </Popover.Trigger>
       <Popover.Content color="green">
         <p class="text-sm">This is a green popover.</p>
@@ -70,7 +82,9 @@
   <h3>Rich Content</h3>
   <Popover.Root>
     <Popover.Trigger>
-      <Button color="magenta">Edit settings</Button>
+      {#snippet child({ props })}
+        <Button {...props} color="magenta">Edit settings</Button>
+      {/snippet}
     </Popover.Trigger>
     <Popover.Content color="white">
       <div class="space-y-3">

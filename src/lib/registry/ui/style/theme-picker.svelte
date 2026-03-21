@@ -16,10 +16,12 @@
 
 <Dialog.Root>
   <Dialog.Trigger>
-    <Button color="yellow" size="icon">
-      <PaintbrushIcon />
-      <span class="sr-only">Theme</span>
-    </Button>
+    {#snippet child({ props })}
+      <Button {...props} color="yellow" size="icon">
+        <PaintbrushIcon />
+        <span class="sr-only">Theme</span>
+      </Button>
+    {/snippet}
   </Dialog.Trigger>
   <Dialog.Content color="yellow" class="sm:max-w-3xl">
     <Dialog.Header>
@@ -86,8 +88,10 @@
     </div>
 
     <Dialog.Footer showCloseButton closeColor="red">
-      <Dialog.Close class="sm:w-auto w-full">
-        <Button color="magenta" class="w-full" onclick={() => applyTheme(defaultTheme)}>Reset</Button>
+      <Dialog.Close>
+        {#snippet child({ props })}
+          <Button {...props} color="magenta" class="sm:w-auto w-full" onclick={() => applyTheme(defaultTheme)}>Reset</Button>
+        {/snippet}
       </Dialog.Close>
     </Dialog.Footer>
   </Dialog.Content>

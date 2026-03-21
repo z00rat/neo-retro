@@ -11,7 +11,9 @@
   <div class="gap-4 flex flex-wrap">
     <Sheet.Root>
       <Sheet.Trigger>
-        <Button color="blue">Right</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="blue">Right</Button>
+        {/snippet}
       </Sheet.Trigger>
       <Sheet.Content color="white" side="right">
         <Sheet.Header>
@@ -26,7 +28,9 @@
 
     <Sheet.Root>
       <Sheet.Trigger>
-        <Button color="cyan">Left</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="cyan">Left</Button>
+        {/snippet}
       </Sheet.Trigger>
       <Sheet.Content color="cyan" side="left">
         <Sheet.Header>
@@ -39,7 +43,9 @@
 
     <Sheet.Root>
       <Sheet.Trigger>
-        <Button color="yellow">Top</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="yellow">Top</Button>
+        {/snippet}
       </Sheet.Trigger>
       <Sheet.Content color="yellow" side="top">
         <Sheet.Header>
@@ -52,7 +58,9 @@
 
     <Sheet.Root>
       <Sheet.Trigger>
-        <Button color="magenta">Bottom</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="magenta">Bottom</Button>
+        {/snippet}
       </Sheet.Trigger>
       <Sheet.Content color="magenta" side="bottom">
         <Sheet.Header>
@@ -71,7 +79,9 @@
   <div class="gap-4 flex flex-wrap">
     <Sheet.Root>
       <Sheet.Trigger>
-        <Button color="green">Green sheet</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="green">Green sheet</Button>
+        {/snippet}
       </Sheet.Trigger>
       <Sheet.Content color="green">
         <Sheet.Header>
@@ -86,7 +96,9 @@
 
     <Sheet.Root>
       <Sheet.Trigger>
-        <Button color="red">Red sheet</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="red">Red sheet</Button>
+        {/snippet}
       </Sheet.Trigger>
       <Sheet.Content color="red">
         <Sheet.Header>

@@ -10,7 +10,9 @@
   <h3>Basic</h3>
   <AlertDialog.Root color="white" cancleColor="white" actionColor="red">
     <AlertDialog.Trigger>
-      <Button color="red">Delete Account</Button>
+      {#snippet child({ props })}
+        <Button {...props} color="red">Delete Account</Button>
+      {/snippet}
     </AlertDialog.Trigger>
     <AlertDialog.Content>
       <AlertDialog.Header>
@@ -33,7 +35,9 @@
   <div class="gap-4 flex flex-wrap">
     <AlertDialog.Root color="cyan" cancleColor="white" actionColor="blue">
       <AlertDialog.Trigger>
-        <Button color="cyan">Cyan dialog</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="cyan">Cyan dialog</Button>
+        {/snippet}
       </AlertDialog.Trigger>
       <AlertDialog.Content>
         <AlertDialog.Header>
@@ -49,7 +53,9 @@
 
     <AlertDialog.Root color="yellow" cancleColor="white" actionColor="green">
       <AlertDialog.Trigger>
-        <Button color="yellow">Yellow dialog</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="yellow">Yellow dialog</Button>
+        {/snippet}
       </AlertDialog.Trigger>
       <AlertDialog.Content>
         <AlertDialog.Header>
@@ -67,7 +73,9 @@
 
     <AlertDialog.Root color="magenta" cancleColor="white" actionColor="green">
       <AlertDialog.Trigger>
-        <Button color="magenta">Magenta dialog</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="magenta">Magenta dialog</Button>
+        {/snippet}
       </AlertDialog.Trigger>
       <AlertDialog.Content>
         <AlertDialog.Header>

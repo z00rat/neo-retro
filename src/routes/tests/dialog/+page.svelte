@@ -10,7 +10,9 @@
   <h3>Basic</h3>
   <Dialog.Root>
     <Dialog.Trigger>
-      <Button color="blue">Open Dialog</Button>
+      {#snippet child({ props })}
+        <Button {...props} color="blue">Open Dialog</Button>
+      {/snippet}
     </Dialog.Trigger>
     <Dialog.Content color="white">
       <Dialog.Header>
@@ -39,7 +41,9 @@
   <div class="gap-4 flex flex-wrap">
     <Dialog.Root>
       <Dialog.Trigger>
-        <Button color="cyan">Cyan</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="cyan">Cyan</Button>
+        {/snippet}
       </Dialog.Trigger>
       <Dialog.Content color="cyan">
         <Dialog.Header>
@@ -54,7 +58,9 @@
 
     <Dialog.Root>
       <Dialog.Trigger>
-        <Button color="yellow">Yellow</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="yellow">Yellow</Button>
+        {/snippet}
       </Dialog.Trigger>
       <Dialog.Content color="yellow">
         <Dialog.Header>
@@ -69,7 +75,9 @@
 
     <Dialog.Root>
       <Dialog.Trigger>
-        <Button color="red">Red</Button>
+        {#snippet child({ props })}
+          <Button {...props} color="red">Red</Button>
+        {/snippet}
       </Dialog.Trigger>
       <Dialog.Content color="red">
         <Dialog.Header>
@@ -89,7 +97,9 @@
   <h3>No Built-in Close</h3>
   <Dialog.Root>
     <Dialog.Trigger>
-      <Button color="magenta">Custom footer</Button>
+      {#snippet child({ props })}
+        <Button {...props} color="magenta">Custom footer</Button>
+      {/snippet}
     </Dialog.Trigger>
     <Dialog.Content color="magenta">
       <Dialog.Header>
@@ -97,8 +107,10 @@
         <Dialog.Description>This dialog has custom footer buttons.</Dialog.Description>
       </Dialog.Header>
       <Dialog.Footer showCloseButton={false}>
-        <Dialog.Close class="sm:w-auto w-full">
-          <Button color="white" class="w-full">Dismiss</Button>
+        <Dialog.Close>
+          {#snippet child({ props })}
+            <Button {...props} color="white" class="sm:w-auto w-full">Dismiss</Button>
+          {/snippet}
         </Dialog.Close>
         <Button color="white">Save</Button>
       </Dialog.Footer>
@@ -109,7 +121,9 @@
   <h3>No Built-in Close</h3>
   <Dialog.Root>
     <Dialog.Trigger>
-      <Button color="magenta">Custom footer</Button>
+      {#snippet child({ props })}
+        <Button {...props} color="magenta">Custom footer</Button>
+      {/snippet}
     </Dialog.Trigger>
     <Dialog.Content color="magenta">
       <Dialog.Header>

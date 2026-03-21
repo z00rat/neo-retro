@@ -25,8 +25,10 @@
   {...restProps}
 >
   {#if showCloseButton}
-    <DialogPrimitive.Close class="sm:w-auto w-full">
-      <Button color={closeColor} class="w-full">Cancel</Button>
+    <DialogPrimitive.Close>
+      {#snippet child({ props })}
+        <Button {...props} color={closeColor} class="sm:w-auto w-full">Cancel</Button>
+      {/snippet}
     </DialogPrimitive.Close>
   {/if}
   {@render children?.()}
