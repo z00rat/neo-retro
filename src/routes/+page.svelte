@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Check, Copy } from '@lucide/svelte';
+  import { Check, Copy, Github } from '@lucide/svelte';
 
   import { resolve } from '$app/paths';
 
@@ -42,7 +42,19 @@
 <div class="max-w-2xl px-4 py-16 container mx-auto">
   <header class="pb-4 border-black flex items-center justify-between">
     <h1 class="text-3xl font-black tracking-tighter mb-0 uppercase italic">Guide</h1>
-    <Button color="cyan" href={resolve('/tests')} class="gap-2 flex items-center">View Examples</Button>
+    <div class="gap-2 flex items-center">
+      <Button color="cyan" href={resolve('/tests')} class="gap-2 flex items-center">View Examples</Button>
+      <Button
+        color="white"
+        href="https://github.com/z00rat/neo-retro/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="gap-2 flex items-center"
+      >
+        <Github class="size-4" />
+        GitHub
+      </Button>
+    </div>
   </header>
 
   <Separator color="black" />
