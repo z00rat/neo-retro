@@ -55,21 +55,16 @@ const registryItems = registry.items || [];
 
 // HELPER: Get all files recursive
 const getFilesRecursively = (dir) => {
-  let results = [];
   try {
-    const list = fs.readdirSync(dir);
-    list.forEach((file) => {
-      const fullPath = path.join(dir, file);
-      const stat = fs.statSync(fullPath);
-      if (stat && stat.isDirectory()) {
-        results = results.concat(getFilesRecursively(fullPath));
-      } else {
-        const relativePath = path.relative(ROOT_DIR, fullPath);
-        results.push(relativePath);
-      }
-    });
-  } catch (e) {}
-  return results;
+    return fs
+      .readdirSync(dir, { recursive: true })
+      .map((file) => path.join(dir, file))
+      .filter((fullPath) => fs.statSync(fullPath).isFile())
+      .map((fullPath) => path.relative(ROOT_DIR, fullPath));
+  } catch (error) {
+    console.error(`Error reading directory ${dir}:`, error);
+    return [];
+  }
 };
 
 // Map imports
@@ -177,7 +172,7 @@ registryItems.forEach((item) => {
   const expectedRegDeps = new Set(item.registryDependencies || []);
   const missingReg = Array.from(actualRegistryDeps).filter((d) => d !== 'utils' && !expectedRegDeps.has(d));
   const extraReg = Array.from(expectedRegDeps).filter((d) => {
-    if (item.name === 'init' && d === 'utils') return false;
+    if (item.name === 'init') return false;
     return !actualRegistryDeps.has(d);
   });
 

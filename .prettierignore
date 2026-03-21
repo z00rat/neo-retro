@@ -8,3 +8,6 @@ bun.lockb
 # Miscellaneous
 !static/r/colors/
 static/
+
+# Registry
+registry.json
