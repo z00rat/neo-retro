@@ -48,7 +48,7 @@
     data-size={size}
     data-pressable={pressable || undefined}
     class={cn(
-      'group/item neoretro-focus rounded neoretro-border neoretro-clr text-sm flex flex-wrap items-center transition-colors duration-100 outline-none',
+      'group/item neoretro-focus rounded neoretro-border neoretro-clr text-sm flex mb-2 flex-wrap items-center transition-colors duration-100 outline-none',
       !noShadow && 'neoretro-shadow',
       size === 'default' && 'gap-4 p-4',
       size === 'sm' && 'gap-2.5 px-4 py-3',
