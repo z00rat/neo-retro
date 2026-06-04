@@ -7,7 +7,7 @@
 
   let { ref = $bindable(null), class: className, ...restProps }: AlertDialogPrimitive.CancelProps = $props();
 
-  const getColor = getContext<() => string>('alertDialogCancleColor');
+  const getColor = getContext<() => string>('alertDialogCancelColor');
 </script>
 
 <AlertDialogPrimitive.Cancel

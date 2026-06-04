@@ -22,7 +22,7 @@
   data-color={color}
   class={cn(
     'gap-y-0.5 rounded neoretro-border neoretro-clr px-4 py-3 has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-1 relative grid w-full grid-cols-[0_1fr] items-start has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] [&>svg]:text-current',
-    !noShadow && 'shadow-shadow',
+    noShadow ? '' : 'neoretro-shadow',
     className,
   )}
   {...restProps}

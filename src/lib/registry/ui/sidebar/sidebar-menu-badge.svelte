@@ -19,7 +19,7 @@
   bind:this={ref}
   data-slot="sidebar-menu-badge"
   data-sidebar="menu-badge"
-  data-color={sidebarColor().base}
+  data-color={sidebarColor().color}
   class={cn(
     'right-1 h-5 min-w-5 rounded neoretro-clr px-1 text-xs font-medium peer-data-[size=default]/menu-button:top-1.5 peer-data-[size=lg]/menu-button:top-2.5 peer-data-[size=sm]/menu-button:top-1 pointer-events-none absolute flex items-center justify-center tabular-nums select-none group-data-[collapsible=icon]:hidden',
     className,

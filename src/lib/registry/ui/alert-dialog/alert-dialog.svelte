@@ -5,17 +5,17 @@
   let {
     open = $bindable(false),
     color,
-    cancleColor,
+    cancelColor,
     actionColor,
     ...restProps
   }: AlertDialogPrimitive.RootProps & {
     color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-    cancleColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    cancelColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     actionColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 
   setContext('alertDialogColor', () => color);
-  setContext('alertDialogCancleColor', () => cancleColor);
+  setContext('alertDialogCancelColor', () => cancelColor);
   setContext('alertDialogActionColor', () => actionColor);
 </script>
 

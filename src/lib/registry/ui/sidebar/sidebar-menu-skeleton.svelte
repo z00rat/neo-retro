@@ -30,10 +30,10 @@
   {...restProps}
 >
   {#if showIcon}
-    <Skeleton color={sidebarColor().base} class="size-4 rounded" data-sidebar="menu-skeleton-icon" />
+    <Skeleton color={sidebarColor().color} class="size-4 rounded" data-sidebar="menu-skeleton-icon" />
   {/if}
   <Skeleton
-    color={sidebarColor().base}
+    color={sidebarColor().color}
     class="h-4 max-w-(--skeleton-width) flex-1"
     data-sidebar="menu-skeleton-text"
     style="--skeleton-width: {width};"

@@ -8,7 +8,7 @@
 <!-- Basic -->
 <section>
   <h3>Basic</h3>
-  <AlertDialog.Root color="white" cancleColor="white" actionColor="red">
+  <AlertDialog.Root color="white" cancelColor="white" actionColor="red">
     <AlertDialog.Trigger>
       {#snippet child({ props })}
         <Button {...props} color="red">Delete Account</Button>
@@ -33,7 +33,7 @@
 <section>
   <h3>Color Combos</h3>
   <div class="gap-4 flex flex-wrap">
-    <AlertDialog.Root color="cyan" cancleColor="white" actionColor="blue">
+    <AlertDialog.Root color="cyan" cancelColor="white" actionColor="blue">
       <AlertDialog.Trigger>
         {#snippet child({ props })}
           <Button {...props} color="cyan">Cyan dialog</Button>
@@ -51,7 +51,7 @@
       </AlertDialog.Content>
     </AlertDialog.Root>
 
-    <AlertDialog.Root color="yellow" cancleColor="white" actionColor="green">
+    <AlertDialog.Root color="yellow" cancelColor="white" actionColor="green">
       <AlertDialog.Trigger>
         {#snippet child({ props })}
           <Button {...props} color="yellow">Yellow dialog</Button>
@@ -71,7 +71,7 @@
       </AlertDialog.Content>
     </AlertDialog.Root>
 
-    <AlertDialog.Root color="magenta" cancleColor="white" actionColor="green">
+    <AlertDialog.Root color="magenta" cancelColor="white" actionColor="green">
       <AlertDialog.Trigger>
         {#snippet child({ props })}
           <Button {...props} color="magenta">Magenta dialog</Button>
