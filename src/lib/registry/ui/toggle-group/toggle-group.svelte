@@ -12,16 +12,18 @@
     color,
     size = 'default',
     orientation = 'horizontal',
+    noShadow,
     ...restProps
   }: ToggleGroupPrimitive.RootProps &
     ToggleVariants & {
       color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
       orientation?: 'horizontal' | 'vertical';
+      noShadow?: boolean;
     } = $props();
 
   setContext('toggleGroup', () => ({
     size,
-    noShadow: false,
+    noShadow: noShadow ?? false,
     color,
     orientation,
   }));

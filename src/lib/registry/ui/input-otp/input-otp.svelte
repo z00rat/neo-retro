@@ -7,14 +7,22 @@
     ref = $bindable(null),
     class: className,
     value = $bindable(''),
+    color,
     ...restProps
-  }: InputOTPPrimitive.RootProps = $props();
+  }: InputOTPPrimitive.RootProps & {
+    color?: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+  } = $props();
 </script>
 
 <InputOTPPrimitive.Root
   bind:ref
   bind:value
   data-slot="input-otp"
-  class={cn('gap-2 has-disabled:neoretro-disable [&_input]:disabled:neoretro-disable flex items-center', className)}
+  data-color={color}
+  class={cn(
+    'neoretro-focus gap-2 has-disabled:neoretro-disable [&_input]:disabled:neoretro-disable flex items-center',
+    color ? 'neoretro-clr' : '',
+    className,
+  )}
   {...restProps}
 />

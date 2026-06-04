@@ -29,7 +29,7 @@
     data-slot="sheet-content"
     data-color={color}
     class={cn(
-      'gap-4 neoretro-border neoretro-clr ease-in-out data-[state=closed]:animate-out data-[state=open]:animate-in fixed z-50 flex flex-col transition duration-400',
+      'gap-4 neoretro-shadow rounded neoretro-border neoretro-clr ease-in-out data-[state=closed]:animate-out data-[state=open]:animate-in fixed z-50 flex flex-col transition duration-400',
       side === 'top' &&
         'inset-x-0 top-0 data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top h-auto border-b',
       side === 'right' &&

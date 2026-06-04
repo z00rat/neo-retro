@@ -5,6 +5,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@utility neoretro-animate {
+  @apply data-[state=open]:animate-in data-[state=open]:zoom-in-95;
+  @apply data-[state=closed]:animate-out data-[state=closed]:zoom-out-95;
+}
+
 @utility neoretro-overlay {
   @apply inset-0 bg-black/50 backdrop-blur-xs fixed z-50;
 }

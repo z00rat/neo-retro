@@ -12,10 +12,7 @@
 <NavigationMenuPrimitive.Indicator
   bind:ref
   data-slot="navigation-menu-indicator"
-  class={cn(
-    'h-1.5 neoretro-border data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:animate-in data-[state=visible]:fade-in top-full z-1 flex items-end justify-center overflow-hidden',
-    className,
-  )}
+  class={cn('h-1.5 neoretro-border top-full z-1 flex items-end justify-center overflow-hidden', className)}
   {...restProps}
 >
   <div

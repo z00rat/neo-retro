@@ -11,7 +11,7 @@
   bind:ref
   data-slot="input-otp-slot"
   class={cn(
-    'size-12 border-border bg-background text-sm text-foreground first:rounded-l last:rounded-r aria-invalid:border-red relative flex items-center justify-center border-y-2 border-r-2 transition-all outline-none first:border-l-2',
+    'size-12 neoretro-clr neoretro-border first:rounded-l last:rounded-r aria-invalid:border-red relative flex items-center justify-center transition-all outline-none',
     cell.isActive && 'focus-visible:neoretro-focus aria-invalid:border-red z-10',
     className,
   )}
@@ -20,7 +20,7 @@
   {cell.char}
   {#if cell.hasFakeCaret}
     <div class="inset-0 pointer-events-none absolute flex items-center justify-center">
-      <div class="h-4 animate-caret-blink w-px bg-current duration-1000"></div>
+      <div class="h-4 w-px bg-current"></div>
     </div>
   {/if}
 </InputOTPPrimitive.Cell>

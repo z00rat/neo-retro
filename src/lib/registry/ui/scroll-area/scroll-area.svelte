@@ -9,12 +9,14 @@
     ref = $bindable(null),
     viewportRef = $bindable(null),
     class: className,
+    color,
     orientation = 'vertical',
     scrollbarXClasses = '',
     scrollbarYClasses = '',
     children,
     ...restProps
   }: WithoutChild<ScrollAreaPrimitive.RootProps> & {
+    color?: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     orientation?: 'vertical' | 'horizontal' | 'both' | undefined;
     scrollbarXClasses?: string | undefined;
     scrollbarYClasses?: string | undefined;
@@ -22,11 +24,17 @@
   } = $props();
 </script>
 
-<ScrollAreaPrimitive.Root bind:ref data-slot="scroll-area" class={cn('relative', className)} {...restProps}>
+<ScrollAreaPrimitive.Root
+  bind:ref
+  data-slot="scroll-area"
+  data-color={color}
+  class={cn('neoretro-border rounded', className)}
+  {...restProps}
+>
   <ScrollAreaPrimitive.Viewport
     bind:ref={viewportRef}
     data-slot="scroll-area-viewport"
-    class="neoretro-focus rounded size-full transition-[color,box-shadow]"
+    class="neoretro-focus neoretro-clr rounded size-full transition-[color,box-shadow]"
   >
     {@render children?.()}
   </ScrollAreaPrimitive.Viewport>

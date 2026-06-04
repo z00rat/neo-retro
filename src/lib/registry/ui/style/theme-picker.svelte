@@ -32,7 +32,7 @@
     </Dialog.Header>
 
     <InputGroup.Root class="mt-4">
-      <InputGroup.Text><SearchIcon class="mx-4 size-4 opacity-80" /></InputGroup.Text>
+      <InputGroup.Text><SearchIcon class="mx-4 size-4 opacity-90" /></InputGroup.Text>
       <InputGroup.Input
         type="text"
         placeholder="Search themes..."

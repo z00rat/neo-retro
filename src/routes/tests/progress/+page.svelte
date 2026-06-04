@@ -60,15 +60,15 @@
   <div class="space-y-4">
     <div class="space-y-2">
       <label for="progress-0" class="text-sm font-medium">0%</label>
-      <Progress id="progress-0" value={0} indicatorColor="black" trackColor="white" />
+      <Progress id="progress-0" value={0} indicatorColor="red" trackColor="white" />
     </div>
     <div class="space-y-2">
       <label for="progress-50" class="text-sm font-medium">50%</label>
-      <Progress id="progress-50" value={50} indicatorColor="black" trackColor="white" />
+      <Progress id="progress-50" value={50} indicatorColor="red" trackColor="white" />
     </div>
     <div class="space-y-2">
       <label for="progress-100" class="text-sm font-medium">100%</label>
-      <Progress id="progress-100" value={100} indicatorColor="black" trackColor="white" />
+      <Progress id="progress-100" value={100} indicatorColor="red" trackColor="white" />
     </div>
   </div>
 </section>

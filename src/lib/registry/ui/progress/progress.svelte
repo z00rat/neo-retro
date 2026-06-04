@@ -14,7 +14,7 @@
     ...restProps
   }: WithoutChildrenOrChild<ProgressPrimitive.RootProps> & {
     noShadow?: boolean;
-    indicatorColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    indicatorColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     trackColor?: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
 </script>

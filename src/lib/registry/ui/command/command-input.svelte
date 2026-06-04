@@ -15,7 +15,7 @@
 </script>
 
 <div class="gap-2 px-4 flex h-full items-center" data-slot="command-input-wrapper">
-  <SearchIcon class="size-4 shrink-0 opacity-80" />
+  <SearchIcon class="size-4 shrink-0 opacity-90" />
   <CommandPrimitive.Input
     data-slot="command-input"
     data-color={getColor()}
