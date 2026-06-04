@@ -27,6 +27,24 @@
 	"registry": "https://neo-retro.zurat.dev/r"
 }`;
 
+  const layoutExample =
+    '<s' +
+    'cript lang="ts">\n' +
+    "  import { ThemeInit, ThemePicker } from '$lib/components/ui/style';\n\n" +
+    '  let { children } = $props();\n' +
+    '</s' +
+    'cript>\n\n' +
+    '<Theme' +
+    'Init>\n' +
+    '  <div class="fixed right-4 top-4 z-50">\n' +
+    '    <Theme' +
+    'Picker />\n' +
+    '  </div>\n' +
+    '  {@' +
+    'render children?.()}\n' +
+    '</Theme' +
+    'Init>';
+
   let copiedStates = $state<Record<string, boolean>>({});
 
   async function handleCopy(text: string, id: string) {
@@ -102,12 +120,12 @@
             Once saved, run the initialization command:
             <InputGroup.Root class="px-2 mt-2 w-full">
               <InputGroup.Text color="white" class="font-mono text-xs flex-1 truncate">
-                bun x shadcn-svelte@1.1.1 init
+                bun x shadcn-svelte init
               </InputGroup.Text>
               <InputGroup.Button
                 color="green"
                 size="icon-sm"
-                onclick={() => handleCopy('bun x shadcn-svelte@1.1.1 init', 'init')}
+                onclick={() => handleCopy('bun x shadcn-svelte init', 'init')}
               >
                 {#if copiedStates['init']}
                   <Check class="size-4" />
@@ -133,12 +151,12 @@
         <Card.Content class="space-y-6">
           <InputGroup.Root class="px-2 w-full">
             <InputGroup.Text color="white" class="font-mono text-xs flex-1 truncate">
-              bun x shadcn-svelte@1.1.1 add
+              bun x shadcn-svelte add
             </InputGroup.Text>
             <InputGroup.Button
               color="green"
               size="icon-sm"
-              onclick={() => handleCopy('bun x shadcn-svelte@1.1.1 add', 'add')}
+              onclick={() => handleCopy('bun x shadcn-svelte add', 'add')}
             >
               {#if copiedStates['add']}
                 <Check class="size-4" />
@@ -147,6 +165,36 @@
               {/if}
             </InputGroup.Button>
           </InputGroup.Root>
+        </Card.Content>
+      </Card.Root>
+
+      <Card.Root color="magenta">
+        <Card.Header>
+          <Card.Title>3. Setup Layout & Styles</Card.Title>
+          <Card.Description>
+            Import and wrap your application in the <Badge color="white" class="font-mono">ThemeInit</Badge> component in
+            your main layout file, e.g., <Badge color="white" class="font-mono">src/routes/+layout.svelte</Badge>.
+          </Card.Description>
+        </Card.Header>
+        <Card.Content class="space-y-6">
+          <div class="group relative">
+            <pre class="m-0 neoretro-clr text-xs p-4 neoretro-shadow neoretro-border rounded" data-color="black"><code
+                class="font-mono">{layoutExample}</code
+              ></pre>
+            <Button
+              color="green"
+              size="icon"
+              noShadow
+              class="right-3 top-3 size-8 absolute"
+              onclick={() => handleCopy(layoutExample, 'layout')}
+            >
+              {#if copiedStates['layout']}
+                <Check class="size-4" />
+              {:else}
+                <Copy class="size-4" />
+              {/if}
+            </Button>
+          </div>
         </Card.Content>
       </Card.Root>
     </div>

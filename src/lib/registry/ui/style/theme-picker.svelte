@@ -90,7 +90,9 @@
     <Dialog.Footer showCloseButton closeColor="red">
       <Dialog.Close>
         {#snippet child({ props })}
-          <Button {...props} color="magenta" class="sm:w-auto w-full" onclick={() => applyTheme(defaultTheme)}>Reset</Button>
+          <Button {...props} color="magenta" class="sm:w-auto w-full" onclick={() => applyTheme(defaultTheme)}
+            >Reset</Button
+          >
         {/snippet}
       </Dialog.Close>
     </Dialog.Footer>

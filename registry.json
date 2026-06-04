@@ -862,7 +862,8 @@
       "type": "registry:style",
       "registryDependencies": [
         "copy-to-clipboard",
-        "utils"
+        "utils",
+        "style"
       ],
       "devDependencies": [
         "@lucide/svelte",
