@@ -517,6 +517,19 @@
       ]
     },
     {
+      "name": "confirm-dialog",
+      "type": "registry:block",
+      "registryDependencies": [
+        "alert-dialog"
+      ],
+      "files": [
+        {
+          "path": "src/lib/registry/blocks/confirm-dialog.svelte",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
       "name": "context-menu",
       "type": "registry:ui",
       "registryDependencies": [],
@@ -1244,6 +1257,19 @@
         },
         {
           "path": "src/lib/registry/ui/popover/popover.svelte",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
+      "name": "privacy-consent-banner",
+      "type": "registry:block",
+      "registryDependencies": [
+        "alert-dialog"
+      ],
+      "files": [
+        {
+          "path": "src/lib/registry/blocks/privacy-consent-banner.svelte",
           "type": "registry:file"
         }
       ]

@@ -13,7 +13,7 @@
     acceptColor,
     declineColor,
     onAccept,
-    onDecline
+    onDecline,
   }: {
     open?: boolean;
     title?: string;
@@ -50,7 +50,12 @@
       <AlertDialog.Description>{description}</AlertDialog.Description>
     </AlertDialog.Header>
     <AlertDialog.Footer>
-      <AlertDialog.Cancel onclick={(e) => { e.preventDefault(); handleDecline(); }}>
+      <AlertDialog.Cancel
+        onclick={(e) => {
+          e.preventDefault();
+          handleDecline();
+        }}
+      >
         {declineText}
       </AlertDialog.Cancel>
       <AlertDialog.Action onclick={() => handleAccept()}>

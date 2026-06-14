@@ -1,6 +1,7 @@
 <script lang="ts">
-  import * as AlertDialog from '$lib/registry/ui/alert-dialog';
   import type { Snippet } from 'svelte';
+
+  import * as AlertDialog from '$lib/registry/ui/alert-dialog';
 
   type ButtonColors = 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
 
@@ -15,7 +16,7 @@
     cancelColor,
     onConfirm,
     onCancel,
-    children
+    children,
   }: {
     open?: boolean;
     title?: string;
@@ -47,8 +48,18 @@
       {/if}
     </AlertDialog.Header>
     <AlertDialog.Footer>
-      <AlertDialog.Cancel onclick={() => { open = false; onCancel?.(); }}>{cancelText}</AlertDialog.Cancel>
-      <AlertDialog.Action onclick={() => { open = false; onConfirm?.(); }}>{confirmText}</AlertDialog.Action>
+      <AlertDialog.Cancel
+        onclick={() => {
+          open = false;
+          onCancel?.();
+        }}>{cancelText}</AlertDialog.Cancel
+      >
+      <AlertDialog.Action
+        onclick={() => {
+          open = false;
+          onConfirm?.();
+        }}>{confirmText}</AlertDialog.Action
+      >
     </AlertDialog.Footer>
   </AlertDialog.Content>
 </AlertDialog.Root>

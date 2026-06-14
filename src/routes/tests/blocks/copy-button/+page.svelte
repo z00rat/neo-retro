@@ -1,7 +1,7 @@
 <script lang="ts">
   import CopyButton from '$lib/registry/blocks/copy-button.svelte';
-  import { Textarea } from '$lib/registry/ui/textarea';
   import * as Card from '$lib/registry/ui/card';
+  import { Textarea } from '$lib/registry/ui/textarea';
 
   const testUrl = 'https://neo-retro.zurat.dev/';
   const loremIpsum =
@@ -34,7 +34,7 @@
         <Card.Title>Copy Paragraph (Text Variant)</Card.Title>
       </Card.Header>
       <Card.Content>
-        <div class="gap-4 flex flex-col sm:flex-row items-start">
+        <div class="gap-4 sm:flex-row flex flex-col items-start">
           <div class="neoretro-border bg-white/80 dark:bg-black/20 p-3 text-sm max-w-md italic">
             "{loremIpsum}"
           </div>
