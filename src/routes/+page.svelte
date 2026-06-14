@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Check, Copy, Github } from '@lucide/svelte';
+  import { Github } from '@lucide/svelte';
 
   import { resolve } from '$app/paths';
 
-  import { copyToClipboard } from '$lib/registry/lib/copy-to-clipboard';
+  import CopyButton from '$lib/registry/blocks/copy-button.svelte';
   import { Badge } from '$lib/registry/ui/badge';
   import { Button } from '$lib/registry/ui/button';
   import * as Card from '$lib/registry/ui/card';
@@ -44,17 +44,6 @@
     'render children?.()}\n' +
     '</Theme' +
     'Init>';
-
-  let copiedStates = $state<Record<string, boolean>>({});
-
-  async function handleCopy(text: string, id: string) {
-    if (await copyToClipboard(text)) {
-      copiedStates[id] = true;
-      setTimeout(() => {
-        copiedStates[id] = false;
-      }, 2000);
-    }
-  }
 </script>
 
 <div class="max-w-2xl px-4 py-16 container mx-auto">
@@ -102,37 +91,15 @@
             <pre class="m-0 neoretro-clr text-xs p-4 neoretro-shadow neoretro-border rounded" data-color="black"><code
                 class="font-mono">{componentsJson}</code
               ></pre>
-            <Button
-              color="green"
-              size="icon"
-              noShadow
-              class="right-3 top-3 size-8 absolute"
-              onclick={() => handleCopy(componentsJson, 'config')}
-            >
-              {#if copiedStates['config']}
-                <Check class="size-4" />
-              {:else}
-                <Copy class="size-4" />
-              {/if}
-            </Button>
+            <CopyButton value={componentsJson} variant="icon" color="green" class="right-3 top-3 size-8 absolute" />
           </div>
           <div class="space-y-2 mt-4 inline-block w-full">
             Once saved, run the initialization command:
             <InputGroup.Root class="px-2 mt-2 w-full">
               <InputGroup.Text color="white" class="font-mono text-xs flex-1 truncate">
-                bun x shadcn-svelte init
+                bun x shadcn-svelte@1.1.1 init
               </InputGroup.Text>
-              <InputGroup.Button
-                color="green"
-                size="icon-sm"
-                onclick={() => handleCopy('bun x shadcn-svelte init', 'init')}
-              >
-                {#if copiedStates['init']}
-                  <Check class="size-4" />
-                {:else}
-                  <Copy class="size-4" />
-                {/if}
-              </InputGroup.Button>
+              <CopyButton value="bun x shadcn-svelte@1.1.1 init" variant="icon" color="green" noShadow size="sm" />
             </InputGroup.Root>
           </div>
         </Card.Content>
@@ -151,19 +118,9 @@
         <Card.Content class="space-y-6">
           <InputGroup.Root class="px-2 w-full">
             <InputGroup.Text color="white" class="font-mono text-xs flex-1 truncate">
-              bun x shadcn-svelte add
+              bun x shadcn-svelte@1.1.1 add
             </InputGroup.Text>
-            <InputGroup.Button
-              color="green"
-              size="icon-sm"
-              onclick={() => handleCopy('bun x shadcn-svelte add', 'add')}
-            >
-              {#if copiedStates['add']}
-                <Check class="size-4" />
-              {:else}
-                <Copy class="size-4" />
-              {/if}
-            </InputGroup.Button>
+            <CopyButton value="bun x shadcn-svelte@1.1.1 add" variant="icon" color="green" noShadow size="sm" />
           </InputGroup.Root>
         </Card.Content>
       </Card.Root>
@@ -181,19 +138,7 @@
             <pre class="m-0 neoretro-clr text-xs p-4 neoretro-shadow neoretro-border rounded" data-color="black"><code
                 class="font-mono">{layoutExample}</code
               ></pre>
-            <Button
-              color="green"
-              size="icon"
-              noShadow
-              class="right-3 top-3 size-8 absolute"
-              onclick={() => handleCopy(layoutExample, 'layout')}
-            >
-              {#if copiedStates['layout']}
-                <Check class="size-4" />
-              {:else}
-                <Copy class="size-4" />
-              {/if}
-            </Button>
+            <CopyButton value={layoutExample} variant="icon" color="green" class="right-3 top-3 size-8 absolute" />
           </div>
         </Card.Content>
       </Card.Root>

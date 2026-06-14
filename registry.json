@@ -592,14 +592,15 @@
       ]
     },
     {
-      "name": "copy-to-clipboard",
-      "type": "registry:lib",
-      "registryDependencies": [],
-      "devDependencies": [],
+      "name": "copy-button",
+      "type": "registry:block",
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
-          "path": "src/lib/registry/lib/copy-to-clipboard.ts",
-          "type": "registry:lib"
+          "path": "src/lib/registry/blocks/copy-button.svelte",
+          "type": "registry:file"
         }
       ]
     },
@@ -861,7 +862,6 @@
       "name": "init",
       "type": "registry:style",
       "registryDependencies": [
-        "copy-to-clipboard",
         "utils",
         "style"
       ],

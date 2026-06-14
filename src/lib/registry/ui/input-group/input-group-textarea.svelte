@@ -16,7 +16,7 @@
   bind:ref
   data-slot="input-group-control"
   noShadow={true}
-  class={cn('py-3 flex-1 resize-none rounded-none border-none bg-transparent shadow-none', className)}
+  class={cn('py-3 flex-1 resize-none border-none bg-transparent shadow-none', className)}
   bind:value
   {...props}
 />

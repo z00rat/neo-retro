@@ -12,6 +12,7 @@
         sm: 'h-9 px-3',
         lg: 'h-11 px-8',
         icon: 'size-10',
+        'icon-sm': 'size-8 p-0',
       },
       noShadow: {
         true: '',
