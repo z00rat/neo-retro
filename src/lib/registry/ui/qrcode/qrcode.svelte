@@ -1,0 +1,51 @@
+<script lang="ts">
+  import { toString } from 'qrcode';
+  import type { HTMLAttributes } from 'svelte/elements';
+
+  import { cn, type WithElementRef } from '$lib/utils.ts';
+
+  interface QrCodeProps extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
+    value: string;
+    level?: 'L' | 'M' | 'Q' | 'H';
+    margin?: number;
+  }
+
+  let { value, level = 'M', margin = 2, class: className, ref = $bindable(null), ...restProps }: QrCodeProps = $props();
+
+  let svgString = $state('');
+
+  $effect(() => {
+    if (!value) {
+      svgString = '';
+      return;
+    }
+    toString(value, {
+      type: 'svg',
+      margin,
+      errorCorrectionLevel: level,
+      color: {
+        dark: '#000000', // Valid hex
+        light: '#00000000', // Transparent background
+      },
+    })
+      .then((svg) => {
+        // Strip fixed width/height and substitute fill color with currentColor
+        const cleanedSvg = svg
+          .replace(/width="[0-9]+"/, 'width="100%"')
+          .replace(/height="[0-9]+"/, 'height="100%"')
+          .replace(/fill="#000000"/g, 'fill="currentColor"');
+        svgString = cleanedSvg;
+      })
+      .catch((err) => {
+        console.error('Failed to generate QR code SVG:', err);
+        svgString = '';
+      });
+  });
+</script>
+
+{#if svgString}
+  <div bind:this={ref} class={cn('flex items-center justify-center', className)} {...restProps}>
+    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+    {@html svgString}
+  </div>
+{/if}

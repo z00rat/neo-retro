@@ -1290,6 +1290,25 @@
       ]
     },
     {
+      "name": "qrcode",
+      "type": "registry:ui",
+      "registryDependencies": [],
+      "devDependencies": [
+        "qrcode",
+        "@types/qrcode"
+      ],
+      "files": [
+        {
+          "path": "src/lib/registry/ui/qrcode/index.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/qrcode/qrcode.svelte",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
       "name": "radio-group",
       "type": "registry:ui",
       "registryDependencies": [],
