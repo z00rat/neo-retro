@@ -46,9 +46,9 @@
     'Init>';
 </script>
 
-<div class="max-w-2xl px-4 py-16 container mx-auto">
+<div class="max-w-3xl px-4 py-16 container mx-auto">
   <header class="pb-4 border-black flex items-center justify-between">
-    <h1 class="text-3xl font-black tracking-tighter mb-0 uppercase italic">Guide</h1>
+    <h1 class="text-3xl font-black tracking-tighter mb-0 uppercase italic">Neo-Retro</h1>
     <div class="gap-2 flex items-center">
       <Button color="cyan" href={resolve('/tests')} class="gap-2 flex items-center">View Examples</Button>
       <Button
@@ -70,11 +70,13 @@
     <div class="space-y-10">
       <Card.Root color="magenta">
         <Card.Header>
-          <Card.Title>Neo-Retro</Card.Title>
+          <Card.Title>An oxymoronic design system: not modern, yet not old-school.</Card.Title>
         </Card.Header>
         <Card.Content class="space-y-6">
-          <p class="leading-relaxed font-medium">An oxymoronic design system: not modern, yet not old-school.</p>
-          <p class="leading-relaxed">A UI component registry for Svelte, based on shadcn-svelte.</p>
+          <p class="leading-relaxed">
+            A UI component registry for Svelte, based on shadcn-svelte but extended with common utilities and
+            components, and a skill for AI coding agents.
+          </p>
         </Card.Content>
       </Card.Root>
 
@@ -125,7 +127,7 @@
         </Card.Content>
       </Card.Root>
 
-      <Card.Root color="magenta">
+      <Card.Root color="blue">
         <Card.Header>
           <Card.Title>3. Setup Layout & Styles</Card.Title>
           <Card.Description>
@@ -139,6 +141,37 @@
                 class="font-mono">{layoutExample}</code
               ></pre>
             <CopyButton value={layoutExample} variant="icon" color="green" class="right-3 top-3 size-8 absolute" />
+          </div>
+        </Card.Content>
+      </Card.Root>
+
+      <Card.Root color="red">
+        <Card.Header>
+          <Card.Title>Agent Skill</Card.Title>
+          <Card.Description>Install the neo-retro skill for AI coding agents.</Card.Description>
+        </Card.Header>
+        <Card.Content class="space-y-6">
+          <InputGroup.Root class="px-2 w-full">
+            <InputGroup.Text color="white" class="font-mono text-xs flex-1 truncate">
+              npx skills add z00rat/neo-retro
+            </InputGroup.Text>
+            <CopyButton value="npx skills add z00rat/neo-retro" variant="icon" color="green" noShadow size="sm" />
+          </InputGroup.Root>
+          <p class="leading-relaxed font-medium text-sm">
+            Then add this to your project's <Badge color="white" class="font-mono">AGENTS.md</Badge>:
+          </p>
+          <div class="group relative">
+            <pre
+              class="m-0 neoretro-clr text-xs p-4 neoretro-shadow neoretro-border rounded break-all whitespace-pre-wrap"
+              data-color="black"><code
+                >- **Component Reference**: See `skills/neo-retro-common/SKILL.md` for shared types/colors and `skills/neo-retro-components/SKILL.md` for HTML tag replacements and props for all components.</code
+              ></pre>
+            <CopyButton
+              value="- **Component Reference**: See `skills/neo-retro-common/SKILL.md` for shared types/colors and `skills/neo-retro-components/SKILL.md` for HTML tag replacements and props for all components."
+              variant="icon"
+              color="green"
+              class="right-3 top-3 size-8 absolute"
+            />
           </div>
         </Card.Content>
       </Card.Root>

@@ -1,3 +1,3 @@
-- **Docs**: Look into `docs/` directory for more information on everything.
+- **Component Reference**: See `skills/neo-retro-common/SKILL.md` for shared types/colors and `skills/neo-retro-components/SKILL.md` for HTML tag replacements and props for all components.
 - **Safe Deletion**: Never use `rm`, `rmdir`, `shred`, or `unlink`. Always use `trash-cli` (e.g., `trash ./filename`) to ensure files are moved to the trash rather than permanently deleted.
 - **Runtime & Package Management**: Use `bun` exclusively for all commands and package management. Do not use `node`, `npm`, `pnpm`, `yarn`, `npx`, or `pnpx`.
