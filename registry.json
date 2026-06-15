@@ -1969,6 +1969,60 @@
           "type": "registry:lib"
         }
       ]
+    },
+    {
+      "name": "image",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "dialog",
+        "button",
+        "dropdown-menu"
+      ],
+      "devDependencies": [
+        "@panzoom/panzoom",
+        "thumbhash",
+        "sharp"
+      ],
+      "files": [
+        {
+          "path": "src/lib/registry/ui/image/image.svelte",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/image/index.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/image/types.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/image/panzoom.ts",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
+      "name": "video",
+      "type": "registry:ui",
+      "registryDependencies": [],
+      "devDependencies": [
+        "vidstack"
+      ],
+      "files": [
+        {
+          "path": "src/lib/registry/ui/video/video.svelte",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/video/index.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/video/types.ts",
+          "type": "registry:file"
+        }
+      ]
     }
   ]
 }
