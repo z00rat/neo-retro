@@ -1,14 +1,18 @@
 <script lang="ts">
-  import { Github } from '@lucide/svelte';
+  import GithubIcon from '@lucide/svelte/icons/github';
 
   import { resolve } from '$app/paths';
 
-  import CopyButton from '$lib/registry/blocks/copy-button.svelte';
   import { Badge } from '$lib/registry/ui/badge';
   import { Button } from '$lib/registry/ui/button';
   import * as Card from '$lib/registry/ui/card';
-  import * as InputGroup from '$lib/registry/ui/input-group';
+  import { CodeBlock, type CodeBlockVariant } from '$lib/registry/ui/code-block';
   import { Separator } from '$lib/registry/ui/separator';
+
+  const codeBlockShiki = {
+    themes: ['nord', 'github-light'],
+    langs: ['json', 'svelte', 'markdown', 'bash'],
+  };
 
   const componentsJson = `{
 	"$schema": "https://shadcn-svelte.com/schema.json",
@@ -44,6 +48,54 @@
     'render children?.()}\n' +
     '</Theme' +
     'Init>';
+
+  const agentsMarkdown =
+    '- **Component Reference**: See `skills/neo-retro-common/SKILL.md` for shared types/colors and `skills/neo-retro-components/SKILL.md` for HTML tag replacements and props for all components.';
+
+  const initVariants: CodeBlockVariant[] = [
+    {
+      value: 'npm',
+      code: 'npx shadcn-svelte@1.1.1 init',
+    },
+    {
+      value: 'pnpm',
+      code: 'pnpm dlx shadcn-svelte@1.1.1 init',
+    },
+    {
+      value: 'bun',
+      code: 'bun x shadcn-svelte@1.1.1 init',
+    },
+  ];
+
+  const addVariants: CodeBlockVariant[] = [
+    {
+      value: 'npm',
+      code: 'npx shadcn-svelte@1.1.1 add',
+    },
+    {
+      value: 'pnpm',
+      code: 'pnpm dlx shadcn-svelte@1.1.1 add',
+    },
+    {
+      value: 'bun',
+      code: 'bun x shadcn-svelte@1.1.1 add',
+    },
+  ];
+
+  const agentVariants: CodeBlockVariant[] = [
+    {
+      value: 'npm',
+      code: 'npx skills add z00rat/neo-retro',
+    },
+    {
+      value: 'pnpm',
+      code: 'pnpm dlx skills add z00rat/neo-retro',
+    },
+    {
+      value: 'bun',
+      code: 'bun x skills add z00rat/neo-retro',
+    },
+  ];
 </script>
 
 <div class="max-w-3xl px-4 py-16 container mx-auto">
@@ -58,7 +110,7 @@
         rel="noopener noreferrer"
         class="gap-2 flex items-center"
       >
-        <Github class="size-4" />
+        <GithubIcon class="size-4" />
         GitHub
       </Button>
     </div>
@@ -89,20 +141,25 @@
           </Card.Description>
         </Card.Header>
         <Card.Content class="space-y-6">
-          <div class="group relative">
-            <pre class="m-0 neoretro-clr text-xs p-4 neoretro-shadow neoretro-border rounded" data-color="black"><code
-                class="font-mono">{componentsJson}</code
-              ></pre>
-            <CopyButton value={componentsJson} variant="icon" color="green" class="right-3 top-3 size-8 absolute" />
-          </div>
-          <div class="space-y-2 mt-4 inline-block w-full">
-            Once saved, run the initialization command:
-            <InputGroup.Root class="px-2 mt-2 w-full">
-              <InputGroup.Text color="white" class="font-mono text-xs flex-1 truncate">
-                bun x shadcn-svelte@1.1.1 init
-              </InputGroup.Text>
-              <CopyButton value="bun x shadcn-svelte@1.1.1 init" variant="icon" color="green" noShadow size="sm" />
-            </InputGroup.Root>
+          <CodeBlock
+            shiki={codeBlockShiki}
+            color="white"
+            code={componentsJson}
+            lang="json"
+            copy
+            title="components.json"
+          />
+          <div class="space-y-2 mt-4">
+            <p class="text-sm">Once saved, run the initialization command:</p>
+            <CodeBlock
+              shiki={codeBlockShiki}
+              color="white"
+              lang="bash"
+              copy
+              defaultVariant="bun"
+              variantKey="package-manager"
+              variants={initVariants}
+            />
           </div>
         </Card.Content>
       </Card.Root>
@@ -118,12 +175,15 @@
           </Card.Description>
         </Card.Header>
         <Card.Content class="space-y-6">
-          <InputGroup.Root class="px-2 w-full">
-            <InputGroup.Text color="white" class="font-mono text-xs flex-1 truncate">
-              bun x shadcn-svelte@1.1.1 add
-            </InputGroup.Text>
-            <CopyButton value="bun x shadcn-svelte@1.1.1 add" variant="icon" color="green" noShadow size="sm" />
-          </InputGroup.Root>
+          <CodeBlock
+            shiki={codeBlockShiki}
+            color="white"
+            lang="bash"
+            copy
+            defaultVariant="bun"
+            variantKey="package-manager"
+            variants={addVariants}
+          />
         </Card.Content>
       </Card.Root>
 
@@ -136,12 +196,16 @@
           </Card.Description>
         </Card.Header>
         <Card.Content class="space-y-6">
-          <div class="group relative">
-            <pre class="m-0 neoretro-clr text-xs p-4 neoretro-shadow neoretro-border rounded" data-color="black"><code
-                class="font-mono">{layoutExample}</code
-              ></pre>
-            <CopyButton value={layoutExample} variant="icon" color="green" class="right-3 top-3 size-8 absolute" />
-          </div>
+          <CodeBlock
+            shiki={codeBlockShiki}
+            color="white"
+            code={layoutExample}
+            lang="svelte"
+            copy
+            download
+            downloadFilename="+layout.svelte"
+            title="src/routes/+layout.svelte"
+          />
         </Card.Content>
       </Card.Root>
 
@@ -151,28 +215,19 @@
           <Card.Description>Install the neo-retro skill for AI coding agents.</Card.Description>
         </Card.Header>
         <Card.Content class="space-y-6">
-          <InputGroup.Root class="px-2 w-full">
-            <InputGroup.Text color="white" class="font-mono text-xs flex-1 truncate">
-              npx skills add z00rat/neo-retro
-            </InputGroup.Text>
-            <CopyButton value="npx skills add z00rat/neo-retro" variant="icon" color="green" noShadow size="sm" />
-          </InputGroup.Root>
+          <CodeBlock
+            shiki={codeBlockShiki}
+            color="white"
+            lang="bash"
+            copy
+            defaultVariant="bun"
+            variantKey="package-manager"
+            variants={agentVariants}
+          />
           <p class="leading-relaxed font-medium text-sm">
             Then add this to your project's <Badge color="white" class="font-mono">AGENTS.md</Badge>:
           </p>
-          <div class="group relative">
-            <pre
-              class="m-0 neoretro-clr text-xs p-4 neoretro-shadow neoretro-border rounded break-all whitespace-pre-wrap"
-              data-color="black"><code
-                >- **Component Reference**: See `skills/neo-retro-common/SKILL.md` for shared types/colors and `skills/neo-retro-components/SKILL.md` for HTML tag replacements and props for all components.</code
-              ></pre>
-            <CopyButton
-              value="- **Component Reference**: See `skills/neo-retro-common/SKILL.md` for shared types/colors and `skills/neo-retro-components/SKILL.md` for HTML tag replacements and props for all components."
-              variant="icon"
-              color="green"
-              class="right-3 top-3 size-8 absolute"
-            />
-          </div>
+          <CodeBlock shiki={codeBlockShiki} color="white" code={agentsMarkdown} lang="markdown" copy wrap />
         </Card.Content>
       </Card.Root>
     </div>
