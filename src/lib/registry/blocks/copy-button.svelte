@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { Check, Copy } from '@lucide/svelte';
+  import CheckIcon from '@lucide/svelte/icons/check';
+  import CopyIcon from '@lucide/svelte/icons/copy';
 
   import { Button } from '$lib/registry/ui/button/index.ts';
   import type { ButtonProps } from '$lib/registry/ui/button/index.ts';
@@ -43,9 +44,9 @@
 {#if variant === 'icon'}
   <Button {color} size={size === 'sm' ? 'icon-sm' : 'icon'} class={cn('z-10', className)} onclick={copy} {...restProps}>
     {#if copied}
-      <Check class="size-4" />
+      <CheckIcon class="size-4" />
     {:else}
-      <Copy class="size-4" />
+      <CopyIcon class="size-4" />
     {/if}
   </Button>
 {:else}

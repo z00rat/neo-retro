@@ -1,5 +1,10 @@
 <script lang="ts">
-  import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Download, Eye } from '@lucide/svelte';
+  import ChevronLeftIcon from '@lucide/svelte/icons/chevron-left';
+  import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
+  import ChevronsLeftIcon from '@lucide/svelte/icons/chevrons-left';
+  import ChevronsRightIcon from '@lucide/svelte/icons/chevrons-right';
+  import DownloadIcon from '@lucide/svelte/icons/download';
+  import EyeIcon from '@lucide/svelte/icons/eye';
   import { parse } from 'marked';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
@@ -216,7 +221,7 @@
         class="neoretro-border neoretro-clr p-2 font-bold text-xs gap-1.5 neoretro-shadow flex items-center uppercase select-none"
         data-color={color}
       >
-        <Eye class="size-4" /> View Details
+        <EyeIcon class="size-4" /> View Details
       </div>
     </div>
   </div>
@@ -307,7 +312,7 @@
 
             <DropdownMenu.Root>
               <DropdownMenu.Trigger>
-                <Button color={downloadColor} class="text-xs"><Download /> Download</Button>
+                <Button color={downloadColor} class="text-xs"><DownloadIcon /> Download</Button>
               </DropdownMenu.Trigger>
               <DropdownMenu.Content side="top" align="end" color={downloadColor}>
                 <DropdownMenu.Item onclick={() => downloadUrl(currentImage.urls.original.url, currentImage.id)}>
@@ -340,7 +345,7 @@
                 onclick={() => openAtIndex(0)}
                 disabled={currentIndex <= 0}
               >
-                <ChevronsLeft class="size-4" />
+                <ChevronsLeftIcon class="size-4" />
               </Button>
               <Button
                 color={prevNextColor}
@@ -349,7 +354,7 @@
                 onclick={prev}
                 disabled={currentIndex <= 0}
               >
-                <ChevronLeft class="size-4" />
+                <ChevronLeftIcon class="size-4" />
               </Button>
               <span class="text-xs font-mono w-10 sm:block hidden text-center select-none"
                 >{currentIndex + 1}/{allImages.length}</span
@@ -361,7 +366,7 @@
                 onclick={next}
                 disabled={currentIndex >= allImages.length - 1}
               >
-                <ChevronRight class="size-4" />
+                <ChevronRightIcon class="size-4" />
               </Button>
               <Button
                 color={edgeColor}
@@ -370,7 +375,7 @@
                 onclick={() => openAtIndex(allImages.length - 1)}
                 disabled={currentIndex >= allImages.length - 1}
               >
-                <ChevronsRight class="size-4" />
+                <ChevronsRightIcon class="size-4" />
               </Button>
             </div>
           {/if}

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { HourglassIcon } from '@lucide/svelte';
+  import HourglassIcon from '@lucide/svelte/icons/hourglass';
   import type { ComponentProps } from 'svelte';
 
   import { cn } from '$lib/utils.ts';

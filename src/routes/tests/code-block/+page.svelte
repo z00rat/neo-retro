@@ -145,9 +145,8 @@ bun run preview`,
     <section class="space-y-4">
       <h2 class="text-xl font-black uppercase italic">Basics</h2>
       <p class="text-xs">
-        Required: <code class="font-mono">color</code>, <code class="font-mono">shiki</code>, <code class="font-mono"
-          >code</code
-        >, <code class="font-mono">lang</code>. Optional header props:
+        Required: <code class="font-mono">color</code>, <code class="font-mono">shiki</code>,
+        <code class="font-mono">code</code>, <code class="font-mono">lang</code>. Optional header props:
         <code class="font-mono">title</code>, <code class="font-mono">icon</code>, <code class="font-mono">copy</code>,
         <code class="font-mono">numbered</code>.
       </p>
@@ -168,8 +167,8 @@ bun run preview`,
       <h2 class="text-xl font-black uppercase italic">Header</h2>
       <p class="text-xs">
         <code class="font-mono">color</code> tints the header bar (red, green, yellow, blue, magenta, cyan, white).
-        <code class="font-mono">headerColor</code> overrides it. Without <code class="font-mono">title</code>, a language
-        badge is shown instead.
+        <code class="font-mono">headerColor</code> overrides it. Without <code class="font-mono">title</code>, a
+        language badge is shown instead.
       </p>
       <CodeBlock {shiki} color="blue" code={demoTypeScript} lang="typescript" title="color only" copy />
       <CodeBlock
@@ -251,7 +250,7 @@ bun run preview`,
         <code class="font-mono">lines</code> truncates long code — click the block to expand.
         <code class="font-mono">collapse</code> adds a header chevron. Combine them for finer control.
       </p>
-      <ul class="text-xs list-disc space-y-1 pl-4">
+      <ul class="text-xs space-y-1 pl-4 list-disc">
         <li><code class="font-mono">lines={'{N}'}</code> — truncate to N lines, gradient hint to expand</li>
         <li><code class="font-mono">collapse</code> — header toggle hides the entire body</li>
         <li><code class="font-mono">lines={'{N}'} collapse</code> — starts collapsed to N lines</li>
@@ -287,9 +286,9 @@ bun run preview`,
     <section class="space-y-4">
       <h2 class="text-xl font-black uppercase italic">Display</h2>
       <p class="text-xs">
-        <code class="font-mono">wrap</code>, <code class="font-mono">showHeader</code>, <code class="font-mono"
-          >tabSize</code
-        >, and <code class="font-mono">highlightedLines</code> (1-indexed, disables magic-move on variants).
+        <code class="font-mono">wrap</code>, <code class="font-mono">showHeader</code>,
+        <code class="font-mono">tabSize</code>, and <code class="font-mono">highlightedLines</code> (1-indexed, disables magic-move
+        on variants).
       </p>
       <CodeBlock {shiki} color="red" code={demoLong} lang="typescript" title="wrap" copy wrap />
       <CodeBlock {shiki} color="white" code={demoTypeScript} lang="typescript" showHeader={false} />
@@ -336,7 +335,10 @@ bun run preview`,
     <!-- Empty -->
     <section class="space-y-4">
       <h2 class="text-xl font-black uppercase italic">Empty</h2>
-      <p class="text-xs">No <code class="font-mono">code</code>, <code class="font-mono">html</code>, or variants — header shows a fallback badge.</p>
+      <p class="text-xs">
+        No <code class="font-mono">code</code>, <code class="font-mono">html</code>, or variants — header shows a
+        fallback badge.
+      </p>
       <CodeBlock color="red" />
     </section>
   </div>
