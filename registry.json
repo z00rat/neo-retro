@@ -437,6 +437,48 @@
       ]
     },
     {
+      "name": "code-block",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "alert",
+        "badge",
+        "button",
+        "dropdown-menu",
+        "spinner"
+      ],
+      "devDependencies": [
+        "@shikijs/magic-move",
+        "mode-watcher",
+        "shiki"
+      ],
+      "files": [
+        {
+          "path": "src/lib/registry/ui/code-block/code-block-store.svelte.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/code-block/code-block-view.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/code-block/code-block.svelte",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/code-block/code-block.types.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/code-block/index.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/code-block/shiki.ts",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
       "name": "collapsible",
       "type": "registry:ui",
       "registryDependencies": [],
