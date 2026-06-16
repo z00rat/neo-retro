@@ -10,14 +10,28 @@
     class: className,
     activeColor,
     inactiveColor,
+    noBrackets = false,
     ...restProps
   }: TabsPrimitive.RootProps & {
     activeColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
     inactiveColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    noBrackets?: boolean;
   } = $props();
 
-  setContext('tabsActiveColor', () => activeColor);
-  setContext('tabsInactiveColor', () => inactiveColor);
+  setContext('tabsState', {
+    get activeColor() {
+      return activeColor;
+    },
+    get inactiveColor() {
+      return inactiveColor;
+    },
+    get activeValue() {
+      return value;
+    },
+    get noBrackets() {
+      return noBrackets;
+    },
+  });
 </script>
 
 <TabsPrimitive.Root bind:ref bind:value data-slot="tabs" class={cn('w-full', className)} {...restProps} />
