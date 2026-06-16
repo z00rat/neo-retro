@@ -8,10 +8,8 @@ export function lineCount(lines: number | undefined): number | undefined {
   return Math.abs(lines);
 }
 
-export function initialViewMode(lines: number | undefined, collapse: boolean): ViewMode {
-  if (lines == null) return 'full';
-  if (lines > 0 && collapse) return 'lines';
-  if (lines > 0 && !collapse) return 'lines';
+export function initialViewMode(lines: number | undefined): ViewMode {
+  if (lines != null && lines > 0) return 'lines';
   return 'full';
 }
 

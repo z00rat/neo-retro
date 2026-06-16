@@ -56,14 +56,6 @@ export function resolveLangAlias(lang: string): string {
   return langAliases[lang] ?? lang;
 }
 
-export function getLoadedThemes(): readonly string[] {
-  return configuredThemes;
-}
-
-export function getLoadedLanguages(): readonly string[] {
-  return configuredLangs;
-}
-
 export function resolveCodeTheme({
   theme,
   lightTheme,

@@ -102,7 +102,7 @@
   <p class="mb-2 text-sm">
     Press
     <kbd
-      class="h-5 gap-1 rounded bg-background px-1.5 font-mono font-medium pointer-events-none inline-flex items-center text-[10px] opacity-100 select-none"
+      class="h-5 gap-1 rounded bg-background px-1.5 font-mono font-medium text-xs pointer-events-none inline-flex items-center opacity-100 select-none"
     >
       <span class="text-xs">⌘</span>K
     </kbd>

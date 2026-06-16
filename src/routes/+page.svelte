@@ -12,6 +12,8 @@
   const codeBlockShiki = {
     themes: ['nord', 'github-light'],
     langs: ['json', 'svelte', 'markdown', 'bash'],
+    lightTheme: 'github-light',
+    darkTheme: 'nord',
   };
 
   const componentsJson = `{
@@ -202,9 +204,10 @@
             code={layoutExample}
             lang="svelte"
             copy
-            download
-            downloadFilename="+layout.svelte"
+            download="+layout.svelte"
             title="src/routes/+layout.svelte"
+            lines={4}
+            collapse
           />
         </Card.Content>
       </Card.Root>

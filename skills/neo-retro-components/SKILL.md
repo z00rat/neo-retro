@@ -95,7 +95,7 @@ All accept `ref` (bindable), `class`, `children`, and `...restProps` unless note
 
 ### CodeBlock
 
-- `<CodeBlock>` — color, headerColor, code, lang, html, title, icon, copy, download, downloadFilename, numbered, wrap, showHeader (default true), lines, collapse, highlightedLines, lightTheme, darkTheme, theme, shiki, defaultVariant, variantKey, variants — syntax-highlighted code viewer with Shiki. Pass `shiki={{ themes, langs }}` or call `setDefaultConfig`. Uses `@shikijs/magic-move` for animated variant transitions. `variants` is an array of `{ value, label?, code }`. Blocks sharing `variantKey` sync via localStorage. `lines`: truncate/expand (`>0` truncate, `<0` collapse to abs count when used with `collapse`, `0` hide body). Replaces `<pre>`.
+- `<CodeBlock>` — color, headerColor, code, lang, html, title, icon, copy, download, numbered, wrap, showHeader (default true), lines, collapse, highlightedLines, lightTheme, darkTheme, theme, shiki, defaultVariant, variantKey, variants — syntax-highlighted code viewer with Shiki. Pass `shiki={{ themes, langs, lightTheme?, darkTheme? }}` or call `setDefaultConfig`. `download`: filename string, or `true` to use `title` as filename. Uses `@shikijs/magic-move` for animated variant transitions. `variants` is an array of `{ value, label?, code }`. Blocks sharing `variantKey` sync via localStorage. `lines`: truncate/expand (`>0` truncate, `<0` collapse to abs count when used with `collapse`, `0` hide body). Replaces `<pre>`.
 
 ### Collapsible
 

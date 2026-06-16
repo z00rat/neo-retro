@@ -17,6 +17,8 @@
       'github-light',
       'gruvbox-dark-medium',
     ],
+    lightTheme: 'github-light',
+    darkTheme: 'catppuccin-mocha',
     langs: [
       'javascript',
       'typescript',
@@ -187,18 +189,16 @@ bun run preview`,
     <section class="space-y-4">
       <h2 class="text-xl font-black uppercase italic">Code themes (Shiki)</h2>
       <p class="text-xs">
-        Code highlighting is independent of the site UI theme. Use <code class="font-mono">lightTheme</code> /
-        <code class="font-mono">darkTheme</code> for mode-aware code, or <code class="font-mono">theme</code> for a fixed
-        override.
+        Code highlighting is independent of the site UI theme. Set <code class="font-mono">lightTheme</code> /
+        <code class="font-mono">darkTheme</code> on <code class="font-mono">shiki</code> for mode-aware code, or pass
+        <code class="font-mono">theme</code> for a fixed override.
       </p>
       <CodeBlock
         {shiki}
         color="white"
         code={demoTypeScript}
         lang="typescript"
-        title="lightTheme + darkTheme"
-        lightTheme="github-light"
-        darkTheme="catppuccin-mocha"
+        title="shiki lightTheme + darkTheme"
         copy
         numbered
       />
@@ -320,8 +320,7 @@ bun run preview`,
         lang="json"
         title="copy + download"
         copy
-        download
-        downloadFilename="package.json"
+        download="package.json"
       />
       <CodeBlock {shiki} color="blue" code={demoJson} lang="json" title="custom actions" copy>
         {#snippet actions()}

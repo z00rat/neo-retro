@@ -3,12 +3,10 @@
   import ChevronDownIcon from '@lucide/svelte/icons/chevron-down';
   import CopyIcon from '@lucide/svelte/icons/copy';
   import DownloadIcon from '@lucide/svelte/icons/download';
-  import { ShikiMagicMove } from '@shikijs/magic-move/svelte';
-  import { mode } from 'mode-watcher';
+  import { mode, userPrefersMode } from 'mode-watcher';
   import type { Component, Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { Alert, AlertDescription, AlertTitle } from '$lib/registry/ui/alert/index.ts';
   import Badge from '$lib/registry/ui/badge/badge.svelte';
   import Button from '$lib/registry/ui/button/button.svelte';
   import * as DropdownMenu from '$lib/registry/ui/dropdown-menu/index.ts';
@@ -17,6 +15,7 @@
 
   import '@shikijs/magic-move/style.css';
 
+  import CodeBlockBody from './code-block-body.svelte';
   import { DEFAULT_VARIANT_KEY, getKeyedVariant, setKeyedVariant } from './code-block-store.svelte.ts';
   import {
     displayHeight,
@@ -30,16 +29,7 @@
     type ViewMode,
   } from './code-block-view.ts';
   import type { CodeBlockShikiConfig, CodeBlockVariant } from './code-block.types.ts';
-  import {
-    getCodeColors,
-    getHighlighter,
-    resolveCodeTheme,
-    resolveLangAlias,
-    resolveThemeAlias,
-    tokenizeCode,
-    type CodeLine,
-    type TokenizedCode,
-  } from './shiki.ts';
+  import { resolveCodeTheme, resolveLangAlias, resolveThemeAlias } from './shiki.ts';
 
   type PaletteColor = 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   type Variant = { value: string; label: string; code: string };
@@ -55,8 +45,7 @@
     title,
     icon: IconComponent,
     copy = false,
-    download: withDownload = false,
-    downloadFilename,
+    download,
     numbered = false,
     wrap = false,
     showHeader = true,
@@ -84,8 +73,7 @@
     title?: string;
     icon?: Component;
     copy?: boolean;
-    download?: boolean;
-    downloadFilename?: string;
+    download?: string | boolean;
     numbered?: boolean;
     wrap?: boolean;
     showHeader?: boolean;
@@ -107,23 +95,31 @@
 
   const themes = $derived(shiki?.themes ?? themesProp ?? []);
   const langs = $derived(shiki?.langs ?? langsProp ?? []);
+  const resolvedLightTheme = $derived(lightTheme ?? shiki?.lightTheme);
+  const resolvedDarkTheme = $derived(darkTheme ?? shiki?.darkTheme);
+  const showDownload = $derived(download !== undefined && download !== false);
+  const downloadFilename = $derived(typeof download === 'string' ? download : title || `code.${lang || 'txt'}`);
   const variants = $derived(variantInputs.map(normalizeVariant));
 
   let activeValue = $state('');
-  let highlighter = $state<Awaited<ReturnType<typeof getHighlighter>> | null>(null);
-  let highlighted = $state<TokenizedCode | null>(null);
-  let hlError = $state(false);
+  let codeColors = $state<{ bg: string; fg: string } | null>(null);
   let viewMode = $state<ViewMode>('full');
   let copied = $state(false);
   let copyTimer: ReturnType<typeof setTimeout> | undefined;
 
   const activeHeaderColor = $derived(headerColor ?? color);
-  const activeMode = $derived(mode.current ?? 'dark');
+  const activeMode = $derived.by((): 'light' | 'dark' => {
+    const derived = mode.current;
+    if (derived === 'light' || derived === 'dark') return derived;
+    const preferred = userPrefersMode.current;
+    if (preferred === 'light' || preferred === 'dark') return preferred;
+    return 'dark';
+  });
   const activeTheme = $derived(
     resolveCodeTheme({
       theme,
-      lightTheme,
-      darkTheme,
+      lightTheme: resolvedLightTheme,
+      darkTheme: resolvedDarkTheme,
       mode: activeMode,
       loadedThemes: themes,
     }),
@@ -139,6 +135,7 @@
     hasVariants && !highlightedLineSet && !preHighlightedHtml && !!normalizedLang && !!activeTheme,
   );
   const resolvedTheme = $derived(activeTheme ? resolveThemeAlias(activeTheme) : '');
+  const themeKey = $derived(`${activeMode}:${resolvedTheme}`);
   const activeVariantLabel = $derived(activeVariant?.label ?? 'Variant');
   const languageLabel = $derived(!title ? lang?.replace(/^shell$/, 'bash') : undefined);
   const totalLines = $derived(activeCode ? activeCode.split('\n').length : 0);
@@ -199,54 +196,7 @@
 
   $effect(() => {
     lines;
-    collapse;
-    viewMode = initialViewMode(lines, collapse);
-  });
-
-  $effect(() => {
-    const langToUse = normalizedLang;
-    const themeToUse = resolvedTheme;
-    const runThemes = themes;
-    const runLangs = langs;
-    const code = canAnimate ? undefined : activeCode;
-    let cancelled = false;
-
-    if (preHighlightedHtml || !langToUse || !themeToUse) return;
-    if (!canAnimate && !code) return;
-
-    hlError = false;
-    if (!canAnimate) highlighted = null;
-
-    const highlighterPromise = getHighlighter(runThemes, runLangs);
-    const highlightedPromise = canAnimate
-      ? getCodeColors({ lang: langToUse, theme: themeToUse, themes: runThemes, langs: runLangs })
-      : tokenizeCode({ code: code!, lang: langToUse, theme: themeToUse, themes: runThemes, langs: runLangs });
-
-    Promise.all([highlighterPromise, highlightedPromise])
-      .then(([nextHighlighter, nextHighlighted]) => {
-        if (cancelled) return;
-        highlighter = nextHighlighter;
-        if (canAnimate) {
-          highlighted = {
-            bg: nextHighlighted.bg,
-            fg: nextHighlighted.fg,
-            themeName: nextHighlighted.themeName,
-            lines: [],
-          };
-        } else {
-          highlighted = nextHighlighted as TokenizedCode;
-        }
-      })
-      .catch(() => {
-        if (cancelled) return;
-        highlighter = null;
-        highlighted = null;
-        hlError = true;
-      });
-
-    return () => {
-      cancelled = true;
-    };
+    viewMode = initialViewMode(lines);
   });
 
   async function handleCopy() {
@@ -269,22 +219,9 @@
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = downloadFilename || title || `code.${lang || 'txt'}`;
+    a.download = downloadFilename;
     a.click();
     URL.revokeObjectURL(url);
-  }
-
-  function tokenStyle(token: { color?: string; fontStyle?: number }) {
-    const styles = [];
-    if (token.color) styles.push(`color:${token.color}`);
-    if ((token.fontStyle ?? 0) & 1) styles.push('font-style:italic');
-    if ((token.fontStyle ?? 0) & 2) styles.push('font-weight:700');
-    if ((token.fontStyle ?? 0) & 4) styles.push('text-decoration:underline');
-    return styles.join(';');
-  }
-
-  function lineIsHighlighted(line: CodeLine) {
-    return highlightedLineSet?.has(line.lineNumber) ?? false;
   }
 </script>
 
@@ -294,20 +231,35 @@
       {@render content()}
     </div>
     {#if truncated}
-      <div class="bottom-0 left-0 right-0 pointer-events-none absolute">
-        <div
-          class="neoretro-clr h-10"
-          data-color={activeHeaderColor}
-          style:background="linear-gradient(to bottom, transparent, var(--clr))"
-        ></div>
-        <div class="neoretro-clr bg-clr h-8 flex items-center justify-center" data-color={activeHeaderColor}>
-          <span class="text-on-clr font-black tracking-wide text-[10px] uppercase">
-            Show {totalLines - lineLimit!} more lines
-          </span>
-        </div>
+      <div
+        class="neoretro-clr neoretro-border-t bottom-0 left-0 right-0 bg-clr py-1.5 pointer-events-none absolute flex items-center justify-center"
+        data-color={activeHeaderColor}
+      >
+        <span class="text-on-clr text-xs font-black tracking-wide uppercase">
+          Show {totalLines - lineLimit!} more lines
+        </span>
       </div>
     {/if}
   </div>
+{/snippet}
+
+{#snippet highlightedCode()}
+  <CodeBlockBody
+    code={activeCode}
+    lang={normalizedLang!}
+    theme={resolvedTheme}
+    {themes}
+    {langs}
+    {canAnimate}
+    {numbered}
+    {wrap}
+    {title}
+    {highlightedLines}
+    spinnerColor={activeHeaderColor}
+    onColors={(colors) => {
+      codeColors = colors;
+    }}
+  />
 {/snippet}
 
 <div
@@ -333,11 +285,11 @@
 
       <div class="min-w-0 gap-1.5 flex flex-wrap items-center">
         {#if !hasContent}
-          <Badge color="white" class="font-black text-[10px] uppercase">No code to display</Badge>
+          <Badge color="white" class="text-xs font-black uppercase">No code to display</Badge>
         {:else if title}
           <span class="min-w-0 text-sm font-black truncate">{title}</span>
         {:else if languageLabel}
-          <Badge color={activeHeaderColor} class="bg-background/20 font-black text-[10px] uppercase">
+          <Badge color={activeHeaderColor} class="bg-background/20 text-xs font-black uppercase">
             {languageLabel}
           </Badge>
         {/if}
@@ -382,7 +334,7 @@
           </Button>
         {/if}
 
-        {#if withDownload}
+        {#if showDownload}
           <Button color={activeHeaderColor} size="icon-sm" onclick={handleDownload} aria-label="Download code">
             <DownloadIcon class="size-4" />
           </Button>
@@ -409,34 +361,28 @@
   {#if bodyVisible}
     <div
       class="text-xs font-mono relative overflow-x-auto overflow-y-hidden"
-      style:background-color={highlighted?.bg}
-      style:color={highlighted?.fg}
+      style:background-color={codeColors?.bg}
+      style:color={codeColors?.fg}
+      style:tab-size={tabSize}
     >
       {#if preHighlightedHtml}
         {#if truncated}
           {@render limitedBody(preHtml)}
         {:else}
-          <pre class={codePreClass} style="tab-size:{tabSize}"><code
+          <pre class={codePreClass}><code
               ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html preHighlightedHtml}</code
             ></pre>
         {/if}
-      {:else if activeCode && normalizedLang && highlighter && canAnimate}
-        {@render limitedBody(magicMoveBody)}
-      {:else if activeCode && normalizedLang && highlighted && highlighter}
-        {@render limitedBody(tokenBody)}
+      {:else if activeCode && normalizedLang && resolvedTheme}
+        {#key themeKey}
+          {@render limitedBody(highlightedCode)}
+        {/key}
       {:else if activeCode && !normalizedLang}
         {#if truncated}
           {@render limitedBody(plainBody)}
         {:else}
-          <pre class={codePreClass} style="tab-size:{tabSize}"><code>{activeCode}</code></pre>
+          <pre class={codePreClass}><code>{activeCode}</code></pre>
         {/if}
-      {:else if activeCode && hlError}
-        <div class="p-4 bg-background text-foreground">
-          <Alert color="red" noShadow>
-            <AlertTitle>Highlighter unavailable</AlertTitle>
-            <AlertDescription>Code could not be highlighted with the configured language or theme.</AlertDescription>
-          </Alert>
-        </div>
       {:else if activeCode}
         <div class="p-4 bg-background text-foreground flex items-center justify-center">
           <Spinner color={activeHeaderColor} />
@@ -447,59 +393,11 @@
 </div>
 
 {#snippet preHtml()}
-  <pre class={codePreClass} style="tab-size:{tabSize}"><code
+  <pre class={codePreClass}><code
       ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html preHighlightedHtml}</code
     ></pre>
 {/snippet}
 
-{#snippet magicMoveBody()}
-  <div style="tab-size:{tabSize}">
-    <ShikiMagicMove
-      highlighter={highlighter!}
-      lang={normalizedLang!}
-      theme={resolvedTheme}
-      code={activeCode}
-      options={{ lineNumbers: numbered, containerStyle: false }}
-      class={cn(
-        'm-0! p-4! leading-6! bg-transparent! text-inherit!',
-        !wrap && 'min-w-max!',
-        wrap && 'break-all! whitespace-pre-wrap!',
-      )}
-    />
-  </div>
-{/snippet}
-
-{#snippet tokenBody()}
-  <div
-    class={cn('p-4 leading-6', !wrap && 'min-w-max', wrap && 'break-all whitespace-pre-wrap')}
-    role="region"
-    aria-label={title ? `${title} code` : 'Code'}
-    style="tab-size:{tabSize}"
-  >
-    {#each highlighted!.lines as line (line.lineNumber)}
-      <div
-        class={cn(
-          '-mx-4 px-4 min-h-6 flex whitespace-pre',
-          wrap && 'whitespace-pre-wrap',
-          lineIsHighlighted(line) && 'pl-3 border-l-4 border-current bg-current/10',
-        )}
-        data-highlighted={lineIsHighlighted(line) || undefined}
-      >
-        {#if numbered}
-          <span class="w-10 pr-4 shrink-0 text-right tabular-nums opacity-50 select-none">
-            {line.lineNumber}
-          </span>
-        {/if}
-        <span class="min-w-0 flex-1"
-          >{#if line.tokens.length === 0}{' '}{/if}{#each line.tokens as token}{#if token.content}<span
-                style={tokenStyle(token)}>{token.content}</span
-              >{/if}{/each}</span
-        >
-      </div>
-    {/each}
-  </div>
-{/snippet}
-
 {#snippet plainBody()}
-  <pre class={codePreClass} style="tab-size:{tabSize}"><code>{activeCode}</code></pre>
+  <pre class={codePreClass}><code>{activeCode}</code></pre>
 {/snippet}
