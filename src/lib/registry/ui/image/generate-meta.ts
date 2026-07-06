@@ -140,7 +140,7 @@ async function processImage(sourcePath: string, assetsDir: string, metaDir: stri
   const webpStat = statSync(webpPath);
   const avifStat = statSync(avifPath);
 
-  // Preserve user-edited kv & description
+  // Preserve user-edited metadata
   const existing = readExistingMeta(jsPath);
 
   const meta = {

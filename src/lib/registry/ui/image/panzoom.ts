@@ -1,5 +1,5 @@
 import Panzoom from '@panzoom/panzoom';
-import type { PanzoomGlobalOptions, PanzoomObject } from '@panzoom/panzoom';
+import type { PanzoomGlobalOptions } from '@panzoom/panzoom';
 
 export interface PanZoomConfig {
   minScale?: number;
@@ -14,9 +14,16 @@ export function panzoom(node: HTMLElement, config: PanZoomConfig = {}) {
     contain: 'outside',
     cursor: 'default',
     canvas: true,
+    panOnlyWhenZoomed: true,
+    handleStartEvent: (e: Event) => {
+      if (pz && pz.getScale() > 1.01) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    },
   };
 
-  const pz: PanzoomObject = Panzoom(node, options);
+  const pz = Panzoom(node, options);
 
   node.addEventListener('wheel', pz.zoomWithWheel);
 
