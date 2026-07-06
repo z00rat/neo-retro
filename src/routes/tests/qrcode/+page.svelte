@@ -1,9 +1,10 @@
 <script lang="ts">
   import * as Card from '$lib/registry/ui/card';
   import { Input } from '$lib/registry/ui/input';
+  import { Label } from '$lib/registry/ui/label';
   import { QrCode } from '$lib/registry/ui/qrcode';
+  import * as RadioGroup from '$lib/registry/ui/radio-group';
   import { Slider } from '$lib/registry/ui/slider';
-  import * as ToggleGroup from '$lib/registry/ui/toggle-group';
 
   let text = $state('https://neo-retro.zurat.dev');
   let level = $state<'L' | 'M' | 'Q' | 'H'>('M');
@@ -37,16 +38,17 @@
           <Input id="qr-text" type="text" bind:value={text} placeholder="Type value to encode..." />
         </div>
 
-        <!-- Level Toggle Group -->
+        <!-- Level Radio Group -->
         <div class="gap-1.5 flex flex-col">
           <span class="text-sm font-bold">Error Correction Level</span>
-          <ToggleGroup.Root type="single" bind:value={level} color="blue" class="w-fit">
+          <RadioGroup.Root bind:value={level} color="blue" class="gap-4 flex">
             {#each levels as lvl (lvl)}
-              <ToggleGroup.Item value={lvl} aria-label="Level {lvl}">
-                {lvl}
-              </ToggleGroup.Item>
+              <div class="space-x-2 flex items-center">
+                <RadioGroup.Item value={lvl} id="level-{lvl}" />
+                <Label for="level-{lvl}">{lvl}</Label>
+              </div>
             {/each}
-          </ToggleGroup.Root>
+          </RadioGroup.Root>
         </div>
 
         <!-- Margin Range -->
