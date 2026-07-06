@@ -109,7 +109,7 @@
     to open.
   </p>
   <Button color="yellow" onclick={() => (open = true)}>Open Command Palette</Button>
-  <Command.Dialog color="white" bind:open>
+  <Command.Dialog color="yellow" bind:open>
     <Command.Input placeholder="Type a command or search..." />
     <Command.List>
       <Command.Empty>No results found.</Command.Empty>

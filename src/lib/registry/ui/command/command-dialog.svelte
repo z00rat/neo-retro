@@ -35,7 +35,7 @@
   <Dialog.Content {color} class="neoretro-shadow p-0 overflow-hidden" {portalProps}>
     <Command
       {color}
-      class="**:data-command-group:px-2 **:data-command-input:h-12 **:data-command-item:px-2 **:data-command-item:py-3 **:data-[slot=command-input-wrapper]:h-12 [&_[data-command-group]:not([hidden])_~[data-command-group]]:pt-0 [&_[data-command-input-wrapper]_svg]:h-5 [&_[data-command-input-wrapper]_svg]:w-5 [&_[data-command-item]_svg]:h-5 [&_[data-command-item]_svg]:w-5"
+      class="**:data-command-group:px-2 **:data-command-input:h-10 sm:**:data-command-input:h-12 **:data-command-item:px-2 **:data-command-item:py-2.5 sm:**:data-command-item:py-3 **:data-[slot=command-input-wrapper]:h-10 sm:**:data-[slot=command-input-wrapper]:h-12 [&_[data-command-group]:not([hidden])_~[data-command-group]]:pt-0 [&_[data-command-input-wrapper]_svg]:h-4 [&_[data-command-input-wrapper]_svg]:w-4 sm:[&_[data-command-input-wrapper]_svg]:h-5 sm:[&_[data-command-input-wrapper]_svg]:w-5 [&_[data-command-item]_svg]:h-4 [&_[data-command-item]_svg]:w-4 sm:[&_[data-command-item]_svg]:h-5 sm:[&_[data-command-item]_svg]:w-5"
       {...restProps}
       bind:value
       bind:ref
