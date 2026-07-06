@@ -119,6 +119,7 @@
   let currentAudioTrackIndex = $state<string | null>(null);
   let currentTrackLabel = $state<string | null>(initialSettings.textTrackLabel);
   let isLive = $state(false);
+  let isFullscreen = $state(false);
   let customAspectRatio = $state<number | null>(null);
   const computedAspectRatio = $derived(customAspectRatio ?? aspectRatio);
 
@@ -303,9 +304,10 @@
   $effect(() => {
     if (!playerEl?.subscribe) return;
     return playerEl.subscribe(
-      ({ playbackRate, quality, qualities: qs, audioTracks, audioTrack, textTrack, live }: MediaState) => {
+      ({ playbackRate, quality, qualities: qs, audioTracks, audioTrack, textTrack, live, fullscreen }: MediaState) => {
         const currentSettings = settings;
         currentRate = playbackRate ?? currentSettings.playbackRate;
+        isFullscreen = fullscreen;
 
         const qualitiesArray = Array.from(qs ?? []);
         const isAuto = playerEl?.qualities?.auto ?? true;
@@ -774,7 +776,13 @@
                 <div class={tipClass} data-color={color}>Settings</div>
               </div>
 
-              <DropdownMenuContent {color} side="top" align="end" sideOffset={8} portalProps={{ disabled: true }}>
+              <DropdownMenuContent
+                {color}
+                side="top"
+                align="end"
+                sideOffset={8}
+                portalProps={isFullscreen ? { to: playerEl ?? undefined } : undefined}
+              >
                 <DropdownMenuCheckboxItem bind:checked={loop}>Loop</DropdownMenuCheckboxItem>
 
                 {#if !isLive}
