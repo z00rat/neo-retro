@@ -19,6 +19,14 @@
   let columns = $state(3);
   let previewCount = $state(6);
 
+  $effect(() => {
+    if (!layout) layout = 'masonry';
+  });
+
+  $effect(() => {
+    if (!featuredPosition) featuredPosition = 'side';
+  });
+
   const galleryImages: ImageMeta[] = [emre, jack, paul];
 
   const repeatedImages = [
@@ -60,16 +68,16 @@
       </Field.Field>
 
       <Field.Field class="space-y-1.5">
-        <Field.Label for="image-preview-count" class="text-xs font-bold tracking-wider uppercase"
-          >Preview Count</Field.Label
-        >
+        <Field.Label for="image-preview-count" class="text-xs font-bold tracking-wider uppercase">
+          Preview Count
+        </Field.Label>
         <Input id="image-preview-count" bind:value={previewCount} color="cyan" type="number" min="0" max="12" />
       </Field.Field>
 
       <Field.Field class="space-y-1.5">
-        <Field.Label for="image-featured" class="text-xs font-bold tracking-wider cursor-pointer uppercase"
-          >Featured Hero</Field.Label
-        >
+        <Field.Label for="image-featured" class="text-xs font-bold tracking-wider cursor-pointer uppercase">
+          Featured Hero
+        </Field.Label>
         <div>
           <Switch id="image-featured" bind:checked={featured} color="green" />
         </div>
