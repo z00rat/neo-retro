@@ -23,6 +23,7 @@
 </script>
 
 <Button
+  bind:ref
   {...restProps}
   data-sidebar="trigger"
   data-slot="sidebar-trigger"

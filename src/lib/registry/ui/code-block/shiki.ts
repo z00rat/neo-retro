@@ -115,7 +115,10 @@ export async function tokenizeCode({
   const highlighter = await getHighlighter(themes, langs);
   const resolvedLang = resolveLangAlias(lang);
   const resolvedTheme = resolveThemeAlias(theme);
-  const result = highlighter.codeToTokens(code, { lang: resolvedLang, theme: resolvedTheme } as any);
+  const result = highlighter.codeToTokens(code, {
+    lang: resolvedLang,
+    theme: resolvedTheme,
+  } as Parameters<Highlighter['codeToTokens']>[1]);
 
   return {
     bg: normalizeColor(result.bg) ?? '#ffffff',
@@ -142,7 +145,10 @@ export async function getCodeColors({
   const highlighter = await getHighlighter(themes, langs);
   const resolvedLang = resolveLangAlias(lang);
   const resolvedTheme = resolveThemeAlias(theme);
-  const result = highlighter.codeToTokens(' ', { lang: resolvedLang, theme: resolvedTheme } as any);
+  const result = highlighter.codeToTokens(' ', {
+    lang: resolvedLang,
+    theme: resolvedTheme,
+  } as Parameters<Highlighter['codeToTokens']>[1]);
 
   return {
     bg: normalizeColor(result.bg) ?? '#ffffff',

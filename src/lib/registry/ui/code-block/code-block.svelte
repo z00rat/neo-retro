@@ -179,6 +179,7 @@
 
   $effect(() => {
     const list = variants;
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     variantKey;
     if (!list.length) {
       activeValue = '';
@@ -195,6 +196,7 @@
   });
 
   $effect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     lines;
     viewMode = initialViewMode(lines);
   });
@@ -369,9 +371,12 @@
         {#if truncated}
           {@render limitedBody(preHtml)}
         {:else}
-          <pre class={codePreClass}><code
-              ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html preHighlightedHtml}</code
-            ></pre>
+          <pre class={codePreClass}>
+            <code>
+              <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+              {@html preHighlightedHtml}
+            </code>
+          </pre>
         {/if}
       {:else if activeCode && normalizedLang && resolvedTheme}
         {#key themeKey}
@@ -393,9 +398,12 @@
 </div>
 
 {#snippet preHtml()}
-  <pre class={codePreClass}><code
-      ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html preHighlightedHtml}</code
-    ></pre>
+  <pre class={codePreClass}>
+    <code>
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+      {@html preHighlightedHtml}
+    </code>
+  </pre>
 {/snippet}
 
 {#snippet plainBody()}

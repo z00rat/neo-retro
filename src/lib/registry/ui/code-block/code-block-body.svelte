@@ -141,11 +141,12 @@
             {line.lineNumber}
           </span>
         {/if}
-        <span class="min-w-0 flex-1"
-          >{#if line.tokens.length === 0}{' '}{/if}{#each line.tokens as token}{#if token.content}<span
-                style={tokenStyle(token)}>{token.content}</span
-              >{/if}{/each}</span
-        >
+        <span class="min-w-0 flex-1">
+          {#if line.tokens.length === 0}&nbsp;{/if}
+          {#each line.tokens as token, index (index)}
+            {#if token.content}<span style={tokenStyle(token)}>{token.content}</span>{/if}
+          {/each}
+        </span>
       </div>
     {/each}
   </div>

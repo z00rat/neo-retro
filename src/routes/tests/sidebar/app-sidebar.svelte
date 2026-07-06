@@ -155,7 +155,7 @@
   let { ref = $bindable(null), collapsible = 'icon', ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 </script>
 
-<Sidebar.Root {collapsible} {...restProps}>
+<Sidebar.Root bind:ref {collapsible} {...restProps}>
   <Sidebar.Header>
     <TeamSwitcher teams={data.teams} />
   </Sidebar.Header>

@@ -154,7 +154,7 @@ All accept `ref` (bindable), `class`, `children`, and `...restProps` unless note
 
 - `<DropdownMenu>` — open (bindable)
   - `<DropdownMenu.Trigger>`
-  - `<DropdownMenu.Content>` — color, sideOffset (4), portalProps, noShadow
+  - `<DropdownMenu.Content>` — color, sideOffset (4), portalProps, noShadow, preventScroll (false)
   - `<DropdownMenu.Item>` — inset, color
   - `<DropdownMenu.Group>`
   - `<DropdownMenu.Label>` — inset
@@ -191,7 +191,7 @@ All accept `ref` (bindable), `class`, `children`, and `...restProps` unless note
 
 ### Image
 
-- `<Image>` — meta, images, alt, color, layout (masonry/grid/list/single) — image viewer with zoom and gallery
+- `<Image>` — meta/images include alt, color, cancelColor, resetColor, downloadColor, prevNextColor, layout (masonry/grid), featured (false), featuredPosition (side/bottom), columns, previewCount (4) — image viewer with zoom and gallery
 
 ### Input
 
@@ -250,6 +250,10 @@ All accept `ref` (bindable), `class`, `children`, and `...restProps` unless note
   - `<Menubar.Sub>` — open (bindable)
   - `<Menubar.SubTrigger>` — inset
   - `<Menubar.SubContent>`
+
+### Media
+
+- `<Media>` — src, poster, thumbnails, viewType ('video' | 'audio'), title, tracks, aspectRatio, color, autoPlay, loop (bindable), muted, playsInline, posterLoad, clipStartTime, clipEndTime, seekStep, showSliderValue, waveBarsCount, showYoutubeLink, preload, load — use instead of `<video>` and `<audio>`
 
 ### NavigationMenu
 
@@ -365,7 +369,7 @@ All accept `ref` (bindable), `class`, `children`, and `...restProps` unless note
 
 ### Slider
 
-- `<Slider>` — value (bindable, default [0]), type, orientation, noShadow, color — use instead of `<input type="range">`
+- `<Slider>` — value (bindable, default [0]), type, orientation, noShadow, color, buffered, min (0), max (100), step (1), children (snippet for hover value) — use instead of `<input type="range">`
 
 ### Spinner
 
@@ -409,9 +413,5 @@ All accept `ref` (bindable), `class`, `children`, and `...restProps` unless note
 ### Tooltip
 
 - `<Tooltip>` / `<Tooltip.Root>` — open (bindable)
-  - `<Tooltip.Trigger>`
+  - `<Tooltip.Trigger>` — child, children
   - `<Tooltip.Content>` — color, sideOffset (0), side (top), arrowClasses
-
-### Video
-
-- `<Video>` — meta, color, showTitle (default true), showCaptions, showSpeed, showChapters — use instead of `<video>`

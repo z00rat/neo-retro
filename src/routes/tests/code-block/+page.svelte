@@ -299,7 +299,7 @@ bun run preview`,
         color="magenta"
         code={demoTypeScript}
         lang="typescript"
-        title="highlightedLines={[1, 3, 5]}"
+        title={`highlightedLines={[1, 3, 5]}`}
         copy
         numbered
         highlightedLines={[1, 3, 5]}

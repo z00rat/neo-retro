@@ -5,7 +5,9 @@ function loadSavedVariant(key = DEFAULT_VARIANT_KEY): string {
     if (typeof localStorage !== 'undefined') {
       return localStorage.getItem(key) || '';
     }
-  } catch {}
+  } catch {
+    /* ignore */
+  }
   return '';
 }
 
@@ -27,7 +29,9 @@ function saveVariant(v: string, key = DEFAULT_VARIANT_KEY) {
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem(key, v);
     }
-  } catch {}
+  } catch {
+    /* ignore */
+  }
 }
 
 export function setKeyedVariant(v: string, key = DEFAULT_VARIANT_KEY) {
