@@ -29,6 +29,19 @@
           <Slider.Root bind:value={multiValue} max={100} step={1} {color} />
         </div>
         <div>
+          <Label class="my-2">With Buffered Range</Label>
+          <Slider.Root bind:value={singleValue} max={100} step={1} {color} buffered={75} />
+        </div>
+        <div>
+          <Label class="my-2">Vertical Sliders</Label>
+          <div class="gap-8 h-48 mt-4 flex items-center justify-start">
+            <Slider.Root bind:value={singleValue} max={100} step={1} {color} orientation="vertical" />
+            <Slider.Root bind:value={multiValue} max={100} step={1} {color} orientation="vertical" />
+            <Slider.Root bind:value={singleValue} max={100} step={1} {color} orientation="vertical" buffered={75} />
+            <Slider.Root bind:value={singleValue} max={100} step={1} {color} orientation="vertical" noShadow />
+          </div>
+        </div>
+        <div>
           <Label class="my-2">No Shadow</Label>
           <Slider.Root bind:value={singleValue} max={100} step={1} {color} noShadow />
         </div>
