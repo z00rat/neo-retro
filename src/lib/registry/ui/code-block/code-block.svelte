@@ -234,10 +234,10 @@
     </div>
     {#if truncated}
       <div
-        class="neoretro-clr neoretro-border-t bottom-0 left-0 right-0 bg-clr py-1.5 pointer-events-none absolute flex items-center justify-center"
+        class="neoretro-clr neoretro-border-t bottom-0 left-0 right-0 bg-clr py-2 pointer-events-none absolute flex items-center justify-center"
         data-color={activeHeaderColor}
       >
-        <span class="text-on-clr text-xs font-black tracking-wide uppercase">
+        <span class="text-on-clr text-xs font-mono font-black tracking-wide leading-none uppercase italic">
           Show {totalLines - lineLimit!} more lines
         </span>
       </div>

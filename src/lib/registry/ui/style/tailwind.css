@@ -26,6 +26,10 @@
   @apply border-border border-b-2;
 }
 
+@utility neoretro-border-t {
+  @apply border-border border-t-2;
+}
+
 @utility neoretro-border-l {
   @apply border-border border-l-2;
 }
