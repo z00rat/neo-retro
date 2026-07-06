@@ -7,8 +7,9 @@
   import type { ImageMeta } from '$lib/registry/ui/image';
   import EnhancedImage from '$lib/registry/ui/image/image.svelte';
   import { Input } from '$lib/registry/ui/input';
+  import { Label } from '$lib/registry/ui/label';
+  import * as RadioGroup from '$lib/registry/ui/radio-group';
   import { Switch } from '$lib/registry/ui/switch';
-  import { ToggleGroup, ToggleGroupItem } from '$lib/registry/ui/toggle-group';
 
   type ImageLayout = 'masonry' | 'grid';
   type FeaturedPosition = 'side' | 'bottom';
@@ -18,14 +19,6 @@
   let featuredPosition = $state<FeaturedPosition>('side');
   let columns = $state(3);
   let previewCount = $state(6);
-
-  $effect(() => {
-    if (!layout) layout = 'masonry';
-  });
-
-  $effect(() => {
-    if (!featuredPosition) featuredPosition = 'side';
-  });
 
   const galleryImages: ImageMeta[] = [emre, jack, paul];
 
@@ -56,10 +49,16 @@
     <Card.Content class="gap-6 sm:grid-cols-2 lg:grid-cols-3 pt-4 grid">
       <Field.Field class="space-y-1.5">
         <Field.Label class="text-xs font-bold tracking-wider uppercase">Layout Style</Field.Label>
-        <ToggleGroup bind:value={layout} color="magenta" type="single" class="justify-start">
-          <ToggleGroupItem value="masonry">Masonry</ToggleGroupItem>
-          <ToggleGroupItem value="grid">Grid</ToggleGroupItem>
-        </ToggleGroup>
+        <RadioGroup.Root bind:value={layout} color="magenta" class="gap-4 flex">
+          <div class="space-x-2 flex items-center">
+            <RadioGroup.Item value="masonry" id="layout-masonry" />
+            <Label for="layout-masonry">Masonry</Label>
+          </div>
+          <div class="space-x-2 flex items-center">
+            <RadioGroup.Item value="grid" id="layout-grid" />
+            <Label for="layout-grid">Grid</Label>
+          </div>
+        </RadioGroup.Root>
       </Field.Field>
 
       <Field.Field class="space-y-1.5">
@@ -85,16 +84,16 @@
 
       <Field.Field class="space-y-1.5">
         <Field.Label class="text-xs font-bold tracking-wider uppercase">Featured Position</Field.Label>
-        <ToggleGroup
-          bind:value={featuredPosition}
-          disabled={!featured}
-          color="cyan"
-          type="single"
-          class="justify-start"
-        >
-          <ToggleGroupItem value="side">Side</ToggleGroupItem>
-          <ToggleGroupItem value="bottom">Bottom</ToggleGroupItem>
-        </ToggleGroup>
+        <RadioGroup.Root bind:value={featuredPosition} disabled={!featured} color="cyan" class="gap-4 flex">
+          <div class="space-x-2 flex items-center">
+            <RadioGroup.Item value="side" id="position-side" />
+            <Label for="position-side" class={!featured ? 'opacity-50' : ''}>Side</Label>
+          </div>
+          <div class="space-x-2 flex items-center">
+            <RadioGroup.Item value="bottom" id="position-bottom" />
+            <Label for="position-bottom" class={!featured ? 'opacity-50' : ''}>Bottom</Label>
+          </div>
+        </RadioGroup.Root>
       </Field.Field>
     </Card.Content>
   </Card.Root>
