@@ -10,7 +10,8 @@
     "sourceMap": true,
     "strict": true,
     "module": "ESNext",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "types": ["vidstack/svelte"]
   },
   "extends": "./.svelte-kit/tsconfig.json"
 }
