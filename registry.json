@@ -440,7 +440,6 @@
       "name": "code-block",
       "type": "registry:ui",
       "registryDependencies": [
-        "alert",
         "badge",
         "button",
         "dropdown-menu",
@@ -452,6 +451,10 @@
         "shiki"
       ],
       "files": [
+        {
+          "path": "src/lib/registry/ui/code-block/code-block-body.svelte",
+          "type": "registry:file"
+        },
         {
           "path": "src/lib/registry/ui/code-block/code-block-store.svelte.ts",
           "type": "registry:file"
@@ -1142,6 +1145,38 @@
         },
         {
           "path": "src/lib/registry/ui/label/label.svelte",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
+      "name": "media",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "badge",
+        "button",
+        "button-group",
+        "dropdown-menu",
+        "spinner"
+      ],
+      "devDependencies": [
+        "vidstack"
+      ],
+      "files": [
+        {
+          "path": "src/lib/registry/ui/media/index.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/media/media.css",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/media/media.svelte",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/media/mediaSettingsStore.ts",
           "type": "registry:file"
         }
       ]
@@ -2045,32 +2080,6 @@
         {
           "path": "src/lib/registry/lib/utils.ts",
           "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "video",
-      "type": "registry:ui",
-      "registryDependencies": [],
-      "devDependencies": [
-        "vidstack"
-      ],
-      "files": [
-        {
-          "path": "src/lib/registry/ui/video/generate-meta.ts",
-          "type": "registry:file"
-        },
-        {
-          "path": "src/lib/registry/ui/video/index.ts",
-          "type": "registry:file"
-        },
-        {
-          "path": "src/lib/registry/ui/video/types.ts",
-          "type": "registry:file"
-        },
-        {
-          "path": "src/lib/registry/ui/video/video.svelte",
-          "type": "registry:file"
         }
       ]
     }
