@@ -46,7 +46,7 @@ export function createSvelteTable<TData extends RowData>(options: TableOptions<T
   );
 
   const table = createTable(resolvedOptions);
-  let state = $state<Partial<TableState>>(table.initialState);
+  const state = $state<Partial<TableState>>(table.initialState);
 
   function updateOptions() {
     table.setOptions((prev) => {
@@ -55,8 +55,10 @@ export function createSvelteTable<TData extends RowData>(options: TableOptions<T
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onStateChange: (updater: any) => {
-          if (updater instanceof Function) state = updater(state);
-          else state = mergeObjects(state, updater);
+          const nextState = updater instanceof Function ? updater(state) : updater;
+          for (const key of Object.keys(nextState)) {
+            state[key as keyof typeof state] = nextState[key];
+          }
 
           options.onStateChange?.(updater);
         },

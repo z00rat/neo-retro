@@ -9,7 +9,7 @@
 <td
   bind:this={ref}
   data-slot="table-cell"
-  class={cn('p-4 not-first:neoretro-border-l [&:has([role=checkbox])]:pr-0 align-top', className)}
+  class={cn('p-4 not-first:neoretro-border-l align-top', className)}
   {...restProps}
 >
   {@render children?.()}

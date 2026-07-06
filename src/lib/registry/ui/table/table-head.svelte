@@ -14,7 +14,7 @@
   data-slot="table-head"
   data-color={getHeaderColor()}
   class={cn(
-    'font-heading h-12 neoretro-clr px-4 font-semibold not-first:border-border [&:has([role=checkbox])]:pr-0 text-left align-middle not-first:border-l-2',
+    'font-heading h-12 neoretro-clr px-4 font-semibold not-first:border-border text-left align-middle not-first:border-l-2',
     className,
   )}
   {...restProps}
