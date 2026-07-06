@@ -33,16 +33,13 @@
   {#snippet children({ checked, indeterminate })}
     <span
       class={cn(
-        'inset-s-2 size-4 rounded-sm neoretro-border pointer-events-none absolute flex shrink-0 items-center justify-center transition-none',
-        'group-data-highlighted:border-current group-data-[state=open]:border-current',
-        checked || indeterminate ? 'neoretro-clr border-current' : 'bg-transparent',
+        'inset-s-2 size-4 rounded-sm neoretro-border group-data-highlighted:border-clr-highlighted group-data-[state=open]:border-clr-highlighted pointer-events-none absolute flex shrink-0 items-center justify-center transition-none',
+        checked && !indeterminate ? 'neoretro-clr' : 'bg-transparent',
       )}
-      data-color={getColor()}
+      data-color={checked && !indeterminate ? 'black' : getColor()}
     >
-      {#if checked === true}
-        <div class="size-2 rounded-sm bg-current"></div>
-      {:else if indeterminate}
-        <div class="h-1 w-2 rounded-sm bg-current"></div>
+      {#if indeterminate}
+        <div class="h-1 w-2 bg-border group-data-highlighted:bg-current"></div>
       {/if}
     </span>
     {@render childrenProp?.()}

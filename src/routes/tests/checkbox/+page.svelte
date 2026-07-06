@@ -7,7 +7,7 @@
   <section class="space-y-4">
     <h2 class="text-2xl font-bold">Default Checkbox</h2>
     <div class="space-x-2 flex items-center">
-      <Checkbox id="terms1" color="white" />
+      <Checkbox id="terms1" color="cyan" />
       <Label
         for="terms1"
         class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -62,10 +62,6 @@
       <div class="space-x-2 flex items-center">
         <Checkbox id="c-yel" color="yellow" checked={true} />
         <Label for="c-yel">Yellow</Label>
-      </div>
-      <div class="space-x-2 flex items-center">
-        <Checkbox id="c-bla" color="black" checked={true} />
-        <Label for="c-bla">Black</Label>
       </div>
     </div>
   </section>
