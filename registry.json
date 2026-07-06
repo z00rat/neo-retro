@@ -231,14 +231,8 @@
     {
       "name": "button-group",
       "type": "registry:ui",
-      "registryDependencies": [
-        "separator"
-      ],
+      "registryDependencies": [],
       "files": [
-        {
-          "path": "src/lib/registry/ui/button-group/button-group-separator.svelte",
-          "type": "registry:file"
-        },
         {
           "path": "src/lib/registry/ui/button-group/button-group-text.svelte",
           "type": "registry:file"

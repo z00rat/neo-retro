@@ -25,16 +25,6 @@
   </ButtonGroup.Root>
 </section>
 
-<!-- With separator -->
-<section>
-  <h3>With Separator</h3>
-  <ButtonGroup.Root>
-    <Button color="blue">Save</Button>
-    <ButtonGroup.Separator thickness="lg" />
-    <Button color="blue" size="icon">▼</Button>
-  </ButtonGroup.Root>
-</section>
-
 <!-- With text -->
 <section>
   <h3>With Text</h3>
