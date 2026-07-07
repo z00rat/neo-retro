@@ -78,15 +78,28 @@
 
 <!-- Disabled -->
 <section>
-  <h3>Disabled Tab</h3>
+  <h3>Disabled & Multiple Tabs</h3>
   <div class="max-w-md">
     <Tabs.Root activeColor="green" inactiveColor="white" value="enabled">
       <Tabs.List>
-        <Tabs.Trigger value="enabled">Enabled</Tabs.Trigger>
-        <Tabs.Trigger value="disabled" disabled>Disabled</Tabs.Trigger>
+        <Tabs.Trigger value="enabled">Active Tab</Tabs.Trigger>
+        <Tabs.Trigger value="disabled" disabled>Disabled Tab</Tabs.Trigger>
+        <Tabs.Trigger value="enabled2">Second Tab</Tabs.Trigger>
       </Tabs.List>
       <Tabs.Content value="enabled">
-        <div class="mt-2 rounded neoretro-border bg-background p-4 text-sm">This tab works.</div>
+        <div class="mt-2 rounded neoretro-border bg-background p-4 text-sm">
+          This is the default active tab content.
+        </div>
+      </Tabs.Content>
+      <Tabs.Content value="disabled">
+        <div class="mt-2 rounded neoretro-border bg-background p-4 text-sm">
+          This content is unreachable because the tab is disabled.
+        </div>
+      </Tabs.Content>
+      <Tabs.Content value="enabled2">
+        <div class="mt-2 rounded neoretro-border bg-background p-4 text-sm">
+          This is the second enabled tab content.
+        </div>
       </Tabs.Content>
     </Tabs.Root>
   </div>

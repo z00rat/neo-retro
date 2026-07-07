@@ -9,7 +9,6 @@
     class: className,
     value,
     children,
-    noBrackets,
     ...restProps
   }: TabsPrimitive.TriggerProps & { noBrackets?: boolean } = $props();
 
@@ -19,9 +18,6 @@
     activeValue: string;
     noBrackets: boolean;
   }>('tabsState');
-
-  const isActive = $derived(tabsState?.activeValue === value);
-  const shouldShowBrackets = $derived(isActive && !(noBrackets ?? tabsState?.noBrackets ?? false));
 </script>
 
 <TabsPrimitive.Trigger
@@ -31,10 +27,12 @@
   data-active-color={tabsState?.activeColor}
   data-inactive-color={tabsState?.inactiveColor}
   class={cn(
-    'neoretro-focus min-w-0 basis-0 gap-1.5 font-medium disabled:neoretro-disable data-[state=active]:bg-clr-active data-[state=active]:font-bold data-[state=active]:text-on-clr-active data-[state=inactive]:bg-clr-inactive data-[state=inactive]:text-on-clr-inactive inline-flex h-full flex-1 cursor-pointer items-center justify-center whitespace-nowrap transition-all first:rounded-l-[calc(var(--radius)-2px)] last:rounded-r-[calc(var(--radius)-2px)]',
+    'neoretro-border neoretro-focus min-w-0 basis-0 gap-1.5 font-bold disabled:neoretro-disable rounded inline-flex h-full flex-1 cursor-pointer items-center justify-center whitespace-nowrap transition-all',
+    'data-[state=active]:bg-clr-active data-[state=active]:text-on-clr-active data-[state=active]:z-0 data-[state=active]:translate-x-[4px] data-[state=active]:translate-y-[4px] data-[state=active]:shadow-none',
+    'data-[state=inactive]:bg-clr-inactive data-[state=inactive]:text-on-clr-inactive data-[state=inactive]:shadow-shadow data-[state=inactive]:enabled:active:translate-x-[4px] data-[state=inactive]:enabled:active:translate-y-[4px] data-[state=inactive]:enabled:active:shadow-none',
     className,
   )}
   {...restProps}
 >
-  {#if shouldShowBrackets}[{/if}{@render children?.()}{#if shouldShowBrackets}]{/if}
+  {@render children?.()}
 </TabsPrimitive.Trigger>
