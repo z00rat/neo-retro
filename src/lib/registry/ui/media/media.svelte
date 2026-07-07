@@ -580,6 +580,7 @@
               rel="noopener noreferrer"
               class={cn(buttonVariants({ size: 'icon' }), 'group flex items-center justify-center')}
               data-color={color}
+              data-pressable
             >
               <ExternalLink class="w-4 h-4" />
             </a>
