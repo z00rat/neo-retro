@@ -1,6 +1,8 @@
 <script lang="ts">
   import { Button } from '$lib/registry/ui/button';
   import * as Dialog from '$lib/registry/ui/dialog';
+  import { Input } from '$lib/registry/ui/input';
+  import { Label } from '$lib/registry/ui/label';
 </script>
 
 <h1>Dialog</h1>
@@ -20,13 +22,8 @@
         <Dialog.Description>Make changes to your profile here.</Dialog.Description>
       </Dialog.Header>
       <div class="space-y-2">
-        <label class="text-xs font-semibold" for="d-name">Name</label>
-        <input
-          id="d-name"
-          type="text"
-          placeholder="Enter name"
-          class="rounded neoretro-border px-2 py-1 text-sm w-full"
-        />
+        <Label class="text-xs font-semibold" for="d-name">Name</Label>
+        <Input id="d-name" type="text" placeholder="Enter name" class="w-full" />
       </div>
       <Dialog.Footer closeColor="red">
         <Button color="green">Save</Button>

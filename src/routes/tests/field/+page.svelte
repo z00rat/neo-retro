@@ -13,8 +13,8 @@
 
 <div class="space-y-10 p-10 pb-32 flex min-h-svh items-start justify-center">
   <div class="max-w-md w-full">
-    <Card.Root color="white">
-      <form>
+    <form onsubmit={(e) => e.preventDefault()}>
+      <Card.Root color="white">
         <Card.Header>
           <Card.Title>Checkout</Card.Title>
           <Card.Description>Complete your purchase by providing your payment details.</Card.Description>
@@ -64,18 +64,17 @@
                     </Select.Root>
                   </Field.Field>
                   <Field.Field>
-                    <Field.Label for="checkout-7j9-exp-year-f59">Year</Field.Label>
+                    <Field.Label for="checkout-7j9-exp-year-z1u">Year</Field.Label>
                     <Select.Root color="blue" type="single" bind:value={year}>
-                      <Select.Trigger id="checkout-7j9-exp-year-f59">
+                      <Select.Trigger id="checkout-7j9-exp-year-z1u">
                         {year || 'YYYY'}
                       </Select.Trigger>
                       <Select.Content>
-                        <Select.Item value="2024">2024</Select.Item>
-                        <Select.Item value="2025">2025</Select.Item>
                         <Select.Item value="2026">2026</Select.Item>
                         <Select.Item value="2027">2027</Select.Item>
                         <Select.Item value="2028">2028</Select.Item>
                         <Select.Item value="2029">2029</Select.Item>
+                        <Select.Item value="2030">2030</Select.Item>
                       </Select.Content>
                     </Select.Root>
                   </Field.Field>
@@ -116,7 +115,7 @@
             <Button color="red" type="button">Cancel</Button>
           </Field.Field>
         </Card.Footer>
-      </form>
-    </Card.Root>
+      </Card.Root>
+    </form>
   </div>
 </div>

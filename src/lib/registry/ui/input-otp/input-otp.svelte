@@ -1,5 +1,6 @@
 <script lang="ts">
   import { PinInput as InputOTPPrimitive } from 'bits-ui';
+  import { setContext } from 'svelte';
 
   import { cn } from '$lib/utils.ts';
 
@@ -12,6 +13,8 @@
   }: InputOTPPrimitive.RootProps & {
     color?: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
   } = $props();
+
+  setContext('inputOtpColor', () => color);
 </script>
 
 <InputOTPPrimitive.Root
@@ -20,7 +23,7 @@
   data-slot="input-otp"
   data-color={color}
   class={cn(
-    'neoretro-focus gap-2 has-disabled:neoretro-disable [&_input]:disabled:neoretro-disable flex items-center',
+    'group/pininput gap-2 has-disabled:neoretro-disable [&_input]:disabled:neoretro-disable flex items-center',
     color ? 'neoretro-clr' : '',
     className,
   )}

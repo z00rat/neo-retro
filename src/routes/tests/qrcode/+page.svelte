@@ -34,7 +34,7 @@
       <Card.Content class="space-y-4">
         <!-- Text Input -->
         <div class="gap-1.5 flex flex-col">
-          <label for="qr-text" class="text-sm font-bold">Input Content</label>
+          <Label for="qr-text" class="text-sm font-bold">Input Content</Label>
           <Input id="qr-text" type="text" bind:value={text} placeholder="Type value to encode..." />
         </div>
 

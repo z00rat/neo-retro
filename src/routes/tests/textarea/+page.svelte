@@ -31,9 +31,9 @@
       </Card.Header>
       <Card.Content class="gap-6 flex flex-col">
         <div class="gap-2 flex flex-col">
-          <Label for="msg-invalid" class="text-red">Feedback (Invalid)</Label>
+          <Label for="msg-invalid">Feedback (Invalid)</Label>
           <Textarea id="msg-invalid" value="This is an error..." aria-invalid="true" />
-          <p class="text-sm text-red">Please enter valid feedback.</p>
+          <p class="text-sm">Please enter valid feedback.</p>
         </div>
 
         <div class="gap-2 flex flex-col">

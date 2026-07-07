@@ -64,6 +64,10 @@
   @apply cursor-not-allowed line-through opacity-50 grayscale;
 }
 
+@utility neoretro-invalid {
+  @apply aria-invalid:decoration-red aria-invalid:line-through aria-invalid:decoration-2;
+}
+
 @utility neoretro-focus {
   @apply focus-visible:outline-ring focus-visible:relative focus-visible:z-10 focus-visible:outline-4 focus-visible:outline-offset-2;
 }

@@ -16,6 +16,7 @@
   import * as Card from '$lib/registry/ui/card/index.ts';
   import * as DropdownMenu from '$lib/registry/ui/dropdown-menu/index.ts';
   import * as InputGroup from '$lib/registry/ui/input-group/index.ts';
+  import { Label } from '$lib/registry/ui/label/index.ts';
   import { Separator } from '$lib/registry/ui/separator/index.ts';
   import * as Tooltip from '$lib/registry/ui/tooltip/index.ts';
 </script>
@@ -31,7 +32,7 @@
       <Card.Content class="gap-8 flex flex-col">
         <!-- Icon Addon: Inline Start -->
         <div class="gap-1.5 flex flex-col">
-          <label for="ig-email" class="text-sm font-bold">Email (Icon Addon)</label>
+          <Label for="ig-email" class="text-sm font-bold">Email (Icon Addon)</Label>
           <InputGroup.Root>
             <InputGroup.Addon>
               <MailIcon />
@@ -42,7 +43,7 @@
 
         <!-- Text Addon: Inline Start -->
         <div class="gap-1.5 flex flex-col">
-          <label for="ig-url" class="text-sm font-bold">URL (Text Addon)</label>
+          <Label for="ig-url" class="text-sm font-bold">URL (Text Addon)</Label>
           <InputGroup.Root>
             <InputGroup.Addon>
               <LinkIcon />
@@ -54,7 +55,7 @@
 
         <!-- Icon Addon: Inline End -->
         <div class="gap-1.5 flex flex-col">
-          <label for="ig-password" class="text-sm font-bold">Password (End Icon)</label>
+          <Label for="ig-password" class="text-sm font-bold">Password (End Icon)</Label>
           <InputGroup.Root>
             <InputGroup.Input id="ig-password" type="password" placeholder="••••••••" />
             <InputGroup.Addon align="inline-end">
@@ -65,7 +66,7 @@
 
         <!-- Button Addon: Search -->
         <div class="gap-1.5 flex flex-col">
-          <label for="ig-search" class="text-sm font-bold">Search (Button Addon)</label>
+          <Label for="ig-search" class="text-sm font-bold">Search (Button Addon)</Label>
           <InputGroup.Root>
             <InputGroup.Input id="ig-search" type="text" placeholder="Search the universe..." />
             <InputGroup.Addon align="inline-end">
@@ -78,7 +79,7 @@
 
         <!-- Username with @ icon + Addon -->
         <div class="gap-1.5 flex flex-col">
-          <label for="ig-username" class="text-sm font-bold">Username</label>
+          <Label for="ig-username" class="text-sm font-bold">Username</Label>
           <InputGroup.Root>
             <InputGroup.Addon>
               <AtSignIcon />
@@ -94,7 +95,7 @@
 
         <!-- Text suffix -->
         <div class="gap-1.5 flex flex-col">
-          <label for="ig-price" class="text-sm font-bold">Pricing (Text Suffix)</label>
+          <Label for="ig-price" class="text-sm font-bold">Pricing (Text Suffix)</Label>
           <InputGroup.Root>
             <InputGroup.Input id="ig-price" type="number" placeholder="0.00" />
             <InputGroup.Addon align="inline-end">
@@ -105,7 +106,7 @@
 
         <!-- Textarea variant -->
         <div class="gap-1.5 flex flex-col">
-          <label for="ig-textarea" class="text-sm font-bold">Message (Textarea)</label>
+          <Label for="ig-textarea" class="text-sm font-bold">Message (Textarea)</Label>
           <InputGroup.Root>
             <InputGroup.Textarea id="ig-textarea" placeholder="Write your message here..." />
             <InputGroup.Addon align="inline-end">
@@ -118,7 +119,7 @@
 
         <!-- Invalid state -->
         <div class="gap-1.5 flex flex-col">
-          <label for="ig-invalid" class="text-sm font-bold text-red">Invalid State</label>
+          <Label for="ig-invalid" class="text-sm font-bold">Invalid State</Label>
           <InputGroup.Root>
             <InputGroup.Addon>
               <AtSignIcon class="text-red" />

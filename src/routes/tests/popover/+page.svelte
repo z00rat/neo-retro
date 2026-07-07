@@ -1,5 +1,7 @@
 <script lang="ts">
   import { Button } from '$lib/registry/ui/button';
+  import { Input } from '$lib/registry/ui/input';
+  import { Label } from '$lib/registry/ui/label';
   import * as Popover from '$lib/registry/ui/popover';
 </script>
 
@@ -90,22 +92,12 @@
       <div class="space-y-3">
         <h4 class="text-sm font-bold">Settings</h4>
         <div>
-          <label class="text-xs font-semibold" for="name">Name</label>
-          <input
-            id="name"
-            type="text"
-            placeholder="Enter name"
-            class="rounded neoretro-border px-2 py-1 text-sm w-full"
-          />
+          <Label class="text-xs font-semibold" for="name">Name</Label>
+          <Input id="name" type="text" placeholder="Enter name" class="w-full" />
         </div>
         <div>
-          <label class="text-xs font-semibold" for="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="Enter email"
-            class="rounded neoretro-border px-2 py-1 text-sm w-full"
-          />
+          <Label class="text-xs font-semibold" for="email">Email</Label>
+          <Input id="email" type="email" placeholder="Enter email" class="w-full" />
         </div>
         <Button color="green" size="sm" class="w-full">Save</Button>
       </div>

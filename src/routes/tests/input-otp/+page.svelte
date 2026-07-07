@@ -1,10 +1,18 @@
 <script lang="ts">
+  import * as Alert from '$lib/registry/ui/alert/index.ts';
   import * as Card from '$lib/registry/ui/card/index.ts';
   import * as InputOTP from '$lib/registry/ui/input-otp/index.ts';
 
   let otpValue = $state('');
   let otpValue2 = $state('');
   let otpValue3 = $state('123');
+
+  let completedOtp = $state('');
+
+  function onComplete(val: string) {
+    completedOtp = val;
+    otpValue = '';
+  }
 </script>
 
 <div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">
@@ -16,11 +24,18 @@
         <Card.Title>OTP Verification Examples</Card.Title>
       </Card.Header>
       <Card.Content class="gap-10 flex flex-col">
+        {#if completedOtp}
+          <Alert.Root color="green">
+            <Alert.Title>Success</Alert.Title>
+            <Alert.Description>Completed with value: {completedOtp}</Alert.Description>
+          </Alert.Root>
+        {/if}
+
         <!-- Standard 6-digit OTP -->
         <div class="gap-2 flex flex-col">
           <h2 class="text-lg font-bold">6-Digit Verification Code</h2>
           <p class="text-sm">Enter the code sent to your device.</p>
-          <InputOTP.Root maxlength={6} bind:value={otpValue}>
+          <InputOTP.Root maxlength={6} bind:value={otpValue} {onComplete}>
             {#snippet children({ cells })}
               <InputOTP.Group>
                 {#each cells.slice(0, 3) as cell, i (i)}
@@ -81,7 +96,7 @@
 
         <!-- Invalid OTP -->
         <div class="gap-2 flex flex-col">
-          <h2 class="text-lg font-bold text-red">Invalid State</h2>
+          <h2 class="text-lg font-bold">Invalid State</h2>
           <p class="text-sm">This OTP failed validation.</p>
           <InputOTP.Root maxlength={4} bind:value={otpValue3}>
             {#snippet children({ cells })}
@@ -92,7 +107,7 @@
               </InputOTP.Group>
             {/snippet}
           </InputOTP.Root>
-          <p class="text-xs text-red">Invalid code. Please try again.</p>
+          <p class="text-xs">Invalid code. Please try again.</p>
         </div>
       </Card.Content>
     </Card.Root>
