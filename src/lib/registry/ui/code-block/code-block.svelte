@@ -228,10 +228,8 @@
 </script>
 
 {#snippet limitedBody(content: Snippet)}
-  <div class="relative" style:max-height={maxHeight}>
-    <div class="overflow-hidden">
-      {@render content()}
-    </div>
+  <div class={cn('relative overflow-hidden', !wrap && 'min-w-max')} style:max-height={maxHeight}>
+    {@render content()}
     {#if truncated}
       <div
         class="neoretro-clr neoretro-border-t bottom-0 left-0 right-0 bg-clr py-2 pointer-events-none absolute flex items-center justify-center"
