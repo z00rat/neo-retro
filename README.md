@@ -55,7 +55,7 @@ Import and wrap your application in the `ThemeInit` component in your main layou
 </script>
 
 <ThemeInit>
-  <div class="fixed right-4 top-4 z-50">
+  <div class="right-4 top-4 fixed z-50">
     <ThemePicker />
   </div>
   {@render children?.()}
