@@ -52,7 +52,7 @@
     'Init>';
 
   const agentsMarkdown =
-    '- **Component Reference**: See `skills/neo-retro-common/SKILL.md` for shared types/colors and `skills/neo-retro-components/SKILL.md` for HTML tag replacements and props for all components.';
+    '- **Component Reference**: See `.agent/skills/neo-retro-common/SKILL.md` for shared types/colors and `.agent/skills/neo-retro-components/SKILL.md` for HTML tag replacements and props for all components.';
 
   const initVariants: CodeBlockVariant[] = [
     {
@@ -84,20 +84,8 @@
     },
   ];
 
-  const agentVariants: CodeBlockVariant[] = [
-    {
-      value: 'npm',
-      code: 'npx skills add z00rat/neo-retro',
-    },
-    {
-      value: 'pnpm',
-      code: 'pnpm dlx skills add z00rat/neo-retro',
-    },
-    {
-      value: 'bun',
-      code: 'bun x skills add z00rat/neo-retro',
-    },
-  ];
+  const agentCommand =
+    'mkdir -p .agent/skills/neo-retro-common .agent/skills/neo-retro-components && curl -sL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro-common/SKILL.md -o .agent/skills/neo-retro-common/SKILL.md && curl -sL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro-components/SKILL.md -o .agent/skills/neo-retro-components/SKILL.md';
 </script>
 
 <div class="max-w-3xl px-4 py-16 container mx-auto">
@@ -218,15 +206,7 @@
           <Card.Description>Install the neo-retro skill for AI coding agents.</Card.Description>
         </Card.Header>
         <Card.Content class="space-y-6">
-          <CodeBlock
-            shiki={codeBlockShiki}
-            color="white"
-            lang="bash"
-            copy
-            defaultVariant="bun"
-            variantKey="package-manager"
-            variants={agentVariants}
-          />
+          <CodeBlock shiki={codeBlockShiki} color="white" lang="bash" copy wrap code={agentCommand} />
           <p class="leading-relaxed font-medium text-sm">
             Then add this to your project's <Badge color="white" class="font-mono">AGENTS.md</Badge>:
           </p>

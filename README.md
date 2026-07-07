@@ -55,7 +55,7 @@ Import and wrap your application in the `ThemeInit` component in your main layou
 </script>
 
 <ThemeInit>
-  <div class="right-4 top-4 fixed z-50">
+  <div class="fixed right-4 top-4 z-50">
     <ThemePicker />
   </div>
   {@render children?.()}
@@ -67,11 +67,11 @@ Import and wrap your application in the `ThemeInit` component in your main layou
 Install the neo-retro skill for AI coding agents.
 
 ```bash
-bun x skills add z00rat/neo-retro
+mkdir -p .agent/skills/neo-retro-common .agent/skills/neo-retro-components && curl -sL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro-common/SKILL.md -o .agent/skills/neo-retro-common/SKILL.md && curl -sL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro-components/SKILL.md -o .agent/skills/neo-retro-components/SKILL.md
 ```
 
 Then add this to your project's `AGENTS.md`:
 
 ```markdown
-- **Component Reference**: See `skills/neo-retro-common/SKILL.md` for shared types/colors and `skills/neo-retro-components/SKILL.md` for HTML tag replacements and props for all components.
+- **Component Reference**: See `.agent/skills/neo-retro-common/SKILL.md` for shared types/colors and `.agent/skills/neo-retro-components/SKILL.md` for HTML tag replacements and props for all components.
 ```
