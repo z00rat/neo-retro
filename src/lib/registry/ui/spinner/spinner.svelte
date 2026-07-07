@@ -17,6 +17,6 @@
   role="status"
   aria-label="Loading"
   data-color={color}
-  class={cn('size-4 animate-spin', color ? 'text-clr' : 'text-foreground', className)}
+  class={cn('size-4 animate-spin', color ? 'text-clr' : 'text-on-clr', className)}
   {...restProps}
 />

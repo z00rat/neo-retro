@@ -16,7 +16,7 @@
       </Card.Content>
     </Card.Root>
 
-    <Card.Root color="white">
+    <Card.Root color="black">
       <Card.Header>
         <Card.Title>Colors</Card.Title>
       </Card.Header>
@@ -28,12 +28,12 @@
       </Card.Content>
     </Card.Root>
 
-    <Card.Root color="black">
+    <Card.Root color="blue">
       <Card.Header>
-        <Card.Title class="text-white">White on Black</Card.Title>
+        <Card.Title>Red on Blue</Card.Title>
       </Card.Header>
       <Card.Content class="flex justify-center">
-        <Spinner color="white" class="size-8" />
+        <Spinner color="red" class="size-8" />
       </Card.Content>
     </Card.Root>
   </div>
