@@ -8,12 +8,7 @@
     <h2 class="text-2xl font-bold">Default Checkbox</h2>
     <div class="space-x-2 flex items-center">
       <Checkbox id="terms1" color="cyan" />
-      <Label
-        for="terms1"
-        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        Accept terms and conditions
-      </Label>
+      <Label for="terms1">Accept terms and conditions</Label>
     </div>
   </section>
 
@@ -21,12 +16,7 @@
     <h2 class="text-2xl font-bold">Disabled Checkbox</h2>
     <div class="space-x-2 flex items-center">
       <Checkbox id="terms2" color="cyan" disabled />
-      <Label
-        for="terms2"
-        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        Accept terms and conditions
-      </Label>
+      <Label for="terms2">Accept terms and conditions</Label>
     </div>
   </section>
 

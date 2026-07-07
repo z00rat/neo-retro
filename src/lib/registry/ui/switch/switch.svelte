@@ -21,7 +21,7 @@
   data-pressable
   data-color={color}
   class={cn(
-    'peer h-6 w-12 neoretro-shadow rounded neoretro-border bg-background text-foreground focus-visible:neoretro-focus data-[state=checked]:bg-clr data-[state=checked]:text-on-clr data-[state=checked]:selection:bg-on-clr data-[state=checked]:selection:text-clr inline-flex shrink-0 cursor-pointer items-center transition-colors disabled:cursor-not-allowed',
+    'peer h-6 w-12 neoretro-shadow rounded neoretro-border bg-background text-foreground focus-visible:neoretro-focus data-[state=checked]:bg-clr data-[state=checked]:text-on-clr data-[state=checked]:selection:bg-on-clr data-[state=checked]:selection:text-clr disabled:neoretro-disable inline-flex shrink-0 cursor-pointer items-center transition-colors',
     className,
   )}
   {...restProps}

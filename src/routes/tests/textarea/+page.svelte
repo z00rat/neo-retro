@@ -36,9 +36,9 @@
           <p class="text-sm">Please enter valid feedback.</p>
         </div>
 
-        <div class="gap-2 flex flex-col">
-          <Label for="msg-disabled">Notes (Disabled)</Label>
+        <div class="gap-2 flex flex-col-reverse">
           <Textarea id="msg-disabled" placeholder="Cannot type here..." disabled />
+          <Label for="msg-disabled">Notes (Disabled)</Label>
         </div>
       </Card.Content>
     </Card.Root>

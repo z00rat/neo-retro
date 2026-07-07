@@ -18,7 +18,7 @@
   data-slot="radio-group-item"
   data-color={getColor()}
   class={cn(
-    'size-4 neoretro-border text-foreground focus-visible:neoretro-focus disabled:neoretro-disable data-[state=checked]:bg-clr data-[state=checked]:text-on-clr data-[state=checked]:selection:bg-on-clr data-[state=checked]:selection:text-clr aspect-square rounded-full',
+    'peer size-4 neoretro-border text-foreground focus-visible:neoretro-focus disabled:neoretro-disable data-[state=checked]:bg-clr data-[state=checked]:text-on-clr data-[state=checked]:selection:bg-on-clr data-[state=checked]:selection:text-clr aspect-square cursor-pointer rounded-full',
     getColor() === 'white' || getColor() === 'black' ? 'bg-transparent' : 'bg-background',
     className,
   )}

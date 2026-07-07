@@ -24,24 +24,24 @@
         </div>
 
         <div class="space-x-2 flex items-center">
-          <Switch id="bluetooth" color="yellow" checked />
-          <Label for="bluetooth">Bluetooth (Yellow)</Label>
+          <Switch id="bluetooth-yellow" color="yellow" checked />
+          <Label for="bluetooth-yellow">Bluetooth (Yellow)</Label>
         </div>
         <div class="space-x-2 flex items-center">
-          <Switch id="bluetooth" color="red" checked />
-          <Label for="bluetooth">Bluetooth (Red)</Label>
+          <Switch id="bluetooth-red" color="red" checked />
+          <Label for="bluetooth-red">Bluetooth (Red)</Label>
         </div>
         <div class="space-x-2 flex items-center">
-          <Switch id="bluetooth" color="green" checked />
-          <Label for="bluetooth">Bluetooth (Green)</Label>
+          <Switch id="bluetooth-green" color="green" checked />
+          <Label for="bluetooth-green">Bluetooth (Green)</Label>
         </div>
         <div class="space-x-2 flex items-center">
-          <Switch id="bluetooth" color="white" checked />
-          <Label for="bluetooth">Bluetooth (White)</Label>
+          <Switch id="bluetooth-white" color="white" checked />
+          <Label for="bluetooth-white">Bluetooth (White)</Label>
         </div>
         <div class="space-x-2 flex items-center">
-          <Switch id="bluetooth" color="blue" checked />
-          <Label for="bluetooth">Bluetooth (Blue)</Label>
+          <Switch id="bluetooth-blue" color="blue" checked />
+          <Label for="bluetooth-blue">Bluetooth (Blue)</Label>
         </div>
       </Card.Content>
     </Card.Root>
@@ -53,12 +53,12 @@
       <Card.Content class="gap-6 flex flex-col">
         <div class="space-x-2 flex items-center">
           <Switch id="d1" disabled color="cyan" />
-          <Label for="d1" class="opacity-50">Disabled Unchecked</Label>
+          <Label for="d1">Disabled Unchecked</Label>
         </div>
 
         <div class="space-x-2 flex items-center">
           <Switch id="d2" checked color="green" disabled />
-          <Label for="d2" class="opacity-50">Disabled Checked</Label>
+          <Label for="d2">Disabled Checked</Label>
         </div>
       </Card.Content>
     </Card.Root>

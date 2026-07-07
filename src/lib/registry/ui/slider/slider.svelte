@@ -70,7 +70,7 @@
   onpointermove={handlePointerMove}
   onpointerleave={handlePointerLeave}
   class={cn(
-    'rounded data-[orientation=vertical]:min-h-44 relative flex w-full touch-none items-center select-none data-[orientation=vertical]:h-full data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col',
+    'peer data-disabled:neoretro-disable rounded data-[orientation=vertical]:min-h-44 relative flex w-full cursor-pointer touch-none items-center select-none data-[orientation=vertical]:h-full data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col',
     className,
   )}
   children={sliderContent}
@@ -121,7 +121,7 @@
           {...props}
           data-slot="slider-thumb"
           data-color={color}
-          class="neoretro-focus h-5 w-5 rounded neoretro-border neoretro-clr data-disabled:neoretro-disable absolute z-20 block border-2 data-disabled:cursor-not-allowed"
+          class="neoretro-focus h-5 w-5 rounded neoretro-border neoretro-clr absolute z-20 block border-2"
         ></span>
       {/snippet}
     </SliderPrimitive.Thumb>

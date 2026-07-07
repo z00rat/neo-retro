@@ -61,7 +61,7 @@
 }
 
 @utility neoretro-disable {
-  @apply cursor-not-allowed line-through opacity-50 grayscale;
+  @apply cursor-not-allowed line-through contrast-75 saturate-75;
 }
 
 @utility neoretro-invalid {

@@ -50,9 +50,9 @@
         </div>
 
         <!-- Disabled Input -->
-        <div class="gap-1.5 flex flex-col">
-          <Label for="input-disabled" class="text-sm font-bold">Disabled</Label>
+        <div class="gap-1.5 flex flex-col-reverse">
           <Input id="input-disabled" type="text" placeholder="Cannot interact..." disabled />
+          <Label for="input-disabled" class="text-sm font-bold">Disabled</Label>
         </div>
 
         <!-- Read-only Input -->

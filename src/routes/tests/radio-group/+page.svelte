@@ -86,7 +86,7 @@
           </div>
           <div class="space-x-2 flex items-center">
             <RadioGroup.Item value="plan2" id="w2" disabled />
-            <Label for="w2" class="opacity-50">Disabled Plan</Label>
+            <Label for="w2">Disabled Plan</Label>
           </div>
           <div class="space-x-2 flex items-center">
             <RadioGroup.Item value="plan3" id="w3" />

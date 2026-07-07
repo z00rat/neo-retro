@@ -45,6 +45,10 @@
           <Label class="my-2">No Shadow</Label>
           <Slider.Root bind:value={singleValue} max={100} step={1} {color} noShadow />
         </div>
+        <div>
+          <Label class="my-2">Disabled Slider</Label>
+          <Slider.Root bind:value={singleValue} max={100} step={1} {color} disabled />
+        </div>
       </Card.Content>
     </Card.Root>
   {/each}

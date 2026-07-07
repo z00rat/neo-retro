@@ -23,7 +23,7 @@
   data-slot="input-otp"
   data-color={color}
   class={cn(
-    'group/pininput gap-2 has-disabled:neoretro-disable [&_input]:disabled:neoretro-disable flex items-center',
+    'peer group/pininput gap-2 has-disabled:neoretro-disable [&_input]:disabled:neoretro-disable flex items-center',
     color ? 'neoretro-clr' : '',
     className,
   )}

@@ -2,7 +2,7 @@
   import { tv, type VariantProps } from 'tailwind-variants';
 
   export const toggleVariants = tv({
-    base: "bg-background text-foreground neoretro-border cursor-pointer focus-visible:neoretro-focus inline-flex items-center justify-center gap-2 whitespace-nowrap rounded text-sm font-medium outline-none disabled:neoretro-disable [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+    base: "peer bg-background text-foreground neoretro-border cursor-pointer focus-visible:neoretro-focus inline-flex items-center justify-center gap-2 whitespace-nowrap rounded text-sm font-medium outline-none disabled:neoretro-disable [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
     variants: {
       size: {
         default: 'h-9 min-w-9 px-2',

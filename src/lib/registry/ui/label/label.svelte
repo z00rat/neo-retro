@@ -9,6 +9,10 @@
 <LabelPrimitive.Root
   bind:ref
   data-slot="label"
-  class={cn('text-sm font-medium leading-none peer-disabled:cursor-not-allowed', className)}
+  class={cn(
+    'text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:line-through',
+    (restProps.for || restProps.onclick) && 'cursor-pointer',
+    className,
+  )}
   {...restProps}
 />
