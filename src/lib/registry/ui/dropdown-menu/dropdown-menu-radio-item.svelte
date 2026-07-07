@@ -19,16 +19,19 @@
   data-slot="dropdown-menu-radio-item"
   data-highlighted-color={getColor()}
   class={cn(
-    'gap-2 rounded neoretro-highlighted py-1.5 ps-8 pe-2 text-sm data-disabled:neoretro-disable relative flex items-center outline-hidden select-none',
+    'group gap-2 rounded neoretro-highlighted py-1.5 ps-8 pe-2 text-sm data-disabled:neoretro-disable relative flex items-center outline-hidden select-none',
     className,
   )}
   {...restProps}
 >
   {#snippet children({ checked })}
-    <span class="start-2 size-3.5 pointer-events-none absolute flex items-center justify-center">
-      {#if checked}
-        <div class="size-2 rounded-full bg-current"></div>
-      {/if}
+    <span
+      class={cn(
+        'inset-s-2 size-4 neoretro-border group-data-highlighted:border-clr-highlighted group-data-[state=open]:border-clr-highlighted pointer-events-none absolute flex shrink-0 items-center justify-center rounded-full transition-none',
+        checked ? 'neoretro-clr' : 'bg-transparent',
+      )}
+      data-color={checked ? 'black' : getColor()}
+    >
     </span>
     {@render childrenProp?.({ checked })}
   {/snippet}

@@ -21,7 +21,7 @@
   data-color={indeterminate ? 'black' : color}
   class={cn(
     'peer size-4 rounded-sm neoretro-border focus-visible:neoretro-focus disabled:neoretro-disable flex shrink-0 items-center justify-center transition-none',
-    checked || indeterminate ? 'bg-clr' : 'bg-background',
+    checked || indeterminate ? 'bg-clr' : color === 'white' || color === 'black' ? 'bg-transparent' : 'bg-background',
     className,
   )}
   bind:checked

@@ -18,16 +18,9 @@
   data-slot="radio-group-item"
   data-color={getColor()}
   class={cn(
-    'size-4 rounded neoretro-border bg-background text-foreground focus-visible:neoretro-focus disabled:neoretro-disable data-[state=checked]:bg-clr data-[state=checked]:text-on-clr data-[state=checked]:selection:bg-on-clr data-[state=checked]:selection:text-clr aspect-square',
+    'size-4 neoretro-border text-foreground focus-visible:neoretro-focus disabled:neoretro-disable data-[state=checked]:bg-clr data-[state=checked]:text-on-clr data-[state=checked]:selection:bg-on-clr data-[state=checked]:selection:text-clr aspect-square rounded-full',
+    getColor() === 'white' || getColor() === 'black' ? 'bg-transparent' : 'bg-background',
     className,
   )}
   {...restProps}
->
-  {#snippet children({ checked })}
-    <div data-slot="radio-group-indicator" class="flex items-center justify-center">
-      {#if checked}
-        <div class="size-2 rounded-full bg-current"></div>
-      {/if}
-    </div>
-  {/snippet}
-</RadioGroupPrimitive.Item>
+/>
