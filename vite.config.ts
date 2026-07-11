@@ -9,4 +9,13 @@ export default defineConfig({
     port: 12001,
     strictPort: true,
   },
+  build: {
+    sourcemap: false,
+    cssMinify: 'lightningcss',
+    target: 'esnext',
+    assetsInlineLimit: 4096,
+  },
+  optimizeDeps: {
+    include: ['@lucide/svelte', 'bits-ui', 'clsx', 'mode-watcher', 'tailwind-merge', 'tailwind-variants', 'vidstack'],
+  },
 });

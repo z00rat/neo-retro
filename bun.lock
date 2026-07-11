@@ -28,6 +28,7 @@
         "eslint-plugin-svelte": "^3.20.0",
         "globals": "^17.7.0",
         "knip": "^6",
+        "lightningcss": "^1.32.0",
         "marked": "^18.0.6",
         "mode-watcher": "^1.1.0",
         "paneforge": "^1.0.2",
