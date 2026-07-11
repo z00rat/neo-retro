@@ -4,11 +4,9 @@
   "workspaces": {
     "": {
       "name": "neo-retro",
-      "dependencies": {
-        "@dicebear/styles": "^10.2.0",
-      },
       "devDependencies": {
         "@dicebear/core": "^10.3.0",
+        "@dicebear/styles": "^10.2.0",
         "@eslint/compat": "^2.1.0",
         "@eslint/js": "^10.0.1",
         "@ianvs/prettier-plugin-sort-imports": "^4.7.1",

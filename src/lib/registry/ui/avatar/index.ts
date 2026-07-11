@@ -11,3 +11,5 @@ export {
   Image as AvatarImage,
   Fallback as AvatarFallback,
 };
+
+export * from './types.ts';

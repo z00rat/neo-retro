@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@dicebear/core": "^10.3.0",
+    "@dicebear/styles": "^10.2.0",
     "@eslint/compat": "^2.1.0",
     "@eslint/js": "^10.0.1",
     "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
@@ -59,8 +60,5 @@
     "typescript-eslint": "^8.63.0",
     "vidstack": "1.15.6",
     "vite": "^8.1.4"
-  },
-  "dependencies": {
-    "@dicebear/styles": "^10.2.0"
   }
 }

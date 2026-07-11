@@ -137,8 +137,8 @@
       "type": "registry:ui",
       "registryDependencies": [],
       "devDependencies": [
-        "@dicebear/bottts-neutral",
-        "@dicebear/core"
+        "@dicebear/core",
+        "@dicebear/styles"
       ],
       "files": [
         {
@@ -155,6 +155,10 @@
         },
         {
           "path": "src/lib/registry/ui/avatar/index.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/avatar/types.ts",
           "type": "registry:file"
         }
       ]
