@@ -70,10 +70,10 @@ const getFilesRecursively = (dir) => {
 // Map imports
 const getImports = (content) => {
   const imports = new Set();
-  const regex = /(?:import|from)\s+['"]([^'"]+)['"]/g;
+  const regex = /(?:import|from)\s+['"]([^'"]+)['"]|import\s*\(\s*['"]([^'"]+)['"]\s*\)/g;
   let match;
   while ((match = regex.exec(content)) !== null) {
-    imports.add(match[1]);
+    imports.add(match[1] || match[2]);
   }
   return Array.from(imports);
 };
@@ -105,6 +105,8 @@ const importToExternalPackage = (importPath) => {
   if (importPath.startsWith('node:')) return null;
   if (importPath.startsWith('@')) {
     const parts = importPath.split('/');
+    // Check if second part is a subpath of a package or part of scoped package name
+    // Scoped package name is @scope/package. If import is @scope/package/subpath, return @scope/package
     return parts.slice(0, 2).join('/');
   }
   return importPath.split('/')[0];

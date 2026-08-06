@@ -622,7 +622,7 @@
           <Table.Row>
             <Table.Cell
               colspan={columns.length}
-              class="h-24 text-center text-current font-bold uppercase tracking-wider"
+              class="h-24 font-bold tracking-wider text-center text-current uppercase"
             >
               No results found.
             </Table.Cell>

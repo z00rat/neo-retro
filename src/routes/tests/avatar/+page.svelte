@@ -318,9 +318,9 @@
       <Card.Title>Interactive Style Tester</Card.Title>
     </Card.Header>
     <Card.Content class="space-y-6 pt-0">
-      <div class="flex flex-col gap-6">
+      <div class="gap-6 flex flex-col">
         <div class="space-y-2">
-          <Label class="text-sm font-bold uppercase tracking-wider text-black block">Select Style</Label>
+          <Label class="text-sm font-bold tracking-wider text-black block uppercase">Select Style</Label>
           <ToggleGroup.Root type="single" color="white" bind:value={selectedStyle} class="flex-wrap">
             {#each diceBearStyles as name (name)}
               <ToggleGroup.Item value={name}>{name}</ToggleGroup.Item>
@@ -329,14 +329,14 @@
         </div>
 
         <div class="space-y-2">
-          <Label for="avatar-count" class="text-sm font-bold uppercase tracking-wider text-black block"
+          <Label for="avatar-count" class="text-sm font-bold tracking-wider text-black block uppercase"
             >Number of Avatars</Label
           >
           <Input id="avatar-count" type="number" min="1" bind:value={avatarCount} color="white" />
         </div>
       </div>
 
-      <div class="flex flex-wrap gap-4">
+      <div class="gap-4 flex flex-wrap">
         {#each [...Array(Math.max(0, visibleCount)).keys()] as i (lastSelectedStyle + '-' + i)}
           {@const firstName = firstNames.length ? firstNames[i % firstNames.length] : ''}
           {@const lastName = lastNames.length ? lastNames[(i * 17) % lastNames.length] : ''}

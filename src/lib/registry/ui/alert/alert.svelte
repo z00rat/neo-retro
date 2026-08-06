@@ -21,7 +21,7 @@
   data-slot="alert"
   data-color={color}
   class={cn(
-    'gap-y-0.5 rounded neoretro-border neoretro-clr px-4 py-3 has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-1 relative grid w-full grid-cols-[0_1fr] items-start has-[>svg]:grid-cols-[--spacing(4)_1fr] [&>svg]:text-current',
+    'gap-y-0.5 rounded neoretro-border neoretro-clr px-4 py-3 has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-1 has-[>svg]:grid-cols-[--spacing(4)_1fr] relative grid w-full grid-cols-[0_1fr] items-start [&>svg]:text-current',
     noShadow ? '' : 'neoretro-shadow',
     className,
   )}

@@ -342,7 +342,7 @@
     <button
       type="button"
       class={cn(
-        'group relative block w-full overflow-hidden leading-none cursor-pointer text-left',
+        'group relative block w-full cursor-pointer overflow-hidden text-left leading-none',
         !noBorder && 'neoretro-border',
         !noShadow && 'neoretro-shadow',
         !noRounded && 'rounded',
@@ -375,7 +375,7 @@
         />
       </picture>
       <div
-        class="neoretro-overlay inset-0 pointer-events-none absolute! z-0! hidden group-hover:flex group-focus-visible:flex items-center justify-center"
+        class="neoretro-overlay inset-0 pointer-events-none absolute! z-0! hidden items-center justify-center group-hover:flex group-focus-visible:flex"
       >
         <div
           class="neoretro-border neoretro-clr neoretro-shadow gap-1.5 rounded px-3 py-2 text-xs font-bold flex items-center uppercase select-none"
@@ -388,7 +388,7 @@
   {:else}
     <div
       class={cn(
-        'group relative block w-full overflow-hidden leading-none cursor-default',
+        'group relative block w-full cursor-default overflow-hidden leading-none',
         !noBorder && 'neoretro-border',
         !noShadow && 'neoretro-shadow',
         !noRounded && 'rounded',
@@ -641,21 +641,21 @@
 
         <aside class="min-h-0 border-black md:max-h-[30dvh] flex max-h-[38dvh] flex-col border-t-2">
           <div
-            class="min-h-0 gap-4 p-4 flex flex-col md:grid md:grid-cols-[minmax(0,1fr)_minmax(14rem,auto)] md:items-start"
+            class="min-h-0 gap-4 p-4 md:grid md:grid-cols-[minmax(0,1fr)_minmax(14rem,auto)] md:items-start flex flex-col"
           >
-            <Dialog.Header class="gap-1 p-0 text-center sm:text-center md:text-left">
+            <Dialog.Header class="gap-1 p-0 sm:text-center md:text-left text-center">
               <Dialog.Title class="text-xl font-black tracking-tight md:text-2xl uppercase italic select-none">
                 {currentImage.name}
               </Dialog.Title>
               {#if descHtml}
-                <Dialog.Description class="max-h-24 overflow-hidden text-sm leading-snug [&_a]:underline md:max-h-32">
+                <Dialog.Description class="max-h-24 text-sm leading-snug md:max-h-32 overflow-hidden [&_a]:underline">
                   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                   {@html descHtml}
                 </Dialog.Description>
               {/if}
             </Dialog.Header>
 
-            <div class="min-w-0 gap-1.5 flex flex-wrap justify-center md:justify-end">
+            <div class="min-w-0 gap-1.5 md:justify-end flex flex-wrap justify-center">
               <Badge {color} class="font-mono">
                 <span class="font-bold">Dimensions:</span>
                 {currentImage.width} × {currentImage.height}

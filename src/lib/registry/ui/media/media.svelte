@@ -522,7 +522,7 @@
 {#snippet waveformLayer(className = '', clipStyle = '')}
   <div
     class={cn(
-      'inset-x-0 h-14 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center justify-between gap-0.75',
+      'inset-x-0 h-14 gap-0.75 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center justify-between',
       className,
     )}
     style={clipStyle}
@@ -617,7 +617,7 @@
         <media-gesture event="dblclick" action="toggle:fullscreen" class="inset-0 absolute z-0 block"></media-gesture>
       </div>
     {:else}
-      <div class="bg-black/95 py-4 px-8 relative flex min-h-27.5 w-full items-center justify-center">
+      <div class="bg-black/95 py-4 px-8 min-h-27.5 relative flex w-full items-center justify-center">
         <media-provider class="hidden"></media-provider>
 
         {#if isWaveLoading}
@@ -627,7 +627,7 @@
             class="group h-20 mx-0! relative flex w-full cursor-pointer touch-none items-center justify-center outline-none select-none"
           >
             <div
-              class="inset-x-0 h-14 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center justify-between gap-0.75 opacity-20"
+              class="inset-x-0 h-14 gap-0.75 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center justify-between opacity-20"
             >
               {#each waveHeights as height, i (i)}
                 <div class="rounded-xs bg-foreground flex-1" style="height: {height}%;"></div>
@@ -675,7 +675,7 @@
                   {#if thumbnails}
                     <media-slider-thumbnail
                       src={thumbnails}
-                      class="aspect-video neoretro-border neoretro-shadow mb-2 rounded bg-black block w-40"
+                      class="aspect-video neoretro-border neoretro-shadow mb-2 rounded bg-black w-40 block"
                     ></media-slider-thumbnail>
                   {/if}
                   {@render sliderPreviewValue()}

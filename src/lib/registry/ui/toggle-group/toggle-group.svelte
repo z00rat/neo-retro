@@ -38,7 +38,7 @@
     'rounded flex w-fit items-center *:relative *:focus-visible:z-20',
     orientation === 'horizontal'
       ? '[&>*:not(:first-child)]:-ml-0.5 [&>*:not(:first-child)]:rounded-s-none [&>*:not(:last-child)]:rounded-e-none'
-      : 'flex-col [&>*:not(:first-child)]:-mt-0.5 [&>*:not(:first-child)]:rounded-t-none [&>*:not(:last-child)]:rounded-b-none',
+      : '[&>*:not(:first-child)]:-mt-0.5 flex-col [&>*:not(:first-child)]:rounded-t-none [&>*:not(:last-child)]:rounded-b-none',
     className,
   )}
   {...restProps}

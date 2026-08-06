@@ -22,7 +22,7 @@
   data-slot={dataSlot}
   data-color={color}
   class={cn(
-    'peer rounded neoretro-border p-2 text-sm focus-visible:neoretro-focus disabled:neoretro-disable neoretro-invalid flex min-h-20 w-full placeholder:text-current/50',
+    'peer rounded neoretro-border p-2 text-sm focus-visible:neoretro-focus disabled:neoretro-disable neoretro-invalid min-h-20 flex w-full placeholder:text-current/50',
     color ? 'neoretro-clr' : 'bg-background text-foreground selection:bg-foreground selection:text-background',
     !noShadow && 'neoretro-shadow',
     className,
