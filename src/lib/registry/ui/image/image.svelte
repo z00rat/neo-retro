@@ -447,7 +447,7 @@
   <div class={gallery.masonryMoreClass} style={gallery.masonryMoreStyle}>
     {#each gallery.masonryColumns as column, columnIndex (columnIndex)}
       <div class="space-y-2">
-        {#each column as img (img.id)}
+        {#each column as img, colImgIndex (colImgIndex)}
           {@render card(img, allImages.indexOf(img))}
         {/each}
         {#if columnIndex === gallery.masonryColumns.length - 1}
