@@ -43,6 +43,10 @@ All accept `ref` (bindable), `class`, `children`, and `...restProps` unless note
   - `<Avatar.Image>` — use instead of `<img>`
   - `<Avatar.Fallback>` — seed, style (dicebear), options
 
+### BackgroundPattern
+
+- `<BackgroundPattern>` — pattern (preset name or custom SVG snippet), size, strokeWidth, rotation (degrees), opacity, mask, absolute. Presets: dots, circles, grid, horizontal-lines, waves, checkerboard, cross, diamonds, hexagons, triangles, bricks, stars, truchet, isometric. Masks: none, fade-edges, fade-center, fade-top, fade-bottom, fade-left, fade-right, fade-horizontal, fade-vertical, spotlight. Uses `currentColor`; set its color with `class` or `style`.
+
 ### Badge
 
 - `<Badge>` — href, color — use instead of `<span>`/`<a>` (if href)

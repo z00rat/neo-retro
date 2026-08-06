@@ -164,6 +164,21 @@
       ]
     },
     {
+      "name": "background-pattern",
+      "type": "registry:ui",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/lib/registry/ui/background-pattern/background-pattern.svelte",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/background-pattern/index.ts",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
       "name": "badge",
       "type": "registry:ui",
       "registryDependencies": [],
