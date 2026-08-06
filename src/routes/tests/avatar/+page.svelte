@@ -8,14 +8,26 @@
 
   let selectedStyle = $state<DiceBearStyle | undefined>('glyphs');
   let lastSelectedStyle = $state<DiceBearStyle>('glyphs');
+  let avatarCount = $state(128);
+  let visibleCount = $state(128);
 
   $effect(() => {
-    if (selectedStyle) {
-      lastSelectedStyle = selectedStyle;
-    }
-  });
+    const style = selectedStyle;
+    const count = avatarCount;
 
-  let avatarCount = $state(128);
+    // Remove old ones first
+    visibleCount = 0;
+    if (style) {
+      lastSelectedStyle = style;
+    }
+
+    // Add new ones later
+    const timer = setTimeout(() => {
+      visibleCount = count;
+    }, 0);
+
+    return () => clearTimeout(timer);
+  });
   const firstNames = [
     'Alice',
     'Bob',
@@ -325,7 +337,7 @@
       </div>
 
       <div class="flex flex-wrap gap-4">
-        {#each [...Array(Math.max(1, avatarCount)).keys()] as i (i)}
+        {#each [...Array(Math.max(0, visibleCount)).keys()] as i (lastSelectedStyle + '-' + i)}
           {@const firstName = firstNames.length ? firstNames[i % firstNames.length] : ''}
           {@const lastName = lastNames.length ? lastNames[(i * 17) % lastNames.length] : ''}
           {@const seed = [firstName, lastName].filter(Boolean).join(' ')}

@@ -88,10 +88,11 @@
 
   const avatar = $derived.by(() => {
     if (!resolvedStyleSchema) return '';
-    const styleInstance = new Style<unknown>(resolvedStyleSchema);
+    const styleSchema = $state.snapshot(resolvedStyleSchema);
+    const styleInstance = new Style<unknown>(styleSchema);
     return new Avatar<unknown>(styleInstance, {
       seed,
-      ...options,
+      ...$state.snapshot(options),
     }).toDataUri();
   });
 </script>
