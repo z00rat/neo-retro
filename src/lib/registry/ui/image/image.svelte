@@ -8,10 +8,11 @@
   import { parse } from 'marked';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
-  import { SvelteSet } from 'svelte/reactivity';
+  import { MediaQuery, SvelteSet } from 'svelte/reactivity';
   import { fly } from 'svelte/transition';
   import { thumbHashToDataURL } from 'thumbhash';
 
+  import { Badge } from '$lib/registry/ui/badge';
   import { Button, buttonVariants, type ButtonProps } from '$lib/registry/ui/button';
   import * as Dialog from '$lib/registry/ui/dialog';
   import * as DropdownMenu from '$lib/registry/ui/dropdown-menu';
@@ -22,6 +23,19 @@
 
   type ImageLayout = 'masonry' | 'grid';
   type FeaturedPosition = 'side' | 'bottom';
+  type CollectionScope = 'gallery' | 'preview-side' | 'preview-bottom';
+  type Breakpoint = 'base' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
+  type ResponsiveNumber = number | Partial<Record<Breakpoint, number>>;
+
+  const breakpoints = {
+    sm: new MediaQuery('(min-width: 40rem)'),
+    md: new MediaQuery('(min-width: 48rem)'),
+    lg: new MediaQuery('(min-width: 64rem)'),
+    xl: new MediaQuery('(min-width: 80rem)'),
+    '2xl': new MediaQuery('(min-width: 96rem)'),
+    '3xl': new MediaQuery('(min-width: 120rem)'),
+  };
+  const breakpointOrder = ['sm', 'md', 'lg', 'xl', '2xl', '3xl'] as const;
 
   let {
     ref = $bindable(null),
@@ -35,10 +49,13 @@
     downloadColor,
     prevNextColor,
     layout = 'masonry',
-    featured = false,
-    featuredPosition = 'side',
-    previewCount = 4,
+    featuredPosition,
+    previewCount,
     columns,
+    clickable = true,
+    noBorder = false,
+    noShadow = false,
+    noRounded = false,
     children,
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
@@ -53,28 +70,46 @@
     downloadColor: ButtonProps['color'];
     prevNextColor: ButtonProps['color'];
     layout?: ImageLayout;
-    featured?: boolean;
     featuredPosition?: FeaturedPosition;
-    previewCount?: number;
-    columns?: number;
+    previewCount?: ResponsiveNumber;
+    columns?: ResponsiveNumber;
+    clickable?: boolean;
+    noBorder?: boolean;
+    noShadow?: boolean;
+    noRounded?: boolean;
   } = $props();
 
   let allImages = $derived(images ?? (meta ? [meta] : []));
-  let isSingle = $derived(!images && !!meta);
-  let hasFeaturedLayout = $derived(featured && allImages.length > 1);
-  let normalizedPreviewCount = $derived(Math.max(0, Number(previewCount) || 0));
-  let previewImages = $derived(allImages.slice(1, normalizedPreviewCount + 1));
-  let hiddenPreviewCount = $derived(hasFeaturedLayout ? Math.max(0, allImages.length - 1 - previewImages.length) : 0);
-  let hiddenPreviewIndex = $derived(previewImages.length + 1);
-  let galleryClass = $derived(collectionClass(layout, 'gallery'));
-  let galleryStyle = $derived(collectionStyle(layout, columns));
-  let previewClass = $derived(collectionClass(layout, `preview-${featuredPosition}`));
-  let previewStyle = $derived(collectionStyle(layout, columns));
-  let featuredClass = $derived(
-    featuredPosition === 'bottom'
-      ? 'gap-4 grid items-start'
-      : 'grid items-start gap-4 md:grid-cols-[minmax(0,1fr)_minmax(10rem,18rem)]',
-  );
+  let gallery = $derived.by(() => {
+    const isSingle = !images && !!meta;
+    const isFeatured = featuredPosition !== undefined && allImages.length > 1;
+    const previewLimit = Math.max(0, Number(resolveResponsiveNumber(previewCount)) || 0);
+    const startIndex = isFeatured ? 1 : 0;
+    const visibleImages =
+      previewLimit === 0 ? allImages.slice(startIndex) : allImages.slice(startIndex, startIndex + previewLimit);
+    const hiddenCount = Math.max(0, allImages.length - startIndex - visibleImages.length);
+    const scope: CollectionScope = isFeatured ? `preview-${featuredPosition ?? 'side'}` : 'gallery';
+    const columnCount = resolveResponsiveNumber(columns);
+    const usesMasonryMoreLayout = hiddenCount > 0 && layout === 'masonry';
+
+    return {
+      isSingle,
+      isFeatured,
+      visibleImages,
+      hiddenCount,
+      hiddenIndex: visibleImages.length + startIndex,
+      usesMasonryMoreLayout,
+      collectionClass: collectionClass(layout, scope),
+      collectionStyle: collectionStyle(layout, columnCount),
+      masonryMoreClass: masonryMoreContainerClass(scope),
+      masonryMoreStyle: masonryMoreContainerStyle(columnCount),
+      masonryColumns: distributeMasonryImages(visibleImages, resolveMasonryColumnCount(scope, columnCount)),
+      featuredClass:
+        featuredPosition === 'bottom'
+          ? 'gap-2 grid items-start'
+          : 'grid items-start gap-2 md:grid-cols-[minmax(0,1fr)_minmax(10rem,18rem)]',
+    };
+  });
   let currentIndex = $state(0);
   let slideDir = $state(1);
   let currentImage = $derived(allImages[currentIndex]);
@@ -158,7 +193,7 @@
   }
 
   let descHtml = $derived(
-    currentImage.description ? (parse(currentImage.description, { async: false }) as string) : '',
+    currentImage?.description ? (parse(currentImage.description, { async: false }) as string) : '',
   );
   function bindPanzoom(node: HTMLElement) {
     const api = panzoom(node, {
@@ -187,6 +222,8 @@
   }
 
   function openAtIndex(index: number) {
+    if (!allImages[index]) return;
+
     slideDir = index > currentIndex ? 1 : -1;
     currentIndex = index;
     isOpen = true;
@@ -211,20 +248,8 @@
     return `${(bytes / (1024 * 1024)).toFixed(1)}MB`;
   }
 
-  function formatMegapixels(width: number, height: number): string {
-    return `${((width * height) / 1_000_000).toFixed(1)}MP`;
-  }
-
   function formatRatio(aspectRatio: number): string {
     return aspectRatio >= 1 ? `${aspectRatio.toFixed(2)}:1` : `1:${(1 / aspectRatio).toFixed(2)}`;
-  }
-
-  function handleCardKeydown(event: KeyboardEvent) {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      const index = Number((event.currentTarget as HTMLElement).dataset.index ?? 0);
-      openAtIndex(index);
-    }
   }
 
   function handleDialogKeydown(event: KeyboardEvent) {
@@ -241,16 +266,28 @@
     return img.urls.avif?.url ?? img.urls.webp?.url ?? img.urls.original.url;
   }
 
-  function collectionClass(kind: ImageLayout, scope: 'gallery' | 'preview-side' | 'preview-bottom') {
+  function resolveResponsiveNumber(value: ResponsiveNumber | undefined): number | undefined {
+    if (typeof value === 'number' || !value) return value;
+
+    let resolved = value.base;
+    for (const breakpoint of breakpointOrder) {
+      if (breakpoints[breakpoint].current && value[breakpoint] !== undefined) {
+        resolved = value[breakpoint];
+      }
+    }
+    return resolved;
+  }
+
+  function collectionClass(kind: ImageLayout, scope: CollectionScope) {
     if (kind === 'grid') {
-      if (scope === 'preview-side') return 'gap-4 grid grid-cols-2 items-start md:grid-cols-1';
-      if (scope === 'preview-bottom') return 'gap-4 grid grid-cols-2 items-start md:grid-cols-4';
-      return 'gap-4 grid grid-cols-2 items-start sm:grid-cols-3 lg:grid-cols-4';
+      if (scope === 'preview-side') return 'gap-2 grid grid-cols-2 items-start md:grid-cols-1';
+      if (scope === 'preview-bottom') return 'gap-2 grid grid-cols-2 items-start md:grid-cols-4';
+      return 'gap-2 grid grid-cols-2 items-start sm:grid-cols-3 lg:grid-cols-4';
     }
 
-    if (scope === 'preview-side') return 'columns-2 gap-4 md:columns-1 [&>div]:mb-4';
-    if (scope === 'preview-bottom') return 'columns-2 gap-4 md:columns-4 [&>div]:mb-4';
-    return 'columns-1 gap-6 sm:columns-2 lg:columns-3 [&>div]:mb-6';
+    if (scope === 'preview-side') return 'columns-2 gap-2 md:columns-1 [&>div]:mb-2 [&>button]:mb-2';
+    if (scope === 'preview-bottom') return 'columns-2 gap-2 md:columns-4 [&>div]:mb-2 [&>button]:mb-2';
+    return 'columns-1 gap-2 sm:columns-2 lg:columns-3 [&>div]:mb-2 [&>button]:mb-2';
   }
 
   function collectionStyle(kind: ImageLayout, value: number | undefined) {
@@ -259,110 +296,202 @@
 
     return kind === 'grid' ? `grid-template-columns: repeat(${count}, minmax(0, 1fr));` : `column-count: ${count};`;
   }
+
+  function masonryMoreContainerClass(scope: CollectionScope) {
+    if (scope === 'preview-side') return 'gap-2 grid grid-cols-2 items-start md:grid-cols-1';
+    if (scope === 'preview-bottom') return 'gap-2 grid grid-cols-2 items-start md:grid-cols-4';
+    return 'gap-2 grid grid-cols-1 items-start sm:grid-cols-2 lg:grid-cols-3';
+  }
+
+  function masonryMoreContainerStyle(value: number | undefined) {
+    const count = Math.max(1, Number(value) || 0);
+    if (!value || count < 1) return undefined;
+
+    return `grid-template-columns: repeat(${count}, minmax(0, 1fr));`;
+  }
+
+  function resolveMasonryColumnCount(scope: CollectionScope, value: number | undefined) {
+    if (value && value > 0) return Math.floor(value);
+
+    if (scope === 'preview-side') return breakpoints.md.current ? 1 : 2;
+    if (scope === 'preview-bottom') return breakpoints.md.current ? 4 : 2;
+    if (breakpoints.lg.current) return 3;
+    if (breakpoints.sm.current) return 2;
+    return 1;
+  }
+
+  function distributeMasonryImages(images: ImageMeta[], columnCount: number): ImageMeta[][] {
+    const columns = Array.from({ length: columnCount }, () => [] as ImageMeta[]);
+    const columnHeights = Array.from({ length: columnCount }, () => 0);
+
+    for (const image of images) {
+      const columnIndex = columnHeights.indexOf(Math.min(...columnHeights));
+      columns[columnIndex].push(image);
+      columnHeights[columnIndex] += 1 / Math.max(image.aspectRatio, 0.01);
+    }
+
+    return columns;
+  }
 </script>
 
 {#snippet card(img: ImageMeta, index: number)}
   {@const src = imgSrcFor(img)}
   {@const th = thumbUrl(img.thumbhash)}
   {@const isLoaded = loadedImages[img.id]}
-  <div
-    class={cn(
-      'neoretro-border neoretro-shadow group rounded relative block w-full cursor-pointer overflow-hidden leading-none',
-      isSingle || (hasFeaturedLayout && index === 0) ? '' : layout === 'masonry' ? 'break-inside-avoid' : '',
-    )}
-    data-color={color}
-    data-index={index}
-    role="button"
-    tabindex="0"
-    aria-label="Open {img.name}"
-    onclick={() => openAtIndex(index)}
-    onkeydown={handleCardKeydown}
-  >
-    {#if th}
+  {#if clickable}
+    <button
+      type="button"
+      class={cn(
+        'group relative block w-full overflow-hidden leading-none cursor-pointer text-left',
+        !noBorder && 'neoretro-border',
+        !noShadow && 'neoretro-shadow',
+        !noRounded && 'rounded',
+        gallery.isSingle || (gallery.isFeatured && index === 0) ? '' : layout === 'masonry' ? 'break-inside-avoid' : '',
+      )}
+      data-color={color}
+      data-index={index}
+      aria-label={`Open ${img.name}`}
+      onclick={() => openAtIndex(index)}
+    >
+      {#if th && !isLoaded}
+        <div class="inset-0 absolute bg-cover bg-center" style="background-image: url({th})"></div>
+      {/if}
+      <picture class="block leading-none">
+        {#if img.urls.avif}
+          <source srcset={img.urls.avif.url} type="image/avif" />
+        {/if}
+        {#if img.urls.webp}
+          <source srcset={img.urls.webp.url} type="image/webp" />
+        {/if}
+        <img
+          {src}
+          alt={alt ?? img.name}
+          width={img.width}
+          height={img.height}
+          class="relative block w-full"
+          loading={index < 2 ? 'eager' : 'lazy'}
+          decoding="async"
+          onload={() => (loadedImages[img.id] = true)}
+        />
+      </picture>
       <div
-        class={cn(
-          'inset-0 absolute bg-cover bg-center transition-opacity duration-500',
-          isLoaded ? 'opacity-0' : 'opacity-100',
-        )}
-        style="background-image: url({th})"
-      ></div>
-    {/if}
-    <picture class="block leading-none">
-      {#if img.urls.avif}
-        <source srcset={img.urls.avif.url} type="image/avif" />
-      {/if}
-      {#if img.urls.webp}
-        <source srcset={img.urls.webp.url} type="image/webp" />
-      {/if}
-      <img
-        {src}
-        alt={alt ?? img.name}
-        class={cn('relative block w-full transition-opacity duration-500', isLoaded ? 'opacity-100' : 'opacity-0')}
-        loading={index < 2 ? 'eager' : 'lazy'}
-        decoding="async"
-        onload={() => (loadedImages[img.id] = true)}
-      />
-    </picture>
+        class="neoretro-overlay inset-0 pointer-events-none absolute! z-0! hidden group-hover:flex group-focus-visible:flex items-center justify-center"
+      >
+        <div
+          class="neoretro-border neoretro-clr neoretro-shadow gap-1.5 rounded px-3 py-2 text-xs font-bold flex items-center uppercase select-none"
+          data-color={color}
+        >
+          <EyeIcon class="size-4" /> View Details
+        </div>
+      </div>
+    </button>
+  {:else}
     <div
       class={cn(
-        'inset-0 bg-black/45 pointer-events-none absolute opacity-0 transition-opacity duration-200 group-hover:opacity-100',
-        'flex items-center justify-center',
+        'group relative block w-full overflow-hidden leading-none cursor-default',
+        !noBorder && 'neoretro-border',
+        !noShadow && 'neoretro-shadow',
+        !noRounded && 'rounded',
+        gallery.isSingle || (gallery.isFeatured && index === 0) ? '' : layout === 'masonry' ? 'break-inside-avoid' : '',
       )}
+      data-color={color}
+      data-index={index}
     >
-      <div
-        class="neoretro-border neoretro-clr neoretro-shadow gap-1.5 rounded px-3 py-2 text-xs font-bold flex items-center uppercase select-none"
-        data-color={color}
-      >
-        <EyeIcon class="size-4" /> View Details
-      </div>
+      {#if th && !isLoaded}
+        <div class="inset-0 absolute bg-cover bg-center" style="background-image: url({th})"></div>
+      {/if}
+      <picture class="block leading-none">
+        {#if img.urls.avif}
+          <source srcset={img.urls.avif.url} type="image/avif" />
+        {/if}
+        {#if img.urls.webp}
+          <source srcset={img.urls.webp.url} type="image/webp" />
+        {/if}
+        <img
+          {src}
+          alt={alt ?? img.name}
+          width={img.width}
+          height={img.height}
+          class="relative block w-full"
+          loading={index < 2 ? 'eager' : 'lazy'}
+          decoding="async"
+          onload={() => (loadedImages[img.id] = true)}
+        />
+      </picture>
     </div>
-  </div>
+  {/if}
 {/snippet}
 
 {#snippet hiddenCard(count: number, index: number)}
-  <div
-    class="neoretro-border neoretro-clr neoretro-shadow group rounded min-h-36 p-4 relative flex w-full cursor-pointer break-inside-avoid items-center justify-center overflow-hidden text-center"
+  <button
+    type="button"
+    class={cn(
+      'neoretro-clr group min-h-36 p-4 relative flex w-full cursor-pointer break-inside-avoid items-center justify-center overflow-hidden text-center',
+      !noBorder && 'neoretro-border',
+      !noShadow && 'neoretro-shadow',
+      !noRounded && 'rounded',
+    )}
     data-color={color}
     data-index={index}
-    role="button"
-    tabindex="0"
-    aria-label="Open {count} hidden images"
+    aria-label={`Open ${count} hidden images`}
     onclick={() => openAtIndex(index)}
-    onkeydown={handleCardKeydown}
   >
     <div class="space-y-1 uppercase select-none">
       <div class="text-3xl font-black italic">+{count}</div>
       <div class="font-mono text-xs font-bold italic">More</div>
     </div>
-    <div
-      class="inset-0 bg-black/10 pointer-events-none absolute opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-    ></div>
+  </button>
+{/snippet}
+
+{#snippet masonryMore()}
+  <div class={gallery.masonryMoreClass} style={gallery.masonryMoreStyle}>
+    {#each gallery.masonryColumns as column, columnIndex (columnIndex)}
+      <div class="space-y-2">
+        {#each column as img (img.id)}
+          {@render card(img, allImages.indexOf(img))}
+        {/each}
+        {#if columnIndex === gallery.masonryColumns.length - 1}
+          {@render hiddenCard(gallery.hiddenCount, gallery.hiddenIndex)}
+        {/if}
+      </div>
+    {/each}
   </div>
 {/snippet}
 
 <div bind:this={ref} data-slot="image" data-color={color} class={cn(className)} {...restProps}>
-  {#if isSingle}
+  {#if gallery.isSingle}
     {@render card(allImages[0], 0)}
-  {:else if hasFeaturedLayout}
-    <div class={featuredClass}>
+  {:else if gallery.isFeatured}
+    <div class={gallery.featuredClass}>
       <div>
         {@render card(allImages[0], 0)}
       </div>
-      <div class={previewClass} style={previewStyle}>
-        {#each previewImages as img, i (i)}
-          {@render card(img, i + 1)}
-        {/each}
-        {#if hiddenPreviewCount > 0}
-          {@render hiddenCard(hiddenPreviewCount, hiddenPreviewIndex)}
-        {/if}
-      </div>
+      {#if gallery.usesMasonryMoreLayout}
+        {@render masonryMore()}
+      {:else}
+        <div class={gallery.collectionClass} style={gallery.collectionStyle}>
+          {#each gallery.visibleImages as img, i (i)}
+            {@render card(img, i + 1)}
+          {/each}
+          {#if gallery.hiddenCount > 0}
+            {@render hiddenCard(gallery.hiddenCount, gallery.hiddenIndex)}
+          {/if}
+        </div>
+      {/if}
     </div>
   {:else}
-    <div class={galleryClass} style={galleryStyle}>
-      {#each allImages as img, i (i)}
-        {@render card(img, i)}
-      {/each}
-    </div>
+    {#if gallery.usesMasonryMoreLayout}
+      {@render masonryMore()}
+    {:else}
+      <div class={gallery.collectionClass} style={gallery.collectionStyle}>
+        {#each gallery.visibleImages as img, i (i)}
+          {@render card(img, i)}
+        {/each}
+        {#if gallery.hiddenCount > 0}
+          {@render hiddenCard(gallery.hiddenCount, gallery.hiddenIndex)}
+        {/if}
+      </div>
+    {/if}
   {/if}
 
   {@render children?.()}
@@ -382,7 +511,7 @@
                 data-color={color}
               >
                 {#if allImages.length > 1}
-                  {currentIndex + 1}/{allImages.length}
+                  {currentIndex + 1} of {allImages.length}
                 {/if}
                 {#if currentScale > 1.01}
                   &nbsp;({currentScale.toFixed(2)}x)
@@ -475,6 +604,8 @@
                 <img
                   src={imgSrcFor(currentImage)}
                   alt={currentAlt}
+                  width={currentImage.width}
+                  height={currentImage.height}
                   class="pointer-events-none block h-full w-full object-contain select-none"
                   draggable="false"
                 />
@@ -509,54 +640,40 @@
         </section>
 
         <aside class="min-h-0 border-black md:max-h-[30dvh] flex max-h-[38dvh] flex-col border-t-2">
-          <Dialog.Header class="gap-3 p-4">
-            <div class="min-w-0">
+          <div
+            class="min-h-0 gap-4 p-4 flex flex-col md:grid md:grid-cols-[minmax(0,1fr)_minmax(14rem,auto)] md:items-start"
+          >
+            <Dialog.Header class="gap-1 p-0 text-center sm:text-center md:text-left">
               <Dialog.Title class="text-xl font-black tracking-tight md:text-2xl uppercase italic select-none">
                 {currentImage.name}
               </Dialog.Title>
-              <Dialog.Description class="mt-1 font-mono text-xs opacity-70">
-                {currentImage.width} x {currentImage.height} - {formatMegapixels(
-                  currentImage.width,
-                  currentImage.height,
-                )}
-              </Dialog.Description>
-            </div>
-          </Dialog.Header>
+              {#if descHtml}
+                <Dialog.Description class="max-h-24 overflow-hidden text-sm leading-snug [&_a]:underline md:max-h-32">
+                  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                  {@html descHtml}
+                </Dialog.Description>
+              {/if}
+            </Dialog.Header>
 
-          <div class="min-h-0 space-y-4 px-4 pb-4 flex-1 overflow-hidden">
-            {#if descHtml}
-              <div
-                class="max-h-24 text-sm leading-snug md:max-h-32 overflow-hidden opacity-85 [&_a]:underline [&_a]:hover:opacity-70"
-              >
-                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                {@html descHtml}
-              </div>
-            {/if}
-
-            <div class="gap-1.5 flex flex-wrap">
-              <span
-                class="neoretro-border neoretro-clr gap-1 rounded px-2.5 py-1 text-xs font-mono inline-flex items-center"
-                data-color={color}
-              >
+            <div class="min-w-0 gap-1.5 flex flex-wrap justify-center md:justify-end">
+              <Badge {color} class="font-mono">
+                <span class="font-bold">Dimensions:</span>
+                {currentImage.width} × {currentImage.height}
+              </Badge>
+              <Badge {color} class="font-mono">
                 <span class="font-bold">Size:</span>
                 {formatSize(currentImage.urls.original.size)}
-              </span>
-              <span
-                class="neoretro-border neoretro-clr gap-1 rounded px-2.5 py-1 text-xs font-mono inline-flex items-center"
-                data-color={color}
-              >
+              </Badge>
+              <Badge {color} class="font-mono">
                 <span class="font-bold">Ratio:</span>
                 {formatRatio(currentImage.aspectRatio)}
-              </span>
+              </Badge>
               {#if currentImage.kv}
                 {#each Object.entries(currentImage.kv) as [key, value] (key)}
-                  <span
-                    class="neoretro-border neoretro-clr gap-1 rounded px-2.5 py-1 text-xs font-mono inline-flex items-center"
-                    data-color={color}
-                  >
+                  <Badge {color} class="font-mono">
                     <span class="font-bold">{key}:</span>
                     {value}
-                  </span>
+                  </Badge>
                 {/each}
               {/if}
             </div>

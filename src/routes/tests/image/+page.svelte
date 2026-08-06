@@ -108,8 +108,7 @@
       images={repeatedImages}
       color="green"
       {layout}
-      {featured}
-      {featuredPosition}
+      featuredPosition={featured ? featuredPosition : undefined}
       {columns}
       {previewCount}
       cancelColor="red"
