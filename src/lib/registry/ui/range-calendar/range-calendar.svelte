@@ -3,7 +3,7 @@
   import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
   import { setContext, type Snippet } from 'svelte';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
+  import { cn, type Color, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   import * as RangeCalendar from './index.ts';
 
@@ -25,8 +25,8 @@
     disableDaysOutsideMonth = false,
     ...restProps
   }: WithoutChildrenOrChild<RangeCalendarPrimitive.RootProps> & {
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-    selectedColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
+    selectedColor: Color;
     captionLayout?: 'dropdown' | 'dropdown-months' | 'dropdown-years' | 'label';
     months?: RangeCalendarPrimitive.MonthSelectProps['months'];
     years?: RangeCalendarPrimitive.YearSelectProps['years'];

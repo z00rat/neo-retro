@@ -2,7 +2,7 @@
   import { NavigationMenu as NavigationMenuPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
 
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   import NavigationMenuViewport from './navigation-menu-viewport.svelte';
 
@@ -15,7 +15,7 @@
     ...restProps
   }: NavigationMenuPrimitive.RootProps & {
     viewport?: boolean;
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
   } = $props();
 
   setContext('navigationMenuColor', () => color);

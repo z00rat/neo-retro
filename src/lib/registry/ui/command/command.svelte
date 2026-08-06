@@ -2,7 +2,7 @@
   import { Command as CommandPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
 
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   export type CommandRootApi = CommandPrimitive.Root;
 
@@ -14,7 +14,7 @@
     color,
     ...restProps
   }: CommandPrimitive.RootProps & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'black' | 'bright-black' | Color;
     api?: CommandRootApi | null;
   } = $props();
 

@@ -26,7 +26,22 @@
   blockRoutes.sort((a, b) => a.name.localeCompare(b.name));
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const colors: any[] = ['yellow', 'red', 'green', 'blue', 'magenta', 'cyan'];
+  const colors: any[] = [
+    'red',
+    'green',
+    'yellow',
+    'blue',
+    'magenta',
+    'cyan',
+    'white',
+    'bright-red',
+    'bright-green',
+    'bright-yellow',
+    'bright-blue',
+    'bright-magenta',
+    'bright-cyan',
+    'bright-white',
+  ];
 </script>
 
 <svelte:head>

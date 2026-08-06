@@ -3,7 +3,7 @@
   import type { HTMLAttributes } from 'svelte/elements';
 
   import * as Tooltip from '$lib/registry/ui/tooltip/index.ts';
-  import { cn, type WithElementRef } from '$lib/utils.ts';
+  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   import { SIDEBAR_COOKIE_MAX_AGE, SIDEBAR_COOKIE_NAME, SIDEBAR_WIDTH, SIDEBAR_WIDTH_ICON } from './constants.ts';
   import { setSidebar } from './context.svelte.ts';
@@ -21,8 +21,8 @@
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-    activeColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'black' | 'bright-black' | Color;
+    activeColor: 'black' | 'bright-black' | Color;
   } = $props();
 
   setContext('sidebarColor', () => ({ color, activeColor }));

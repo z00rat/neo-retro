@@ -2,7 +2,7 @@
   import { Dialog as DialogPrimitive } from 'bits-ui';
   import type { Snippet } from 'svelte';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
+  import { cn, type Color, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   import * as Dialog from './index.ts';
 
@@ -14,7 +14,7 @@
     children,
     ...restProps
   }: WithoutChildrenOrChild<DialogPrimitive.ContentProps> & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'black' | 'bright-black' | Color;
     portalProps?: DialogPrimitive.PortalProps;
     children: Snippet;
   } = $props();

@@ -2,14 +2,14 @@
   import HourglassIcon from '@lucide/svelte/icons/hourglass';
   import type { ComponentProps } from 'svelte';
 
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     class: className,
     color,
     ...restProps
   }: ComponentProps<typeof HourglassIcon> & {
-    color?: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color?: 'black' | 'bright-black' | Color;
   } = $props();
 </script>
 

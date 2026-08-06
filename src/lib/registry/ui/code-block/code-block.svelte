@@ -11,7 +11,7 @@
   import Button from '$lib/registry/ui/button/button.svelte';
   import * as DropdownMenu from '$lib/registry/ui/dropdown-menu/index.ts';
   import Spinner from '$lib/registry/ui/spinner/spinner.svelte';
-  import { cn, type WithElementRef } from '$lib/utils.ts';
+  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   import '@shikijs/magic-move/style.css';
 
@@ -31,7 +31,7 @@
   import type { CodeBlockShikiConfig, CodeBlockVariant } from './code-block.types.ts';
   import { resolveCodeTheme, resolveLangAlias, resolveThemeAlias } from './shiki.ts';
 
-  type PaletteColor = 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+  type PaletteColor = Color;
   type Variant = { value: string; label: string; code: string };
 
   let {

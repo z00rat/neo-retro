@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Switch as SwitchPrimitive } from 'bits-ui';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
+  import { cn, type Color, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -10,7 +10,7 @@
     checked = $bindable(false),
     ...restProps
   }: WithoutChildrenOrChild<SwitchPrimitive.RootProps> & {
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
   } = $props();
 </script>
 

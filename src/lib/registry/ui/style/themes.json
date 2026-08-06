@@ -955,11 +955,6 @@
     "mode": "dark"
   },
   {
-    "id": "gitlab-light",
-    "label": "GitLab Light",
-    "mode": "light"
-  },
-  {
     "id": "glacier",
     "label": "Glacier",
     "mode": "dark"
@@ -1123,11 +1118,6 @@
     "id": "horizon-bright",
     "label": "Horizon Bright",
     "mode": "light"
-  },
-  {
-    "id": "hot-dog-stand",
-    "label": "Hot Dog Stand",
-    "mode": "dark"
   },
   {
     "id": "hot-dog-stand-mustard",
@@ -1502,11 +1492,6 @@
   {
     "id": "material-design-colors",
     "label": "Material Design Colors",
-    "mode": "dark"
-  },
-  {
-    "id": "material-ocean",
-    "label": "Material Ocean",
     "mode": "dark"
   },
   {
@@ -2560,11 +2545,6 @@
     "mode": "dark"
   },
   {
-    "id": "subliminal",
-    "label": "Subliminal",
-    "mode": "dark"
-  },
-  {
     "id": "sugarplum",
     "label": "Sugarplum",
     "mode": "dark"
@@ -2862,11 +2842,6 @@
   {
     "id": "wez",
     "label": "Wez",
-    "mode": "dark"
-  },
-  {
-    "id": "whimsy",
-    "label": "Whimsy",
     "mode": "dark"
   },
   {

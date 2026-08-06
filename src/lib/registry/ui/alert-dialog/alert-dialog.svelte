@@ -2,6 +2,8 @@
   import { AlertDialog as AlertDialogPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
 
+  import { type Color } from '$lib/utils.ts';
+
   let {
     open = $bindable(false),
     color,
@@ -9,9 +11,9 @@
     actionColor,
     ...restProps
   }: AlertDialogPrimitive.RootProps & {
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-    cancelColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-    actionColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
+    cancelColor: Color;
+    actionColor: Color;
   } = $props();
 
   setContext('alertDialogColor', () => color);

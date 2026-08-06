@@ -2,8 +2,9 @@
   import type { Snippet } from 'svelte';
 
   import * as AlertDialog from '$lib/registry/ui/alert-dialog';
+  import { type Color } from '$lib/utils.ts';
 
-  type ButtonColors = 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+  type ButtonColors = Color;
 
   let {
     open = $bindable(false),

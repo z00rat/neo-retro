@@ -2,7 +2,7 @@
   import { Dialog as SheetPrimitive } from 'bits-ui';
   import type { Snippet } from 'svelte';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
+  import { cn, type Color, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   import SheetOverlay from './sheet-overlay.svelte';
 
@@ -15,7 +15,7 @@
     children,
     ...restProps
   }: WithoutChildrenOrChild<SheetPrimitive.ContentProps> & {
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
     portalProps?: SheetPrimitive.PortalProps;
     side?: 'top' | 'right' | 'bottom' | 'left';
     children: Snippet;

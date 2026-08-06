@@ -43,7 +43,7 @@
     DropdownMenuTrigger,
   } from '$lib/registry/ui/dropdown-menu/index.ts';
   import { Spinner } from '$lib/registry/ui/spinner/index.ts';
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   import { mediaSettingsStore } from './mediaSettingsStore.ts';
 
@@ -65,7 +65,7 @@
     title?: string;
     tracks?: MediaTrack[];
     aspectRatio?: number;
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
     autoPlay?: boolean;
     loop?: boolean;
     muted?: boolean;
@@ -522,7 +522,7 @@
 {#snippet waveformLayer(className = '', clipStyle = '')}
   <div
     class={cn(
-      'inset-x-0 h-14 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center justify-between gap-[3px]',
+      'inset-x-0 h-14 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center justify-between gap-0.75',
       className,
     )}
     style={clipStyle}
@@ -617,7 +617,7 @@
         <media-gesture event="dblclick" action="toggle:fullscreen" class="inset-0 absolute z-0 block"></media-gesture>
       </div>
     {:else}
-      <div class="bg-black/95 py-4 px-8 relative flex min-h-[110px] w-full items-center justify-center">
+      <div class="bg-black/95 py-4 px-8 relative flex min-h-27.5 w-full items-center justify-center">
         <media-provider class="hidden"></media-provider>
 
         {#if isWaveLoading}
@@ -627,7 +627,7 @@
             class="group h-20 mx-0! relative flex w-full cursor-pointer touch-none items-center justify-center outline-none select-none"
           >
             <div
-              class="inset-x-0 h-14 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center justify-between gap-[3px] opacity-20"
+              class="inset-x-0 h-14 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center justify-between gap-0.75 opacity-20"
             >
               {#each waveHeights as height, i (i)}
                 <div class="rounded-xs bg-foreground flex-1" style="height: {height}%;"></div>
@@ -639,7 +639,7 @@
             {@render waveformLayer('', 'clip-path: inset(0 calc(100% - var(--slider-fill)) 0 0);')}
 
             <div
-              class="neoretro-clr top-0 w-1 rounded-t pointer-events-none absolute z-20 h-full"
+              class="neoretro-clr top-0 w-1 rounded-t-sm pointer-events-none absolute z-20 h-full"
               style="left: var(--slider-fill); transform: translateX(calc(-1 * var(--slider-fill)));"
               data-color={color}
             ></div>
@@ -675,7 +675,7 @@
                   {#if thumbnails}
                     <media-slider-thumbnail
                       src={thumbnails}
-                      class="aspect-video neoretro-border neoretro-shadow mb-2 rounded bg-black block w-[160px]"
+                      class="aspect-video neoretro-border neoretro-shadow mb-2 rounded bg-black block w-40"
                     ></media-slider-thumbnail>
                   {/if}
                   {@render sliderPreviewValue()}

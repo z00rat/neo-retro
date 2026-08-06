@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLInputAttributes, HTMLInputTypeAttribute } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.ts';
+  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   type InputType = Exclude<HTMLInputTypeAttribute, 'file'>;
 
@@ -22,7 +22,7 @@
     'data-slot': dataSlot = 'input',
     ...restProps
   }: Props & {
-    color?: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color?: Color;
   } = $props();
 </script>
 

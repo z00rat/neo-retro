@@ -2,7 +2,7 @@
   import { ContextMenu as ContextMenuPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
 
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -12,7 +12,7 @@
     ...restProps
   }: ContextMenuPrimitive.ItemProps & {
     inset?: boolean;
-    color?: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color?: Color;
   } = $props();
 
   const getColor = getContext<() => string>('contextMenuColor');

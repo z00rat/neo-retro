@@ -7,9 +7,9 @@ description: Shared types, color palette, and utility functions for the neo-retr
 
 ## Color Palette
 
-All components support: `'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white'`
+All components support: `'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white' | 'bright-red' | 'bright-green' | 'bright-yellow' | 'bright-blue' | 'bright-magenta' | 'bright-cyan' | 'bright-white'`
 
-Some components omit `'black'`: `'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white'`
+Some components has black: `'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white' | 'bright-black' | 'bright-red' | 'bright-green' | 'bright-yellow' | 'bright-blue' | 'bright-magenta' | 'bright-cyan' | 'bright-white'`
 
 ## Common Props
 

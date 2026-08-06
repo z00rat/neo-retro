@@ -2,7 +2,24 @@
   import { Badge } from '$lib/registry/ui/badge';
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const colors: any[] = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = [
+    'red',
+    'green',
+    'yellow',
+    'blue',
+    'magenta',
+    'cyan',
+    'white',
+    'black',
+    'bright-red',
+    'bright-green',
+    'bright-yellow',
+    'bright-blue',
+    'bright-magenta',
+    'bright-cyan',
+    'bright-white',
+    'bright-black',
+  ];
 </script>
 
 <h1>Badge</h1>

@@ -2,7 +2,7 @@
   import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
   import { setContext, type ComponentProps } from 'svelte';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
+  import { cn, type Color, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   import DropdownMenuPortal from './dropdown-menu-portal.svelte';
 
@@ -16,7 +16,7 @@
     class: className,
     ...restProps
   }: DropdownMenuPrimitive.ContentProps & {
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
     portalProps?: WithoutChildrenOrChild<ComponentProps<typeof DropdownMenuPortal>>;
     noShadow?: boolean;
   } = $props();

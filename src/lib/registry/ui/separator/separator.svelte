@@ -3,6 +3,8 @@
   import type { Snippet } from 'svelte';
   import { tv, type VariantProps } from 'tailwind-variants';
 
+  import { type Color } from '$lib/utils.ts';
+
   export const separatorVariants = tv({
     base: 'shrink-0 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full',
     variants: {
@@ -28,7 +30,7 @@
   export type SeparatorStyle = VariantProps<typeof separatorVariants>['style'];
 
   export type SeparatorProps = Omit<SeparatorPrimitive.RootProps, 'color'> & {
-    color?: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color?: 'black' | 'bright-black' | Color;
     thickness?: SeparatorThickness;
     style?: SeparatorStyle;
     children?: Snippet;

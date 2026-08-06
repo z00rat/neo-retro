@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Progress as ProgressPrimitive } from 'bits-ui';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
+  import { cn, type Color, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -14,8 +14,8 @@
     ...restProps
   }: WithoutChildrenOrChild<ProgressPrimitive.RootProps> & {
     noShadow?: boolean;
-    indicatorColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-    trackColor?: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    indicatorColor: Color;
+    trackColor?: Color;
   } = $props();
 </script>
 

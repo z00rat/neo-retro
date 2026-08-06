@@ -2,6 +2,8 @@
   import { Select as SelectPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
 
+  import { type Color } from '$lib/utils.ts';
+
   let {
     color,
     children,
@@ -9,7 +11,7 @@
     type,
     ...restProps
   }: SelectPrimitive.RootProps & {
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
   } = $props();
 
   setContext('selectColor', () => color);

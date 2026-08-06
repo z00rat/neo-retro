@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Checkbox as CheckboxPrimitive } from 'bits-ui';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
+  import { cn, type Color, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -11,7 +11,7 @@
     class: className,
     ...restProps
   }: WithoutChildrenOrChild<CheckboxPrimitive.RootProps> & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'black' | 'bright-black' | Color;
   } = $props();
 </script>
 

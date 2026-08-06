@@ -6,8 +6,22 @@
   import * as Item from '$lib/registry/ui/item';
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
-
+  const colors: any[] = [
+    'red',
+    'green',
+    'yellow',
+    'blue',
+    'magenta',
+    'cyan',
+    'white',
+    'bright-red',
+    'bright-green',
+    'bright-yellow',
+    'bright-blue',
+    'bright-magenta',
+    'bright-cyan',
+    'bright-white',
+  ];
   const models = [
     {
       name: 'v0-1.5-sm',

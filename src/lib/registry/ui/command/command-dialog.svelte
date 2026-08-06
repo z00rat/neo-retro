@@ -4,6 +4,7 @@
 
   import * as Dialog from '$lib/registry/ui/dialog/index.ts';
   import type { WithoutChildrenOrChild } from '$lib/utils.ts';
+  import { type Color } from '$lib/utils.ts';
 
   import Command from './command.svelte';
 
@@ -19,7 +20,7 @@
     ...restProps
   }: WithoutChildrenOrChild<DialogPrimitive.RootProps> &
     WithoutChildrenOrChild<CommandPrimitive.RootProps> & {
-      color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+      color: Color;
       portalProps?: DialogPrimitive.PortalProps;
       children: Snippet;
       title?: string;

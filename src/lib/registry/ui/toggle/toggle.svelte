@@ -1,6 +1,8 @@
 <script lang="ts" module>
   import { tv, type VariantProps } from 'tailwind-variants';
 
+  import { type Color } from '$lib/utils.ts';
+
   export const toggleVariants = tv({
     base: "peer bg-background text-foreground neoretro-border cursor-pointer focus-visible:neoretro-focus inline-flex items-center justify-center gap-2 whitespace-nowrap rounded text-sm font-medium outline-none disabled:neoretro-disable [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
     variants: {
@@ -40,7 +42,7 @@
   }: TogglePrimitive.RootProps & {
     size?: ToggleSize;
     noShadow?: boolean;
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
   } = $props();
 </script>
 

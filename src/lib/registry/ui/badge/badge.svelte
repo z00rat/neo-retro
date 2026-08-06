@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLAnchorAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.ts';
+  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -11,7 +11,7 @@
     children,
     ...restProps
   }: WithElementRef<HTMLAnchorAttributes> & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'black' | 'bright-black' | Color;
   } = $props();
 </script>
 

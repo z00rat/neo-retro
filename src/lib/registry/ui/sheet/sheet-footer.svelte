@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.ts';
+  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   import Close from './sheet-close.svelte';
 
@@ -12,7 +12,7 @@
     children,
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
-    closeColor?: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    closeColor?: Color;
   } = $props();
 </script>
 

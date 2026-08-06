@@ -2,7 +2,7 @@
   import { Pagination as PaginationPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
 
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -15,8 +15,8 @@
     inactiveColor,
     ...restProps
   }: PaginationPrimitive.RootProps & {
-    activeColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-    inactiveColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    activeColor: Color;
+    inactiveColor: Color;
   } = $props();
 
   setContext('paginationActiveColor', () => activeColor);

@@ -7,7 +7,22 @@
   let multiValue = [25, 75];
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+  const colors: any[] = [
+    'red',
+    'green',
+    'yellow',
+    'blue',
+    'magenta',
+    'cyan',
+    'white',
+    'bright-red',
+    'bright-green',
+    'bright-yellow',
+    'bright-blue',
+    'bright-magenta',
+    'bright-cyan',
+    'bright-white',
+  ];
 </script>
 
 <h1>Slider</h1>

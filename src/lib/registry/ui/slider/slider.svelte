@@ -2,7 +2,7 @@
   import { Slider as SliderPrimitive } from 'bits-ui';
   import type { Snippet } from 'svelte';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
+  import { cn, type Color, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -29,7 +29,7 @@
     onValueChange?: (value: number[]) => void;
     onValueCommit?: (value: number[]) => void;
     noShadow?: boolean;
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
     buffered?: number;
     max?: number;
     min?: number;

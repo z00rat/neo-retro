@@ -2,7 +2,7 @@
   import type { ComponentProps } from 'svelte';
 
   import { Button } from '$lib/registry/ui/button/index.ts';
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -14,7 +14,7 @@
     ...restProps
   }: Omit<ComponentProps<typeof Button>, 'href' | 'size'> & {
     size?: 'xs' | 'sm' | 'icon-xs' | 'icon-sm';
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
   } = $props();
 </script>
 

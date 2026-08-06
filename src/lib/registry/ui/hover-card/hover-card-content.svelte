@@ -1,7 +1,7 @@
 <script lang="ts">
   import { LinkPreview as HoverCardPrimitive } from 'bits-ui';
 
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -12,7 +12,7 @@
     portalProps,
     ...restProps
   }: HoverCardPrimitive.ContentProps & {
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
     portalProps?: HoverCardPrimitive.PortalProps;
   } = $props();
 </script>

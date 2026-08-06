@@ -5,7 +5,7 @@
   import type { HTMLAttributes } from 'svelte/elements';
 
   import * as Tooltip from '$lib/registry/ui/tooltip/index.ts';
-  import { cn, type WithElementRef, type WithoutChildrenOrChild } from '$lib/utils.ts';
+  import { cn, type Color, type WithElementRef, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   import { useSidebar } from './context.svelte.ts';
 
@@ -30,8 +30,8 @@
   const sidebar = useSidebar();
   const sidebarColor = getContext<
     () => {
-      color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-      activeColor: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+      color: 'black' | 'bright-black' | Color;
+      activeColor: 'black' | 'bright-black' | Color;
     }
   >('sidebarColor');
 

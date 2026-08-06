@@ -2,7 +2,7 @@
   import { RadioGroup as RadioGroupPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
 
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -11,7 +11,7 @@
     value = $bindable(''),
     ...restProps
   }: RadioGroupPrimitive.RootProps & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'black' | 'bright-black' | Color;
   } = $props();
 
   setContext('radioGroupColor', () => color);

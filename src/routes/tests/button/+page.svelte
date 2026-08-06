@@ -6,7 +6,7 @@
 
 <!-- All colors -->
 <section>
-  <h3>Colors</h3>
+  <h3>Standard Colors</h3>
   <div class="gap-4 flex flex-wrap">
     <Button color="red">Red</Button>
     <Button color="green">Green</Button>
@@ -15,6 +15,17 @@
     <Button color="magenta">Magenta</Button>
     <Button color="cyan">Cyan</Button>
     <Button color="white">White</Button>
+  </div>
+
+  <h3 class="mt-6">Bright Colors</h3>
+  <div class="gap-4 flex flex-wrap">
+    <Button color="bright-red">Bright Red</Button>
+    <Button color="bright-green">Bright Green</Button>
+    <Button color="bright-yellow">Bright Yellow</Button>
+    <Button color="bright-blue">Bright Blue</Button>
+    <Button color="bright-magenta">Bright Magenta</Button>
+    <Button color="bright-cyan">Bright Cyan</Button>
+    <Button color="bright-white">Bright White</Button>
   </div>
 </section>
 

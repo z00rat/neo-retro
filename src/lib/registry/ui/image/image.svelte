@@ -16,7 +16,7 @@
   import { Button, buttonVariants, type ButtonProps } from '$lib/registry/ui/button';
   import * as Dialog from '$lib/registry/ui/dialog';
   import * as DropdownMenu from '$lib/registry/ui/dropdown-menu';
-  import { cn, type WithElementRef } from '$lib/utils.ts';
+  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   import { panzoom, type PanZoomAPI } from './panzoom';
   import type { ImageMeta } from './types';
@@ -64,7 +64,7 @@
     images?: ImageMeta[];
     alt?: string;
     class?: string;
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'black' | 'bright-black' | Color;
     cancelColor: ButtonProps['color'];
     resetColor: ButtonProps['color'];
     downloadColor: ButtonProps['color'];

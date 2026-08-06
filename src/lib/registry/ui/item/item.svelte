@@ -2,7 +2,7 @@
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.ts';
+  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -16,7 +16,7 @@
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
     child?: Snippet<[{ props: Record<string, unknown> }]>;
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
     size?: 'default' | 'sm';
     noShadow?: boolean;
     pressable?: boolean;

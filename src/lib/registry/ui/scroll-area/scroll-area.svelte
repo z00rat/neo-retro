@@ -1,7 +1,7 @@
 <script lang="ts">
   import { ScrollArea as ScrollAreaPrimitive } from 'bits-ui';
 
-  import { cn, type WithoutChild } from '$lib/utils.ts';
+  import { cn, type Color, type WithoutChild } from '$lib/utils.ts';
 
   import { Scrollbar } from './index.ts';
 
@@ -16,7 +16,7 @@
     children,
     ...restProps
   }: WithoutChild<ScrollAreaPrimitive.RootProps> & {
-    color?: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color?: Color | undefined;
     orientation?: 'vertical' | 'horizontal' | 'both' | undefined;
     scrollbarXClasses?: string | undefined;
     scrollbarYClasses?: string | undefined;

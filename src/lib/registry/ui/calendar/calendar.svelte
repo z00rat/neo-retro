@@ -3,7 +3,7 @@
   import { Calendar as CalendarPrimitive } from 'bits-ui';
   import { setContext, type Snippet } from 'svelte';
 
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
+  import { cn, type Color, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   import * as Calendar from './index.ts';
 
@@ -25,8 +25,8 @@
     disableDaysOutsideMonth = false,
     ...restProps
   }: WithoutChildrenOrChild<CalendarPrimitive.RootProps> & {
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-    selectedColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
+    selectedColor: Color;
     captionLayout?: 'dropdown' | 'dropdown-months' | 'dropdown-years' | 'label';
     months?: CalendarPrimitive.MonthSelectProps['months'];
     years?: CalendarPrimitive.YearSelectProps['years'];

@@ -83,6 +83,32 @@
   [data-color='magenta']{--clr:var(--color-magenta);--on-clr:var(--color-on-magenta);}
   [data-color='cyan']{--clr:var(--color-cyan);--on-clr:var(--color-on-cyan);}
   [data-color='white']{--clr:var(--color-white);--on-clr:var(--color-on-white);}
+  [data-color='bright-black']{--clr:var(--color-bright-black);--on-clr:var(--color-on-bright-black);}
+  [data-color='bright-red']{--clr:var(--color-bright-red);--on-clr:var(--color-on-bright-red);}
+  [data-color='bright-green']{--clr:var(--color-bright-green);--on-clr:var(--color-on-bright-green);}
+  [data-color='bright-yellow']{--clr:var(--color-bright-yellow);--on-clr:var(--color-on-bright-yellow);}
+  [data-color='bright-blue']{--clr:var(--color-bright-blue);--on-clr:var(--color-on-bright-blue);}
+  [data-color='bright-magenta']{--clr:var(--color-bright-magenta);--on-clr:var(--color-on-bright-magenta);}
+  [data-color='bright-cyan']{--clr:var(--color-bright-cyan);--on-clr:var(--color-on-bright-cyan);}
+  [data-color='bright-white']{--clr:var(--color-bright-white);--on-clr:var(--color-on-bright-white);}
+
+  [data-color='inverse'] {--clr: var(--color-foreground);--on-clr: var(--color-background);}
+  [data-color='black-inverse']{--clr:var(--color-on-black);--on-clr:var(--color-black);}
+  [data-color='red-inverse']{--clr:var(--color-on-red);--on-clr:var(--color-red);}
+  [data-color='green-inverse']{--clr:var(--color-on-green);--on-clr:var(--color-green);}
+  [data-color='yellow-inverse']{--clr:var(--color-on-yellow);--on-clr:var(--color-yellow);}
+  [data-color='blue-inverse']{--clr:var(--color-on-blue);--on-clr:var(--color-blue);}
+  [data-color='magenta-inverse']{--clr:var(--color-on-magenta);--on-clr:var(--color-magenta);}
+  [data-color='cyan-inverse']{--clr:var(--color-on-cyan);--on-clr:var(--color-cyan);}
+  [data-color='white-inverse']{--clr:var(--color-on-white);--on-clr:var(--color-white);}
+  [data-color='bright-black-inverse']{--clr:var(--color-on-bright-black);--on-clr:var(--color-bright-black);}
+  [data-color='bright-red-inverse']{--clr:var(--color-on-bright-red);--on-clr:var(--color-bright-red);}
+  [data-color='bright-green-inverse']{--clr:var(--color-on-bright-green);--on-clr:var(--color-bright-green);}
+  [data-color='bright-yellow-inverse']{--clr:var(--color-on-bright-yellow);--on-clr:var(--color-bright-yellow);}
+  [data-color='bright-blue-inverse']{--clr:var(--color-on-bright-blue);--on-clr:var(--color-bright-blue);}
+  [data-color='bright-magenta-inverse']{--clr:var(--color-on-bright-magenta);--on-clr:var(--color-bright-magenta);}
+  [data-color='bright-cyan-inverse']{--clr:var(--color-on-bright-cyan);--on-clr:var(--color-bright-cyan);}
+  [data-color='bright-white-inverse']{--clr:var(--color-on-bright-white);--on-clr:var(--color-bright-white);}
 
   [data-active-color] {--clr-active:var(--color-background);--on-clr-active:var(--color-foreground);}
   [data-active-color='black']{--clr-active:var(--color-black);--on-clr-active:var(--color-on-black);}
@@ -93,6 +119,14 @@
   [data-active-color='magenta']{--clr-active:var(--color-magenta);--on-clr-active:var(--color-on-magenta);}
   [data-active-color='cyan']{--clr-active:var(--color-cyan);--on-clr-active:var(--color-on-cyan);}
   [data-active-color='white']{--clr-active:var(--color-white);--on-clr-active:var(--color-on-white);}
+  [data-active-color='bright-black']{--clr-active:var(--color-bright-black);--on-clr-active:var(--color-on-bright-black);}
+  [data-active-color='bright-red']{--clr-active:var(--color-bright-red);--on-clr-active:var(--color-on-bright-red);}
+  [data-active-color='bright-green']{--clr-active:var(--color-bright-green);--on-clr-active:var(--color-on-bright-green);}
+  [data-active-color='bright-yellow']{--clr-active:var(--color-bright-yellow);--on-clr-active:var(--color-on-bright-yellow);}
+  [data-active-color='bright-blue']{--clr-active:var(--color-bright-blue);--on-clr-active:var(--color-on-bright-blue);}
+  [data-active-color='bright-magenta']{--clr-active:var(--color-bright-magenta);--on-clr-active:var(--color-on-bright-magenta);}
+  [data-active-color='bright-cyan']{--clr-active:var(--color-bright-cyan);--on-clr-active:var(--color-on-bright-cyan);}
+  [data-active-color='bright-white']{--clr-active:var(--color-bright-white);--on-clr-active:var(--color-on-bright-white);}
 
   [data-inactive-color] {--clr-inactive:var(--color-background);--on-clr-inactive:var(--color-foreground);}
   [data-inactive-color='black']{--clr-inactive:var(--color-black);--on-clr-inactive:var(--color-on-black);}
@@ -103,6 +137,14 @@
   [data-inactive-color='magenta']{--clr-inactive:var(--color-magenta);--on-clr-inactive:var(--color-on-magenta);}
   [data-inactive-color='cyan']{--clr-inactive:var(--color-cyan);--on-clr-inactive:var(--color-on-cyan);}
   [data-inactive-color='white']{--clr-inactive:var(--color-white);--on-clr-inactive:var(--color-on-white);}
+  [data-inactive-color='bright-black']{--clr-inactive:var(--color-bright-black);--on-clr-inactive:var(--color-on-bright-black);}
+  [data-inactive-color='bright-red']{--clr-inactive:var(--color-bright-red);--on-clr-inactive:var(--color-on-bright-red);}
+  [data-inactive-color='bright-green']{--clr-inactive:var(--color-bright-green);--on-clr-inactive:var(--color-on-bright-green);}
+  [data-inactive-color='bright-yellow']{--clr-inactive:var(--color-bright-yellow);--on-clr-inactive:var(--color-on-bright-yellow);}
+  [data-inactive-color='bright-blue']{--clr-inactive:var(--color-bright-blue);--on-clr-inactive:var(--color-on-bright-blue);}
+  [data-inactive-color='bright-magenta']{--clr-inactive:var(--color-bright-magenta);--on-clr-inactive:var(--color-on-bright-magenta);}
+  [data-inactive-color='bright-cyan']{--clr-inactive:var(--color-bright-cyan);--on-clr-inactive:var(--color-on-bright-cyan);}
+  [data-inactive-color='bright-white']{--clr-inactive:var(--color-bright-white);--on-clr-inactive:var(--color-on-bright-white);}
 
   [data-hover-color] {--clr-hover:var(--color-background);--on-clr-hover:var(--color-foreground);}
   [data-hover-color='black']{--clr-hover:var(--color-black);--on-clr-hover:var(--color-on-black);}
@@ -113,6 +155,14 @@
   [data-hover-color='magenta']{--clr-hover:var(--color-magenta);--on-clr-hover:var(--color-on-magenta);}
   [data-hover-color='cyan']{--clr-hover:var(--color-cyan);--on-clr-hover:var(--color-on-cyan);}
   [data-hover-color='white']{--clr-hover:var(--color-white);--on-clr-hover:var(--color-on-white);}
+  [data-hover-color='bright-black']{--clr-hover:var(--color-bright-black);--on-clr-hover:var(--color-on-bright-black);}
+  [data-hover-color='bright-red']{--clr-hover:var(--color-bright-red);--on-clr-hover:var(--color-on-bright-red);}
+  [data-hover-color='bright-green']{--clr-hover:var(--color-bright-green);--on-clr-hover:var(--color-on-bright-green);}
+  [data-hover-color='bright-yellow']{--clr-hover:var(--color-bright-yellow);--on-clr-hover:var(--color-on-bright-yellow);}
+  [data-hover-color='bright-blue']{--clr-hover:var(--color-bright-blue);--on-clr-hover:var(--color-on-bright-blue);}
+  [data-hover-color='bright-magenta']{--clr-hover:var(--color-bright-magenta);--on-clr-hover:var(--color-on-bright-magenta);}
+  [data-hover-color='bright-cyan']{--clr-hover:var(--color-bright-cyan);--on-clr-hover:var(--color-on-bright-cyan);}
+  [data-hover-color='bright-white']{--clr-hover:var(--color-bright-white);--on-clr-hover:var(--color-on-bright-white);}
 
   [data-highlighted-color] {--clr-highlighted:var(--color-background);--on-clr-highlighted:var(--color-foreground);}
   [data-highlighted-color='black']{--clr-highlighted:var(--color-black);--on-clr-highlighted:var(--color-on-black);}
@@ -123,6 +173,14 @@
   [data-highlighted-color='magenta']{--clr-highlighted:var(--color-magenta);--on-clr-highlighted:var(--color-on-magenta);}
   [data-highlighted-color='cyan']{--clr-highlighted:var(--color-cyan);--on-clr-highlighted:var(--color-on-cyan);}
   [data-highlighted-color='white']{--clr-highlighted:var(--color-white);--on-clr-highlighted:var(--color-on-white);}
+  [data-highlighted-color='bright-black']{--clr-highlighted:var(--color-bright-black);--on-clr-highlighted:var(--color-on-bright-black);}
+  [data-highlighted-color='bright-red']{--clr-highlighted:var(--color-bright-red);--on-clr-highlighted:var(--color-on-bright-red);}
+  [data-highlighted-color='bright-green']{--clr-highlighted:var(--color-bright-green);--on-clr-highlighted:var(--color-on-bright-green);}
+  [data-highlighted-color='bright-yellow']{--clr-highlighted:var(--color-bright-yellow);--on-clr-highlighted:var(--color-on-bright-yellow);}
+  [data-highlighted-color='bright-blue']{--clr-highlighted:var(--color-bright-blue);--on-clr-highlighted:var(--color-on-bright-blue);}
+  [data-highlighted-color='bright-magenta']{--clr-highlighted:var(--color-bright-magenta);--on-clr-highlighted:var(--color-on-bright-magenta);}
+  [data-highlighted-color='bright-cyan']{--clr-highlighted:var(--color-bright-cyan);--on-clr-highlighted:var(--color-on-bright-cyan);}
+  [data-highlighted-color='bright-white']{--clr-highlighted:var(--color-bright-white);--on-clr-highlighted:var(--color-on-bright-white);}
 }
 /* prettier-ignore-end */
 
@@ -175,6 +233,15 @@
   --color-cyan: var(--cyan);
   --color-white: var(--white);
 
+  --color-bright-black: var(--bright-black);
+  --color-bright-red: var(--bright-red);
+  --color-bright-green: var(--bright-green);
+  --color-bright-yellow: var(--bright-yellow);
+  --color-bright-blue: var(--bright-blue);
+  --color-bright-magenta: var(--bright-magenta);
+  --color-bright-cyan: var(--bright-cyan);
+  --color-bright-white: var(--bright-white);
+
   --color-on-black: var(--text-on-black);
   --color-on-red: var(--text-on-red);
   --color-on-green: var(--text-on-green);
@@ -183,6 +250,15 @@
   --color-on-magenta: var(--text-on-magenta);
   --color-on-cyan: var(--text-on-cyan);
   --color-on-white: var(--text-on-white);
+
+  --color-on-bright-black: var(--text-on-bright-black);
+  --color-on-bright-red: var(--text-on-bright-red);
+  --color-on-bright-green: var(--text-on-bright-green);
+  --color-on-bright-yellow: var(--text-on-bright-yellow);
+  --color-on-bright-blue: var(--text-on-bright-blue);
+  --color-on-bright-magenta: var(--text-on-bright-magenta);
+  --color-on-bright-cyan: var(--text-on-bright-cyan);
+  --color-on-bright-white: var(--text-on-bright-white);
 
   --color-clr: var(--clr);
   --color-on-clr: var(--on-clr);

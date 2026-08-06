@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLOlAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.ts';
+  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -11,7 +11,7 @@
     children,
     ...restProps
   }: WithElementRef<HTMLOlAttributes> & {
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
     noShadow?: boolean;
   } = $props();
 </script>

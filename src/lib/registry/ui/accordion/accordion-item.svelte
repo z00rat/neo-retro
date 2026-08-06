@@ -10,7 +10,7 @@
   bind:ref
   data-slot="accordion-item"
   class={cn(
-    'group neoretro-shadow neoretro-border first:rounded-t last:rounded-b relative rounded-none not-first:-mt-[2px]',
+    'group neoretro-shadow neoretro-border first:rounded-t-sm last:rounded-b-sm relative rounded-none not-first:-mt-0.5',
     className,
   )}
   {...restProps}

@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLTextareaAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef, type WithoutChildren } from '$lib/utils.ts';
+  import { cn, type Color, type WithElementRef, type WithoutChildren } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -13,7 +13,7 @@
     ...restProps
   }: WithoutChildren<WithElementRef<HTMLTextareaAttributes>> & {
     noShadow?: boolean;
-    color?: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color?: Color;
   } = $props();
 </script>
 
@@ -22,7 +22,7 @@
   data-slot={dataSlot}
   data-color={color}
   class={cn(
-    'peer rounded neoretro-border p-2 text-sm focus-visible:neoretro-focus disabled:neoretro-disable neoretro-invalid flex min-h-[80px] w-full placeholder:text-current/50',
+    'peer rounded neoretro-border p-2 text-sm focus-visible:neoretro-focus disabled:neoretro-disable neoretro-invalid flex min-h-20 w-full placeholder:text-current/50',
     color ? 'neoretro-clr' : 'bg-background text-foreground selection:bg-foreground selection:text-background',
     !noShadow && 'neoretro-shadow',
     className,

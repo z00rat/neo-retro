@@ -2,7 +2,7 @@
   import type { Separator as SeparatorPrimitive } from 'bits-ui';
 
   import { Separator } from '$lib/registry/ui/separator/index.ts';
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -10,7 +10,7 @@
     color = 'black',
     ...restProps
   }: SeparatorPrimitive.RootProps & {
-    color?: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color?: 'black' | 'bright-black' | Color;
   } = $props();
 </script>
 

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Tooltip as TooltipPrimitive } from 'bits-ui';
 
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -13,7 +13,7 @@
     arrowClasses,
     ...restProps
   }: TooltipPrimitive.ContentProps & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'black' | 'bright-black' | Color;
     arrowClasses?: string;
   } = $props();
 </script>

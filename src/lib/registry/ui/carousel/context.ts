@@ -2,7 +2,7 @@ import type { default as emblaCarouselSvelte, EmblaCarouselSvelteType } from 'em
 import { getContext, hasContext, setContext } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
 
-import type { WithElementRef } from '$lib/utils.ts';
+import type { Color, WithElementRef } from '$lib/utils.ts';
 
 export type CarouselAPI =
   NonNullable<NonNullable<EmblaCarouselSvelteType['$$_attributes']>['on:emblaInit']> extends (
@@ -19,7 +19,7 @@ export type CarouselPlugins = EmblaCarouselConfig['plugins'];
 ////
 
 export type CarouselProps = {
-  color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+  color: Color;
   opts?: CarouselOptions;
   plugins?: CarouselPlugins;
   setApi?: (api: CarouselAPI | undefined) => void;

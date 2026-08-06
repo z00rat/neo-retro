@@ -7,7 +7,7 @@
 
   let {
     ref = $bindable(null),
-    color = 'black',
+    color = 'white',
     opts = {},
     plugins = [],
     setApi = () => {},

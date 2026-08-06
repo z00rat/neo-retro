@@ -80,6 +80,15 @@ interface WindowsTerminalScheme {
   purple?: string;
   cyan?: string;
   white?: string;
+  brightBlack?: string;
+  brightRed?: string;
+  brightGreen?: string;
+  brightYellow?: string;
+  brightBlue?: string;
+  brightPurple?: string;
+  brightMagenta?: string;
+  brightCyan?: string;
+  brightWhite?: string;
   background?: string;
   foreground?: string;
 }
@@ -101,9 +110,32 @@ function processSchemes() {
   let passCount = 0;
   let failCount = 0;
 
+  // Helper to calculate Min, Max, Mode, and Avg contrast ratios for an array of contrast values
+  const getStats = (values: number[]) => {
+    if (values.length === 0) return { min: 0, max: 0, mode: 0, avg: 0 };
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    const sum = values.reduce((a, b) => a + b, 0);
+    const avg = sum / values.length;
+
+    // Calculate mode rounded to 1 decimal place
+    const counts: Record<string, number> = {};
+    let maxCount = 0;
+    let modeVal = values[0];
+    for (const val of values) {
+      const rounded = val.toFixed(1);
+      counts[rounded] = (counts[rounded] || 0) + 1;
+      if (counts[rounded] > maxCount) {
+        maxCount = counts[rounded];
+        modeVal = parseFloat(rounded);
+      }
+    }
+    return { min, max, mode: modeVal, avg };
+  };
+
   // Print Table Header
-  const header = `| ${'Status'.padEnd(6)} | ${'Theme Name'.padEnd(26)} | ${'Main BG/FG'.padEnd(10)} | ${'Blk'.padEnd(5)} | ${'Red'.padEnd(5)} | ${'Grn'.padEnd(5)} | ${'Yel'.padEnd(5)} | ${'Blu'.padEnd(5)} | ${'Mag'.padEnd(5)} | ${'Cya'.padEnd(5)} | ${'Wht'.padEnd(5)} |`;
-  const separator = `+${'-'.repeat(8)}+${'-'.repeat(28)}+${'-'.repeat(12)}+${'-'.repeat(7)}+${'-'.repeat(7)}+${'-'.repeat(7)}+${'-'.repeat(7)}+${'-'.repeat(7)}+${'-'.repeat(7)}+${'-'.repeat(7)}+${'-'.repeat(7)}+`;
+  const header = `| ${'Status'.padEnd(6)} | ${'Theme Name'.padEnd(24)} | ${'Main BG/FG'.padEnd(10)} | ${'Bright'.padEnd(6)} | ${'Min'.padEnd(5)} | ${'Max'.padEnd(5)} | ${'Mode'.padEnd(5)} | ${'Avg'.padEnd(5)} |`;
+  const separator = `+${'-'.repeat(8)}+${'-'.repeat(26)}+${'-'.repeat(12)}+${'-'.repeat(8)}+${'-'.repeat(7)}+${'-'.repeat(7)}+${'-'.repeat(7)}+${'-'.repeat(7)}+`;
 
   console.log(separator);
   console.log(header);
@@ -132,27 +164,33 @@ function processSchemes() {
 
     const themeContrast = getContrastRatio(bg, fg);
 
-    if (themeContrast < 3.0) {
-      failCount++;
-      const nameStr = rawName.substring(0, 26).padEnd(26);
-      const mainStr = `${themeContrast.toFixed(1)}:1`.padEnd(10);
-      console.log(
-        `| ${RED}SKIP${RESET}   | ${DIM}${nameStr}${RESET} | ${RED}${mainStr}${RESET} | ${'-'.padEnd(5)} | ${'-'.padEnd(5)} | ${'-'.padEnd(5)} | ${'-'.padEnd(5)} | ${'-'.padEnd(5)} | ${'-'.padEnd(5)} | ${'-'.padEnd(5)} | ${'-'.padEnd(5)} |`,
-      );
-      continue;
-    }
-
-    passCount++;
-    generatedIds.add(id);
-
     const black = content.black || '#000000';
     const red = content.red || '#ff0000';
     const green = content.green || '#00ff00';
     const yellow = content.yellow || '#ffff00';
     const blue = content.blue || '#0000ff';
-    const magenta = content.purple || '#ff00ff';
+    const magenta = content.purple || content.brightMagenta || '#ff00ff';
     const cyan = content.cyan || '#00ffff';
     const white = content.white || '#ffffff';
+
+    const brightBlack = content.brightBlack || black;
+    const brightRed = content.brightRed || red;
+    const brightGreen = content.brightGreen || green;
+    const brightYellow = content.brightYellow || yellow;
+    const brightBlue = content.brightBlue || blue;
+    const brightMagenta = content.brightPurple || content.brightMagenta || magenta;
+    const brightCyan = content.brightCyan || cyan;
+    const brightWhite = content.brightWhite || white;
+
+    const isBrightDifferent =
+      brightBlack.toLowerCase() !== black.toLowerCase() ||
+      brightRed.toLowerCase() !== red.toLowerCase() ||
+      brightGreen.toLowerCase() !== green.toLowerCase() ||
+      brightYellow.toLowerCase() !== yellow.toLowerCase() ||
+      brightBlue.toLowerCase() !== blue.toLowerCase() ||
+      brightMagenta.toLowerCase() !== magenta.toLowerCase() ||
+      brightCyan.toLowerCase() !== cyan.toLowerCase() ||
+      brightWhite.toLowerCase() !== white.toLowerCase();
 
     const getContrastText = (bgColor: string) => {
       const candidates = [fg, bg, '#ffffff', '#000000'];
@@ -178,20 +216,70 @@ function processSchemes() {
     const textOnCyan = getContrastText(cyan);
     const textOnWhite = getContrastText(white);
 
-    const cBlk = getContrastRatio(black, textOnBlack).toFixed(1).padEnd(5);
-    const cRed = getContrastRatio(red, textOnRed).toFixed(1).padEnd(5);
-    const cGrn = getContrastRatio(green, textOnGreen).toFixed(1).padEnd(5);
-    const cYel = getContrastRatio(yellow, textOnYellow).toFixed(1).padEnd(5);
-    const cBlu = getContrastRatio(blue, textOnBlue).toFixed(1).padEnd(5);
-    const cMag = getContrastRatio(magenta, textOnMagenta).toFixed(1).padEnd(5);
-    const cCya = getContrastRatio(cyan, textOnCyan).toFixed(1).padEnd(5);
-    const cWht = getContrastRatio(white, textOnWhite).toFixed(1).padEnd(5);
+    const textOnBrightBlack = getContrastText(brightBlack);
+    const textOnBrightRed = getContrastText(brightRed);
+    const textOnBrightGreen = getContrastText(brightGreen);
+    const textOnBrightYellow = getContrastText(brightYellow);
+    const textOnBrightBlue = getContrastText(brightBlue);
+    const textOnBrightMagenta = getContrastText(brightMagenta);
+    const textOnBrightCyan = getContrastText(brightCyan);
+    const textOnBrightWhite = getContrastText(brightWhite);
 
-    const nameStr = rawName.substring(0, 26).padEnd(26);
+    const all16Contrast = [
+      getContrastRatio(black, textOnBlack),
+      getContrastRatio(red, textOnRed),
+      getContrastRatio(green, textOnGreen),
+      getContrastRatio(yellow, textOnYellow),
+      getContrastRatio(blue, textOnBlue),
+      getContrastRatio(magenta, textOnMagenta),
+      getContrastRatio(cyan, textOnCyan),
+      getContrastRatio(white, textOnWhite),
+      getContrastRatio(brightBlack, textOnBrightBlack),
+      getContrastRatio(brightRed, textOnBrightRed),
+      getContrastRatio(brightGreen, textOnBrightGreen),
+      getContrastRatio(brightYellow, textOnBrightYellow),
+      getContrastRatio(brightBlue, textOnBrightBlue),
+      getContrastRatio(brightMagenta, textOnBrightMagenta),
+      getContrastRatio(brightCyan, textOnBrightCyan),
+      getContrastRatio(brightWhite, textOnBrightWhite),
+    ];
+
+    const stats = getStats(all16Contrast);
+    const cMin = stats.min.toFixed(1).padEnd(5);
+    const cMax = stats.max.toFixed(1).padEnd(5);
+    const cMode = stats.mode.toFixed(1).padEnd(5);
+    const cAvg = stats.avg.toFixed(1).padEnd(5);
+
+    const brightCol = isBrightDifferent ? `${CYAN}Yes${RESET}   ` : `${RED}No${RESET}    `;
+
+    if (!isBrightDifferent) {
+      failCount++;
+      const nameStr = rawName.substring(0, 24).padEnd(24);
+      const mainStr = `${themeContrast.toFixed(1)}:1`.padEnd(10);
+      console.log(
+        `| ${RED}SKIP${RESET}   | ${DIM}${nameStr}${RESET} | ${mainStr} | ${brightCol} | ${cMin} | ${cMax} | ${cMode} | ${cAvg} |`,
+      );
+      continue;
+    }
+
+    if (themeContrast < 3.0) {
+      failCount++;
+      const nameStr = rawName.substring(0, 24).padEnd(24);
+      const mainStr = `${themeContrast.toFixed(1)}:1`.padEnd(10);
+      console.log(
+        `| ${RED}SKIP${RESET}   | ${DIM}${nameStr}${RESET} | ${RED}${mainStr}${RESET} | ${brightCol} | ${cMin} | ${cMax} | ${cMode} | ${cAvg} |`,
+      );
+      continue;
+    }
+
+    passCount++;
+    generatedIds.add(id);
+
+    const nameStr = rawName.substring(0, 24).padEnd(24);
     const mainStr = `${themeContrast.toFixed(1)}:1`.padEnd(10);
 
     console.log(
-      `| ${GREEN}KEEP${RESET}   | ${BOLD}${nameStr}${RESET} | ${GREEN}${mainStr}${RESET} | ${cBlk} | ${cRed} | ${cGrn} | ${cYel} | ${cBlu} | ${cMag} | ${cCya} | ${cWht} |`,
+      `| ${GREEN}KEEP${RESET}   | ${BOLD}${nameStr}${RESET} | ${GREEN}${mainStr}${RESET} | ${brightCol} | ${cMin} | ${cMax} | ${cMode} | ${cAvg} |`,
     );
 
     cssBlocks.push(`[data-theme='${id}'] {
@@ -204,6 +292,15 @@ function processSchemes() {
   --cyan: ${cyan};
   --white: ${white};
 
+  --bright-black: ${brightBlack};
+  --bright-red: ${brightRed};
+  --bright-green: ${brightGreen};
+  --bright-yellow: ${brightYellow};
+  --bright-blue: ${brightBlue};
+  --bright-magenta: ${brightMagenta};
+  --bright-cyan: ${brightCyan};
+  --bright-white: ${brightWhite};
+
   --text-on-black: ${textOnBlack};
   --text-on-red: ${textOnRed};
   --text-on-green: ${textOnGreen};
@@ -212,6 +309,15 @@ function processSchemes() {
   --text-on-magenta: ${textOnMagenta};
   --text-on-cyan: ${textOnCyan};
   --text-on-white: ${textOnWhite};
+
+  --text-on-bright-black: ${textOnBrightBlack};
+  --text-on-bright-red: ${textOnBrightRed};
+  --text-on-bright-green: ${textOnBrightGreen};
+  --text-on-bright-yellow: ${textOnBrightYellow};
+  --text-on-bright-blue: ${textOnBrightBlue};
+  --text-on-bright-magenta: ${textOnBrightMagenta};
+  --text-on-bright-cyan: ${textOnBrightCyan};
+  --text-on-bright-white: ${textOnBrightWhite};
 
   --primary-background: ${bg};
   --primary-foreground: ${fg};

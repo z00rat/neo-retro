@@ -2,7 +2,7 @@
   import { Tabs as TabsPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
 
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -13,8 +13,8 @@
     noBrackets = false,
     ...restProps
   }: TabsPrimitive.RootProps & {
-    activeColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-    inactiveColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    activeColor: Color;
+    inactiveColor: Color;
     noBrackets?: boolean;
   } = $props();
 

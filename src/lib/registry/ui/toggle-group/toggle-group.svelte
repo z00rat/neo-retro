@@ -3,7 +3,7 @@
   import { setContext } from 'svelte';
 
   import type { ToggleVariants } from '$lib/registry/ui/toggle/index.ts';
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -16,7 +16,7 @@
     ...restProps
   }: ToggleGroupPrimitive.RootProps &
     ToggleVariants & {
-      color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+      color: Color;
       orientation?: 'horizontal' | 'vertical';
       noShadow?: boolean;
     } = $props();
@@ -37,8 +37,8 @@
   class={cn(
     'rounded flex w-fit items-center *:relative *:focus-visible:z-20',
     orientation === 'horizontal'
-      ? '[&>*:not(:first-child)]:-ml-[2px] [&>*:not(:first-child)]:rounded-s-none [&>*:not(:last-child)]:rounded-e-none'
-      : 'flex-col [&>*:not(:first-child)]:-mt-[2px] [&>*:not(:first-child)]:rounded-t-none [&>*:not(:last-child)]:rounded-b-none',
+      ? '[&>*:not(:first-child)]:-ml-0.5 [&>*:not(:first-child)]:rounded-s-none [&>*:not(:last-child)]:rounded-e-none'
+      : 'flex-col [&>*:not(:first-child)]:-mt-0.5 [&>*:not(:first-child)]:rounded-t-none [&>*:not(:last-child)]:rounded-b-none',
     className,
   )}
   {...restProps}

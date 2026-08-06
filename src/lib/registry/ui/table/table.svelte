@@ -2,7 +2,7 @@
   import { setContext } from 'svelte';
   import type { HTMLTableAttributes } from 'svelte/elements';
 
-  import { cn, type WithElementRef } from '$lib/utils.ts';
+  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -13,8 +13,8 @@
     noShadow,
     ...restProps
   }: WithElementRef<HTMLTableAttributes> & {
-    headerColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-    rowColor: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    headerColor: Color;
+    rowColor: Color;
     noShadow?: boolean;
   } = $props();
 

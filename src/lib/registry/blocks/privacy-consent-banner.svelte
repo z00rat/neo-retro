@@ -1,7 +1,8 @@
 <script lang="ts">
   import * as AlertDialog from '$lib/registry/ui/alert-dialog';
+  import { type Color } from '$lib/utils.ts';
 
-  type BaseColors = 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+  type BaseColors = Color;
 
   let {
     open = $bindable(true),

@@ -2,11 +2,11 @@
   import { ShikiMagicMove } from '@shikijs/magic-move/svelte';
 
   import Spinner from '$lib/registry/ui/spinner/spinner.svelte';
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   import { getCodeColors, getHighlighter, tokenizeCode, type CodeLine, type TokenizedCode } from './shiki.ts';
 
-  type PaletteColor = 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+  type PaletteColor = Color;
 
   let {
     code,

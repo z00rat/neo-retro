@@ -2,7 +2,7 @@
   import { Menubar as MenubarPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
 
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -10,7 +10,7 @@
     color,
     ...restProps
   }: MenubarPrimitive.RootProps & {
-    color: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: Color;
   } = $props();
 
   setContext('menubarColor', () => color);

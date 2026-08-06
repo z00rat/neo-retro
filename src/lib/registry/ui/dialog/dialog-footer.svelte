@@ -3,7 +3,7 @@
   import type { HTMLAttributes } from 'svelte/elements';
 
   import { Button } from '$lib/registry/ui/button/index.ts';
-  import { cn, type WithElementRef } from '$lib/utils.ts';
+  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -14,7 +14,7 @@
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
     showCloseButton?: boolean;
-    closeColor?: 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    closeColor?: Color;
   } = $props();
 </script>
 

@@ -11,8 +11,22 @@
   const isMobile = new IsMobile();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const colors: any[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
-
+  const colors: any[] = [
+    'red',
+    'green',
+    'yellow',
+    'blue',
+    'magenta',
+    'cyan',
+    'white',
+    'bright-red',
+    'bright-green',
+    'bright-yellow',
+    'bright-blue',
+    'bright-magenta',
+    'bright-cyan',
+    'bright-white',
+  ];
   const components: { title: string; href: string; description: string }[] = [
     {
       title: 'Alert Dialog',
@@ -91,7 +105,7 @@
             <NavigationMenu.Item>
               <NavigationMenu.Trigger>Home</NavigationMenu.Trigger>
               <NavigationMenu.Content>
-                <ul class="gap-2 p-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] grid">
+                <ul class="gap-2 p-2 md:w-100 lg:w-125 lg:grid-cols-[.75fr_1fr] grid">
                   <li class="row-span-3">
                     <NavigationMenu.Link
                       class="rounded p-4 focus:shadow-md md:p-6 flex h-full w-full flex-col justify-end no-underline outline-hidden select-none"
@@ -125,7 +139,7 @@
             <NavigationMenu.Item>
               <NavigationMenu.Trigger>Components</NavigationMenu.Trigger>
               <NavigationMenu.Content>
-                <ul class="gap-2 p-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px] grid w-[300px]">
+                <ul class="gap-2 p-2 sm:w-100 md:w-125 md:grid-cols-2 lg:w-150 grid w-75">
                   {#each components as component, i (i)}
                     {@render ListItem({
                       href: component.href,
@@ -147,7 +161,7 @@
             <NavigationMenu.Item class="md:block hidden">
               <NavigationMenu.Trigger>List</NavigationMenu.Trigger>
               <NavigationMenu.Content>
-                <ul class="gap-4 p-2 grid w-[300px]">
+                <ul class="gap-4 p-2 grid w-75">
                   <li>
                     <NavigationMenu.Link href="##">
                       <div class="font-bold">Components</div>
@@ -168,7 +182,7 @@
             <NavigationMenu.Item class="md:block hidden">
               <NavigationMenu.Trigger>Simple</NavigationMenu.Trigger>
               <NavigationMenu.Content>
-                <ul class="gap-4 p-2 grid w-[200px]">
+                <ul class="gap-4 p-2 grid w-50">
                   <li>
                     <NavigationMenu.Link href="##" id="docs">Components</NavigationMenu.Link>
                     <NavigationMenu.Link href="##">Documentation</NavigationMenu.Link>
@@ -181,7 +195,7 @@
               <NavigationMenu.Trigger>With Icon</NavigationMenu.Trigger>
 
               <NavigationMenu.Content>
-                <ul class="gap-4 p-2 grid w-[200px]">
+                <ul class="gap-4 p-2 grid w-50">
                   <li>
                     <NavigationMenu.Link href="##" class="gap-2 flex-row items-center">
                       <CircleHelpIcon />

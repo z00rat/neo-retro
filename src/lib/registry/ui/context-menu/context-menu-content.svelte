@@ -2,7 +2,7 @@
   import { ContextMenu as ContextMenuPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
 
-  import { cn } from '$lib/utils.ts';
+  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),
@@ -11,7 +11,7 @@
     class: className,
     ...restProps
   }: ContextMenuPrimitive.ContentProps & {
-    color: 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+    color: 'black' | 'bright-black' | Color;
     portalProps?: ContextMenuPrimitive.PortalProps;
   } = $props();
 
