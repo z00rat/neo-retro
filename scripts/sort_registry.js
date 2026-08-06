@@ -64,4 +64,4 @@ const ROOT_KEY_ORDER = ['$schema', 'name', 'homepage', 'aliases', 'items'];
 const sortedRegistry = deepSort(registry, ROOT_KEY_ORDER);
 
 fs.writeFileSync(REGISTRY_PATH, JSON.stringify(sortedRegistry, null, 2) + '\n');
-console.log('✅ registry.json sorted with custom ordering successfully!');
+console.log('registry.json sorted with custom ordering successfully!');

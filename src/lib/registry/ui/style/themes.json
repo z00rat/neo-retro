@@ -1,0 +1,2957 @@
+[
+  {
+    "id": "0x96f",
+    "label": "0x96f",
+    "mode": "dark"
+  },
+  {
+    "id": "12-bit-rainbow",
+    "label": "12-bit Rainbow",
+    "mode": "dark"
+  },
+  {
+    "id": "3024-day",
+    "label": "3024 Day",
+    "mode": "light"
+  },
+  {
+    "id": "3024-night",
+    "label": "3024 Night",
+    "mode": "dark"
+  },
+  {
+    "id": "aardvark-blue",
+    "label": "Aardvark Blue",
+    "mode": "dark"
+  },
+  {
+    "id": "aardvark-ink",
+    "label": "Aardvark Ink",
+    "mode": "dark"
+  },
+  {
+    "id": "abernathy",
+    "label": "Abernathy",
+    "mode": "dark"
+  },
+  {
+    "id": "acid-lime",
+    "label": "Acid Lime",
+    "mode": "dark"
+  },
+  {
+    "id": "adventure",
+    "label": "Adventure",
+    "mode": "dark"
+  },
+  {
+    "id": "adventure-time",
+    "label": "Adventure Time",
+    "mode": "dark"
+  },
+  {
+    "id": "adwaita",
+    "label": "Adwaita",
+    "mode": "light"
+  },
+  {
+    "id": "adwaita-dark",
+    "label": "Adwaita Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "afterglow",
+    "label": "Afterglow",
+    "mode": "dark"
+  },
+  {
+    "id": "aizen-dark",
+    "label": "Aizen Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "aizen-light",
+    "label": "Aizen Light",
+    "mode": "light"
+  },
+  {
+    "id": "alabaster",
+    "label": "Alabaster",
+    "mode": "light"
+  },
+  {
+    "id": "alien-blood",
+    "label": "Alien Blood",
+    "mode": "dark"
+  },
+  {
+    "id": "amber-crt-retro",
+    "label": "Amber CRT Retro",
+    "mode": "dark"
+  },
+  {
+    "id": "andromeda",
+    "label": "Andromeda",
+    "mode": "dark"
+  },
+  {
+    "id": "apple-classic",
+    "label": "Apple Classic",
+    "mode": "dark"
+  },
+  {
+    "id": "apple-system-colors",
+    "label": "Apple System Colors",
+    "mode": "dark"
+  },
+  {
+    "id": "apple-system-colors-light",
+    "label": "Apple System Colors Light",
+    "mode": "light"
+  },
+  {
+    "id": "arcoiris",
+    "label": "Arcoiris",
+    "mode": "dark"
+  },
+  {
+    "id": "ardoise",
+    "label": "Ardoise",
+    "mode": "dark"
+  },
+  {
+    "id": "argonaut",
+    "label": "Argonaut",
+    "mode": "dark"
+  },
+  {
+    "id": "arthur",
+    "label": "Arthur",
+    "mode": "dark"
+  },
+  {
+    "id": "atelier-sulphurpool",
+    "label": "Atelier Sulphurpool",
+    "mode": "dark"
+  },
+  {
+    "id": "atlas-ragnarok",
+    "label": "Atlas Ragnarok",
+    "mode": "dark"
+  },
+  {
+    "id": "atom",
+    "label": "Atom",
+    "mode": "dark"
+  },
+  {
+    "id": "atom-one-dark",
+    "label": "Atom One Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "atom-one-light",
+    "label": "Atom One Light",
+    "mode": "light"
+  },
+  {
+    "id": "aubade",
+    "label": "Aubade",
+    "mode": "light"
+  },
+  {
+    "id": "aura",
+    "label": "Aura",
+    "mode": "dark"
+  },
+  {
+    "id": "aura-dark",
+    "label": "Aura Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "aurora",
+    "label": "Aurora",
+    "mode": "dark"
+  },
+  {
+    "id": "ayu",
+    "label": "Ayu",
+    "mode": "dark"
+  },
+  {
+    "id": "ayu-light",
+    "label": "Ayu Light",
+    "mode": "light"
+  },
+  {
+    "id": "ayu-mirage",
+    "label": "Ayu Mirage",
+    "mode": "dark"
+  },
+  {
+    "id": "banana-blueberry",
+    "label": "Banana Blueberry",
+    "mode": "dark"
+  },
+  {
+    "id": "batman",
+    "label": "Batman",
+    "mode": "dark"
+  },
+  {
+    "id": "belafonte-day",
+    "label": "Belafonte Day",
+    "mode": "light"
+  },
+  {
+    "id": "belafonte-night",
+    "label": "Belafonte Night",
+    "mode": "dark"
+  },
+  {
+    "id": "birds-of-paradise",
+    "label": "Birds Of Paradise",
+    "mode": "dark"
+  },
+  {
+    "id": "black-metal",
+    "label": "Black Metal",
+    "mode": "dark"
+  },
+  {
+    "id": "black-metal-bathory",
+    "label": "Black Metal (Bathory)",
+    "mode": "dark"
+  },
+  {
+    "id": "black-metal-burzum",
+    "label": "Black Metal (Burzum)",
+    "mode": "dark"
+  },
+  {
+    "id": "black-metal-dark-funeral",
+    "label": "Black Metal (Dark Funeral)",
+    "mode": "dark"
+  },
+  {
+    "id": "black-metal-gorgoroth",
+    "label": "Black Metal (Gorgoroth)",
+    "mode": "dark"
+  },
+  {
+    "id": "black-metal-immortal",
+    "label": "Black Metal (Immortal)",
+    "mode": "dark"
+  },
+  {
+    "id": "black-metal-khold",
+    "label": "Black Metal (Khold)",
+    "mode": "dark"
+  },
+  {
+    "id": "black-metal-marduk",
+    "label": "Black Metal (Marduk)",
+    "mode": "dark"
+  },
+  {
+    "id": "black-metal-mayhem",
+    "label": "Black Metal (Mayhem)",
+    "mode": "dark"
+  },
+  {
+    "id": "black-metal-nile",
+    "label": "Black Metal (Nile)",
+    "mode": "dark"
+  },
+  {
+    "id": "black-metal-venom",
+    "label": "Black Metal (Venom)",
+    "mode": "dark"
+  },
+  {
+    "id": "blazer",
+    "label": "Blazer",
+    "mode": "dark"
+  },
+  {
+    "id": "blue-berry-pie",
+    "label": "Blue Berry Pie",
+    "mode": "dark"
+  },
+  {
+    "id": "blue-dolphin",
+    "label": "Blue Dolphin",
+    "mode": "dark"
+  },
+  {
+    "id": "blue-matrix",
+    "label": "Blue Matrix",
+    "mode": "dark"
+  },
+  {
+    "id": "bluloco-dark",
+    "label": "Bluloco Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "bluloco-light",
+    "label": "Bluloco Light",
+    "mode": "light"
+  },
+  {
+    "id": "borland",
+    "label": "Borland",
+    "mode": "dark"
+  },
+  {
+    "id": "box",
+    "label": "Box",
+    "mode": "dark"
+  },
+  {
+    "id": "branch",
+    "label": "branch",
+    "mode": "dark"
+  },
+  {
+    "id": "breadog",
+    "label": "Breadog",
+    "mode": "light"
+  },
+  {
+    "id": "breeze",
+    "label": "Breeze",
+    "mode": "dark"
+  },
+  {
+    "id": "bright-lights",
+    "label": "Bright Lights",
+    "mode": "dark"
+  },
+  {
+    "id": "broadcast",
+    "label": "Broadcast",
+    "mode": "dark"
+  },
+  {
+    "id": "brogrammer",
+    "label": "Brogrammer",
+    "mode": "dark"
+  },
+  {
+    "id": "builtin-dark",
+    "label": "Builtin Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "builtin-light",
+    "label": "Builtin Light",
+    "mode": "light"
+  },
+  {
+    "id": "builtin-pastel-dark",
+    "label": "Builtin Pastel Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "builtin-tango-dark",
+    "label": "Builtin Tango Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "builtin-tango-light",
+    "label": "Builtin Tango Light",
+    "mode": "light"
+  },
+  {
+    "id": "calamity",
+    "label": "Calamity",
+    "mode": "dark"
+  },
+  {
+    "id": "carbonfox",
+    "label": "Carbonfox",
+    "mode": "dark"
+  },
+  {
+    "id": "cassette-tape",
+    "label": "Cassette Tape",
+    "mode": "light"
+  },
+  {
+    "id": "catppuccin-frappe",
+    "label": "Catppuccin Frappe",
+    "mode": "dark"
+  },
+  {
+    "id": "catppuccin-latte",
+    "label": "Catppuccin Latte",
+    "mode": "light"
+  },
+  {
+    "id": "catppuccin-macchiato",
+    "label": "Catppuccin Macchiato",
+    "mode": "dark"
+  },
+  {
+    "id": "catppuccin-mocha",
+    "label": "Catppuccin Mocha",
+    "mode": "dark"
+  },
+  {
+    "id": "cga",
+    "label": "CGA",
+    "mode": "dark"
+  },
+  {
+    "id": "chalk",
+    "label": "Chalk",
+    "mode": "dark"
+  },
+  {
+    "id": "chalkboard",
+    "label": "Chalkboard",
+    "mode": "dark"
+  },
+  {
+    "id": "challenger-deep",
+    "label": "Challenger Deep",
+    "mode": "dark"
+  },
+  {
+    "id": "chester",
+    "label": "Chester",
+    "mode": "dark"
+  },
+  {
+    "id": "ciapre",
+    "label": "Ciapre",
+    "mode": "dark"
+  },
+  {
+    "id": "citrus-ink",
+    "label": "Citrus Ink",
+    "mode": "dark"
+  },
+  {
+    "id": "citruszest",
+    "label": "Citruszest",
+    "mode": "dark"
+  },
+  {
+    "id": "claude",
+    "label": "Claude",
+    "mode": "light"
+  },
+  {
+    "id": "claude-dark",
+    "label": "Claude Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "claude-light",
+    "label": "Claude Light",
+    "mode": "light"
+  },
+  {
+    "id": "clear-dark",
+    "label": "Clear Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "clear-light",
+    "label": "Clear Light",
+    "mode": "light"
+  },
+  {
+    "id": "clrs",
+    "label": "CLRS",
+    "mode": "light"
+  },
+  {
+    "id": "cobalt-neon",
+    "label": "Cobalt Neon",
+    "mode": "dark"
+  },
+  {
+    "id": "cobalt-next",
+    "label": "Cobalt Next",
+    "mode": "dark"
+  },
+  {
+    "id": "cobalt-next-dark",
+    "label": "Cobalt Next Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "cobalt-next-minimal",
+    "label": "Cobalt Next Minimal",
+    "mode": "dark"
+  },
+  {
+    "id": "cobalt2",
+    "label": "Cobalt2",
+    "mode": "dark"
+  },
+  {
+    "id": "coffee-theme",
+    "label": "Coffee Theme",
+    "mode": "light"
+  },
+  {
+    "id": "cool-night",
+    "label": "Cool Night",
+    "mode": "dark"
+  },
+  {
+    "id": "crt-amber",
+    "label": "CRT Amber",
+    "mode": "dark"
+  },
+  {
+    "id": "cursor-dark",
+    "label": "Cursor Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "cursor-light",
+    "label": "Cursor Light",
+    "mode": "light"
+  },
+  {
+    "id": "cutie-pro",
+    "label": "Cutie Pro",
+    "mode": "dark"
+  },
+  {
+    "id": "cyberdyne",
+    "label": "Cyberdyne",
+    "mode": "dark"
+  },
+  {
+    "id": "cyberpunk",
+    "label": "Cyberpunk",
+    "mode": "dark"
+  },
+  {
+    "id": "cyberpunk-scarlet-protocol",
+    "label": "Cyberpunk Scarlet Protocol",
+    "mode": "dark"
+  },
+  {
+    "id": "cyberpunk-icy",
+    "label": "cyberpunk-icy",
+    "mode": "dark"
+  },
+  {
+    "id": "dalton-dark",
+    "label": "Dalton Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "dark-modern",
+    "label": "Dark Modern",
+    "mode": "dark"
+  },
+  {
+    "id": "dark-pastel",
+    "label": "Dark Pastel",
+    "mode": "dark"
+  },
+  {
+    "id": "dark",
+    "label": "Dark+",
+    "mode": "dark"
+  },
+  {
+    "id": "darkside",
+    "label": "Darkside",
+    "mode": "dark"
+  },
+  {
+    "id": "datum-dark",
+    "label": "datum (dark)",
+    "mode": "dark"
+  },
+  {
+    "id": "datum-light",
+    "label": "datum (light)",
+    "mode": "light"
+  },
+  {
+    "id": "dawnfox",
+    "label": "Dawnfox",
+    "mode": "light"
+  },
+  {
+    "id": "daybreak",
+    "label": "Daybreak",
+    "mode": "light"
+  },
+  {
+    "id": "dayfox",
+    "label": "Dayfox",
+    "mode": "light"
+  },
+  {
+    "id": "deep",
+    "label": "Deep",
+    "mode": "dark"
+  },
+  {
+    "id": "desert",
+    "label": "Desert",
+    "mode": "dark"
+  },
+  {
+    "id": "detuned",
+    "label": "Detuned",
+    "mode": "dark"
+  },
+  {
+    "id": "dimidium",
+    "label": "Dimidium",
+    "mode": "dark"
+  },
+  {
+    "id": "dimmed-monokai",
+    "label": "Dimmed Monokai",
+    "mode": "dark"
+  },
+  {
+    "id": "django",
+    "label": "Django",
+    "mode": "dark"
+  },
+  {
+    "id": "django-reborn-again",
+    "label": "Django Reborn Again",
+    "mode": "dark"
+  },
+  {
+    "id": "django-smooth",
+    "label": "Django Smooth",
+    "mode": "dark"
+  },
+  {
+    "id": "dogxi-misty",
+    "label": "Dogxi Misty",
+    "mode": "dark"
+  },
+  {
+    "id": "doom-one",
+    "label": "Doom One",
+    "mode": "dark"
+  },
+  {
+    "id": "doom-peacock",
+    "label": "Doom Peacock",
+    "mode": "dark"
+  },
+  {
+    "id": "dot-gov",
+    "label": "Dot Gov",
+    "mode": "dark"
+  },
+  {
+    "id": "dracula-dracula",
+    "label": "Dracula",
+    "mode": "dark"
+  },
+  {
+    "id": "dracula",
+    "label": "Dracula+",
+    "mode": "dark"
+  },
+  {
+    "id": "driftwood",
+    "label": "Driftwood",
+    "mode": "dark"
+  },
+  {
+    "id": "duckbones",
+    "label": "Duckbones",
+    "mode": "dark"
+  },
+  {
+    "id": "duotone-dark",
+    "label": "Duotone Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "duskfox",
+    "label": "Duskfox",
+    "mode": "dark"
+  },
+  {
+    "id": "earthsong",
+    "label": "Earthsong",
+    "mode": "dark"
+  },
+  {
+    "id": "eclipse",
+    "label": "Eclipse",
+    "mode": "dark"
+  },
+  {
+    "id": "electron-highlighter",
+    "label": "Electron Highlighter",
+    "mode": "dark"
+  },
+  {
+    "id": "electron-highlighter-day",
+    "label": "Electron Highlighter Day",
+    "mode": "light"
+  },
+  {
+    "id": "elegant",
+    "label": "Elegant",
+    "mode": "dark"
+  },
+  {
+    "id": "elemental",
+    "label": "Elemental",
+    "mode": "dark"
+  },
+  {
+    "id": "elementary",
+    "label": "Elementary",
+    "mode": "dark"
+  },
+  {
+    "id": "embark",
+    "label": "Embark",
+    "mode": "dark"
+  },
+  {
+    "id": "embers-dark",
+    "label": "Embers Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "emerald-synth",
+    "label": "Emerald Synth",
+    "mode": "dark"
+  },
+  {
+    "id": "encom",
+    "label": "ENCOM",
+    "mode": "dark"
+  },
+  {
+    "id": "espresso",
+    "label": "Espresso",
+    "mode": "dark"
+  },
+  {
+    "id": "espresso-libre",
+    "label": "Espresso Libre",
+    "mode": "dark"
+  },
+  {
+    "id": "everblush",
+    "label": "Everblush",
+    "mode": "dark"
+  },
+  {
+    "id": "everforest-dark-hard",
+    "label": "Everforest Dark Hard",
+    "mode": "dark"
+  },
+  {
+    "id": "everforest-dark-med",
+    "label": "Everforest Dark Med",
+    "mode": "dark"
+  },
+  {
+    "id": "everforest-dark-soft",
+    "label": "Everforest Dark Soft",
+    "mode": "dark"
+  },
+  {
+    "id": "everforest-light-hard",
+    "label": "Everforest Light Hard",
+    "mode": "light"
+  },
+  {
+    "id": "everforest-light-med",
+    "label": "Everforest Light Med",
+    "mode": "light"
+  },
+  {
+    "id": "everforest-light-soft",
+    "label": "Everforest Light Soft",
+    "mode": "light"
+  },
+  {
+    "id": "fahrenheit",
+    "label": "Fahrenheit",
+    "mode": "dark"
+  },
+  {
+    "id": "fairyfloss",
+    "label": "Fairyfloss",
+    "mode": "dark"
+  },
+  {
+    "id": "farmhouse-dark",
+    "label": "Farmhouse Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "farmhouse-light",
+    "label": "Farmhouse Light",
+    "mode": "light"
+  },
+  {
+    "id": "fideloper",
+    "label": "Fideloper",
+    "mode": "dark"
+  },
+  {
+    "id": "firefly-traditional",
+    "label": "Firefly Traditional",
+    "mode": "dark"
+  },
+  {
+    "id": "firefox-dev",
+    "label": "Firefox Dev",
+    "mode": "dark"
+  },
+  {
+    "id": "firewatch",
+    "label": "Firewatch",
+    "mode": "dark"
+  },
+  {
+    "id": "fish-tank",
+    "label": "Fish Tank",
+    "mode": "dark"
+  },
+  {
+    "id": "flat",
+    "label": "Flat",
+    "mode": "dark"
+  },
+  {
+    "id": "flatland",
+    "label": "Flatland",
+    "mode": "dark"
+  },
+  {
+    "id": "flexoki-dark",
+    "label": "Flexoki Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "flexoki-light",
+    "label": "Flexoki Light",
+    "mode": "light"
+  },
+  {
+    "id": "floraverse",
+    "label": "Floraverse",
+    "mode": "dark"
+  },
+  {
+    "id": "forest-blue",
+    "label": "Forest Blue",
+    "mode": "dark"
+  },
+  {
+    "id": "forge-ember",
+    "label": "Forge Ember",
+    "mode": "dark"
+  },
+  {
+    "id": "framer",
+    "label": "Framer",
+    "mode": "dark"
+  },
+  {
+    "id": "front-end-delight",
+    "label": "Front End Delight",
+    "mode": "dark"
+  },
+  {
+    "id": "frostbyte",
+    "label": "Frostbyte",
+    "mode": "light"
+  },
+  {
+    "id": "fun-forrest",
+    "label": "Fun Forrest",
+    "mode": "dark"
+  },
+  {
+    "id": "galaxy",
+    "label": "Galaxy",
+    "mode": "dark"
+  },
+  {
+    "id": "galizur",
+    "label": "Galizur",
+    "mode": "dark"
+  },
+  {
+    "id": "ghostty-default-style-dark",
+    "label": "Ghostty Default Style Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "github",
+    "label": "GitHub",
+    "mode": "light"
+  },
+  {
+    "id": "github-dark",
+    "label": "GitHub Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "github-dark-colorblind",
+    "label": "GitHub Dark Colorblind",
+    "mode": "dark"
+  },
+  {
+    "id": "github-dark-default",
+    "label": "GitHub Dark Default",
+    "mode": "dark"
+  },
+  {
+    "id": "github-dark-dimmed",
+    "label": "GitHub Dark Dimmed",
+    "mode": "dark"
+  },
+  {
+    "id": "github-dark-high-contrast",
+    "label": "GitHub Dark High Contrast",
+    "mode": "dark"
+  },
+  {
+    "id": "github-light-colorblind",
+    "label": "GitHub Light Colorblind",
+    "mode": "light"
+  },
+  {
+    "id": "github-light-default",
+    "label": "GitHub Light Default",
+    "mode": "light"
+  },
+  {
+    "id": "github-light-high-contrast",
+    "label": "GitHub Light High Contrast",
+    "mode": "light"
+  },
+  {
+    "id": "gitlab-dark",
+    "label": "GitLab Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "gitlab-dark-grey",
+    "label": "GitLab Dark Grey",
+    "mode": "dark"
+  },
+  {
+    "id": "gitlab-light",
+    "label": "GitLab Light",
+    "mode": "light"
+  },
+  {
+    "id": "glacier",
+    "label": "Glacier",
+    "mode": "dark"
+  },
+  {
+    "id": "gleam",
+    "label": "Gleam",
+    "mode": "dark"
+  },
+  {
+    "id": "gleam-classic",
+    "label": "Gleam Classic",
+    "mode": "dark"
+  },
+  {
+    "id": "grape",
+    "label": "Grape",
+    "mode": "dark"
+  },
+  {
+    "id": "graphite",
+    "label": "Graphite",
+    "mode": "dark"
+  },
+  {
+    "id": "grass",
+    "label": "Grass",
+    "mode": "dark"
+  },
+  {
+    "id": "green-phosphor-crt",
+    "label": "Green Phosphor CRT",
+    "mode": "dark"
+  },
+  {
+    "id": "grey-green",
+    "label": "Grey Green",
+    "mode": "dark"
+  },
+  {
+    "id": "gruber-darker",
+    "label": "Gruber Darker",
+    "mode": "dark"
+  },
+  {
+    "id": "gruvbox-dark",
+    "label": "Gruvbox Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "gruvbox-dark-hard",
+    "label": "Gruvbox Dark Hard",
+    "mode": "dark"
+  },
+  {
+    "id": "gruvbox-light",
+    "label": "Gruvbox Light",
+    "mode": "light"
+  },
+  {
+    "id": "gruvbox-light-hard",
+    "label": "Gruvbox Light Hard",
+    "mode": "light"
+  },
+  {
+    "id": "gruvbox-material",
+    "label": "Gruvbox Material",
+    "mode": "dark"
+  },
+  {
+    "id": "gruvbox-material-dark",
+    "label": "Gruvbox Material Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "gruvbox-material-light",
+    "label": "Gruvbox Material Light",
+    "mode": "light"
+  },
+  {
+    "id": "guezwhoz",
+    "label": "Guezwhoz",
+    "mode": "dark"
+  },
+  {
+    "id": "hacktober",
+    "label": "Hacktober",
+    "mode": "dark"
+  },
+  {
+    "id": "hardcore",
+    "label": "Hardcore",
+    "mode": "dark"
+  },
+  {
+    "id": "harper",
+    "label": "Harper",
+    "mode": "dark"
+  },
+  {
+    "id": "havn-daggry",
+    "label": "Havn Daggry",
+    "mode": "light"
+  },
+  {
+    "id": "havn-skumring",
+    "label": "Havn Skumring",
+    "mode": "dark"
+  },
+  {
+    "id": "hax0r-blue",
+    "label": "HaX0R Blue",
+    "mode": "dark"
+  },
+  {
+    "id": "hax0r-gr33n",
+    "label": "HaX0R Gr33N",
+    "mode": "dark"
+  },
+  {
+    "id": "heeler",
+    "label": "Heeler",
+    "mode": "dark"
+  },
+  {
+    "id": "highway",
+    "label": "Highway",
+    "mode": "dark"
+  },
+  {
+    "id": "hipster-green",
+    "label": "Hipster Green",
+    "mode": "dark"
+  },
+  {
+    "id": "hivacruz",
+    "label": "Hivacruz",
+    "mode": "dark"
+  },
+  {
+    "id": "homebrew",
+    "label": "Homebrew",
+    "mode": "dark"
+  },
+  {
+    "id": "hopscotch",
+    "label": "Hopscotch",
+    "mode": "dark"
+  },
+  {
+    "id": "hopscotch-256",
+    "label": "Hopscotch.256",
+    "mode": "dark"
+  },
+  {
+    "id": "horizon",
+    "label": "Horizon",
+    "mode": "dark"
+  },
+  {
+    "id": "horizon-bright",
+    "label": "Horizon Bright",
+    "mode": "light"
+  },
+  {
+    "id": "hot-dog-stand",
+    "label": "Hot Dog Stand",
+    "mode": "dark"
+  },
+  {
+    "id": "hot-dog-stand-mustard",
+    "label": "Hot Dog Stand (Mustard)",
+    "mode": "light"
+  },
+  {
+    "id": "hurtado",
+    "label": "Hurtado",
+    "mode": "dark"
+  },
+  {
+    "id": "hybrid",
+    "label": "Hybrid",
+    "mode": "dark"
+  },
+  {
+    "id": "ibm-5153-cga",
+    "label": "IBM 5153 CGA",
+    "mode": "dark"
+  },
+  {
+    "id": "ibm-5153-cga-black",
+    "label": "IBM 5153 CGA (Black)",
+    "mode": "dark"
+  },
+  {
+    "id": "ic-green-ppl",
+    "label": "IC Green PPL",
+    "mode": "dark"
+  },
+  {
+    "id": "ic-orange-ppl",
+    "label": "IC Orange PPL",
+    "mode": "dark"
+  },
+  {
+    "id": "iceberg-dark",
+    "label": "Iceberg Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "iceberg-light",
+    "label": "Iceberg Light",
+    "mode": "light"
+  },
+  {
+    "id": "idea",
+    "label": "Idea",
+    "mode": "dark"
+  },
+  {
+    "id": "idle-toes",
+    "label": "Idle Toes",
+    "mode": "dark"
+  },
+  {
+    "id": "ir-black",
+    "label": "IR Black",
+    "mode": "dark"
+  },
+  {
+    "id": "irix-console",
+    "label": "IRIX Console",
+    "mode": "dark"
+  },
+  {
+    "id": "irix-terminal",
+    "label": "IRIX Terminal",
+    "mode": "dark"
+  },
+  {
+    "id": "iterm2-dark-background",
+    "label": "iTerm2 Dark Background",
+    "mode": "dark"
+  },
+  {
+    "id": "iterm2-default",
+    "label": "iTerm2 Default",
+    "mode": "dark"
+  },
+  {
+    "id": "iterm2-light-background",
+    "label": "iTerm2 Light Background",
+    "mode": "light"
+  },
+  {
+    "id": "iterm2-pastel-dark-background",
+    "label": "iTerm2 Pastel Dark Background",
+    "mode": "dark"
+  },
+  {
+    "id": "iterm2-smoooooth",
+    "label": "iTerm2 Smoooooth",
+    "mode": "dark"
+  },
+  {
+    "id": "iterm2-solarized-dark",
+    "label": "iTerm2 Solarized Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "iterm2-solarized-light",
+    "label": "iTerm2 Solarized Light",
+    "mode": "light"
+  },
+  {
+    "id": "iterm2-tango-dark",
+    "label": "iTerm2 Tango Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "iterm2-tango-light",
+    "label": "iTerm2 Tango Light",
+    "mode": "light"
+  },
+  {
+    "id": "jackie-brown",
+    "label": "Jackie Brown",
+    "mode": "dark"
+  },
+  {
+    "id": "japanesque",
+    "label": "Japanesque",
+    "mode": "dark"
+  },
+  {
+    "id": "jellybeans",
+    "label": "Jellybeans",
+    "mode": "dark"
+  },
+  {
+    "id": "jetbrains-darcula",
+    "label": "JetBrains Darcula",
+    "mode": "dark"
+  },
+  {
+    "id": "jetbrains-islands-dark",
+    "label": "JetBrains Islands Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "jetcalm-light",
+    "label": "JetCalm Light",
+    "mode": "light"
+  },
+  {
+    "id": "jubi",
+    "label": "Jubi",
+    "mode": "dark"
+  },
+  {
+    "id": "kanagawa-dragon",
+    "label": "Kanagawa Dragon",
+    "mode": "dark"
+  },
+  {
+    "id": "kanagawa-lotus",
+    "label": "Kanagawa Lotus",
+    "mode": "light"
+  },
+  {
+    "id": "kanagawa-wave",
+    "label": "Kanagawa Wave",
+    "mode": "dark"
+  },
+  {
+    "id": "kanagawabones",
+    "label": "Kanagawabones",
+    "mode": "dark"
+  },
+  {
+    "id": "kanso-ink",
+    "label": "Kanso Ink",
+    "mode": "dark"
+  },
+  {
+    "id": "kanso-mist",
+    "label": "Kanso Mist",
+    "mode": "dark"
+  },
+  {
+    "id": "kanso-pearl",
+    "label": "Kanso Pearl",
+    "mode": "light"
+  },
+  {
+    "id": "kanso-zen",
+    "label": "Kanso Zen",
+    "mode": "dark"
+  },
+  {
+    "id": "karasu-night",
+    "label": "Karasu Night",
+    "mode": "dark"
+  },
+  {
+    "id": "karasu-snow",
+    "label": "Karasu Snow",
+    "mode": "light"
+  },
+  {
+    "id": "karma-dark",
+    "label": "Karma Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "karma-dark-dimmed",
+    "label": "Karma Dark Dimmed",
+    "mode": "dark"
+  },
+  {
+    "id": "karma-dark-hc",
+    "label": "Karma Dark HC",
+    "mode": "dark"
+  },
+  {
+    "id": "karma-light",
+    "label": "Karma Light",
+    "mode": "light"
+  },
+  {
+    "id": "karma-light-dimmed",
+    "label": "Karma Light Dimmed",
+    "mode": "light"
+  },
+  {
+    "id": "karma-light-hc",
+    "label": "Karma Light HC",
+    "mode": "light"
+  },
+  {
+    "id": "keys-ocean-sunset",
+    "label": "Keys Ocean Sunset",
+    "mode": "dark"
+  },
+  {
+    "id": "keys-ocean-sunset-hc",
+    "label": "Keys Ocean Sunset HC",
+    "mode": "dark"
+  },
+  {
+    "id": "kibble",
+    "label": "Kibble",
+    "mode": "dark"
+  },
+  {
+    "id": "kitty-default",
+    "label": "Kitty Default",
+    "mode": "dark"
+  },
+  {
+    "id": "kitty-low-contrast",
+    "label": "Kitty Low Contrast",
+    "mode": "dark"
+  },
+  {
+    "id": "klein-void",
+    "label": "Klein Void",
+    "mode": "dark"
+  },
+  {
+    "id": "kolorit",
+    "label": "Kolorit",
+    "mode": "dark"
+  },
+  {
+    "id": "konsolas",
+    "label": "Konsolas",
+    "mode": "dark"
+  },
+  {
+    "id": "kurokula",
+    "label": "Kurokula",
+    "mode": "dark"
+  },
+  {
+    "id": "lab-fox",
+    "label": "Lab Fox",
+    "mode": "dark"
+  },
+  {
+    "id": "laser",
+    "label": "Laser",
+    "mode": "dark"
+  },
+  {
+    "id": "later-this-evening",
+    "label": "Later This Evening",
+    "mode": "dark"
+  },
+  {
+    "id": "lavandula",
+    "label": "Lavandula",
+    "mode": "dark"
+  },
+  {
+    "id": "letterpress",
+    "label": "Letterpress",
+    "mode": "light"
+  },
+  {
+    "id": "light-owl",
+    "label": "Light Owl",
+    "mode": "light"
+  },
+  {
+    "id": "liquid-carbon",
+    "label": "Liquid Carbon",
+    "mode": "dark"
+  },
+  {
+    "id": "liquid-carbon-transparent",
+    "label": "Liquid Carbon Transparent",
+    "mode": "dark"
+  },
+  {
+    "id": "london-bonfire-night",
+    "label": "London Bonfire Night",
+    "mode": "dark"
+  },
+  {
+    "id": "london-columbia-road",
+    "label": "London Columbia Road",
+    "mode": "light"
+  },
+  {
+    "id": "london-embankment-dusk",
+    "label": "London Embankment Dusk",
+    "mode": "dark"
+  },
+  {
+    "id": "london-soho-night",
+    "label": "London Soho Night",
+    "mode": "dark"
+  },
+  {
+    "id": "lovelace",
+    "label": "Lovelace",
+    "mode": "dark"
+  },
+  {
+    "id": "man-page",
+    "label": "Man Page",
+    "mode": "light"
+  },
+  {
+    "id": "mariana",
+    "label": "Mariana",
+    "mode": "dark"
+  },
+  {
+    "id": "matcha-zen",
+    "label": "Matcha Zen",
+    "mode": "light"
+  },
+  {
+    "id": "material",
+    "label": "Material",
+    "mode": "light"
+  },
+  {
+    "id": "material-dark",
+    "label": "Material Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "material-darker",
+    "label": "Material Darker",
+    "mode": "dark"
+  },
+  {
+    "id": "material-design-colors",
+    "label": "Material Design Colors",
+    "mode": "dark"
+  },
+  {
+    "id": "material-ocean",
+    "label": "Material Ocean",
+    "mode": "dark"
+  },
+  {
+    "id": "mathias",
+    "label": "Mathias",
+    "mode": "dark"
+  },
+  {
+    "id": "matte-black",
+    "label": "Matte Black",
+    "mode": "dark"
+  },
+  {
+    "id": "medallion",
+    "label": "Medallion",
+    "mode": "dark"
+  },
+  {
+    "id": "melange-dark",
+    "label": "Melange Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "melange-light",
+    "label": "Melange Light",
+    "mode": "light"
+  },
+  {
+    "id": "mellifluous",
+    "label": "Mellifluous",
+    "mode": "dark"
+  },
+  {
+    "id": "mellow",
+    "label": "Mellow",
+    "mode": "dark"
+  },
+  {
+    "id": "mesila-one",
+    "label": "Mesila One",
+    "mode": "dark"
+  },
+  {
+    "id": "miami-heat",
+    "label": "Miami Heat",
+    "mode": "dark"
+  },
+  {
+    "id": "miasma",
+    "label": "Miasma",
+    "mode": "dark"
+  },
+  {
+    "id": "midnight-arcade",
+    "label": "Midnight Arcade",
+    "mode": "dark"
+  },
+  {
+    "id": "midnight-in-mojave",
+    "label": "Midnight In Mojave",
+    "mode": "dark"
+  },
+  {
+    "id": "mirage",
+    "label": "Mirage",
+    "mode": "dark"
+  },
+  {
+    "id": "misterioso",
+    "label": "Misterioso",
+    "mode": "dark"
+  },
+  {
+    "id": "modus-operandi",
+    "label": "Modus Operandi",
+    "mode": "light"
+  },
+  {
+    "id": "modus-operandi-deuteranopia",
+    "label": "Modus Operandi Deuteranopia",
+    "mode": "light"
+  },
+  {
+    "id": "modus-operandi-tinted",
+    "label": "Modus Operandi Tinted",
+    "mode": "light"
+  },
+  {
+    "id": "modus-operandi-tritanopia",
+    "label": "Modus Operandi Tritanopia",
+    "mode": "light"
+  },
+  {
+    "id": "modus-vivendi",
+    "label": "Modus Vivendi",
+    "mode": "dark"
+  },
+  {
+    "id": "modus-vivendi-deuteranopia",
+    "label": "Modus Vivendi Deuteranopia",
+    "mode": "dark"
+  },
+  {
+    "id": "modus-vivendi-tinted",
+    "label": "Modus Vivendi Tinted",
+    "mode": "dark"
+  },
+  {
+    "id": "modus-vivendi-tritanopia",
+    "label": "Modus Vivendi Tritanopia",
+    "mode": "dark"
+  },
+  {
+    "id": "molokai",
+    "label": "Molokai",
+    "mode": "dark"
+  },
+  {
+    "id": "mona-lisa",
+    "label": "Mona Lisa",
+    "mode": "dark"
+  },
+  {
+    "id": "monokai-classic",
+    "label": "Monokai Classic",
+    "mode": "dark"
+  },
+  {
+    "id": "monokai-pro",
+    "label": "Monokai Pro",
+    "mode": "dark"
+  },
+  {
+    "id": "monokai-pro-light",
+    "label": "Monokai Pro Light",
+    "mode": "light"
+  },
+  {
+    "id": "monokai-pro-light-sun",
+    "label": "Monokai Pro Light Sun",
+    "mode": "light"
+  },
+  {
+    "id": "monokai-pro-machine",
+    "label": "Monokai Pro Machine",
+    "mode": "dark"
+  },
+  {
+    "id": "monokai-pro-octagon",
+    "label": "Monokai Pro Octagon",
+    "mode": "dark"
+  },
+  {
+    "id": "monokai-pro-ristretto",
+    "label": "Monokai Pro Ristretto",
+    "mode": "dark"
+  },
+  {
+    "id": "monokai-pro-spectrum",
+    "label": "Monokai Pro Spectrum",
+    "mode": "dark"
+  },
+  {
+    "id": "monokai-remastered",
+    "label": "Monokai Remastered",
+    "mode": "dark"
+  },
+  {
+    "id": "monokai-soda",
+    "label": "Monokai Soda",
+    "mode": "dark"
+  },
+  {
+    "id": "monokai-sublimetext",
+    "label": "Monokai SublimeText",
+    "mode": "dark"
+  },
+  {
+    "id": "monokai-vivid",
+    "label": "Monokai Vivid",
+    "mode": "dark"
+  },
+  {
+    "id": "monospace-dark",
+    "label": "Monospace Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "monospace-light",
+    "label": "Monospace Light",
+    "mode": "light"
+  },
+  {
+    "id": "moonfly",
+    "label": "Moonfly",
+    "mode": "dark"
+  },
+  {
+    "id": "moonwalk",
+    "label": "Moonwalk",
+    "mode": "light"
+  },
+  {
+    "id": "n0tch2k",
+    "label": "N0Tch2K",
+    "mode": "dark"
+  },
+  {
+    "id": "nebula-drift",
+    "label": "Nebula Drift",
+    "mode": "dark"
+  },
+  {
+    "id": "neobones-dark",
+    "label": "Neobones Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "neobones-light",
+    "label": "Neobones Light",
+    "mode": "light"
+  },
+  {
+    "id": "neon",
+    "label": "Neon",
+    "mode": "dark"
+  },
+  {
+    "id": "neon-purple",
+    "label": "Neon Purple",
+    "mode": "dark"
+  },
+  {
+    "id": "neopolitan",
+    "label": "Neopolitan",
+    "mode": "dark"
+  },
+  {
+    "id": "neutron",
+    "label": "Neutron",
+    "mode": "dark"
+  },
+  {
+    "id": "night-lion-v1",
+    "label": "Night Lion V1",
+    "mode": "dark"
+  },
+  {
+    "id": "night-lion-v2",
+    "label": "Night Lion V2",
+    "mode": "dark"
+  },
+  {
+    "id": "night-owl",
+    "label": "Night Owl",
+    "mode": "dark"
+  },
+  {
+    "id": "night-owlish-light",
+    "label": "Night Owlish Light",
+    "mode": "light"
+  },
+  {
+    "id": "nightfox",
+    "label": "Nightfox",
+    "mode": "dark"
+  },
+  {
+    "id": "niji",
+    "label": "Niji",
+    "mode": "dark"
+  },
+  {
+    "id": "no-clown-fiesta",
+    "label": "No Clown Fiesta",
+    "mode": "dark"
+  },
+  {
+    "id": "no-clown-fiesta-light",
+    "label": "No Clown Fiesta Light",
+    "mode": "light"
+  },
+  {
+    "id": "noctis",
+    "label": "Noctis",
+    "mode": "dark"
+  },
+  {
+    "id": "noctis-azureus",
+    "label": "Noctis Azureus",
+    "mode": "dark"
+  },
+  {
+    "id": "noctis-bordo",
+    "label": "Noctis Bordo",
+    "mode": "dark"
+  },
+  {
+    "id": "noctis-hibernus",
+    "label": "Noctis Hibernus",
+    "mode": "light"
+  },
+  {
+    "id": "noctis-lilac",
+    "label": "Noctis Lilac",
+    "mode": "light"
+  },
+  {
+    "id": "noctis-lux",
+    "label": "Noctis Lux",
+    "mode": "light"
+  },
+  {
+    "id": "noctis-minimus",
+    "label": "Noctis Minimus",
+    "mode": "dark"
+  },
+  {
+    "id": "noctis-obscuro",
+    "label": "Noctis Obscuro",
+    "mode": "dark"
+  },
+  {
+    "id": "noctis-sereno",
+    "label": "Noctis Sereno",
+    "mode": "dark"
+  },
+  {
+    "id": "noctis-uva",
+    "label": "Noctis Uva",
+    "mode": "dark"
+  },
+  {
+    "id": "noctis-viola",
+    "label": "Noctis Viola",
+    "mode": "dark"
+  },
+  {
+    "id": "nocturnal-winter",
+    "label": "Nocturnal Winter",
+    "mode": "dark"
+  },
+  {
+    "id": "nord",
+    "label": "Nord",
+    "mode": "dark"
+  },
+  {
+    "id": "nord-light",
+    "label": "Nord Light",
+    "mode": "light"
+  },
+  {
+    "id": "nord-wave",
+    "label": "Nord Wave",
+    "mode": "dark"
+  },
+  {
+    "id": "nordfox",
+    "label": "Nordfox",
+    "mode": "dark"
+  },
+  {
+    "id": "novel",
+    "label": "Novel",
+    "mode": "light"
+  },
+  {
+    "id": "novmbr",
+    "label": "novmbr",
+    "mode": "dark"
+  },
+  {
+    "id": "nvim-dark",
+    "label": "Nvim Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "nvim-light",
+    "label": "Nvim Light",
+    "mode": "light"
+  },
+  {
+    "id": "obsidian",
+    "label": "Obsidian",
+    "mode": "dark"
+  },
+  {
+    "id": "ocean",
+    "label": "Ocean",
+    "mode": "dark"
+  },
+  {
+    "id": "oceanic-material",
+    "label": "Oceanic Material",
+    "mode": "dark"
+  },
+  {
+    "id": "oceanic-next",
+    "label": "Oceanic Next",
+    "mode": "dark"
+  },
+  {
+    "id": "ollie",
+    "label": "Ollie",
+    "mode": "dark"
+  },
+  {
+    "id": "one-dark-two",
+    "label": "One Dark Two",
+    "mode": "dark"
+  },
+  {
+    "id": "one-double-dark",
+    "label": "One Double Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "one-double-light",
+    "label": "One Double Light",
+    "mode": "light"
+  },
+  {
+    "id": "one-half-dark",
+    "label": "One Half Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "one-half-light",
+    "label": "One Half Light",
+    "mode": "light"
+  },
+  {
+    "id": "onenord",
+    "label": "Onenord",
+    "mode": "dark"
+  },
+  {
+    "id": "onenord-light",
+    "label": "Onenord Light",
+    "mode": "light"
+  },
+  {
+    "id": "opaline",
+    "label": "Opaline",
+    "mode": "dark"
+  },
+  {
+    "id": "operator-mono-dark",
+    "label": "Operator Mono Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "outrun-electric",
+    "label": "Outrun Electric",
+    "mode": "dark"
+  },
+  {
+    "id": "overnight-slumber",
+    "label": "Overnight Slumber",
+    "mode": "dark"
+  },
+  {
+    "id": "owl",
+    "label": "owl",
+    "mode": "dark"
+  },
+  {
+    "id": "oxblood",
+    "label": "Oxblood",
+    "mode": "dark"
+  },
+  {
+    "id": "oxide",
+    "label": "Oxide",
+    "mode": "dark"
+  },
+  {
+    "id": "oxocarbon",
+    "label": "Oxocarbon",
+    "mode": "dark"
+  },
+  {
+    "id": "pale-night-hc",
+    "label": "Pale Night Hc",
+    "mode": "dark"
+  },
+  {
+    "id": "pandora",
+    "label": "Pandora",
+    "mode": "dark"
+  },
+  {
+    "id": "paraiso-dark",
+    "label": "Paraiso Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "patina",
+    "label": "Patina",
+    "mode": "dark"
+  },
+  {
+    "id": "patina-dark",
+    "label": "Patina Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "patina-dark-soft",
+    "label": "Patina Dark Soft",
+    "mode": "dark"
+  },
+  {
+    "id": "patina-lichen",
+    "label": "Patina Lichen",
+    "mode": "light"
+  },
+  {
+    "id": "patina-light",
+    "label": "Patina Light",
+    "mode": "light"
+  },
+  {
+    "id": "patina-moss",
+    "label": "Patina Moss",
+    "mode": "dark"
+  },
+  {
+    "id": "patina-stellar",
+    "label": "Patina Stellar",
+    "mode": "light"
+  },
+  {
+    "id": "paul-millr",
+    "label": "Paul Millr",
+    "mode": "dark"
+  },
+  {
+    "id": "pencil-dark",
+    "label": "Pencil Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "pencil-light",
+    "label": "Pencil Light",
+    "mode": "light"
+  },
+  {
+    "id": "peppermint",
+    "label": "Peppermint",
+    "mode": "dark"
+  },
+  {
+    "id": "phala-green-dark",
+    "label": "Phala Green Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "piatto-light",
+    "label": "Piatto Light",
+    "mode": "light"
+  },
+  {
+    "id": "pierre-dark",
+    "label": "Pierre Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "pierre-light",
+    "label": "Pierre Light",
+    "mode": "light"
+  },
+  {
+    "id": "pnevma",
+    "label": "Pnevma",
+    "mode": "dark"
+  },
+  {
+    "id": "poimandres",
+    "label": "Poimandres",
+    "mode": "dark"
+  },
+  {
+    "id": "poimandres-darker",
+    "label": "Poimandres Darker",
+    "mode": "dark"
+  },
+  {
+    "id": "poimandres-storm",
+    "label": "Poimandres Storm",
+    "mode": "dark"
+  },
+  {
+    "id": "popping-and-locking",
+    "label": "Popping And Locking",
+    "mode": "dark"
+  },
+  {
+    "id": "porcelain",
+    "label": "Porcelain",
+    "mode": "light"
+  },
+  {
+    "id": "powershell",
+    "label": "Powershell",
+    "mode": "dark"
+  },
+  {
+    "id": "primary",
+    "label": "Primary",
+    "mode": "light"
+  },
+  {
+    "id": "prism",
+    "label": "Prism",
+    "mode": "dark"
+  },
+  {
+    "id": "pro",
+    "label": "Pro",
+    "mode": "dark"
+  },
+  {
+    "id": "pro-light",
+    "label": "Pro Light",
+    "mode": "light"
+  },
+  {
+    "id": "purple-portal",
+    "label": "Purple Portal",
+    "mode": "dark"
+  },
+  {
+    "id": "purple-rain",
+    "label": "Purple Rain",
+    "mode": "dark"
+  },
+  {
+    "id": "purplepeter",
+    "label": "Purplepeter",
+    "mode": "dark"
+  },
+  {
+    "id": "pyrokai",
+    "label": "Pyrokai",
+    "mode": "dark"
+  },
+  {
+    "id": "pyrokai-light",
+    "label": "Pyrokai Light",
+    "mode": "light"
+  },
+  {
+    "id": "rapture",
+    "label": "Rapture",
+    "mode": "dark"
+  },
+  {
+    "id": "raycast-dark",
+    "label": "Raycast Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "raycast-light",
+    "label": "Raycast Light",
+    "mode": "light"
+  },
+  {
+    "id": "rebecca",
+    "label": "Rebecca",
+    "mode": "dark"
+  },
+  {
+    "id": "red-alert",
+    "label": "Red Alert",
+    "mode": "dark"
+  },
+  {
+    "id": "red-planet",
+    "label": "Red Planet",
+    "mode": "dark"
+  },
+  {
+    "id": "red-sands",
+    "label": "Red Sands",
+    "mode": "dark"
+  },
+  {
+    "id": "relaxed",
+    "label": "Relaxed",
+    "mode": "dark"
+  },
+  {
+    "id": "retro",
+    "label": "Retro",
+    "mode": "dark"
+  },
+  {
+    "id": "retro-legends",
+    "label": "Retro Legends",
+    "mode": "dark"
+  },
+  {
+    "id": "rippedcasts",
+    "label": "Rippedcasts",
+    "mode": "dark"
+  },
+  {
+    "id": "rose-pine",
+    "label": "Rose Pine",
+    "mode": "dark"
+  },
+  {
+    "id": "rose-pine-dawn",
+    "label": "Rose Pine Dawn",
+    "mode": "light"
+  },
+  {
+    "id": "rose-pine-moon",
+    "label": "Rose Pine Moon",
+    "mode": "dark"
+  },
+  {
+    "id": "rouge-2",
+    "label": "Rouge 2",
+    "mode": "dark"
+  },
+  {
+    "id": "ryuuko",
+    "label": "Ryuuko",
+    "mode": "dark"
+  },
+  {
+    "id": "sakura",
+    "label": "Sakura",
+    "mode": "dark"
+  },
+  {
+    "id": "sandstone-classic",
+    "label": "Sandstone Classic",
+    "mode": "light"
+  },
+  {
+    "id": "sandstone-ink",
+    "label": "Sandstone Ink",
+    "mode": "light"
+  },
+  {
+    "id": "sandstone-warm",
+    "label": "Sandstone Warm",
+    "mode": "light"
+  },
+  {
+    "id": "sauber",
+    "label": "Sauber",
+    "mode": "light"
+  },
+  {
+    "id": "scarlet-protocol",
+    "label": "Scarlet Protocol",
+    "mode": "dark"
+  },
+  {
+    "id": "sea-shells",
+    "label": "Sea Shells",
+    "mode": "dark"
+  },
+  {
+    "id": "seafoam-pastel",
+    "label": "Seafoam Pastel",
+    "mode": "dark"
+  },
+  {
+    "id": "seedflip-abyss",
+    "label": "SeedFlip Abyss",
+    "mode": "dark"
+  },
+  {
+    "id": "seedflip-amethyst",
+    "label": "SeedFlip Amethyst",
+    "mode": "light"
+  },
+  {
+    "id": "seedflip-canopy",
+    "label": "SeedFlip Canopy",
+    "mode": "dark"
+  },
+  {
+    "id": "seedflip-carbon",
+    "label": "SeedFlip Carbon",
+    "mode": "light"
+  },
+  {
+    "id": "seedflip-coral",
+    "label": "SeedFlip Coral",
+    "mode": "light"
+  },
+  {
+    "id": "seedflip-ember",
+    "label": "SeedFlip Ember",
+    "mode": "dark"
+  },
+  {
+    "id": "seedflip-glacier",
+    "label": "SeedFlip Glacier",
+    "mode": "light"
+  },
+  {
+    "id": "seedflip-inkwell",
+    "label": "SeedFlip Inkwell",
+    "mode": "dark"
+  },
+  {
+    "id": "seedflip-ivory",
+    "label": "SeedFlip Ivory",
+    "mode": "light"
+  },
+  {
+    "id": "seedflip-nightfall",
+    "label": "SeedFlip Nightfall",
+    "mode": "dark"
+  },
+  {
+    "id": "seedflip-phosphor",
+    "label": "SeedFlip Phosphor",
+    "mode": "dark"
+  },
+  {
+    "id": "seedflip-pulse",
+    "label": "SeedFlip Pulse",
+    "mode": "dark"
+  },
+  {
+    "id": "seedflip-ultraviolet",
+    "label": "SeedFlip Ultraviolet",
+    "mode": "dark"
+  },
+  {
+    "id": "seedflip-voltage",
+    "label": "SeedFlip Voltage",
+    "mode": "dark"
+  },
+  {
+    "id": "seedflip-wavelength",
+    "label": "SeedFlip Wavelength",
+    "mode": "dark"
+  },
+  {
+    "id": "selenized-black",
+    "label": "Selenized Black",
+    "mode": "dark"
+  },
+  {
+    "id": "selenized-dark",
+    "label": "Selenized Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "selenized-light",
+    "label": "Selenized Light",
+    "mode": "light"
+  },
+  {
+    "id": "seoulbones-dark",
+    "label": "Seoulbones Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "seoulbones-light",
+    "label": "Seoulbones Light",
+    "mode": "light"
+  },
+  {
+    "id": "sequoia-monochrome-dark",
+    "label": "Sequoia Monochrome Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "sequoia-monochrome-light",
+    "label": "Sequoia Monochrome Light",
+    "mode": "light"
+  },
+  {
+    "id": "sequoia-moonlight-dark",
+    "label": "Sequoia Moonlight Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "sequoia-moonlight-light",
+    "label": "Sequoia Moonlight Light",
+    "mode": "light"
+  },
+  {
+    "id": "sequoia-retro-dark",
+    "label": "Sequoia Retro Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "sequoia-retro-light",
+    "label": "Sequoia Retro Light",
+    "mode": "light"
+  },
+  {
+    "id": "serendipity-midnight",
+    "label": "Serendipity Midnight",
+    "mode": "dark"
+  },
+  {
+    "id": "serendipity-morning",
+    "label": "Serendipity Morning",
+    "mode": "light"
+  },
+  {
+    "id": "serendipity-sunset",
+    "label": "Serendipity Sunset",
+    "mode": "dark"
+  },
+  {
+    "id": "seti",
+    "label": "Seti",
+    "mode": "dark"
+  },
+  {
+    "id": "shades-of-purple",
+    "label": "Shades Of Purple",
+    "mode": "dark"
+  },
+  {
+    "id": "shokunin",
+    "label": "Shokunin",
+    "mode": "light"
+  },
+  {
+    "id": "slate",
+    "label": "Slate",
+    "mode": "dark"
+  },
+  {
+    "id": "sleepy-hollow",
+    "label": "Sleepy Hollow",
+    "mode": "dark"
+  },
+  {
+    "id": "smyck",
+    "label": "Smyck",
+    "mode": "dark"
+  },
+  {
+    "id": "snazzy",
+    "label": "Snazzy",
+    "mode": "dark"
+  },
+  {
+    "id": "snazzy-soft",
+    "label": "Snazzy Soft",
+    "mode": "dark"
+  },
+  {
+    "id": "soft-server",
+    "label": "Soft Server",
+    "mode": "dark"
+  },
+  {
+    "id": "solarized-darcula",
+    "label": "Solarized Darcula",
+    "mode": "dark"
+  },
+  {
+    "id": "solarized-dark-higher-contrast",
+    "label": "Solarized Dark Higher Contrast",
+    "mode": "dark"
+  },
+  {
+    "id": "solarized-dark-patched",
+    "label": "Solarized Dark Patched",
+    "mode": "dark"
+  },
+  {
+    "id": "solarized-osaka-night",
+    "label": "Solarized Osaka Night",
+    "mode": "dark"
+  },
+  {
+    "id": "sonokai",
+    "label": "Sonokai",
+    "mode": "dark"
+  },
+  {
+    "id": "spacedust",
+    "label": "Spacedust",
+    "mode": "dark"
+  },
+  {
+    "id": "spacegray",
+    "label": "Spacegray",
+    "mode": "dark"
+  },
+  {
+    "id": "spacegray-bright",
+    "label": "Spacegray Bright",
+    "mode": "dark"
+  },
+  {
+    "id": "spacegray-eighties",
+    "label": "Spacegray Eighties",
+    "mode": "dark"
+  },
+  {
+    "id": "spacegray-eighties-dull",
+    "label": "Spacegray Eighties Dull",
+    "mode": "dark"
+  },
+  {
+    "id": "spiderman",
+    "label": "Spiderman",
+    "mode": "dark"
+  },
+  {
+    "id": "spring",
+    "label": "Spring",
+    "mode": "light"
+  },
+  {
+    "id": "square",
+    "label": "Square",
+    "mode": "dark"
+  },
+  {
+    "id": "squintless",
+    "label": "Squintless",
+    "mode": "light"
+  },
+  {
+    "id": "squirrelsong-dark",
+    "label": "Squirrelsong Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "srcery",
+    "label": "Srcery",
+    "mode": "dark"
+  },
+  {
+    "id": "starlight",
+    "label": "Starlight",
+    "mode": "dark"
+  },
+  {
+    "id": "sublette",
+    "label": "Sublette",
+    "mode": "dark"
+  },
+  {
+    "id": "subliminal",
+    "label": "Subliminal",
+    "mode": "dark"
+  },
+  {
+    "id": "sugarplum",
+    "label": "Sugarplum",
+    "mode": "dark"
+  },
+  {
+    "id": "sumi-linen",
+    "label": "Sumi Linen",
+    "mode": "light"
+  },
+  {
+    "id": "sumi-phosphor",
+    "label": "Sumi Phosphor",
+    "mode": "dark"
+  },
+  {
+    "id": "sundried",
+    "label": "Sundried",
+    "mode": "dark"
+  },
+  {
+    "id": "sunset-drive",
+    "label": "Sunset Drive",
+    "mode": "dark"
+  },
+  {
+    "id": "symfonic",
+    "label": "Symfonic",
+    "mode": "dark"
+  },
+  {
+    "id": "synthwave",
+    "label": "Synthwave",
+    "mode": "dark"
+  },
+  {
+    "id": "synthwave-alpha",
+    "label": "Synthwave Alpha",
+    "mode": "dark"
+  },
+  {
+    "id": "synthwave-everything",
+    "label": "Synthwave Everything",
+    "mode": "dark"
+  },
+  {
+    "id": "tango-adapted",
+    "label": "Tango Adapted",
+    "mode": "light"
+  },
+  {
+    "id": "tango-half-adapted",
+    "label": "Tango Half Adapted",
+    "mode": "light"
+  },
+  {
+    "id": "tearout",
+    "label": "Tearout",
+    "mode": "dark"
+  },
+  {
+    "id": "teerb",
+    "label": "Teerb",
+    "mode": "dark"
+  },
+  {
+    "id": "terafox",
+    "label": "Terafox",
+    "mode": "dark"
+  },
+  {
+    "id": "terminal-basic",
+    "label": "Terminal Basic",
+    "mode": "light"
+  },
+  {
+    "id": "terminal-basic-dark",
+    "label": "Terminal Basic Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "terminal-green-1999",
+    "label": "Terminal Green 1999",
+    "mode": "dark"
+  },
+  {
+    "id": "thayer-bright",
+    "label": "Thayer Bright",
+    "mode": "dark"
+  },
+  {
+    "id": "the-hulk",
+    "label": "The Hulk",
+    "mode": "dark"
+  },
+  {
+    "id": "tinacious-design-dark",
+    "label": "Tinacious Design Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "tinacious-design-light",
+    "label": "Tinacious Design Light",
+    "mode": "light"
+  },
+  {
+    "id": "token-dark",
+    "label": "Token Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "token-light",
+    "label": "Token Light",
+    "mode": "light"
+  },
+  {
+    "id": "tokyonight",
+    "label": "TokyoNight",
+    "mode": "dark"
+  },
+  {
+    "id": "tokyonight-day",
+    "label": "TokyoNight Day",
+    "mode": "light"
+  },
+  {
+    "id": "tokyonight-moon",
+    "label": "TokyoNight Moon",
+    "mode": "dark"
+  },
+  {
+    "id": "tokyonight-night",
+    "label": "TokyoNight Night",
+    "mode": "dark"
+  },
+  {
+    "id": "tokyonight-storm",
+    "label": "TokyoNight Storm",
+    "mode": "dark"
+  },
+  {
+    "id": "tomorrow",
+    "label": "Tomorrow",
+    "mode": "light"
+  },
+  {
+    "id": "tomorrow-night",
+    "label": "Tomorrow Night",
+    "mode": "dark"
+  },
+  {
+    "id": "tomorrow-night-blue",
+    "label": "Tomorrow Night Blue",
+    "mode": "dark"
+  },
+  {
+    "id": "tomorrow-night-bright",
+    "label": "Tomorrow Night Bright",
+    "mode": "dark"
+  },
+  {
+    "id": "tomorrow-night-burns",
+    "label": "Tomorrow Night Burns",
+    "mode": "dark"
+  },
+  {
+    "id": "tomorrow-night-eighties",
+    "label": "Tomorrow Night Eighties",
+    "mode": "dark"
+  },
+  {
+    "id": "toy-chest",
+    "label": "Toy Chest",
+    "mode": "dark"
+  },
+  {
+    "id": "traffic",
+    "label": "traffic",
+    "mode": "dark"
+  },
+  {
+    "id": "trapped-in-amber",
+    "label": "Trapped in Amber",
+    "mode": "dark"
+  },
+  {
+    "id": "treehouse",
+    "label": "Treehouse",
+    "mode": "dark"
+  },
+  {
+    "id": "twilight",
+    "label": "Twilight",
+    "mode": "dark"
+  },
+  {
+    "id": "ubuntu",
+    "label": "Ubuntu",
+    "mode": "dark"
+  },
+  {
+    "id": "ultra-dark",
+    "label": "Ultra Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "ultra-violent",
+    "label": "Ultra Violent",
+    "mode": "dark"
+  },
+  {
+    "id": "under-the-sea",
+    "label": "Under The Sea",
+    "mode": "dark"
+  },
+  {
+    "id": "unikitty",
+    "label": "Unikitty",
+    "mode": "light"
+  },
+  {
+    "id": "urban",
+    "label": "urban",
+    "mode": "dark"
+  },
+  {
+    "id": "urple",
+    "label": "Urple",
+    "mode": "dark"
+  },
+  {
+    "id": "vague",
+    "label": "Vague",
+    "mode": "dark"
+  },
+  {
+    "id": "vaporwave-sunset",
+    "label": "Vaporwave Sunset",
+    "mode": "dark"
+  },
+  {
+    "id": "vaughn",
+    "label": "Vaughn",
+    "mode": "dark"
+  },
+  {
+    "id": "velvet-court",
+    "label": "Velvet Court",
+    "mode": "dark"
+  },
+  {
+    "id": "vercel",
+    "label": "Vercel",
+    "mode": "dark"
+  },
+  {
+    "id": "verdigris",
+    "label": "Verdigris",
+    "mode": "dark"
+  },
+  {
+    "id": "vesper",
+    "label": "Vesper",
+    "mode": "dark"
+  },
+  {
+    "id": "vibrant-ink",
+    "label": "Vibrant Ink",
+    "mode": "dark"
+  },
+  {
+    "id": "vimbones",
+    "label": "Vimbones",
+    "mode": "light"
+  },
+  {
+    "id": "violet-dark",
+    "label": "Violet Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "violet-light",
+    "label": "Violet Light",
+    "mode": "light"
+  },
+  {
+    "id": "violite",
+    "label": "Violite",
+    "mode": "dark"
+  },
+  {
+    "id": "warm-neon",
+    "label": "Warm Neon",
+    "mode": "dark"
+  },
+  {
+    "id": "wez",
+    "label": "Wez",
+    "mode": "dark"
+  },
+  {
+    "id": "whimsy",
+    "label": "Whimsy",
+    "mode": "dark"
+  },
+  {
+    "id": "wild-cherry",
+    "label": "Wild Cherry",
+    "mode": "dark"
+  },
+  {
+    "id": "wilmersdorf",
+    "label": "Wilmersdorf",
+    "mode": "dark"
+  },
+  {
+    "id": "wombat",
+    "label": "Wombat",
+    "mode": "dark"
+  },
+  {
+    "id": "wryan",
+    "label": "Wryan",
+    "mode": "dark"
+  },
+  {
+    "id": "xcode-dark",
+    "label": "Xcode Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "xcode-dark-hc",
+    "label": "Xcode Dark hc",
+    "mode": "dark"
+  },
+  {
+    "id": "xcode-light",
+    "label": "Xcode Light",
+    "mode": "light"
+  },
+  {
+    "id": "xcode-light-hc",
+    "label": "Xcode Light hc",
+    "mode": "light"
+  },
+  {
+    "id": "xcode-wwdc",
+    "label": "Xcode WWDC",
+    "mode": "dark"
+  },
+  {
+    "id": "y2k-chrome",
+    "label": "Y2K Chrome",
+    "mode": "light"
+  },
+  {
+    "id": "zenbones",
+    "label": "Zenbones",
+    "mode": "light"
+  },
+  {
+    "id": "zenbones-dark",
+    "label": "Zenbones Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "zenbones-light",
+    "label": "Zenbones Light",
+    "mode": "light"
+  },
+  {
+    "id": "zenburn",
+    "label": "Zenburn",
+    "mode": "dark"
+  },
+  {
+    "id": "zenburned",
+    "label": "Zenburned",
+    "mode": "dark"
+  },
+  {
+    "id": "zenwritten-dark",
+    "label": "Zenwritten Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "zenwritten-light",
+    "label": "Zenwritten Light",
+    "mode": "light"
+  }
+]

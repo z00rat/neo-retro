@@ -918,6 +918,7 @@
       "name": "image",
       "type": "registry:ui",
       "registryDependencies": [
+        "badge",
         "button",
         "dialog",
         "dropdown-menu"
@@ -1874,6 +1875,10 @@
           "type": "registry:file"
         },
         {
+          "path": "src/lib/registry/ui/style/favorite-themes.ts",
+          "type": "registry:file"
+        },
+        {
           "path": "src/lib/registry/ui/style/index.ts",
           "type": "registry:file"
         },
@@ -1887,6 +1892,10 @@
         },
         {
           "path": "src/lib/registry/ui/style/theme-picker.svelte",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/style/themes.json",
           "type": "registry:file"
         },
         {

@@ -207,15 +207,15 @@ let hasErrors = false;
 // 1. UNREGISTERED FILES
 if (unregisteredFiles.length > 0) {
   hasErrors = true;
-  console.log(`${bold(yellow('⚠️  UNREGISTERED FILES'))} (In FS but not in registry.json)`);
-  unregisteredFiles.forEach((f) => console.log(`  ${red('✗')} ${f}`));
+  console.log(`${bold(yellow('[!] UNREGISTERED FILES'))} (In FS but not in registry.json)`);
+  unregisteredFiles.forEach((f) => console.log(`  ${red('[X]')} ${f}`));
   console.log('');
 }
 
 // 2. STRUCTURAL ISSUES
 if (structuralIssues.length > 0) {
   hasErrors = true;
-  console.log(`${bold(red('✖  STRUCTURAL ERRORS'))} (Missing fields or invalid enums)`);
+  console.log(`${bold(red('[X] STRUCTURAL ERRORS'))} (Missing fields or invalid enums)`);
   structuralIssues.forEach((s) => {
     console.log(`  ${bold(s.item)}:`);
     s.issues.forEach((i) => console.log(`    - ${i}`));
@@ -226,7 +226,7 @@ if (structuralIssues.length > 0) {
 // 3. FILE SYNC
 if (fileDeltas.length > 0) {
   hasErrors = true;
-  console.log(`${bold(red('✖  FILE SYNC ERRORS'))} (Registry paths pointing to non-existent files)`);
+  console.log(`${bold(red('[X] FILE SYNC ERRORS'))} (Registry paths pointing to non-existent files)`);
   fileDeltas.forEach((d) => console.log(`  ${bold(d.item)}: ${red(d.path)} (${d.status})`));
   console.log('');
 }
@@ -234,7 +234,7 @@ if (fileDeltas.length > 0) {
 // 4. DEPENDENCY SYNC
 if (depDeltas.length > 0) {
   hasErrors = true;
-  console.log(`${bold(yellow('⚖  DEPENDENCY MISMATCHES'))}`);
+  console.log(`${bold(yellow('[!] DEPENDENCY MISMATCHES'))}`);
   depDeltas.forEach((d) => {
     console.log(`  ${bold(d.item)}:`);
     if (d.missingReg.length > 0) console.log(`    ${red('Missing')} Registry Dependencies: ${d.missingReg.join(', ')}`);
@@ -251,9 +251,9 @@ if (depDeltas.length > 0) {
 
 console.log(`${bold(blue('=============================================='))}`);
 if (!hasErrors) {
-  console.log(`${green('✔ SUCCESS:')} System is perfectly in sync!`);
+  console.log(`${green('[OK] SUCCESS:')} System is perfectly in sync!`);
 } else {
-  console.log(`${red('✘ FAIL:')} Integrity issues detected. Review the report above.`);
+  console.log(`${red('[FAIL]:')} Integrity issues detected. Review the report above.`);
 }
 console.log(`${bold(blue('=============================================='))}\n`);
 

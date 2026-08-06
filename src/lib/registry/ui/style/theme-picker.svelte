@@ -7,13 +7,30 @@
   import * as Dialog from '$lib/registry/ui/dialog';
   import * as InputGroup from '$lib/registry/ui/input-group';
 
-  import { applyTheme, defaultTheme, Themes } from './themes.ts';
+  import { FavoriteThemes } from './favorite-themes.ts';
+  import { applyTheme, resetToDefaultTheme, Themes } from './themes.ts';
 
   let { class: className = '' }: { class?: string } = $props();
 
   let searchQuery = $state('');
 
-  let filteredThemes = $derived(Themes.filter((t) => t.label.toLowerCase().includes(searchQuery.trim().toLowerCase())));
+  const favoriteSet = new Set(FavoriteThemes);
+  const favoriteIndexMap = new Map(FavoriteThemes.map((id, index) => [id, index]));
+
+  let filteredThemes = $derived(
+    Themes.filter((t) => t.label.toLowerCase().includes(searchQuery.trim().toLowerCase())).sort((a, b) => {
+      const isAFav = favoriteSet.has(a.id);
+      const isBFav = favoriteSet.has(b.id);
+
+      if (isAFav && isBFav) {
+        return (favoriteIndexMap.get(a.id) ?? 0) - (favoriteIndexMap.get(b.id) ?? 0);
+      }
+      if (isAFav) return -1;
+      if (isBFav) return 1;
+
+      return a.label.localeCompare(b.label);
+    }),
+  );
 </script>
 
 <Dialog.Root>
@@ -92,7 +109,7 @@
     <Dialog.Footer showCloseButton closeColor="red">
       <Dialog.Close>
         {#snippet child({ props })}
-          <Button {...props} color="magenta" class="sm:w-auto w-full" onclick={() => applyTheme(defaultTheme)}
+          <Button {...props} color="magenta" class="sm:w-auto w-full" onclick={() => resetToDefaultTheme()}
             >Reset</Button
           >
         {/snippet}
