@@ -22,7 +22,6 @@ export function getDefaultThemeForMode(currentMode?: string | null): string {
   return currentMode === 'light' ? defaultLightTheme : defaultDarkTheme;
 }
 
-export const defaultTheme = defaultDarkTheme;
 export const defaultMode = 'system';
 
 export function applyTheme(id: string) {

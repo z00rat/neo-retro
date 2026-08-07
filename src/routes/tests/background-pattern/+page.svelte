@@ -11,10 +11,10 @@
   import { Label } from '$lib/registry/ui/label';
   import * as Select from '$lib/registry/ui/select';
   import * as ToggleGroup from '$lib/registry/ui/toggle-group';
-  import type { Color } from '$lib/utils';
+  import type { Color, inverseColor } from '$lib/utils';
 
   type PatternSettings = {
-    color?: Color;
+    color?: Color | inverseColor;
     size: number;
     strokeWidth: number;
     rotation: number;
@@ -22,7 +22,7 @@
     mask: PatternMask;
   };
 
-  const colors: Color[] = [
+  const colors: (Color | inverseColor)[] = [
     'red',
     'green',
     'yellow',
@@ -37,6 +37,21 @@
     'bright-magenta',
     'bright-cyan',
     'bright-white',
+    'inverse',
+    'red-inverse',
+    'green-inverse',
+    'yellow-inverse',
+    'blue-inverse',
+    'magenta-inverse',
+    'cyan-inverse',
+    'white-inverse',
+    'bright-red-inverse',
+    'bright-green-inverse',
+    'bright-yellow-inverse',
+    'bright-blue-inverse',
+    'bright-magenta-inverse',
+    'bright-cyan-inverse',
+    'bright-white-inverse',
   ];
 
   const masks: { value: PatternMask; label: string }[] = PATTERN_MASKS.map((value) => ({
@@ -171,18 +186,21 @@
             <Label class="text-xs font-bold">section color</Label>
             <ToggleGroup.Root
               type="single"
-              color={control.color ?? 'cyan'}
+              color={((control.color ?? 'cyan').replace('-inverse', '') || 'cyan') as Color}
               size="sm"
               value={control.color ?? 'default'}
               onValueChange={(value) => {
-                control.color = value === 'default' || !value ? undefined : (value as Color);
+                control.color = value === 'default' || !value ? undefined : (value as Color | inverseColor);
               }}
               class="flex-wrap"
             >
               <ToggleGroup.Item value="default" aria-label="default">-</ToggleGroup.Item>
               {#each colors as color (color)}
+                {@const isBright = color.includes('bright-')}
+                {@const isInverse = color.includes('-inverse')}
+                {@const baseColor = color.replace('bright-', '').replace('-inverse', '')}
                 <ToggleGroup.Item value={color} aria-label={color}>
-                  {color.replace('bright-', '!')}
+                  {isBright ? '$' : ''}{baseColor}{isInverse ? '!' : ''}
                 </ToggleGroup.Item>
               {/each}
             </ToggleGroup.Root>

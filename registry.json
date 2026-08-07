@@ -2077,10 +2077,6 @@
           "type": "registry:file"
         },
         {
-          "path": "src/lib/registry/ui/tooltip/tooltip-root.svelte",
-          "type": "registry:file"
-        },
-        {
           "path": "src/lib/registry/ui/tooltip/tooltip-trigger.svelte",
           "type": "registry:file"
         },

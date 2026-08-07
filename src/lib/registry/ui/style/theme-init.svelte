@@ -4,11 +4,11 @@
   import { ModeWatcher } from 'mode-watcher';
   import type { Snippet } from 'svelte';
 
-  import { defaultMode, defaultTheme } from './themes.ts';
+  import { defaultDarkTheme, defaultMode } from './themes.ts';
 
   let { children } = $props<{ children?: Snippet }>();
 </script>
 
-<ModeWatcher {defaultTheme} {defaultMode} />
+<ModeWatcher defaultTheme={defaultDarkTheme} {defaultMode} />
 
 {@render children?.()}
