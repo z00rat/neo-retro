@@ -36,4 +36,3 @@ For custom content using the system color utilities, set a supported `data-color
 ## Themes
 
 Theme IDs and their light/dark modes come from `style/themes.json`; palette values come from `style/colors.css`. Do not hard-code a theme ID as a universal default or copy palette hex values from one theme. When a consumer uses the style package, follow [integration.md](integration.md) for initialization.
-

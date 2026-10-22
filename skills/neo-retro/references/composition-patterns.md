@@ -34,7 +34,7 @@ This follows the card demo: namespace imports for compound components, explicit 
   import { Label } from '#lib/registry/ui/label/index.js';
 </script>
 
-<div class="flex flex-col gap-1.5">
+<div class="gap-1.5 flex flex-col">
   <Label for="email" class="text-sm font-bold">Email</Label>
   <Input id="email" type="email" autocomplete="email" placeholder="you@example.com" />
 </div>
@@ -49,9 +49,9 @@ Associate the label and control with matching `for`/`id`; add real validation an
   import { BackgroundPattern } from '#lib/registry/ui/background-pattern/index.js';
 </script>
 
-<section data-color="blue" class="relative border-b-4 border-black bg-clr py-12 text-on-clr">
+<section data-color="blue" class="border-black bg-clr py-12 text-on-clr relative border-b-4">
   <BackgroundPattern pattern="cross" size={16} rotation={45} />
-  <div class="container relative z-10 mx-auto max-w-3xl px-4">
+  <div class="max-w-3xl px-4 relative z-10 container mx-auto">
     <!-- Heading, short supporting copy, and primary action -->
   </div>
 </section>
@@ -64,4 +64,3 @@ Import `BackgroundPattern` from its installed component path. Keep the pattern b
 Many compound components export `Root` plus named parts. The repository's demos commonly use `import * as Card` and `<Card.Root>`, `<Card.Header>`, and `<Card.Content>`. Standalone controls commonly export a named component, such as `Button` or `Input`. Match the installed index exports rather than guessing from the visual name.
 
 Several interactive primitives are built on Bits UI. Preserve their trigger/content structure and state bindings. When customizing a dialog, menu, select, or popover, read its demo and source first; do not replace its focus, keyboard, or portal behavior with a hand-built visual imitation.
-

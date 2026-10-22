@@ -69,8 +69,7 @@
   https://neo-retro.zurat.dev/r/copy-button.json \\
   https://neo-retro.zurat.dev/r/privacy-consent-banner.json`;
 
-  const agentCommand =
-    `set -e
+  const agentCommand = `set -e
 mkdir -p .agent/skills/neo-retro/references
 curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
 for file in design-language tokens-and-styling components composition-patterns integration; do
@@ -210,7 +209,8 @@ done`;
             <Card.Description>
               The CLI loads available UI components from Neo-Retro's registry. <Badge color="white" class="font-mono"
                 >--all</Badge
-              > installs every UI component, including custom Neo-Retro components. Blocks are separate and must be added by URL.
+              > installs every UI component, including custom Neo-Retro components. Blocks are separate and must be added
+              by URL.
             </Card.Description>
           </Card.Header>
           <Card.Content class="space-y-6">
@@ -224,7 +224,8 @@ done`;
               variants={addVariants}
             />
             <p class="leading-relaxed font-medium text-sm">
-              To add registry blocks such as <Badge color="white" class="font-mono">confirm-dialog</Badge>, use their URLs:
+              To add registry blocks such as <Badge color="white" class="font-mono">confirm-dialog</Badge>, use their
+              URLs:
             </p>
             <CodeBlock shiki={codeBlockShiki} color="white" lang="bash" copy wrap code={blockCommand} />
           </Card.Content>

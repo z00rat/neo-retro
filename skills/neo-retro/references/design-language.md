@@ -25,4 +25,3 @@ For decorative accents such as patterns, keep the pattern behind content and lea
 - Use the semantic component or HTML element for the behavior. A clickable action should be a button or link, not a styled `div`.
 - Use readable foreground/background combinations. Theme palettes can vary, so do not assume a color name guarantees a particular contrast; use the theme's `on-*` pairing or the component's built-in text handling.
 - Keep motion restrained and respect reduced-motion behavior in custom animation.
-

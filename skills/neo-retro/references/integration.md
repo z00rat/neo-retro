@@ -24,4 +24,3 @@ The library stylesheet uses Tailwind CSS v4 and imports its palette, animation u
 - **Unstyled component:** check the global CSS import, Tailwind version, and source scanning for installed component files.
 - **Theme colors do not update:** verify `ThemeInit` or the consumer's existing theme provider is mounted and that the theme CSS is included.
 - **Missing utility class:** confirm the theme stylesheet is loaded and Tailwind scans the code containing the class.
-
