@@ -23,7 +23,7 @@
 	},
 	"aliases": {
 		"components": "#lib/components",
-		"utils": "#lib/utils.js",
+		"utils": "#lib/utils",
 		"ui": "#lib/components/ui",
 		"hooks": "#lib/hooks",
 		"lib": "#lib"
@@ -50,22 +50,27 @@
     '</Theme' +
     'Init>';
   const agentsMarkdown =
-    '- **Component Reference**: See `.agent/skills/neo-retro-common/SKILL.md` for shared types/colors and `.agent/skills/neo-retro-components/SKILL.md` for HTML tag replacements and props for all components.';
+    '- **Neo-Retro skill**: Follow `.agent/skills/neo-retro/SKILL.md` when building or changing UI with this design system. It links to focused references for visual guidance, tokens, component choices, examples, and setup.';
 
   const initVariants: CodeBlockVariant[] = [
-    { value: 'npm', code: 'npx shadcn-svelte@1.1.1 init' },
-    { value: 'pnpm', code: 'pnpm dlx shadcn-svelte@1.1.1 init' },
-    { value: 'bun', code: 'bun x shadcn-svelte@1.1.1 init' },
+    { value: 'npm', code: 'npx shadcn-svelte@latest init' },
+    { value: 'pnpm', code: 'pnpm dlx shadcn-svelte@latest init' },
+    { value: 'bun', code: 'bun x shadcn-svelte@latest init' },
   ];
 
   const addVariants: CodeBlockVariant[] = [
-    { value: 'npm', code: 'npx shadcn-svelte@1.1.1 add' },
-    { value: 'pnpm', code: 'pnpm dlx shadcn-svelte@1.1.1 add' },
-    { value: 'bun', code: 'bun x shadcn-svelte@1.1.1 add' },
+    { value: 'npm', code: 'npx shadcn-svelte@latest add' },
+    { value: 'pnpm', code: 'pnpm dlx shadcn-svelte@latest add' },
+    { value: 'bun', code: 'bun x shadcn-svelte@latest add' },
   ];
 
   const agentCommand =
-    'mkdir -p .agent/skills/neo-retro-common .agent/skills/neo-retro-components && curl -sL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro-common/SKILL.md -o .agent/skills/neo-retro-common/SKILL.md && curl -sL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro-components/SKILL.md -o .agent/skills/neo-retro-components/SKILL.md';
+    `set -e
+mkdir -p .agent/skills/neo-retro/references
+curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
+for file in design-language tokens-and-styling components composition-patterns integration; do
+  curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"
+done`;
 
   const dependencies = [
     { name: 'SvelteKit', url: 'https://github.com/sveltejs/kit' },

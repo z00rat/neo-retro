@@ -17,7 +17,7 @@ Create a `components.json` file in your project root with the following configur
 	},
 	"aliases": {
 		"components": "#lib/components",
-		"utils": "#lib/utils.js",
+		"utils": "#lib/utils",
 		"ui": "#lib/components/ui",
 		"hooks": "#lib/hooks",
 		"lib": "#lib"
@@ -32,7 +32,7 @@ Create a `components.json` file in your project root with the following configur
 Once saved, run the initialization command:
 
 ```bash
-bun x shadcn-svelte@1.1.1 init
+bun x shadcn-svelte@latest init
 ```
 
 ## 2. Add Components
@@ -40,7 +40,7 @@ bun x shadcn-svelte@1.1.1 init
 Run the add command to choose which components to install. You can press `a` to select all of them at once.
 
 ```bash
-bun x shadcn-svelte@1.1.1 add
+bun x shadcn-svelte@latest add
 ```
 
 ## 3. Setup Layout & Styles
@@ -64,14 +64,19 @@ Import and wrap your application in the `ThemeInit` component in your main layou
 
 ## Agent Skill
 
-Install the neo-retro skill for AI coding agents.
+Install the Neo-Retro skill for AI coding agents. It includes focused references for the design language, tokens, component choices, composition patterns, and integration.
 
 ```bash
-mkdir -p .agent/skills/neo-retro-common .agent/skills/neo-retro-components && curl -sL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro-common/SKILL.md -o .agent/skills/neo-retro-common/SKILL.md && curl -sL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro-components/SKILL.md -o .agent/skills/neo-retro-components/SKILL.md
+set -e
+mkdir -p .agent/skills/neo-retro/references
+curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
+for file in design-language tokens-and-styling components composition-patterns integration; do
+  curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"
+done
 ```
 
 Then add this to your project's `AGENTS.md`:
 
 ```markdown
-- **Component Reference**: See `.agent/skills/neo-retro-common/SKILL.md` for shared types/colors and `.agent/skills/neo-retro-components/SKILL.md` for HTML tag replacements and props for all components.
+- **Neo-Retro skill**: Follow `.agent/skills/neo-retro/SKILL.md` when building or changing UI with this design system. It links to focused references for visual guidance, tokens, component choices, examples, and setup.
 ```
