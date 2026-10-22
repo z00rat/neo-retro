@@ -5,6 +5,6 @@
 </script>
 
 <ThemeInit>
-  <div class="top-4 right-4 fixed z-50"><ThemePicker /></div>
+  <div class="top-4 right-4 fixed z-50"><ThemePicker backgroundColor="bright-black" /></div>
   {@render children?.()}
 </ThemeInit>

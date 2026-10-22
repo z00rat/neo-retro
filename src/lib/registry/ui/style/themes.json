@@ -10,6 +10,11 @@
     "mode": "dark"
   },
   {
+    "id": "13th-floor",
+    "label": "13th Floor",
+    "mode": "dark"
+  },
+  {
     "id": "3024-day",
     "label": "3024 Day",
     "mode": "light"
@@ -17,6 +22,11 @@
   {
     "id": "3024-night",
     "label": "3024 Night",
+    "mode": "dark"
+  },
+  {
+    "id": "5150-mode",
+    "label": "5150 Mode",
     "mode": "dark"
   },
   {
@@ -30,6 +40,11 @@
     "mode": "dark"
   },
   {
+    "id": "abandoned",
+    "label": "Abandoned",
+    "mode": "dark"
+  },
+  {
     "id": "abernathy",
     "label": "Abernathy",
     "mode": "dark"
@@ -37,6 +52,11 @@
   {
     "id": "acid-lime",
     "label": "Acid Lime",
+    "mode": "dark"
+  },
+  {
+    "id": "adobe-moon",
+    "label": "Adobe Moon",
     "mode": "dark"
   },
   {
@@ -60,8 +80,23 @@
     "mode": "dark"
   },
   {
+    "id": "after-hours",
+    "label": "After Hours",
+    "mode": "dark"
+  },
+  {
     "id": "afterglow",
     "label": "Afterglow",
+    "mode": "dark"
+  },
+  {
+    "id": "afterimage",
+    "label": "Afterimage",
+    "mode": "light"
+  },
+  {
+    "id": "agave-dusk",
+    "label": "Agave Dusk",
     "mode": "dark"
   },
   {
@@ -88,6 +123,16 @@
     "id": "amber-crt-retro",
     "label": "Amber CRT Retro",
     "mode": "dark"
+  },
+  {
+    "id": "analyzed-dark",
+    "label": "Analyzed Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "analyzed-light",
+    "label": "Analyzed Light",
+    "mode": "light"
   },
   {
     "id": "andromeda",
@@ -122,6 +167,11 @@
   {
     "id": "argonaut",
     "label": "Argonaut",
+    "mode": "dark"
+  },
+  {
+    "id": "arizona-monsoon",
+    "label": "Arizona Monsoon",
     "mode": "dark"
   },
   {
@@ -175,6 +225,16 @@
     "mode": "dark"
   },
   {
+    "id": "aurora-drift",
+    "label": "Aurora Drift",
+    "mode": "dark"
+  },
+  {
+    "id": "autumn-after-dark",
+    "label": "Autumn After Dark",
+    "mode": "dark"
+  },
+  {
     "id": "ayu",
     "label": "Ayu",
     "mode": "dark"
@@ -190,8 +250,18 @@
     "mode": "dark"
   },
   {
+    "id": "aztec-sunset",
+    "label": "Aztec Sunset",
+    "mode": "dark"
+  },
+  {
     "id": "banana-blueberry",
     "label": "Banana Blueberry",
+    "mode": "dark"
+  },
+  {
+    "id": "barrel-cactus",
+    "label": "Barrel Cactus",
     "mode": "dark"
   },
   {
@@ -210,8 +280,23 @@
     "mode": "dark"
   },
   {
+    "id": "belfry",
+    "label": "Belfry",
+    "mode": "dark"
+  },
+  {
     "id": "birds-of-paradise",
     "label": "Birds Of Paradise",
+    "mode": "dark"
+  },
+  {
+    "id": "black-box-recorder",
+    "label": "Black Box Recorder",
+    "mode": "dark"
+  },
+  {
+    "id": "black-cat",
+    "label": "Black Cat",
     "mode": "dark"
   },
   {
@@ -275,6 +360,11 @@
     "mode": "dark"
   },
   {
+    "id": "blood-moon",
+    "label": "Blood Moon",
+    "mode": "dark"
+  },
+  {
     "id": "blue-berry-pie",
     "label": "Blue Berry Pie",
     "mode": "dark"
@@ -290,6 +380,11 @@
     "mode": "dark"
   },
   {
+    "id": "blueprint",
+    "label": "Blueprint",
+    "mode": "light"
+  },
+  {
     "id": "bluloco-dark",
     "label": "Bluloco Dark",
     "mode": "dark"
@@ -297,6 +392,11 @@
   {
     "id": "bluloco-light",
     "label": "Bluloco Light",
+    "mode": "light"
+  },
+  {
+    "id": "bone-yard",
+    "label": "Bone Yard",
     "mode": "light"
   },
   {
@@ -365,9 +465,54 @@
     "mode": "light"
   },
   {
+    "id": "cactus-bloom",
+    "label": "Cactus Bloom",
+    "mode": "light"
+  },
+  {
     "id": "calamity",
     "label": "Calamity",
     "mode": "dark"
+  },
+  {
+    "id": "caliche",
+    "label": "Caliche",
+    "mode": "dark"
+  },
+  {
+    "id": "callie",
+    "label": "Callie",
+    "mode": "dark"
+  },
+  {
+    "id": "callie-light",
+    "label": "Callie Light",
+    "mode": "light"
+  },
+  {
+    "id": "candlelight",
+    "label": "Candlelight",
+    "mode": "dark"
+  },
+  {
+    "id": "candy-corn",
+    "label": "Candy Corn",
+    "mode": "light"
+  },
+  {
+    "id": "canyon-shadow",
+    "label": "Canyon Shadow",
+    "mode": "dark"
+  },
+  {
+    "id": "canyon-walnut",
+    "label": "Canyon Walnut",
+    "mode": "dark"
+  },
+  {
+    "id": "carbon-paper",
+    "label": "Carbon Paper",
+    "mode": "light"
   },
   {
     "id": "carbonfox",
@@ -400,6 +545,11 @@
     "mode": "dark"
   },
   {
+    "id": "catthode",
+    "label": "Catthode",
+    "mode": "dark"
+  },
+  {
     "id": "cga",
     "label": "CGA",
     "mode": "dark"
@@ -420,8 +570,18 @@
     "mode": "dark"
   },
   {
+    "id": "charcoal",
+    "label": "Charcoal",
+    "mode": "dark"
+  },
+  {
     "id": "chester",
     "label": "Chester",
+    "mode": "dark"
+  },
+  {
+    "id": "cholla",
+    "label": "Cholla",
     "mode": "dark"
   },
   {
@@ -465,9 +625,19 @@
     "mode": "light"
   },
   {
+    "id": "clockwork-gold",
+    "label": "Clockwork Gold",
+    "mode": "dark"
+  },
+  {
     "id": "clrs",
     "label": "CLRS",
     "mode": "light"
+  },
+  {
+    "id": "clu",
+    "label": "Clu",
+    "mode": "dark"
   },
   {
     "id": "cobalt-neon",
@@ -495,8 +665,18 @@
     "mode": "dark"
   },
   {
+    "id": "cobweb",
+    "label": "Cobweb",
+    "mode": "dark"
+  },
+  {
     "id": "coffee-theme",
     "label": "Coffee Theme",
+    "mode": "light"
+  },
+  {
+    "id": "cold-storage",
+    "label": "Cold Storage",
     "mode": "light"
   },
   {
@@ -505,8 +685,38 @@
     "mode": "dark"
   },
   {
+    "id": "copper-canyon",
+    "label": "Copper Canyon",
+    "mode": "dark"
+  },
+  {
+    "id": "count-terminal",
+    "label": "Count Terminal",
+    "mode": "dark"
+  },
+  {
+    "id": "crt-afterglow",
+    "label": "CRT Afterglow",
+    "mode": "dark"
+  },
+  {
     "id": "crt-amber",
     "label": "CRT Amber",
+    "mode": "dark"
+  },
+  {
+    "id": "crypt-keeper",
+    "label": "Crypt Keeper",
+    "mode": "dark"
+  },
+  {
+    "id": "crystal-ball",
+    "label": "Crystal Ball",
+    "mode": "dark"
+  },
+  {
+    "id": "cursed-vhs",
+    "label": "Cursed VHS",
     "mode": "dark"
   },
   {
@@ -550,6 +760,11 @@
     "mode": "dark"
   },
   {
+    "id": "dark-2026",
+    "label": "Dark 2026",
+    "mode": "dark"
+  },
+  {
     "id": "dark-modern",
     "label": "Dark Modern",
     "mode": "dark"
@@ -590,13 +805,28 @@
     "mode": "light"
   },
   {
+    "id": "daybreaker",
+    "label": "Daybreaker",
+    "mode": "light"
+  },
+  {
     "id": "dayfox",
     "label": "Dayfox",
     "mode": "light"
   },
   {
+    "id": "dead-letter-office",
+    "label": "Dead Letter Office",
+    "mode": "dark"
+  },
+  {
     "id": "deep",
     "label": "Deep",
+    "mode": "dark"
+  },
+  {
+    "id": "deep-current",
+    "label": "Deep Current",
     "mode": "dark"
   },
   {
@@ -605,8 +835,43 @@
     "mode": "dark"
   },
   {
+    "id": "desert-bloom",
+    "label": "Desert Bloom",
+    "mode": "dark"
+  },
+  {
+    "id": "desert-moon",
+    "label": "Desert Moon",
+    "mode": "dark"
+  },
+  {
+    "id": "desert-morning",
+    "label": "Desert Morning",
+    "mode": "light"
+  },
+  {
+    "id": "desert-rose",
+    "label": "Desert Rose",
+    "mode": "dark"
+  },
+  {
+    "id": "desert-thunder",
+    "label": "Desert Thunder",
+    "mode": "dark"
+  },
+  {
+    "id": "detroit-after-dark",
+    "label": "Detroit After Dark",
+    "mode": "dark"
+  },
+  {
     "id": "detuned",
     "label": "Detuned",
+    "mode": "dark"
+  },
+  {
+    "id": "diary-of-a-lunatic",
+    "label": "Diary of a Lunatic",
     "mode": "dark"
   },
   {
@@ -665,6 +930,16 @@
     "mode": "dark"
   },
   {
+    "id": "dracula-high-contrast",
+    "label": "Dracula+ High Contrast",
+    "mode": "dark"
+  },
+  {
+    "id": "dream-onward",
+    "label": "Dream Onward",
+    "mode": "dark"
+  },
+  {
     "id": "driftwood",
     "label": "Driftwood",
     "mode": "dark"
@@ -685,6 +960,11 @@
     "mode": "dark"
   },
   {
+    "id": "earl-grey",
+    "label": "Earl Grey",
+    "mode": "light"
+  },
+  {
     "id": "earthsong",
     "label": "Earthsong",
     "mode": "dark"
@@ -692,6 +972,21 @@
   {
     "id": "eclipse",
     "label": "Eclipse",
+    "mode": "dark"
+  },
+  {
+    "id": "ectoplasm",
+    "label": "Ectoplasm",
+    "mode": "dark"
+  },
+  {
+    "id": "eight-hundred",
+    "label": "Eight Hundred",
+    "mode": "dark"
+  },
+  {
+    "id": "electric-voodoo",
+    "label": "Electric Voodoo",
     "mode": "dark"
   },
   {
@@ -725,6 +1020,21 @@
     "mode": "dark"
   },
   {
+    "id": "ember",
+    "label": "Ember",
+    "mode": "dark"
+  },
+  {
+    "id": "ember-peak",
+    "label": "Ember Peak",
+    "mode": "dark"
+  },
+  {
+    "id": "emberglass",
+    "label": "Emberglass",
+    "mode": "dark"
+  },
+  {
     "id": "embers-dark",
     "label": "Embers Dark",
     "mode": "dark"
@@ -747,6 +1057,11 @@
   {
     "id": "espresso-libre",
     "label": "Espresso Libre",
+    "mode": "dark"
+  },
+  {
+    "id": "eventide",
+    "label": "Eventide",
     "mode": "dark"
   },
   {
@@ -783,6 +1098,21 @@
     "id": "everforest-light-soft",
     "label": "Everforest Light Soft",
     "mode": "light"
+  },
+  {
+    "id": "evergreen",
+    "label": "Evergreen",
+    "mode": "dark"
+  },
+  {
+    "id": "evh-frankentone",
+    "label": "EVH FrankenTone",
+    "mode": "dark"
+  },
+  {
+    "id": "eyesclosed",
+    "label": "eyesclosed",
+    "mode": "dark"
   },
   {
     "id": "fahrenheit",
@@ -865,6 +1195,11 @@
     "mode": "dark"
   },
   {
+    "id": "forged-in-steel",
+    "label": "Forged in Steel",
+    "mode": "dark"
+  },
+  {
     "id": "framer",
     "label": "Framer",
     "mode": "dark"
@@ -877,6 +1212,11 @@
   {
     "id": "frostbyte",
     "label": "Frostbyte",
+    "mode": "light"
+  },
+  {
+    "id": "frostline",
+    "label": "Frostline",
     "mode": "light"
   },
   {
@@ -895,8 +1235,18 @@
     "mode": "dark"
   },
   {
+    "id": "ghost-circuit",
+    "label": "Ghost Circuit",
+    "mode": "dark"
+  },
+  {
     "id": "ghostty-default-style-dark",
     "label": "Ghostty Default Style Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "gilded-forest-dark",
+    "label": "Gilded-Forest-Dark",
     "mode": "dark"
   },
   {
@@ -970,6 +1320,26 @@
     "mode": "dark"
   },
   {
+    "id": "golden-mischief",
+    "label": "Golden Mischief",
+    "mode": "light"
+  },
+  {
+    "id": "golden-retriever-cream",
+    "label": "Golden Retriever Cream",
+    "mode": "light"
+  },
+  {
+    "id": "golden-retriever-honey",
+    "label": "Golden Retriever Honey",
+    "mode": "light"
+  },
+  {
+    "id": "golden-retriever-red",
+    "label": "Golden Retriever Red",
+    "mode": "light"
+  },
+  {
     "id": "grape",
     "label": "Grape",
     "mode": "dark"
@@ -985,13 +1355,38 @@
     "mode": "dark"
   },
   {
+    "id": "graveyard-shift",
+    "label": "Graveyard Shift",
+    "mode": "dark"
+  },
+  {
+    "id": "great-pumpkin",
+    "label": "Great Pumpkin",
+    "mode": "light"
+  },
+  {
     "id": "green-phosphor-crt",
     "label": "Green Phosphor CRT",
     "mode": "dark"
   },
   {
+    "id": "green-screen",
+    "label": "Green Screen",
+    "mode": "dark"
+  },
+  {
     "id": "grey-green",
     "label": "Grey Green",
+    "mode": "dark"
+  },
+  {
+    "id": "grok-day",
+    "label": "Grok Day",
+    "mode": "light"
+  },
+  {
+    "id": "grok-night",
+    "label": "Grok Night",
     "mode": "dark"
   },
   {
@@ -1055,6 +1450,16 @@
     "mode": "dark"
   },
   {
+    "id": "harvest-moon",
+    "label": "Harvest Moon",
+    "mode": "dark"
+  },
+  {
+    "id": "haunted-house",
+    "label": "Haunted House",
+    "mode": "dark"
+  },
+  {
     "id": "havn-daggry",
     "label": "Havn Daggry",
     "mode": "light"
@@ -1080,6 +1485,21 @@
     "mode": "dark"
   },
   {
+    "id": "hellfire",
+    "label": "Hellfire",
+    "mode": "dark"
+  },
+  {
+    "id": "high-desert-snow",
+    "label": "High Desert Snow",
+    "mode": "light"
+  },
+  {
+    "id": "high-voltage-highway",
+    "label": "High Voltage Highway",
+    "mode": "dark"
+  },
+  {
     "id": "highway",
     "label": "Highway",
     "mode": "dark"
@@ -1092,6 +1512,21 @@
   {
     "id": "hivacruz",
     "label": "Hivacruz",
+    "mode": "dark"
+  },
+  {
+    "id": "hn-after-dark",
+    "label": "HN After Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "hn-classic",
+    "label": "HN Classic",
+    "mode": "light"
+  },
+  {
+    "id": "hocus-pocus",
+    "label": "Hocus Pocus",
     "mode": "dark"
   },
   {
@@ -1120,6 +1555,11 @@
     "mode": "light"
   },
   {
+    "id": "horizons",
+    "label": "Horizons",
+    "mode": "light"
+  },
+  {
     "id": "hot-dog-stand-mustard",
     "label": "Hot Dog Stand (Mustard)",
     "mode": "light"
@@ -1132,6 +1572,16 @@
   {
     "id": "hybrid",
     "label": "Hybrid",
+    "mode": "dark"
+  },
+  {
+    "id": "hyper",
+    "label": "Hyper",
+    "mode": "dark"
+  },
+  {
+    "id": "hysterical-frequency",
+    "label": "Hysterical Frequency",
     "mode": "dark"
   },
   {
@@ -1165,6 +1615,11 @@
     "mode": "light"
   },
   {
+    "id": "icy-glacier",
+    "label": "Icy Glacier",
+    "mode": "light"
+  },
+  {
     "id": "idea",
     "label": "Idea",
     "mode": "dark"
@@ -1173,6 +1628,16 @@
     "id": "idle-toes",
     "label": "Idle Toes",
     "mode": "dark"
+  },
+  {
+    "id": "iglass-dark",
+    "label": "iglass Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "iglass-light",
+    "label": "iglass Light",
+    "mode": "light"
   },
   {
     "id": "ir-black",
@@ -1188,6 +1653,16 @@
     "id": "irix-terminal",
     "label": "IRIX Terminal",
     "mode": "dark"
+  },
+  {
+    "id": "isocon-dark",
+    "label": "Isocon Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "isocon-light",
+    "label": "Isocon Light",
+    "mode": "light"
   },
   {
     "id": "iterm2-dark-background",
@@ -1235,6 +1710,11 @@
     "mode": "light"
   },
   {
+    "id": "jack-o-lantern",
+    "label": "Jack O' Lantern",
+    "mode": "dark"
+  },
+  {
     "id": "jackie-brown",
     "label": "Jackie Brown",
     "mode": "dark"
@@ -1267,6 +1747,16 @@
   {
     "id": "jubi",
     "label": "Jubi",
+    "mode": "dark"
+  },
+  {
+    "id": "jump-start",
+    "label": "Jump Start",
+    "mode": "dark"
+  },
+  {
+    "id": "jute-espresso",
+    "label": "Jute Espresso",
     "mode": "dark"
   },
   {
@@ -1350,6 +1840,11 @@
     "mode": "light"
   },
   {
+    "id": "kashmir-nights",
+    "label": "Kashmir Nights",
+    "mode": "dark"
+  },
+  {
     "id": "keys-ocean-sunset",
     "label": "Keys Ocean Sunset",
     "mode": "dark"
@@ -1395,6 +1890,11 @@
     "mode": "dark"
   },
   {
+    "id": "kwyjibo",
+    "label": "Kwyjibo",
+    "mode": "dark"
+  },
+  {
     "id": "lab-fox",
     "label": "Lab Fox",
     "mode": "dark"
@@ -1402,6 +1902,11 @@
   {
     "id": "laser",
     "label": "Laser",
+    "mode": "dark"
+  },
+  {
+    "id": "last-broadcast",
+    "label": "Last Broadcast",
     "mode": "dark"
   },
   {
@@ -1415,8 +1920,18 @@
     "mode": "dark"
   },
   {
+    "id": "lemon-graphite",
+    "label": "Lemon Graphite",
+    "mode": "dark"
+  },
+  {
     "id": "letterpress",
     "label": "Letterpress",
+    "mode": "light"
+  },
+  {
+    "id": "light-2026",
+    "label": "Light 2026",
     "mode": "light"
   },
   {
@@ -1433,6 +1948,16 @@
     "id": "liquid-carbon-transparent",
     "label": "Liquid Carbon Transparent",
     "mode": "dark"
+  },
+  {
+    "id": "lit-cell",
+    "label": "Lit Cell",
+    "mode": "dark"
+  },
+  {
+    "id": "lit-cell-light",
+    "label": "Lit Cell Light",
+    "mode": "light"
   },
   {
     "id": "london-bonfire-night",
@@ -1460,9 +1985,24 @@
     "mode": "dark"
   },
   {
+    "id": "lunar-dust",
+    "label": "Lunar Dust",
+    "mode": "light"
+  },
+  {
+    "id": "madman-s-diary",
+    "label": "Madman's Diary",
+    "mode": "dark"
+  },
+  {
     "id": "man-page",
     "label": "Man Page",
     "mode": "light"
+  },
+  {
+    "id": "maple-jute",
+    "label": "Maple Jute",
+    "mode": "dark"
   },
   {
     "id": "mariana",
@@ -1530,6 +2070,16 @@
     "mode": "dark"
   },
   {
+    "id": "mesa-blue",
+    "label": "Mesa Blue",
+    "mode": "dark"
+  },
+  {
+    "id": "mesa-twilight",
+    "label": "Mesa Twilight",
+    "mode": "dark"
+  },
+  {
     "id": "mesila-one",
     "label": "Mesila One",
     "mode": "dark"
@@ -1552,6 +2102,16 @@
   {
     "id": "midnight-in-mojave",
     "label": "Midnight In Mojave",
+    "mode": "dark"
+  },
+  {
+    "id": "midnight-rambler",
+    "label": "Midnight Rambler",
+    "mode": "dark"
+  },
+  {
+    "id": "mindcrime",
+    "label": "Mindcrime",
     "mode": "dark"
   },
   {
@@ -1607,6 +2167,11 @@
   {
     "id": "molokai",
     "label": "Molokai",
+    "mode": "dark"
+  },
+  {
+    "id": "molten-core",
+    "label": "Molten Core",
     "mode": "dark"
   },
   {
@@ -1685,6 +2250,16 @@
     "mode": "light"
   },
   {
+    "id": "monsoon-mesa",
+    "label": "Monsoon Mesa",
+    "mode": "dark"
+  },
+  {
+    "id": "monster-mash",
+    "label": "Monster Mash",
+    "mode": "dark"
+  },
+  {
     "id": "moonfly",
     "label": "Moonfly",
     "mode": "dark"
@@ -1695,8 +2270,23 @@
     "mode": "light"
   },
   {
+    "id": "motel-vacancy",
+    "label": "Motel Vacancy",
+    "mode": "dark"
+  },
+  {
+    "id": "moving-signals",
+    "label": "Moving Signals",
+    "mode": "dark"
+  },
+  {
     "id": "n0tch2k",
     "label": "N0Tch2K",
+    "mode": "dark"
+  },
+  {
+    "id": "nachtschicht",
+    "label": "Nachtschicht",
     "mode": "dark"
   },
   {
@@ -1717,6 +2307,11 @@
   {
     "id": "neon",
     "label": "Neon",
+    "mode": "dark"
+  },
+  {
+    "id": "neon-analog",
+    "label": "Neon Analog",
     "mode": "dark"
   },
   {
@@ -1753,6 +2348,16 @@
     "id": "night-owlish-light",
     "label": "Night Owlish Light",
     "mode": "light"
+  },
+  {
+    "id": "night-pharmacy",
+    "label": "Night Pharmacy",
+    "mode": "dark"
+  },
+  {
+    "id": "nightfall",
+    "label": "Nightfall",
+    "mode": "dark"
   },
   {
     "id": "nightfox",
@@ -1855,6 +2460,11 @@
     "mode": "dark"
   },
   {
+    "id": "northstar",
+    "label": "Northstar",
+    "mode": "dark"
+  },
+  {
     "id": "novel",
     "label": "Novel",
     "mode": "light"
@@ -1862,6 +2472,11 @@
   {
     "id": "novmbr",
     "label": "novmbr",
+    "mode": "dark"
+  },
+  {
+    "id": "numbers-station",
+    "label": "Numbers Station",
     "mode": "dark"
   },
   {
@@ -1880,6 +2495,11 @@
     "mode": "dark"
   },
   {
+    "id": "obsurdian",
+    "label": "Obsurdian",
+    "mode": "dark"
+  },
+  {
     "id": "ocean",
     "label": "Ocean",
     "mode": "dark"
@@ -1892,6 +2512,11 @@
   {
     "id": "oceanic-next",
     "label": "Oceanic Next",
+    "mode": "dark"
+  },
+  {
+    "id": "ocotillo",
+    "label": "Ocotillo",
     "mode": "dark"
   },
   {
@@ -1975,6 +2600,16 @@
     "mode": "dark"
   },
   {
+    "id": "ozz-s-blizzard",
+    "label": "Ozz's Blizzard",
+    "mode": "dark"
+  },
+  {
+    "id": "painted-desert",
+    "label": "Painted Desert",
+    "mode": "dark"
+  },
+  {
     "id": "pale-night-hc",
     "label": "Pale Night Hc",
     "mode": "dark"
@@ -1985,9 +2620,24 @@
     "mode": "dark"
   },
   {
+    "id": "paper-tiger",
+    "label": "Paper Tiger",
+    "mode": "light"
+  },
+  {
     "id": "paraiso-dark",
     "label": "Paraiso Dark",
     "mode": "dark"
+  },
+  {
+    "id": "paranoid-circuit",
+    "label": "Paranoid Circuit",
+    "mode": "dark"
+  },
+  {
+    "id": "parchment",
+    "label": "Parchment",
+    "mode": "light"
   },
   {
     "id": "patina",
@@ -2045,8 +2695,18 @@
     "mode": "dark"
   },
   {
+    "id": "petrified",
+    "label": "Petrified",
+    "mode": "dark"
+  },
+  {
     "id": "phala-green-dark",
     "label": "Phala Green Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "pharaoh-s-voltage",
+    "label": "Pharaoh's Voltage",
     "mode": "dark"
   },
   {
@@ -2063,6 +2723,11 @@
     "id": "pierre-light",
     "label": "Pierre Light",
     "mode": "light"
+  },
+  {
+    "id": "pissed-off-pancakes",
+    "label": "Pissed Off Pancakes",
+    "mode": "dark"
   },
   {
     "id": "pnevma",
@@ -2085,6 +2750,16 @@
     "mode": "dark"
   },
   {
+    "id": "poison-apple",
+    "label": "Poison Apple",
+    "mode": "dark"
+  },
+  {
+    "id": "poltergeist",
+    "label": "Poltergeist",
+    "mode": "dark"
+  },
+  {
     "id": "popping-and-locking",
     "label": "Popping And Locking",
     "mode": "dark"
@@ -2095,8 +2770,18 @@
     "mode": "light"
   },
   {
+    "id": "possessed-toaster",
+    "label": "Possessed Toaster",
+    "mode": "dark"
+  },
+  {
     "id": "powershell",
     "label": "Powershell",
+    "mode": "dark"
+  },
+  {
+    "id": "prickly-pear",
+    "label": "Prickly Pear",
     "mode": "dark"
   },
   {
@@ -2105,8 +2790,23 @@
     "mode": "light"
   },
   {
+    "id": "prince-of-barkness",
+    "label": "Prince of Barkness",
+    "mode": "dark"
+  },
+  {
+    "id": "prince-of-darkness",
+    "label": "Prince of Darkness",
+    "mode": "dark"
+  },
+  {
     "id": "prism",
     "label": "Prism",
+    "mode": "dark"
+  },
+  {
+    "id": "prismatica",
+    "label": "Prismatica",
     "mode": "dark"
   },
   {
@@ -2118,6 +2818,26 @@
     "id": "pro-light",
     "label": "Pro Light",
     "mode": "light"
+  },
+  {
+    "id": "pueblo-night",
+    "label": "Pueblo Night",
+    "mode": "dark"
+  },
+  {
+    "id": "pumpkin-patch",
+    "label": "Pumpkin Patch",
+    "mode": "dark"
+  },
+  {
+    "id": "pumpkin-spice",
+    "label": "Pumpkin Spice",
+    "mode": "dark"
+  },
+  {
+    "id": "puppet-s-master",
+    "label": "Puppet's Master",
+    "mode": "dark"
   },
   {
     "id": "purple-portal",
@@ -2143,6 +2863,11 @@
     "id": "pyrokai-light",
     "label": "Pyrokai Light",
     "mode": "light"
+  },
+  {
+    "id": "radicalreborn",
+    "label": "RadicalReborn",
+    "mode": "dark"
   },
   {
     "id": "rapture",
@@ -2175,9 +2900,19 @@
     "mode": "dark"
   },
   {
+    "id": "red-rock",
+    "label": "Red Rock",
+    "mode": "dark"
+  },
+  {
     "id": "red-sands",
     "label": "Red Sands",
     "mode": "dark"
+  },
+  {
+    "id": "redacted",
+    "label": "Redacted",
+    "mode": "light"
   },
   {
     "id": "relaxed",
@@ -2192,6 +2927,41 @@
   {
     "id": "retro-legends",
     "label": "Retro Legends",
+    "mode": "dark"
+  },
+  {
+    "id": "rhoads-concord",
+    "label": "Rhoads Concord",
+    "mode": "light"
+  },
+  {
+    "id": "rhoads-insipired",
+    "label": "Rhoads Insipired",
+    "mode": "dark"
+  },
+  {
+    "id": "rhoads-legacy",
+    "label": "Rhoads Legacy",
+    "mode": "dark"
+  },
+  {
+    "id": "rhoads-lp",
+    "label": "Rhoads LP",
+    "mode": "light"
+  },
+  {
+    "id": "rhoads-rr-black",
+    "label": "Rhoads RR Black",
+    "mode": "dark"
+  },
+  {
+    "id": "rhoads-tribute",
+    "label": "Rhoads Tribute",
+    "mode": "dark"
+  },
+  {
+    "id": "ride-the-current",
+    "label": "Ride the Current",
     "mode": "dark"
   },
   {
@@ -2220,13 +2990,33 @@
     "mode": "dark"
   },
   {
+    "id": "royal-rhapsody",
+    "label": "Royal Rhapsody",
+    "mode": "light"
+  },
+  {
     "id": "ryuuko",
     "label": "Ryuuko",
     "mode": "dark"
   },
   {
+    "id": "safety-glass",
+    "label": "Safety Glass",
+    "mode": "light"
+  },
+  {
+    "id": "saguaro",
+    "label": "Saguaro",
+    "mode": "dark"
+  },
+  {
     "id": "sakura",
     "label": "Sakura",
+    "mode": "dark"
+  },
+  {
+    "id": "salem",
+    "label": "Salem",
     "mode": "dark"
   },
   {
@@ -2250,6 +3040,11 @@
     "mode": "light"
   },
   {
+    "id": "scabos-sand",
+    "label": "Scabos Sand",
+    "mode": "dark"
+  },
+  {
     "id": "scarlet-protocol",
     "label": "Scarlet Protocol",
     "mode": "dark"
@@ -2262,6 +3057,16 @@
   {
     "id": "seafoam-pastel",
     "label": "Seafoam Pastel",
+    "mode": "dark"
+  },
+  {
+    "id": "seance",
+    "label": "Seance",
+    "mode": "dark"
+  },
+  {
+    "id": "sedona",
+    "label": "Sedona",
     "mode": "dark"
   },
   {
@@ -2425,6 +3230,46 @@
     "mode": "light"
   },
   {
+    "id": "sierra-gold",
+    "label": "Sierra Gold",
+    "mode": "dark"
+  },
+  {
+    "id": "signal-ghost",
+    "label": "Signal Ghost",
+    "mode": "dark"
+  },
+  {
+    "id": "silent-empire",
+    "label": "Silent Empire",
+    "mode": "dark"
+  },
+  {
+    "id": "silkcircuit-dawn",
+    "label": "SilkCircuit Dawn",
+    "mode": "light"
+  },
+  {
+    "id": "silkcircuit-glow",
+    "label": "SilkCircuit Glow",
+    "mode": "dark"
+  },
+  {
+    "id": "silkcircuit-neon",
+    "label": "SilkCircuit Neon",
+    "mode": "dark"
+  },
+  {
+    "id": "silkcircuit-soft",
+    "label": "SilkCircuit Soft",
+    "mode": "dark"
+  },
+  {
+    "id": "silkcircuit-vibrant",
+    "label": "SilkCircuit Vibrant",
+    "mode": "dark"
+  },
+  {
     "id": "slate",
     "label": "Slate",
     "mode": "dark"
@@ -2432,6 +3277,16 @@
   {
     "id": "sleepy-hollow",
     "label": "Sleepy Hollow",
+    "mode": "dark"
+  },
+  {
+    "id": "slomp",
+    "label": "SLOMP",
+    "mode": "dark"
+  },
+  {
+    "id": "smoke-on-the-terminal",
+    "label": "Smoke on the Terminal",
     "mode": "dark"
   },
   {
@@ -2453,6 +3308,11 @@
     "id": "soft-server",
     "label": "Soft Server",
     "mode": "dark"
+  },
+  {
+    "id": "solar-flare",
+    "label": "Solar Flare",
+    "mode": "light"
   },
   {
     "id": "solarized-darcula",
@@ -2477,6 +3337,11 @@
   {
     "id": "sonokai",
     "label": "Sonokai",
+    "mode": "dark"
+  },
+  {
+    "id": "sonoran-dusk",
+    "label": "Sonoran Dusk",
     "mode": "dark"
   },
   {
@@ -2515,6 +3380,16 @@
     "mode": "light"
   },
   {
+    "id": "springfield-resident",
+    "label": "Springfield Resident",
+    "mode": "light"
+  },
+  {
+    "id": "springfield-resident-hight-contrast",
+    "label": "Springfield Resident Hight Contrast",
+    "mode": "light"
+  },
+  {
     "id": "square",
     "label": "Square",
     "mode": "dark"
@@ -2535,9 +3410,24 @@
     "mode": "dark"
   },
   {
+    "id": "stairway-skies",
+    "label": "Stairway Skies",
+    "mode": "dark"
+  },
+  {
+    "id": "stardust-voltage",
+    "label": "Stardust Voltage",
+    "mode": "light"
+  },
+  {
     "id": "starlight",
     "label": "Starlight",
     "mode": "dark"
+  },
+  {
+    "id": "static-memory",
+    "label": "Static Memory",
+    "mode": "light"
   },
   {
     "id": "sublette",
@@ -2560,8 +3450,18 @@
     "mode": "dark"
   },
   {
+    "id": "sun-bleached",
+    "label": "Sun Bleached",
+    "mode": "light"
+  },
+  {
     "id": "sundried",
     "label": "Sundried",
+    "mode": "dark"
+  },
+  {
+    "id": "sunset-copper-relay",
+    "label": "Sunset Copper Relay",
     "mode": "dark"
   },
   {
@@ -2570,8 +3470,23 @@
     "mode": "dark"
   },
   {
+    "id": "sunset-strip",
+    "label": "Sunset Strip",
+    "mode": "dark"
+  },
+  {
+    "id": "sweet-emotion",
+    "label": "Sweet Emotion",
+    "mode": "dark"
+  },
+  {
     "id": "symfonic",
     "label": "Symfonic",
+    "mode": "dark"
+  },
+  {
+    "id": "syncopation",
+    "label": "Syncopation",
     "mode": "dark"
   },
   {
@@ -2588,6 +3503,16 @@
     "id": "synthwave-everything",
     "label": "Synthwave Everything",
     "mode": "dark"
+  },
+  {
+    "id": "tailwind-dark",
+    "label": "Tailwind Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "tailwind-light",
+    "label": "Tailwind Light",
+    "mode": "light"
   },
   {
     "id": "tango-adapted",
@@ -2635,8 +3560,23 @@
     "mode": "dark"
   },
   {
+    "id": "the-fog",
+    "label": "The Fog",
+    "mode": "dark"
+  },
+  {
     "id": "the-hulk",
     "label": "The Hulk",
+    "mode": "dark"
+  },
+  {
+    "id": "thermal-receipt",
+    "label": "Thermal Receipt",
+    "mode": "light"
+  },
+  {
+    "id": "thirteen",
+    "label": "Thirteen",
     "mode": "dark"
   },
   {
@@ -2735,6 +3675,21 @@
     "mode": "dark"
   },
   {
+    "id": "trick-or-treat",
+    "label": "Trick or Treat",
+    "mode": "dark"
+  },
+  {
+    "id": "tumbling-stones",
+    "label": "Tumbling Stones",
+    "mode": "dark"
+  },
+  {
+    "id": "turquoise-trail",
+    "label": "Turquoise Trail",
+    "mode": "dark"
+  },
+  {
     "id": "twilight",
     "label": "Twilight",
     "mode": "dark"
@@ -2755,6 +3710,16 @@
     "mode": "dark"
   },
   {
+    "id": "unalive-em-all",
+    "label": "Unalive 'Em All",
+    "mode": "dark"
+  },
+  {
+    "id": "undead",
+    "label": "Undead",
+    "mode": "dark"
+  },
+  {
     "id": "under-the-sea",
     "label": "Under The Sea",
     "mode": "dark"
@@ -2772,6 +3737,11 @@
   {
     "id": "urple",
     "label": "Urple",
+    "mode": "dark"
+  },
+  {
+    "id": "vacuum-tube",
+    "label": "Vacuum Tube",
     "mode": "dark"
   },
   {
@@ -2835,6 +3805,16 @@
     "mode": "dark"
   },
   {
+    "id": "warm-burnout-dark",
+    "label": "Warm Burnout Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "warm-burnout-light",
+    "label": "Warm Burnout Light",
+    "mode": "light"
+  },
+  {
     "id": "warm-neon",
     "label": "Warm Neon",
     "mode": "dark"
@@ -2845,13 +3825,33 @@
     "mode": "dark"
   },
   {
+    "id": "white-sands",
+    "label": "White Sands",
+    "mode": "light"
+  },
+  {
     "id": "wild-cherry",
     "label": "Wild Cherry",
     "mode": "dark"
   },
   {
+    "id": "willow-grove",
+    "label": "Willow Grove",
+    "mode": "light"
+  },
+  {
     "id": "wilmersdorf",
     "label": "Wilmersdorf",
+    "mode": "dark"
+  },
+  {
+    "id": "witches-brew",
+    "label": "Witches' Brew",
+    "mode": "dark"
+  },
+  {
+    "id": "witching-hour",
+    "label": "Witching Hour",
     "mode": "dark"
   },
   {
@@ -2862,6 +3862,66 @@
   {
     "id": "wryan",
     "label": "Wryan",
+    "mode": "dark"
+  },
+  {
+    "id": "x",
+    "label": "X",
+    "mode": "dark"
+  },
+  {
+    "id": "x-berlin",
+    "label": "X Berlin",
+    "mode": "dark"
+  },
+  {
+    "id": "x-bogota",
+    "label": "X Bogota",
+    "mode": "dark"
+  },
+  {
+    "id": "x-helsinki",
+    "label": "X Helsinki",
+    "mode": "light"
+  },
+  {
+    "id": "x-lahabana",
+    "label": "X Lahabana",
+    "mode": "dark"
+  },
+  {
+    "id": "x-london",
+    "label": "X London",
+    "mode": "light"
+  },
+  {
+    "id": "x-madrid",
+    "label": "X Madrid",
+    "mode": "light"
+  },
+  {
+    "id": "x-miami",
+    "label": "X Miami",
+    "mode": "dark"
+  },
+  {
+    "id": "x-oslo",
+    "label": "X Oslo",
+    "mode": "dark"
+  },
+  {
+    "id": "x-paris",
+    "label": "X Paris",
+    "mode": "dark"
+  },
+  {
+    "id": "x-praha",
+    "label": "X Praha",
+    "mode": "dark"
+  },
+  {
+    "id": "x-tokio",
+    "label": "X Tokio",
     "mode": "dark"
   },
   {
@@ -2893,6 +3953,31 @@
     "id": "y2k-chrome",
     "label": "Y2K Chrome",
     "mode": "light"
+  },
+  {
+    "id": "yngwie-s-strat",
+    "label": "Yngwie's Strat",
+    "mode": "light"
+  },
+  {
+    "id": "zacess-cream",
+    "label": "Zacess Cream",
+    "mode": "light"
+  },
+  {
+    "id": "zacess-dark",
+    "label": "Zacess Dark",
+    "mode": "dark"
+  },
+  {
+    "id": "zacess-light",
+    "label": "Zacess Light",
+    "mode": "light"
+  },
+  {
+    "id": "zacess-yellow-on-black",
+    "label": "Zacess Yellow on Black",
+    "mode": "dark"
   },
   {
     "id": "zenbones",
