@@ -4,9 +4,9 @@
   "homepage": "https://neo-retro.zurat.dev",
   "aliases": {
     "components": "./$lib/registry/components",
-    "hooks": "$lib/registry/hooks",
+    "hooks": "#lib/registry/hooks",
     "lib": "$lib/registry/lib",
-    "ui": "$lib/registry/ui",
+    "ui": "#lib/registry/ui",
     "utils": "$lib/utils"
   },
   "items": [
@@ -1865,7 +1865,10 @@
       "name": "style",
       "type": "registry:ui",
       "registryDependencies": [
+        "background-pattern",
+        "badge",
         "button",
+        "button-group",
         "dialog",
         "input-group"
       ],

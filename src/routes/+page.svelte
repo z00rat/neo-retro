@@ -64,6 +64,11 @@
     { value: 'bun', code: 'bun x shadcn-svelte@latest add' },
   ];
 
+  const blockCommand = `bun x shadcn-svelte@latest add \\
+  https://neo-retro.zurat.dev/r/confirm-dialog.json \\
+  https://neo-retro.zurat.dev/r/copy-button.json \\
+  https://neo-retro.zurat.dev/r/privacy-consent-banner.json`;
+
   const agentCommand =
     `set -e
 mkdir -p .agent/skills/neo-retro/references
@@ -203,10 +208,9 @@ done`;
           <Card.Header>
             <Card.Title>2. Add Components</Card.Title>
             <Card.Description>
-              Run the add command to choose which components to install. You can press <Badge
-                color="white"
-                class="font-mono">a</Badge
-              > to select all of them at once.
+              The CLI loads available UI components from Neo-Retro's registry. <Badge color="white" class="font-mono"
+                >--all</Badge
+              > installs every UI component, including custom Neo-Retro components. Blocks are separate and must be added by URL.
             </Card.Description>
           </Card.Header>
           <Card.Content class="space-y-6">
@@ -219,6 +223,10 @@ done`;
               variantKey="package-manager"
               variants={addVariants}
             />
+            <p class="leading-relaxed font-medium text-sm">
+              To add registry blocks such as <Badge color="white" class="font-mono">confirm-dialog</Badge>, use their URLs:
+            </p>
+            <CodeBlock shiki={codeBlockShiki} color="white" lang="bash" copy wrap code={blockCommand} />
           </Card.Content>
         </Card.Root>
 

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "prebuild": "bun x shadcn-svelte@1.1.1 registry build registry.json",
+    "prebuild": "bun x shadcn-svelte@latest registry build registry.json && bun scripts/build_style_registry_index.ts",
     "preview": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

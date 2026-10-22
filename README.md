@@ -37,10 +37,19 @@ bun x shadcn-svelte@latest init
 
 ## 2. Add Components
 
-Run the add command to choose which components to install. You can press `a` to select all of them at once.
+Run the add command to choose which UI components to install. The CLI loads the list from Neo-Retro's registry; `--all` installs every item typed `registry:ui`, including Neo-Retro's custom UI components.
 
 ```bash
-bun x shadcn-svelte@latest add
+bun x shadcn-svelte@latest add --all
+```
+
+Registry blocks are separate from UI components, so `--all` does not install them. Add them by URL:
+
+```bash
+bun x shadcn-svelte@latest add \
+  https://neo-retro.zurat.dev/r/confirm-dialog.json \
+  https://neo-retro.zurat.dev/r/copy-button.json \
+  https://neo-retro.zurat.dev/r/privacy-consent-banner.json
 ```
 
 ## 3. Setup Layout & Styles
