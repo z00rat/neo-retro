@@ -1,10 +1,9 @@
 <script lang="ts">
   import ArrowLeftIcon from '@lucide/svelte/icons/arrow-left';
   import ArrowUpIcon from '@lucide/svelte/icons/arrow-up';
+  import { Button, type Props } from '#lib/registry/ui/button/index.ts';
   import type { WithoutChildren } from 'bits-ui';
   import { getContext } from 'svelte';
-
-  import { Button, type Props } from '$lib/registry/ui/button/index.ts';
 
   import { getEmblaContext } from './context.ts';
 

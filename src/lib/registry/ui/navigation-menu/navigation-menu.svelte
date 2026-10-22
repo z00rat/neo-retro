@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { cn, type Color } from '#lib/utils.ts';
   import { NavigationMenu as NavigationMenuPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
-
-  import { cn, type Color } from '$lib/utils.ts';
 
   import NavigationMenuViewport from './navigation-menu-viewport.svelte';
 

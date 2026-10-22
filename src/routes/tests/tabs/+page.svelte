@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as Tabs from '$lib/registry/ui/tabs';
+  import * as Tabs from '#lib/registry/ui/tabs/index.js';
 </script>
 
 <h1>Tabs</h1>

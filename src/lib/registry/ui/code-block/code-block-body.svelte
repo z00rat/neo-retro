@@ -1,8 +1,7 @@
 <script lang="ts">
   import { ShikiMagicMove } from '@shikijs/magic-move/svelte';
-
-  import Spinner from '$lib/registry/ui/spinner/spinner.svelte';
-  import { cn, type Color } from '$lib/utils.ts';
+  import Spinner from '#lib/registry/ui/spinner/spinner.svelte';
+  import { cn, type Color } from '#lib/utils.ts';
 
   import { getCodeColors, getHighlighter, tokenizeCode, type CodeLine, type TokenizedCode } from './shiki.ts';
 

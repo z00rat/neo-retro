@@ -1,9 +1,8 @@
 <script lang="ts">
   import { isEqualMonth, type DateValue } from '@internationalized/date';
+  import { cn, type Color, type WithoutChildrenOrChild } from '#lib/utils.ts';
   import { Calendar as CalendarPrimitive } from 'bits-ui';
   import { setContext, type Snippet } from 'svelte';
-
-  import { cn, type Color, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   import * as Calendar from './index.ts';
 

@@ -1,7 +1,6 @@
 <script lang="ts">
+  import { cn, type Color, type WithElementRef } from '#lib/utils.ts';
   import type { HTMLAnchorAttributes } from 'svelte/elements';
-
-  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

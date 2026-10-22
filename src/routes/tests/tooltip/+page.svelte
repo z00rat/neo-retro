@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Label } from '$lib/registry/ui/label';
-  import * as Tooltip from '$lib/registry/ui/tooltip';
+  import { Label } from '#lib/registry/ui/label/index.js';
+  import * as Tooltip from '#lib/registry/ui/tooltip/index.js';
 </script>
 
 <h1>Tooltip</h1>

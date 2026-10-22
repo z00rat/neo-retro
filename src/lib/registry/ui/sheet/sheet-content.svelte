@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { cn, type Color, type WithoutChildrenOrChild } from '#lib/utils.ts';
   import { Dialog as SheetPrimitive } from 'bits-ui';
   import type { Snippet } from 'svelte';
-
-  import { cn, type Color, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   import SheetOverlay from './sheet-overlay.svelte';
 

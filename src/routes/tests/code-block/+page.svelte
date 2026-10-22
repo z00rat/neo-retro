@@ -1,9 +1,8 @@
 <script lang="ts">
   import ExternalLinkIcon from '@lucide/svelte/icons/external-link';
   import FileJsonIcon from '@lucide/svelte/icons/file-json';
-
-  import Button from '$lib/registry/ui/button/button.svelte';
-  import { CodeBlock, type CodeBlockVariant } from '$lib/registry/ui/code-block';
+  import Button from '#lib/registry/ui/button/button.svelte';
+  import { CodeBlock, type CodeBlockVariant } from '#lib/registry/ui/code-block/index.js';
 
   const shiki = {
     themes: [

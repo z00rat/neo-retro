@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { cn, type Color, type WithoutChildrenOrChild } from '#lib/utils.ts';
   import { Slider as SliderPrimitive } from 'bits-ui';
   import type { Snippet } from 'svelte';
-
-  import { cn, type Color, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

@@ -1,11 +1,10 @@
 <script lang="ts">
   import PaintbrushIcon from '@lucide/svelte/icons/paintbrush';
   import SearchIcon from '@lucide/svelte/icons/search';
+  import { Button } from '#lib/registry/ui/button/index.js';
+  import * as Dialog from '#lib/registry/ui/dialog/index.js';
+  import * as InputGroup from '#lib/registry/ui/input-group/index.js';
   import { theme } from 'mode-watcher';
-
-  import { Button } from '$lib/registry/ui/button';
-  import * as Dialog from '$lib/registry/ui/dialog';
-  import * as InputGroup from '$lib/registry/ui/input-group';
 
   import { FavoriteThemes } from './favorite-themes.ts';
   import { applyTheme, resetToDefaultTheme, Themes } from './themes.ts';

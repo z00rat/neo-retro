@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Separator } from '$lib/registry/ui/separator/index.ts';
-  import type { SeparatorProps } from '$lib/registry/ui/separator/separator.svelte';
-  import { cn } from '$lib/utils.ts';
+  import { Separator } from '#lib/registry/ui/separator/index.ts';
+  import type { SeparatorProps } from '#lib/registry/ui/separator/separator.svelte';
+  import { cn } from '#lib/utils.ts';
 
   let { class: className, children, ...restProps }: SeparatorProps = $props();
 </script>

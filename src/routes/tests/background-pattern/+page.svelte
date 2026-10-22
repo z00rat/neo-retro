@@ -5,13 +5,13 @@
     PATTERN_TYPES,
     type PatternMask,
     type PatternType,
-  } from '$lib/registry/ui/background-pattern';
-  import * as Card from '$lib/registry/ui/card';
-  import { Input } from '$lib/registry/ui/input';
-  import { Label } from '$lib/registry/ui/label';
-  import * as Select from '$lib/registry/ui/select';
-  import * as ToggleGroup from '$lib/registry/ui/toggle-group';
-  import type { Color, inverseColor } from '$lib/utils';
+  } from '#lib/registry/ui/background-pattern/index.js';
+  import * as Card from '#lib/registry/ui/card/index.js';
+  import { Input } from '#lib/registry/ui/input/index.js';
+  import { Label } from '#lib/registry/ui/label/index.js';
+  import * as Select from '#lib/registry/ui/select/index.js';
+  import * as ToggleGroup from '#lib/registry/ui/toggle-group/index.js';
+  import type { Color, inverseColor } from '#lib/utils.js';
 
   type PatternSettings = {
     color?: Color | inverseColor;

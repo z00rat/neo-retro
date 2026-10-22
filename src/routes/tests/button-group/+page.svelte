@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Button } from '$lib/registry/ui/button';
-  import * as ButtonGroup from '$lib/registry/ui/button-group';
+  import * as ButtonGroup from '#lib/registry/ui/button-group/index.js';
+  import { Button } from '#lib/registry/ui/button/index.js';
 </script>
 
 <h1>Button Group</h1>

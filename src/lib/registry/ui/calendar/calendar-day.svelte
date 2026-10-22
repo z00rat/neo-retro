@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { cn } from '#lib/utils.ts';
   import { Calendar as CalendarPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
-
-  import { cn } from '$lib/utils.ts';
 
   let { ref = $bindable(null), class: className, ...restProps }: CalendarPrimitive.DayProps = $props();
 

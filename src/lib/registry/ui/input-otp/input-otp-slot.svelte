@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { cn } from '#lib/utils.ts';
   import { PinInput as InputOTPPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
-
-  import { cn } from '$lib/utils.ts';
 
   let { ref = $bindable(null), cell, class: className, ...restProps }: InputOTPPrimitive.CellProps = $props();
 

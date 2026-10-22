@@ -1,7 +1,6 @@
 <script lang="ts">
+  import { cn, type Color } from '#lib/utils.ts';
   import { LinkPreview as HoverCardPrimitive } from 'bits-ui';
-
-  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

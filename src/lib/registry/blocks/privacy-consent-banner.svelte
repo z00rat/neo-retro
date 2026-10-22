@@ -1,6 +1,6 @@
 <script lang="ts">
-  import * as AlertDialog from '$lib/registry/ui/alert-dialog';
-  import { type Color } from '$lib/utils.ts';
+  import * as AlertDialog from '#lib/registry/ui/alert-dialog/index.js';
+  import { type Color } from '#lib/utils.ts';
 
   type BaseColors = Color;
 

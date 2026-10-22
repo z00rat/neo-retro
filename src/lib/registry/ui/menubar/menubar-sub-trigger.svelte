@@ -1,9 +1,8 @@
 <script lang="ts">
   import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
+  import { cn, type WithoutChild } from '#lib/utils.ts';
   import { Menubar as MenubarPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
-
-  import { cn, type WithoutChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

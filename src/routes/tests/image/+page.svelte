@@ -1,15 +1,15 @@
 <script lang="ts">
-  import emre from '$lib/assets/meta/emre-153_VPk1NZQ-unsplash.js';
-  import jack from '$lib/assets/meta/jack-dong-yJozLVBxNA0-unsplash.js';
-  import paul from '$lib/assets/meta/paul-hanaoka-o6RbK3y7mK4-unsplash.js';
-  import * as Card from '$lib/registry/ui/card';
-  import * as Field from '$lib/registry/ui/field';
-  import type { ImageMeta } from '$lib/registry/ui/image';
-  import EnhancedImage from '$lib/registry/ui/image/image.svelte';
-  import { Input } from '$lib/registry/ui/input';
-  import { Label } from '$lib/registry/ui/label';
-  import * as RadioGroup from '$lib/registry/ui/radio-group';
-  import { Switch } from '$lib/registry/ui/switch';
+  import emre from '#lib/assets/meta/emre-153_VPk1NZQ-unsplash.js';
+  import jack from '#lib/assets/meta/jack-dong-yJozLVBxNA0-unsplash.js';
+  import paul from '#lib/assets/meta/paul-hanaoka-o6RbK3y7mK4-unsplash.js';
+  import * as Card from '#lib/registry/ui/card/index.js';
+  import * as Field from '#lib/registry/ui/field/index.js';
+  import EnhancedImage from '#lib/registry/ui/image/image.svelte';
+  import type { ImageMeta } from '#lib/registry/ui/image/index.js';
+  import { Input } from '#lib/registry/ui/input/index.js';
+  import { Label } from '#lib/registry/ui/label/index.js';
+  import * as RadioGroup from '#lib/registry/ui/radio-group/index.js';
+  import { Switch } from '#lib/registry/ui/switch/index.js';
 
   type ImageLayout = 'masonry' | 'grid';
   type FeaturedPosition = 'side' | 'bottom';

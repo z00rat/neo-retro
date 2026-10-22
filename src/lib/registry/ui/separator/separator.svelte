@@ -1,9 +1,8 @@
 <script lang="ts" module>
+  import { type Color } from '#lib/utils.ts';
   import { Separator as SeparatorPrimitive } from 'bits-ui';
   import type { Snippet } from 'svelte';
   import { tv, type VariantProps } from 'tailwind-variants';
-
-  import { type Color } from '$lib/utils.ts';
 
   export const separatorVariants = tv({
     base: 'shrink-0 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full',
@@ -38,7 +37,7 @@
 </script>
 
 <script lang="ts">
-  import { cn } from '$lib/utils.ts';
+  import { cn } from '#lib/utils.ts';
 
   let {
     ref = $bindable(null),

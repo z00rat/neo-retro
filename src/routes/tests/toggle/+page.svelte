@@ -2,9 +2,8 @@
   import BoldIcon from '@lucide/svelte/icons/bold';
   import ItalicIcon from '@lucide/svelte/icons/italic';
   import UnderlineIcon from '@lucide/svelte/icons/underline';
-
-  import * as Card from '$lib/registry/ui/card/index.ts';
-  import { Toggle } from '$lib/registry/ui/toggle/index.ts';
+  import * as Card from '#lib/registry/ui/card/index.ts';
+  import { Toggle } from '#lib/registry/ui/toggle/index.ts';
 </script>
 
 <div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">

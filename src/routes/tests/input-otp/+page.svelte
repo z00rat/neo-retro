@@ -1,7 +1,7 @@
 <script lang="ts">
-  import * as Alert from '$lib/registry/ui/alert/index.ts';
-  import * as Card from '$lib/registry/ui/card/index.ts';
-  import * as InputOTP from '$lib/registry/ui/input-otp/index.ts';
+  import * as Alert from '#lib/registry/ui/alert/index.ts';
+  import * as Card from '#lib/registry/ui/card/index.ts';
+  import * as InputOTP from '#lib/registry/ui/input-otp/index.ts';
 
   let otpValue = $state('');
   let otpValue2 = $state('');

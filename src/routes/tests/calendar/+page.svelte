@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as Calendar from '$lib/registry/ui/calendar';
+  import * as Calendar from '#lib/registry/ui/calendar/index.js';
 </script>
 
 <h1>Calendar</h1>

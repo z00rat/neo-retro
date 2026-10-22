@@ -1,7 +1,7 @@
 <script lang="ts">
-  import * as Card from '$lib/registry/ui/card';
-  import { Label } from '$lib/registry/ui/label';
-  import * as Slider from '$lib/registry/ui/slider/index.ts';
+  import * as Card from '#lib/registry/ui/card/index.js';
+  import { Label } from '#lib/registry/ui/label/index.js';
+  import * as Slider from '#lib/registry/ui/slider/index.ts';
 
   let singleValue = [50];
   let multiValue = [25, 75];

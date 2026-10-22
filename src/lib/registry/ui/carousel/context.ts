@@ -1,8 +1,7 @@
+import type { Color, WithElementRef } from '#lib/utils.ts';
 import type { default as emblaCarouselSvelte, EmblaCarouselSvelteType } from 'embla-carousel-svelte';
 import { getContext, hasContext, setContext } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
-
-import type { Color, WithElementRef } from '$lib/utils.ts';
 
 export type CarouselAPI =
   NonNullable<NonNullable<EmblaCarouselSvelteType['$$_attributes']>['on:emblaInit']> extends (

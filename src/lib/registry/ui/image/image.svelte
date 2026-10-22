@@ -5,18 +5,17 @@
   import EyeIcon from '@lucide/svelte/icons/eye';
   import RotateCcwIcon from '@lucide/svelte/icons/rotate-ccw';
   import XIcon from '@lucide/svelte/icons/x';
+  import { Badge } from '#lib/registry/ui/badge/index.js';
+  import { Button, buttonVariants, type ButtonProps } from '#lib/registry/ui/button/index.js';
+  import * as Dialog from '#lib/registry/ui/dialog/index.js';
+  import * as DropdownMenu from '#lib/registry/ui/dropdown-menu/index.js';
+  import { cn, type Color, type WithElementRef } from '#lib/utils.ts';
   import { parse } from 'marked';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
   import { MediaQuery, SvelteSet } from 'svelte/reactivity';
   import { fly } from 'svelte/transition';
   import { thumbHashToDataURL } from 'thumbhash';
-
-  import { Badge } from '$lib/registry/ui/badge';
-  import { Button, buttonVariants, type ButtonProps } from '$lib/registry/ui/button';
-  import * as Dialog from '$lib/registry/ui/dialog';
-  import * as DropdownMenu from '$lib/registry/ui/dropdown-menu';
-  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   import { panzoom, type PanZoomAPI } from './panzoom';
   import type { ImageMeta } from './types';

@@ -6,7 +6,7 @@
 
   import { defaultDarkTheme, defaultMode } from './themes.ts';
 
-  let { children } = $props<{ children?: Snippet }>();
+  let { children }: { children?: Snippet } = $props();
 </script>
 
 <ModeWatcher defaultTheme={defaultDarkTheme} {defaultMode} />

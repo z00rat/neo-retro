@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Checkbox } from '$lib/registry/ui/checkbox/index.ts';
-  import { Label } from '$lib/registry/ui/label/index.ts';
+  import { Checkbox } from '#lib/registry/ui/checkbox/index.ts';
+  import { Label } from '#lib/registry/ui/label/index.ts';
 </script>
 
 <div class="space-y-12 p-8">

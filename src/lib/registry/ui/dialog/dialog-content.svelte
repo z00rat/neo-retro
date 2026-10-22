@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { cn, type Color, type WithoutChildrenOrChild } from '#lib/utils.ts';
   import { Dialog as DialogPrimitive } from 'bits-ui';
   import type { Snippet } from 'svelte';
-
-  import { cn, type Color, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   import * as Dialog from './index.ts';
 

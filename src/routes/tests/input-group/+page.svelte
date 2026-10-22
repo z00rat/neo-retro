@@ -12,13 +12,12 @@
   import SearchIcon from '@lucide/svelte/icons/search';
   import SendIcon from '@lucide/svelte/icons/send';
   import StarIcon from '@lucide/svelte/icons/star';
-
-  import * as Card from '$lib/registry/ui/card/index.ts';
-  import * as DropdownMenu from '$lib/registry/ui/dropdown-menu/index.ts';
-  import * as InputGroup from '$lib/registry/ui/input-group/index.ts';
-  import { Label } from '$lib/registry/ui/label/index.ts';
-  import { Separator } from '$lib/registry/ui/separator/index.ts';
-  import * as Tooltip from '$lib/registry/ui/tooltip/index.ts';
+  import * as Card from '#lib/registry/ui/card/index.ts';
+  import * as DropdownMenu from '#lib/registry/ui/dropdown-menu/index.ts';
+  import * as InputGroup from '#lib/registry/ui/input-group/index.ts';
+  import { Label } from '#lib/registry/ui/label/index.ts';
+  import { Separator } from '#lib/registry/ui/separator/index.ts';
+  import * as Tooltip from '#lib/registry/ui/tooltip/index.ts';
 </script>
 
 <div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">

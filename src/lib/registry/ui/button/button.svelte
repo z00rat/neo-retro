@@ -1,8 +1,7 @@
 <script lang="ts" module>
+  import { cn, type Color, type WithElementRef } from '#lib/utils.ts';
   import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
   import { tv, type VariantProps } from 'tailwind-variants';
-
-  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   export const buttonVariants = tv({
     base: 'neoretro-clr neoretro-border aria-disabled:neoretro-disable disabled:neoretro-disable data-disabled:neoretro-disable neoretro-focus rounded cursor-pointer disabled:cursor-not-allowed data-disabled:cursor-not-allowed aria-disabled:cursor-not-allowed select-none inline-flex items-center justify-center whitespace-nowrap font-bold ring-offset-white transition-all gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative',

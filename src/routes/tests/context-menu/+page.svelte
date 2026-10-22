@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as ContextMenu from '$lib/registry/ui/context-menu/index.ts';
+  import * as ContextMenu from '#lib/registry/ui/context-menu/index.ts';
 </script>
 
 <div class="gap-8 p-12 flex min-h-[500px] flex-col items-center justify-center">

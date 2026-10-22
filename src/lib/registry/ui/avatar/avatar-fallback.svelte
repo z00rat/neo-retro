@@ -1,8 +1,7 @@
 <script lang="ts">
   import { Avatar, Style } from '@dicebear/core';
+  import { cn } from '#lib/utils.ts';
   import { Avatar as AvatarPrimitive } from 'bits-ui';
-
-  import { cn } from '$lib/utils.ts';
 
   import type { DiceBearStyle } from './types.ts';
 

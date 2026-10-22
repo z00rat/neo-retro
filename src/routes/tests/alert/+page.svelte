@@ -5,8 +5,7 @@
   import Info from '@lucide/svelte/icons/info';
   import PopcornIcon from '@lucide/svelte/icons/popcorn';
   import TriangleAlert from '@lucide/svelte/icons/triangle-alert';
-
-  import * as Alert from '$lib/registry/ui/alert';
+  import * as Alert from '#lib/registry/ui/alert/index.js';
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = [

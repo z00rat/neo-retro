@@ -1,7 +1,7 @@
 <script lang="ts">
-  import CopyButton from '$lib/registry/blocks/copy-button.svelte';
-  import * as Card from '$lib/registry/ui/card';
-  import { Textarea } from '$lib/registry/ui/textarea';
+  import CopyButton from '#lib/registry/blocks/copy-button.svelte';
+  import * as Card from '#lib/registry/ui/card/index.js';
+  import { Textarea } from '#lib/registry/ui/textarea/index.js';
 
   const testUrl = 'https://neo-retro.zurat.dev/';
   const loremIpsum =

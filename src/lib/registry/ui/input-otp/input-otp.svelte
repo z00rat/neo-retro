@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { cn, type Color } from '#lib/utils.ts';
   import { PinInput as InputOTPPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
-
-  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

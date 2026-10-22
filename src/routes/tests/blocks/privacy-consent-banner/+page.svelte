@@ -1,6 +1,6 @@
 <script lang="ts">
-  import PrivacyConsentBanner from '$lib/registry/blocks/privacy-consent-banner.svelte';
-  import { Button } from '$lib/registry/ui/button';
+  import PrivacyConsentBanner from '#lib/registry/blocks/privacy-consent-banner.svelte';
+  import { Button } from '#lib/registry/ui/button/index.js';
 
   let showBanner = $state(true);
 </script>

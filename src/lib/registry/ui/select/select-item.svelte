@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { cn, type WithoutChild } from '#lib/utils.ts';
   import { Select as SelectPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
-
-  import { cn, type WithoutChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

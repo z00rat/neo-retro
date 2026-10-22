@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Kbd, KbdGroup } from '$lib/registry/ui/kbd';
+  import { Kbd, KbdGroup } from '#lib/registry/ui/kbd/index.js';
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = [

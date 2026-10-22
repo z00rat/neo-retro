@@ -1,11 +1,10 @@
 <script lang="ts">
+  import * as Tooltip from '#lib/registry/ui/tooltip/index.ts';
+  import { cn, type Color, type WithElementRef, type WithoutChildrenOrChild } from '#lib/utils.ts';
   import { mergeProps } from 'bits-ui';
   import { getContext } from 'svelte';
   import type { ComponentProps, Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
-
-  import * as Tooltip from '$lib/registry/ui/tooltip/index.ts';
-  import { cn, type Color, type WithElementRef, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   import { useSidebar } from './context.svelte.ts';
 

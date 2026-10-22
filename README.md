@@ -16,11 +16,11 @@ Create a `components.json` file in your project root with the following configur
 		"baseColor": "neutral"
 	},
 	"aliases": {
-		"components": "$lib/components",
-		"utils": "$lib/utils",
-		"ui": "$lib/components/ui",
-		"hooks": "$lib/hooks",
-		"lib": "$lib"
+		"components": "#lib/components",
+		"utils": "#lib/utils.js",
+		"ui": "#lib/components/ui",
+		"hooks": "#lib/hooks",
+		"lib": "#lib"
 	},
 	"typescript": true,
 	"registry": "https://neo-retro.zurat.dev/r"
@@ -49,7 +49,7 @@ Import and wrap your application in the `ThemeInit` component in your main layou
 
 ```svelte
 <script lang="ts">
-  import { ThemeInit, ThemePicker } from '$lib/components/ui/style';
+  import { ThemeInit, ThemePicker } from '#lib/components/ui/style';
 
   let { children } = $props();
 </script>

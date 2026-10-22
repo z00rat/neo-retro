@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { cn, type WithoutChildrenOrChild } from '#lib/utils.ts';
   import { RadioGroup as RadioGroupPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
-
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

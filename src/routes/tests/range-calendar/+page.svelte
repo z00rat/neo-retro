@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as RangeCalendar from '$lib/registry/ui/range-calendar';
+  import * as RangeCalendar from '#lib/registry/ui/range-calendar/index.js';
 </script>
 
 <h1>Range Calendar</h1>

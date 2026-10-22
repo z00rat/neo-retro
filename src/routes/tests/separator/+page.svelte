@@ -1,6 +1,6 @@
 <script lang="ts">
-  import * as Card from '$lib/registry/ui/card/index.ts';
-  import { Separator } from '$lib/registry/ui/separator/index.ts';
+  import * as Card from '#lib/registry/ui/card/index.ts';
+  import { Separator } from '#lib/registry/ui/separator/index.ts';
 </script>
 
 <div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">

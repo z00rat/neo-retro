@@ -1,9 +1,8 @@
 <script lang="ts">
+  import { buttonVariants, type ButtonSize } from '#lib/registry/ui/button/index.ts';
+  import { cn } from '#lib/utils.ts';
   import { Pagination as PaginationPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
-
-  import { buttonVariants, type ButtonSize } from '$lib/registry/ui/button/index.ts';
-  import { cn } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

@@ -1,17 +1,10 @@
 {
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
-    "allowJs": true,
-    "checkJs": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
     "module": "ESNext",
-    "moduleResolution": "bundler",
-    "types": ["vidstack/svelte"]
+    "types": ["$app/types", "vidstack/svelte"]
   },
-  "extends": "./.svelte-kit/tsconfig.json"
+  "extends": "$app/tsconfig",
+  "include": ["src", "vite.config.ts"]
 }

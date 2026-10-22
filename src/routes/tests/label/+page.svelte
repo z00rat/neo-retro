@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Checkbox } from '$lib/registry/ui/checkbox';
-  import { Input } from '$lib/registry/ui/input';
-  import { Label } from '$lib/registry/ui/label';
+  import { Checkbox } from '#lib/registry/ui/checkbox/index.js';
+  import { Input } from '#lib/registry/ui/input/index.js';
+  import { Label } from '#lib/registry/ui/label/index.js';
 </script>
 
 <h1>Label</h1>

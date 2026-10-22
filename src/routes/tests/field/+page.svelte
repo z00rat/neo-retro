@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { Button } from '$lib/registry/ui/button/index.ts';
-  import * as Card from '$lib/registry/ui/card/index.ts';
-  import { Checkbox } from '$lib/registry/ui/checkbox/index.ts';
-  import * as Field from '$lib/registry/ui/field/index.ts';
-  import { Input } from '$lib/registry/ui/input/index.ts';
-  import * as Select from '$lib/registry/ui/select/index.ts';
-  import { Textarea } from '$lib/registry/ui/textarea/index.ts';
+  import { Button } from '#lib/registry/ui/button/index.ts';
+  import * as Card from '#lib/registry/ui/card/index.ts';
+  import { Checkbox } from '#lib/registry/ui/checkbox/index.ts';
+  import * as Field from '#lib/registry/ui/field/index.ts';
+  import { Input } from '#lib/registry/ui/input/index.ts';
+  import * as Select from '#lib/registry/ui/select/index.ts';
+  import { Textarea } from '#lib/registry/ui/textarea/index.ts';
 
   let month = $state<string>();
   let year = $state<string>();

@@ -1,10 +1,9 @@
 <script lang="ts">
   import ChevronLeftIcon from '@lucide/svelte/icons/chevron-left';
+  import { buttonVariants } from '#lib/registry/ui/button/index.ts';
+  import { cn } from '#lib/utils.ts';
   import { Calendar as CalendarPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
-
-  import { buttonVariants } from '$lib/registry/ui/button/index.ts';
-  import { cn } from '$lib/utils.ts';
 
   let { ref = $bindable(null), class: className, children, ...restProps }: CalendarPrimitive.PrevButtonProps = $props();
 

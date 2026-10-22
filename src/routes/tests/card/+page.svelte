@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Button } from '$lib/registry/ui/button';
-  import * as Card from '$lib/registry/ui/card';
+  import { Button } from '#lib/registry/ui/button/index.js';
+  import * as Card from '#lib/registry/ui/card/index.js';
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = [

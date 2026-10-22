@@ -1,9 +1,8 @@
 <script lang="ts">
+  import { Button } from '#lib/registry/ui/button/index.ts';
+  import { cn, type Color, type WithElementRef } from '#lib/utils.ts';
   import { Dialog as DialogPrimitive } from 'bits-ui';
   import type { HTMLAttributes } from 'svelte/elements';
-
-  import { Button } from '$lib/registry/ui/button/index.ts';
-  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

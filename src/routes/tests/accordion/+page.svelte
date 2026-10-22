@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as Accordion from '$lib/registry/ui/accordion';
+  import * as Accordion from '#lib/registry/ui/accordion/index.js';
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = [

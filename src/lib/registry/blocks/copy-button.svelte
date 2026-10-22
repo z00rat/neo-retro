@@ -1,10 +1,9 @@
 <script lang="ts">
   import CheckIcon from '@lucide/svelte/icons/check';
   import CopyIcon from '@lucide/svelte/icons/copy';
-
-  import { Button } from '$lib/registry/ui/button/index.ts';
-  import type { ButtonProps } from '$lib/registry/ui/button/index.ts';
-  import { cn } from '$lib/utils.ts';
+  import { Button } from '#lib/registry/ui/button/index.ts';
+  import type { ButtonProps } from '#lib/registry/ui/button/index.ts';
+  import { cn } from '#lib/utils.ts';
 
   let {
     value,

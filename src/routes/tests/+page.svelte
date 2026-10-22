@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { BackgroundPattern } from '$lib/registry/ui/background-pattern';
-  import { Button } from '$lib/registry/ui/button';
-  import * as ButtonGroup from '$lib/registry/ui/button-group';
-  import * as Card from '$lib/registry/ui/card';
+  import { BackgroundPattern } from '#lib/registry/ui/background-pattern/index.js';
+  import * as ButtonGroup from '#lib/registry/ui/button-group/index.js';
+  import { Button } from '#lib/registry/ui/button/index.js';
+  import * as Card from '#lib/registry/ui/card/index.js';
 
   const modules = import.meta.glob('./**/+page.svelte');
 

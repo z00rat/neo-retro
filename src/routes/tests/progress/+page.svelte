@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Label } from '$lib/registry/ui/label';
-  import { Progress } from '$lib/registry/ui/progress';
+  import { Label } from '#lib/registry/ui/label/index.js';
+  import { Progress } from '#lib/registry/ui/progress/index.js';
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = [

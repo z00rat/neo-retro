@@ -3,10 +3,9 @@
   import FolderIcon from '@lucide/svelte/icons/folder';
   import ForwardIcon from '@lucide/svelte/icons/forward';
   import Trash2Icon from '@lucide/svelte/icons/trash-2';
-
-  import * as DropdownMenu from '$lib/registry/ui/dropdown-menu/index.ts';
-  import { useSidebar } from '$lib/registry/ui/sidebar/context.svelte.ts';
-  import * as Sidebar from '$lib/registry/ui/sidebar/index.ts';
+  import * as DropdownMenu from '#lib/registry/ui/dropdown-menu/index.ts';
+  import { useSidebar } from '#lib/registry/ui/sidebar/context.svelte.ts';
+  import * as Sidebar from '#lib/registry/ui/sidebar/index.ts';
 
   let {
     projects,

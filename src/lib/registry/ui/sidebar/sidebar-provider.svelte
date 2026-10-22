@@ -1,9 +1,8 @@
 <script lang="ts">
+  import * as Tooltip from '#lib/registry/ui/tooltip/index.ts';
+  import { cn, type Color, type WithElementRef } from '#lib/utils.ts';
   import { setContext } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
-
-  import * as Tooltip from '$lib/registry/ui/tooltip/index.ts';
-  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   import { SIDEBAR_COOKIE_MAX_AGE, SIDEBAR_COOKIE_NAME, SIDEBAR_WIDTH, SIDEBAR_WIDTH_ICON } from './constants.ts';
   import { setSidebar } from './context.svelte.ts';

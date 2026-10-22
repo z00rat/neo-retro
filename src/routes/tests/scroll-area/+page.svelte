@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as ScrollArea from '$lib/registry/ui/scroll-area';
+  import * as ScrollArea from '#lib/registry/ui/scroll-area/index.js';
 </script>
 
 <h1>Scroll Area</h1>

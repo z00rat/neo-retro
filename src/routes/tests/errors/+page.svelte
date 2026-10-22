@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { page } from '$app/state';
+  import { Errors } from '#lib/registry/ui/errors/index.js';
 
-  import { Errors } from '$lib/registry/ui/errors';
+  import { page } from '$app/state';
 </script>
 
 <Errors message={page.error?.message ?? 'An error occurred while loading the page.'} />

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Badge } from '$lib/registry/ui/badge';
+  import { Badge } from '#lib/registry/ui/badge/index.js';
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = [

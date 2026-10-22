@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { cn, type WithElementRef } from '#lib/utils.ts';
   import { toString } from 'qrcode';
   import type { HTMLAttributes } from 'svelte/elements';
-
-  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   interface QrCodeProps extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
     value: string;

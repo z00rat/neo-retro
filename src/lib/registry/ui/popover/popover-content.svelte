@@ -1,7 +1,6 @@
 <script lang="ts">
+  import { cn, type Color } from '#lib/utils.ts';
   import { Popover as PopoverPrimitive } from 'bits-ui';
-
-  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as Breadcrumb from '$lib/registry/ui/breadcrumb';
+  import * as Breadcrumb from '#lib/registry/ui/breadcrumb/index.js';
 </script>
 
 <h1>Breadcrumb</h1>

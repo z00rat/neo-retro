@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { buttonVariants } from '#lib/registry/ui/button/index.ts';
+  import { cn, type Color } from '#lib/utils.ts';
   import { Dialog as SheetPrimitive } from 'bits-ui';
-
-  import { buttonVariants } from '$lib/registry/ui/button/index.ts';
-  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

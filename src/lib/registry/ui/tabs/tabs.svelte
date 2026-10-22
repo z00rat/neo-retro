@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { cn, type Color } from '#lib/utils.ts';
   import { Tabs as TabsPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
-
-  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

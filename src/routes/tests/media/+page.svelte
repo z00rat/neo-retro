@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Media } from '$lib/registry/ui/media';
+  import { Media } from '#lib/registry/ui/media/index.js';
 
   const mp4Source = 'https://files.vidstack.io/sprite-fight/720p.mp4';
   const hlsSource = 'https://files.vidstack.io/sprite-fight/hls/stream.m3u8';

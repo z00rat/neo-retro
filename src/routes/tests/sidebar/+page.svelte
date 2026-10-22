@@ -1,7 +1,7 @@
 <script lang="ts">
-  import * as Breadcrumb from '$lib/registry/ui/breadcrumb/index.ts';
-  import { Separator } from '$lib/registry/ui/separator/index.ts';
-  import * as Sidebar from '$lib/registry/ui/sidebar/index.ts';
+  import * as Breadcrumb from '#lib/registry/ui/breadcrumb/index.ts';
+  import { Separator } from '#lib/registry/ui/separator/index.ts';
+  import * as Sidebar from '#lib/registry/ui/sidebar/index.ts';
 
   import AppSidebar from './app-sidebar.svelte';
 </script>

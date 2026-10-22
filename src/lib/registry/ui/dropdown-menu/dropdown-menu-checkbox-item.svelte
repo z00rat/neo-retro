@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { cn, type WithoutChildrenOrChild } from '#lib/utils.ts';
   import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
   import { getContext, type Snippet } from 'svelte';
-
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

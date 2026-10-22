@@ -1,13 +1,12 @@
 <script lang="ts">
   import GithubIcon from '@lucide/svelte/icons/github';
+  import { BackgroundPattern } from '#lib/registry/ui/background-pattern/index.js';
+  import { Badge } from '#lib/registry/ui/badge/index.js';
+  import { Button } from '#lib/registry/ui/button/index.js';
+  import * as Card from '#lib/registry/ui/card/index.js';
+  import { CodeBlock, type CodeBlockVariant } from '#lib/registry/ui/code-block/index.js';
 
   import { resolve } from '$app/paths';
-
-  import { BackgroundPattern } from '$lib/registry/ui/background-pattern';
-  import { Badge } from '$lib/registry/ui/badge';
-  import { Button } from '$lib/registry/ui/button';
-  import * as Card from '$lib/registry/ui/card';
-  import { CodeBlock, type CodeBlockVariant } from '$lib/registry/ui/code-block';
 
   const codeBlockShiki = {
     themes: ['nord', 'github-light'],
@@ -23,11 +22,11 @@
 		"baseColor": "neutral"
 	},
 	"aliases": {
-		"components": "$lib/components",
-		"utils": "$lib/utils",
-		"ui": "$lib/components/ui",
-		"hooks": "$lib/hooks",
-		"lib": "$lib"
+		"components": "#lib/components",
+		"utils": "#lib/utils.js",
+		"ui": "#lib/components/ui",
+		"hooks": "#lib/hooks",
+		"lib": "#lib"
 	},
 	"typescript": true,
 	"registry": "https://neo-retro.zurat.dev/r"
@@ -36,7 +35,7 @@
   const layoutExample =
     '<s' +
     'cript lang="ts">\n' +
-    "  import { ThemeInit, ThemePicker } from '$lib/components/ui/style';\n\n" +
+    "  import { ThemeInit, ThemePicker } from '#lib/components/ui/style';\n\n" +
     '  let { children } = $props();\n' +
     '</s' +
     'cript>\n\n' +
@@ -50,38 +49,19 @@
     'render children?.()}\n' +
     '</Theme' +
     'Init>';
-
   const agentsMarkdown =
     '- **Component Reference**: See `.agent/skills/neo-retro-common/SKILL.md` for shared types/colors and `.agent/skills/neo-retro-components/SKILL.md` for HTML tag replacements and props for all components.';
 
   const initVariants: CodeBlockVariant[] = [
-    {
-      value: 'npm',
-      code: 'npx shadcn-svelte@1.1.1 init',
-    },
-    {
-      value: 'pnpm',
-      code: 'pnpm dlx shadcn-svelte@1.1.1 init',
-    },
-    {
-      value: 'bun',
-      code: 'bun x shadcn-svelte@1.1.1 init',
-    },
+    { value: 'npm', code: 'npx shadcn-svelte@1.1.1 init' },
+    { value: 'pnpm', code: 'pnpm dlx shadcn-svelte@1.1.1 init' },
+    { value: 'bun', code: 'bun x shadcn-svelte@1.1.1 init' },
   ];
 
   const addVariants: CodeBlockVariant[] = [
-    {
-      value: 'npm',
-      code: 'npx shadcn-svelte@1.1.1 add',
-    },
-    {
-      value: 'pnpm',
-      code: 'pnpm dlx shadcn-svelte@1.1.1 add',
-    },
-    {
-      value: 'bun',
-      code: 'bun x shadcn-svelte@1.1.1 add',
-    },
+    { value: 'npm', code: 'npx shadcn-svelte@1.1.1 add' },
+    { value: 'pnpm', code: 'pnpm dlx shadcn-svelte@1.1.1 add' },
+    { value: 'bun', code: 'bun x shadcn-svelte@1.1.1 add' },
   ];
 
   const agentCommand =
@@ -89,14 +69,34 @@
 
   const dependencies = [
     { name: 'SvelteKit', url: 'https://github.com/sveltejs/kit' },
-    { name: 'Tailwind CSS', url: 'https://github.com/tailwindlabs/tailwindcss' },
+    {
+      name: 'Tailwind CSS',
+      url: 'https://github.com/tailwindlabs/tailwindcss',
+    },
     { name: 'Bits UI', url: 'https://github.com/huntabyte/bits-ui' },
-    { name: 'Lucide Icons', url: 'https://github.com/lucide-icons/lucide' },
-    { name: 'Mode Watcher', url: 'https://github.com/svecosystem/mode-watcher' },
+    {
+      name: 'Lucide Icons',
+      url: 'https://github.com/lucide-icons/lucide',
+    },
+
+    {
+      name: 'Mode Watcher',
+      url: 'https://github.com/svecosystem/mode-watcher',
+    },
     { name: 'Shiki', url: 'https://github.com/shikijs/shiki' },
-    { name: 'Embla Carousel', url: 'https://github.com/davidjerleke/embla-carousel' },
-    { name: 'TanStack Table', url: 'https://github.com/tanstack/table' },
-    { name: 'Paneforge', url: 'https://github.com/svecosystem/paneforge' },
+    {
+      name: 'Embla Carousel',
+      url: 'https://github.com/davidjerleke/embla-carousel',
+    },
+    {
+      name: 'TanStack Table',
+      url: 'https://github.com/tanstack/table',
+    },
+
+    {
+      name: 'Paneforge',
+      url: 'https://github.com/svecosystem/paneforge',
+    },
     { name: 'Vidstack', url: 'https://github.com/vidstack/player' },
     { name: 'Panzoom', url: 'https://github.com/timmywil/panzoom' },
     { name: 'DiceBear', url: 'https://github.com/dicebear/dicebear' },
@@ -113,6 +113,7 @@
 
 <div class="relative min-h-screen">
   <!-- Hero / Header Top Section -->
+
   <section data-color="blue" class="bg-clr text-on-clr border-black py-12 relative border-b-4">
     <BackgroundPattern pattern="cross" size={16} rotation={45} opacity={0.2} />
 
@@ -125,7 +126,8 @@
             ><span class="text-magenta">r</span><span class="text-green">o</span>
           </h1>
           <div class="gap-2 flex flex-wrap items-center">
-            <Button color="red" href={resolve('/tests')} class="gap-2 flex items-center">View Examples</Button>
+            <Button color="red" href={resolve('tests')} class="gap-2 flex items-center">View Examples</Button>
+
             <Button
               color="white"
               href="https://github.com/z00rat/neo-retro/"
@@ -256,6 +258,7 @@
   </section>
 
   <!-- Footer Section -->
+
   <footer data-color="bright-green" class="bg-clr text-on-clr border-black py-12 relative border-t-4">
     <BackgroundPattern pattern="isometric" size={32} strokeWidth={1.5} opacity={0.15} />
 
@@ -276,10 +279,16 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="font-bold underline">@huntabyte</a
-              >'s
+              >
+
+              's
+
               <a href="https://shadcn-svelte.com/" target="_blank" rel="noopener noreferrer" class="font-bold underline"
                 >shadcn-svelte</a
-              >, inspired by
+              >
+
+              , inspired by
+
               <a
                 href="https://www.neobrutalism.dev/"
                 target="_blank"

@@ -1,8 +1,7 @@
 <script lang="ts">
   import HourglassIcon from '@lucide/svelte/icons/hourglass';
+  import { cn, type Color } from '#lib/utils.ts';
   import type { ComponentProps } from 'svelte';
-
-  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     class: className,

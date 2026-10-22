@@ -1,7 +1,6 @@
 <script lang="ts">
+  import { cn } from '#lib/utils.ts';
   import { Menubar as MenubarPrimitive } from 'bits-ui';
-
-  import { cn } from '$lib/utils.ts';
 
   let { ref = $bindable(null), class: className, ...restProps }: MenubarPrimitive.SeparatorProps = $props();
 </script>

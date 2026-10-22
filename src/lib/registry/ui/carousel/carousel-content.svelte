@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { cn, type WithElementRef } from '#lib/utils.ts';
   import emblaCarouselSvelte from 'embla-carousel-svelte';
   import type { HTMLAttributes } from 'svelte/elements';
-
-  import { cn, type WithElementRef } from '$lib/utils.ts';
 
   import { getEmblaContext } from './context.ts';
 

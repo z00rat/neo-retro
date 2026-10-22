@@ -1,10 +1,9 @@
 <script lang="ts">
+  import * as Dialog from '#lib/registry/ui/dialog/index.ts';
+  import type { WithoutChildrenOrChild } from '#lib/utils.ts';
+  import { type Color } from '#lib/utils.ts';
   import type { Command as CommandPrimitive, Dialog as DialogPrimitive } from 'bits-ui';
   import type { Snippet } from 'svelte';
-
-  import * as Dialog from '$lib/registry/ui/dialog/index.ts';
-  import type { WithoutChildrenOrChild } from '$lib/utils.ts';
-  import { type Color } from '$lib/utils.ts';
 
   import Command from './command.svelte';
 

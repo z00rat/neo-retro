@@ -1,8 +1,7 @@
 <script lang="ts">
+  import * as AlertDialog from '#lib/registry/ui/alert-dialog/index.js';
+  import { type Color } from '#lib/utils.ts';
   import type { Snippet } from 'svelte';
-
-  import * as AlertDialog from '$lib/registry/ui/alert-dialog';
-  import { type Color } from '$lib/utils.ts';
 
   type ButtonColors = Color;
 

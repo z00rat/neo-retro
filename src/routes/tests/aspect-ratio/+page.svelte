@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as AspectRatio from '$lib/registry/ui/aspect-ratio';
+  import * as AspectRatio from '#lib/registry/ui/aspect-ratio/index.js';
 </script>
 
 <h1>Aspect Ratio</h1>

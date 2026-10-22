@@ -1,6 +1,6 @@
 <script lang="ts">
-  import * as Card from '$lib/registry/ui/card/index.ts';
-  import Spinner from '$lib/registry/ui/spinner/spinner.svelte';
+  import * as Card from '#lib/registry/ui/card/index.ts';
+  import Spinner from '#lib/registry/ui/spinner/spinner.svelte';
 </script>
 
 <div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">

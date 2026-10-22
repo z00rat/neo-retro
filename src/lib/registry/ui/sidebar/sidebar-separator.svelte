@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { Separator } from '#lib/registry/ui/separator/index.ts';
+  import { cn } from '#lib/utils.ts';
   import type { ComponentProps } from 'svelte';
-
-  import { Separator } from '$lib/registry/ui/separator/index.ts';
-  import { cn } from '$lib/utils.ts';
 
   let { ref = $bindable(null), class: className, ...restProps }: ComponentProps<typeof Separator> = $props();
 </script>

@@ -1,7 +1,6 @@
 <script lang="ts">
+  import { cn } from '#lib/utils.ts';
   import { ContextMenu as ContextMenuPrimitive } from 'bits-ui';
-
-  import { cn } from '$lib/utils.ts';
 
   let { ref = $bindable(null), class: className, ...restProps }: ContextMenuPrimitive.SeparatorProps = $props();
 </script>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as HoverCard from '$lib/registry/ui/hover-card';
+  import * as HoverCard from '#lib/registry/ui/hover-card/index.js';
 </script>
 
 <h1>Hover Card</h1>

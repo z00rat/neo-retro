@@ -1,10 +1,9 @@
 <script lang="ts">
   import PanelLeftIcon from '@lucide/svelte/icons/panel-left';
+  import { Button } from '#lib/registry/ui/button/index.ts';
+  import { cn } from '#lib/utils.ts';
   import { getContext } from 'svelte';
   import type { ComponentProps } from 'svelte';
-
-  import { Button } from '$lib/registry/ui/button/index.ts';
-  import { cn } from '$lib/utils.ts';
 
   import { useSidebar } from './context.svelte.ts';
 

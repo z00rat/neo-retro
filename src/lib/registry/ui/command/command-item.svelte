@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { cn } from '#lib/utils.ts';
   import { Command as CommandPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
-
-  import { cn } from '$lib/utils.ts';
 
   let { ref = $bindable(null), class: className, ...restProps }: CommandPrimitive.ItemProps = $props();
 

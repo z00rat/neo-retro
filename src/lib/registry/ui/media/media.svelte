@@ -27,10 +27,9 @@
   import Settings from '@lucide/svelte/icons/settings';
   import Volume2 from '@lucide/svelte/icons/volume-2';
   import VolumeX from '@lucide/svelte/icons/volume-x';
-
-  import { Badge } from '$lib/registry/ui/badge/index.ts';
-  import { ButtonGroup } from '$lib/registry/ui/button-group/index.ts';
-  import { buttonVariants } from '$lib/registry/ui/button/button.svelte';
+  import { Badge } from '#lib/registry/ui/badge/index.ts';
+  import { ButtonGroup } from '#lib/registry/ui/button-group/index.ts';
+  import { buttonVariants } from '#lib/registry/ui/button/button.svelte';
   import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
@@ -41,9 +40,9 @@
     DropdownMenuSubContent,
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
-  } from '$lib/registry/ui/dropdown-menu/index.ts';
-  import { Spinner } from '$lib/registry/ui/spinner/index.ts';
-  import { cn, type Color } from '$lib/utils.ts';
+  } from '#lib/registry/ui/dropdown-menu/index.ts';
+  import { Spinner } from '#lib/registry/ui/spinner/index.ts';
+  import { cn, type Color } from '#lib/utils.ts';
 
   import { mediaSettingsStore } from './mediaSettingsStore.ts';
 

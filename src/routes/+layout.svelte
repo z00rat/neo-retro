@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ThemeInit, ThemePicker } from '$lib/registry/ui/style';
+  import { ThemeInit, ThemePicker } from '#lib/registry/ui/style/index.js';
 
   let { children } = $props();
 </script>

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import ConfirmDialog from '$lib/registry/blocks/confirm-dialog.svelte';
-  import { Button } from '$lib/registry/ui/button';
+  import ConfirmDialog from '#lib/registry/blocks/confirm-dialog.svelte';
+  import { Button } from '#lib/registry/ui/button/index.js';
 
   let open = $state(false);
   let result = $state('');

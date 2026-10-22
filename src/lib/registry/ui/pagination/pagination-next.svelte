@@ -1,10 +1,9 @@
 <script lang="ts">
   import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
+  import { buttonVariants } from '#lib/registry/ui/button/index.js';
+  import { cn } from '#lib/utils.js';
   import { Pagination as PaginationPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
-
-  import { buttonVariants } from '$lib/registry/ui/button/index.js';
-  import { cn } from '$lib/utils.js';
 
   let { ref = $bindable(null), class: className, ...restProps }: PaginationPrimitive.NextButtonProps = $props();
 

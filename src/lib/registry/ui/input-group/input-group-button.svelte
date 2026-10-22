@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { Button } from '#lib/registry/ui/button/index.ts';
+  import { cn, type Color } from '#lib/utils.ts';
   import type { ComponentProps } from 'svelte';
-
-  import { Button } from '$lib/registry/ui/button/index.ts';
-  import { cn, type Color } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

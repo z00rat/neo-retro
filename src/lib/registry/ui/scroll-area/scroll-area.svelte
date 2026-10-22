@@ -1,7 +1,6 @@
 <script lang="ts">
+  import { cn, type Color, type WithoutChild } from '#lib/utils.ts';
   import { ScrollArea as ScrollAreaPrimitive } from 'bits-ui';
-
-  import { cn, type Color, type WithoutChild } from '$lib/utils.ts';
 
   import { Scrollbar } from './index.ts';
 

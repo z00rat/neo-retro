@@ -1,9 +1,8 @@
 <script lang="ts">
   import ChevronDownIcon from '@lucide/svelte/icons/chevron-down';
+  import { cn } from '#lib/utils.ts';
   import { NavigationMenu as NavigationMenuPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
-
-  import { cn } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

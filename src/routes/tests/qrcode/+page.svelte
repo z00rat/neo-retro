@@ -1,10 +1,10 @@
 <script lang="ts">
-  import * as Card from '$lib/registry/ui/card';
-  import { Input } from '$lib/registry/ui/input';
-  import { Label } from '$lib/registry/ui/label';
-  import { QrCode } from '$lib/registry/ui/qrcode';
-  import * as RadioGroup from '$lib/registry/ui/radio-group';
-  import { Slider } from '$lib/registry/ui/slider';
+  import * as Card from '#lib/registry/ui/card/index.js';
+  import { Input } from '#lib/registry/ui/input/index.js';
+  import { Label } from '#lib/registry/ui/label/index.js';
+  import { QrCode } from '#lib/registry/ui/qrcode/index.js';
+  import * as RadioGroup from '#lib/registry/ui/radio-group/index.js';
+  import { Slider } from '#lib/registry/ui/slider/index.js';
 
   let text = $state('https://neo-retro.zurat.dev');
   let level = $state<'L' | 'M' | 'Q' | 'H'>('M');

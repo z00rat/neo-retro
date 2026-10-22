@@ -1,9 +1,8 @@
 <script lang="ts">
   import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
+  import { cn } from '#lib/utils.ts';
   import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
-
-  import { cn } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

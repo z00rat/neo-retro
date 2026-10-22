@@ -8,23 +8,40 @@
   import SettingsIcon from '@lucide/svelte/icons/settings';
   import TrashIcon from '@lucide/svelte/icons/trash-2';
   import {
-    getCoreRowModel,
-    getFilteredRowModel,
-    getPaginationRowModel,
-    getSortedRowModel,
-    type CellContext,
-  } from '@tanstack/table-core';
+    columnFilteringFeature,
+    columnVisibilityFeature,
+    createColumnHelper,
+    createFilteredRowModel,
+    createPaginatedRowModel,
+    createSortedRowModel,
+    globalFilteringFeature,
+    rowPaginationFeature,
+    rowSelectionFeature,
+    rowSortingFeature,
+    tableFeatures,
+  } from '@tanstack/svelte-table';
+  import { Badge } from '#lib/registry/ui/badge/index.js';
+  import { Button } from '#lib/registry/ui/button/index.js';
+  import * as Card from '#lib/registry/ui/card/index.js';
+  import { Checkbox } from '#lib/registry/ui/checkbox/index.js';
+  import * as DataTable from '#lib/registry/ui/data-table/index.js';
+  import * as DropdownMenu from '#lib/registry/ui/dropdown-menu/index.js';
+  import * as InputGroup from '#lib/registry/ui/input-group/index.js';
+  import * as Pagination from '#lib/registry/ui/pagination/index.js';
+  import * as Select from '#lib/registry/ui/select/index.js';
+  import * as Table from '#lib/registry/ui/table/index.js';
 
-  import { Badge } from '$lib/registry/ui/badge';
-  import { Button } from '$lib/registry/ui/button';
-  import * as Card from '$lib/registry/ui/card';
-  import { Checkbox } from '$lib/registry/ui/checkbox';
-  import * as DataTable from '$lib/registry/ui/data-table';
-  import * as DropdownMenu from '$lib/registry/ui/dropdown-menu';
-  import * as InputGroup from '$lib/registry/ui/input-group';
-  import * as Pagination from '$lib/registry/ui/pagination';
-  import * as Select from '$lib/registry/ui/select';
-  import * as Table from '$lib/registry/ui/table';
+  const features = tableFeatures({
+    columnFilteringFeature,
+    globalFilteringFeature,
+    columnVisibilityFeature,
+    rowPaginationFeature,
+    rowSelectionFeature,
+    rowSortingFeature,
+    filteredRowModel: createFilteredRowModel(),
+    paginatedRowModel: createPaginatedRowModel(),
+    sortedRowModel: createSortedRowModel(),
+  });
 
   type Payment = {
     id: string;
@@ -266,48 +283,25 @@
 
   let data = $state<Payment[]>(initialData);
 
-  const columns = [
-    {
-      id: 'select',
-      header: 'Select',
-    },
-    {
-      accessorKey: 'name',
-      header: 'Name',
-    },
-    {
-      accessorKey: 'email',
-      header: 'Email',
-    },
-    {
-      accessorKey: 'role',
-      header: 'Role',
-    },
-    {
-      accessorKey: 'status',
-      header: 'Status',
-    },
-    {
-      accessorKey: 'amount',
+  const columnHelper = createColumnHelper<typeof features, Payment>();
+  const columns = columnHelper.columns([
+    columnHelper.display({ id: 'select', header: 'Select' }),
+    columnHelper.accessor('name', { header: 'Name' }),
+    columnHelper.accessor('email', { header: 'Email' }),
+    columnHelper.accessor('role', { header: 'Role' }),
+    columnHelper.accessor('status', { header: 'Status' }),
+    columnHelper.accessor('amount', {
       header: 'Amount',
-      cell: (info: CellContext<Payment, number>) => {
-        const val = info.getValue() as number;
-        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
-      },
-    },
-    {
-      accessorKey: 'date',
-      header: 'Date',
-    },
-    {
-      id: 'actions',
-      header: 'Actions',
-    },
-  ];
+      cell: (info) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(info.getValue()),
+    }),
+    columnHelper.accessor('date', { header: 'Date' }),
+    columnHelper.display({ id: 'actions', header: 'Actions' }),
+  ]);
 
   let selectedStatus = $state<string>('all');
 
-  const table = DataTable.createSvelteTable({
+  const table = DataTable.createTable({
+    features,
     get data() {
       return data;
     },
@@ -319,15 +313,11 @@
         pageSize: 10,
       },
     },
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
   });
 
   const pageWrapper = $state({
     get current() {
-      return table.getState().pagination.pageIndex + 1;
+      return table.atoms.pagination.get().pageIndex + 1;
     },
     set current(val: number) {
       table.setPageIndex(val - 1);
@@ -359,9 +349,7 @@
   }
 
   // Row counts helper
-  const selectedRowsCount = $derived(
-    Object.keys(table.getState().rowSelection || {}).filter((k) => table.getState().rowSelection[k]).length,
-  );
+  const selectedRowsCount = $derived(Object.values(table.atoms.rowSelection.get()).filter(Boolean).length);
 </script>
 
 <div class="max-w-6xl p-6 space-y-6 container mx-auto">
@@ -386,7 +374,7 @@
         </InputGroup.Addon>
         <InputGroup.Input
           placeholder="Search name or email..."
-          value={table.getState().globalFilter || ''}
+          value={table.atoms.globalFilter.get() || ''}
           oninput={(e) => {
             table.setGlobalFilter(e.currentTarget.value);
           }}
@@ -530,7 +518,7 @@
                       class="gap-1.5 font-extrabold text-xs tracking-wider flex w-full items-center text-left uppercase"
                       onclick={header.column.getToggleSortingHandler()}
                     >
-                      <DataTable.FlexRender content={header.column.columnDef.header} context={header.getContext()} />
+                      <DataTable.FlexRender {header} />
                       {#if header.column.getIsSorted() === 'asc'}
                         <ChevronUpIcon class="size-4 text-magenta" />
                       {:else if header.column.getIsSorted() === 'desc'}
@@ -613,7 +601,7 @@
                     </DropdownMenu.Root>
                   </div>
                 {:else}
-                  <DataTable.FlexRender content={cell.column.columnDef.cell} context={cell.getContext()} />
+                  <DataTable.FlexRender {cell} />
                 {/if}
               </Table.Cell>
             {/each}
@@ -642,7 +630,7 @@
           <Select.Root
             type="single"
             color="white"
-            value={table.getState().pagination.pageSize.toString()}
+            value={table.atoms.pagination.get().pageSize.toString()}
             onValueChange={(val) => {
               if (val) {
                 table.setPageSize(parseInt(val));
@@ -650,7 +638,7 @@
             }}
           >
             <Select.Trigger class="h-9 font-bold">
-              {table.getState().pagination.pageSize}
+              {table.atoms.pagination.get().pageSize}
             </Select.Trigger>
             <Select.Content color="white">
               <Select.Group>
@@ -668,7 +656,7 @@
       <div class="max-w-md flex-1">
         <Pagination.Root
           count={table.getFilteredRowModel().rows.length}
-          perPage={table.getState().pagination.pageSize}
+          perPage={table.atoms.pagination.get().pageSize}
           activeColor="magenta"
           inactiveColor="yellow"
           bind:page={pageWrapper.current}

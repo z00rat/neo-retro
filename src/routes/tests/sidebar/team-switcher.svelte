@@ -1,11 +1,10 @@
 <script lang="ts">
   import ChevronsUpDownIcon from '@lucide/svelte/icons/chevrons-up-down';
   import PlusIcon from '@lucide/svelte/icons/plus';
+  import * as DropdownMenu from '#lib/registry/ui/dropdown-menu/index.ts';
+  import * as Sidebar from '#lib/registry/ui/sidebar/index.ts';
+  import { useSidebar } from '#lib/registry/ui/sidebar/index.ts';
   import { untrack } from 'svelte';
-
-  import * as DropdownMenu from '$lib/registry/ui/dropdown-menu/index.ts';
-  import * as Sidebar from '$lib/registry/ui/sidebar/index.ts';
-  import { useSidebar } from '$lib/registry/ui/sidebar/index.ts';
 
   // This should be `Component` after @lucide/svelte updates types
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

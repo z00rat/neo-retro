@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { Textarea } from '#lib/registry/ui/textarea/index.ts';
+  import { cn } from '#lib/utils.ts';
   import type { ComponentProps } from 'svelte';
-
-  import { Textarea } from '$lib/registry/ui/textarea/index.ts';
-  import { cn } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as Select from '$lib/registry/ui/select';
+  import * as Select from '#lib/registry/ui/select/index.js';
 </script>
 
 <h1>Select</h1>

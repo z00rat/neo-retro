@@ -3,15 +3,14 @@
   import ChevronDownIcon from '@lucide/svelte/icons/chevron-down';
   import CopyIcon from '@lucide/svelte/icons/copy';
   import DownloadIcon from '@lucide/svelte/icons/download';
+  import Badge from '#lib/registry/ui/badge/badge.svelte';
+  import Button from '#lib/registry/ui/button/button.svelte';
+  import * as DropdownMenu from '#lib/registry/ui/dropdown-menu/index.ts';
+  import Spinner from '#lib/registry/ui/spinner/spinner.svelte';
+  import { cn, type Color, type WithElementRef } from '#lib/utils.ts';
   import { mode, userPrefersMode } from 'mode-watcher';
   import type { Component, Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
-
-  import Badge from '$lib/registry/ui/badge/badge.svelte';
-  import Button from '$lib/registry/ui/button/button.svelte';
-  import * as DropdownMenu from '$lib/registry/ui/dropdown-menu/index.ts';
-  import Spinner from '$lib/registry/ui/spinner/spinner.svelte';
-  import { cn, type Color, type WithElementRef } from '$lib/utils.ts';
 
   import '@shikijs/magic-move/style.css';
 

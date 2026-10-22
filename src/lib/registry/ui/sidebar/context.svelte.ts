@@ -1,6 +1,5 @@
+import { IsMobile } from '#lib/registry/hooks/is-mobile.svelte.ts';
 import { getContext, setContext } from 'svelte';
-
-import { IsMobile } from '$lib/registry/hooks/is-mobile.svelte.ts';
 
 import { SIDEBAR_KEYBOARD_SHORTCUT } from './constants.ts';
 

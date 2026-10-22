@@ -79,14 +79,20 @@ const getImports = (content) => {
 };
 
 const importToRegistryName = (importPath) => {
-  if (importPath.includes('$lib/utils') || importPath.includes('utils')) return 'utils';
-  const uiMatch = importPath.match(/(?:\$lib\/registry\/ui|ui)\/([^/]+)/);
+  if (
+    importPath === '#lib/utils' ||
+    importPath.startsWith('#lib/utils.') ||
+    importPath.includes('$lib/utils') ||
+    importPath.includes('/utils')
+  )
+    return 'utils';
+  const uiMatch = importPath.match(/(?:#lib\/ui|\$lib\/registry\/ui|ui)\/([^/]+)/);
   if (uiMatch) return uiMatch[1];
-  const hooksMatch = importPath.match(/(?:\$lib\/registry\/hooks|hooks)\/([^/]+)/);
+  const hooksMatch = importPath.match(/(?:#lib\/hooks|\$lib\/registry\/hooks|hooks)\/([^/]+)/);
   if (hooksMatch) return hooksMatch[1].replace(/\.(svelte\.ts|ts|js|svelte)$/, '');
-  const libMatch = importPath.match(/(?:\$lib\/registry\/lib|lib)\/([^/]+)/);
+  const libMatch = importPath.match(/(?:#lib\/lib|\$lib\/registry\/lib|lib)\/([^/]+)/);
   if (libMatch) return libMatch[1].replace(/\.(ts|js)$/, '');
-  const styleMatch = importPath.match(/(?:\$lib\/registry\/style|style)\/([^/]+)/);
+  const styleMatch = importPath.match(/(?:#lib\/style|\$lib\/registry\/style|style)\/([^/]+)/);
   if (styleMatch) return styleMatch[1].replace(/\.(ts|js|svelte|css)$/, '');
   return null;
 };
@@ -94,6 +100,7 @@ const importToRegistryName = (importPath) => {
 const importToExternalPackage = (importPath) => {
   if (importPath.startsWith('.') || importPath.startsWith('/')) return null;
   if (
+    importPath.startsWith('#lib/') ||
     importPath.startsWith('$lib/') ||
     importPath.startsWith('ui/') ||
     importPath.startsWith('hooks/') ||

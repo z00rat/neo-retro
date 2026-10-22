@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { type Color } from '#lib/utils.ts';
   import { AlertDialog as AlertDialogPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
-
-  import { type Color } from '$lib/utils.ts';
 
   let {
     open = $bindable(false),

@@ -1,7 +1,6 @@
 <script lang="ts" module>
+  import { type Color } from '#lib/utils.ts';
   import { tv, type VariantProps } from 'tailwind-variants';
-
-  import { type Color } from '$lib/utils.ts';
 
   export const toggleVariants = tv({
     base: "peer bg-background text-foreground neoretro-border cursor-pointer focus-visible:neoretro-focus inline-flex items-center justify-center gap-2 whitespace-nowrap rounded text-sm font-medium outline-none disabled:neoretro-disable [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
@@ -27,9 +26,8 @@
 </script>
 
 <script lang="ts">
+  import { cn } from '#lib/utils.ts';
   import { Toggle as TogglePrimitive } from 'bits-ui';
-
-  import { cn } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

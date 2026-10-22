@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Button } from '$lib/registry/ui/button';
-  import * as Sheet from '$lib/registry/ui/sheet';
+  import { Button } from '#lib/registry/ui/button/index.js';
+  import * as Sheet from '#lib/registry/ui/sheet/index.js';
 </script>
 
 <h1>Sheet</h1>

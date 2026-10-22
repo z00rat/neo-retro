@@ -1,6 +1,6 @@
 <script lang="ts">
-  import * as Card from '$lib/registry/ui/card/index.ts';
-  import * as Carousel from '$lib/registry/ui/carousel/index.ts';
+  import * as Card from '#lib/registry/ui/card/index.ts';
+  import * as Carousel from '#lib/registry/ui/carousel/index.ts';
 
   const items = [
     { title: 'Item One', description: 'This is the first carousel item' },

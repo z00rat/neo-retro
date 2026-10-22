@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { diceBearStyles, type DiceBearStyle } from '$lib/registry/ui/avatar';
-  import * as Avatar from '$lib/registry/ui/avatar';
-  import * as Card from '$lib/registry/ui/card';
-  import { Input } from '$lib/registry/ui/input';
-  import { Label } from '$lib/registry/ui/label';
-  import * as ToggleGroup from '$lib/registry/ui/toggle-group';
+  import { diceBearStyles, type DiceBearStyle } from '#lib/registry/ui/avatar/index.js';
+  import * as Avatar from '#lib/registry/ui/avatar/index.js';
+  import * as Card from '#lib/registry/ui/card/index.js';
+  import { Input } from '#lib/registry/ui/input/index.js';
+  import { Label } from '#lib/registry/ui/label/index.js';
+  import * as ToggleGroup from '#lib/registry/ui/toggle-group/index.js';
 
   let selectedStyle = $state<DiceBearStyle | undefined>('glyphs');
   let lastSelectedStyle = $state<DiceBearStyle>('glyphs');

@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { cn, type Color } from '#lib/utils.ts';
   import { Command as CommandPrimitive } from 'bits-ui';
   import { setContext } from 'svelte';
-
-  import { cn, type Color } from '$lib/utils.ts';
 
   export type CommandRootApi = CommandPrimitive.Root;
 

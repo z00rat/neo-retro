@@ -1,9 +1,8 @@
 <script lang="ts">
   import ChevronDownIcon from '@lucide/svelte/icons/chevron-down';
+  import { cn, type WithoutChild } from '#lib/utils.ts';
   import { Accordion as AccordionPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
-
-  import { cn, type WithoutChild } from '$lib/utils.ts';
 
   let {
     ref = $bindable(null),

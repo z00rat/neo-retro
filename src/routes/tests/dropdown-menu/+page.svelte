@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as DropdownMenu from '$lib/registry/ui/dropdown-menu/index.ts';
+  import * as DropdownMenu from '#lib/registry/ui/dropdown-menu/index.ts';
 </script>
 
 <div class="gap-8 p-12 flex min-h-[500px] flex-col items-center justify-center">

@@ -5,11 +5,10 @@
   import CreditCardIcon from '@lucide/svelte/icons/credit-card';
   import LogOutIcon from '@lucide/svelte/icons/log-out';
   import SparklesIcon from '@lucide/svelte/icons/sparkles';
-
-  import * as Avatar from '$lib/registry/ui/avatar/index.ts';
-  import * as DropdownMenu from '$lib/registry/ui/dropdown-menu/index.ts';
-  import * as Sidebar from '$lib/registry/ui/sidebar/index.ts';
-  import { useSidebar } from '$lib/registry/ui/sidebar/index.ts';
+  import * as Avatar from '#lib/registry/ui/avatar/index.ts';
+  import * as DropdownMenu from '#lib/registry/ui/dropdown-menu/index.ts';
+  import * as Sidebar from '#lib/registry/ui/sidebar/index.ts';
+  import { useSidebar } from '#lib/registry/ui/sidebar/index.ts';
 
   let { user }: { user: { name: string; email: string; avatar: string } } = $props();
   const sidebar = useSidebar();

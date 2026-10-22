@@ -1,7 +1,6 @@
 <script lang="ts">
+  import { cn } from '#lib/utils.ts';
   import { NavigationMenu as NavigationMenuPrimitive } from 'bits-ui';
-
-  import { cn } from '$lib/utils.ts';
 
   let { ref = $bindable(null), class: className, ...restProps }: NavigationMenuPrimitive.ItemProps = $props();
 </script>

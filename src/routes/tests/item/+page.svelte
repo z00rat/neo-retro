@@ -1,9 +1,8 @@
 <script lang="ts">
   import Plus from '@lucide/svelte/icons/plus';
-
-  import * as Avatar from '$lib/registry/ui/avatar';
-  import { Button } from '$lib/registry/ui/button';
-  import * as Item from '$lib/registry/ui/item';
+  import * as Avatar from '#lib/registry/ui/avatar/index.js';
+  import { Button } from '#lib/registry/ui/button/index.js';
+  import * as Item from '#lib/registry/ui/item/index.js';
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const colors: any[] = [

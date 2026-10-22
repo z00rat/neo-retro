@@ -5,9 +5,8 @@
   import SettingsIcon from '@lucide/svelte/icons/settings';
   import SmileIcon from '@lucide/svelte/icons/smile';
   import UserIcon from '@lucide/svelte/icons/user';
-
-  import { Button } from '$lib/registry/ui/button';
-  import * as Command from '$lib/registry/ui/command';
+  import { Button } from '#lib/registry/ui/button/index.js';
+  import * as Command from '#lib/registry/ui/command/index.js';
 
   let open = $state(false);
 

@@ -1,9 +1,8 @@
 <script lang="ts">
+  import * as Select from '#lib/registry/ui/select/index.ts';
+  import { cn, type WithoutChildrenOrChild } from '#lib/utils.ts';
   import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
   import { getContext } from 'svelte';
-
-  import * as Select from '$lib/registry/ui/select/index.ts';
-  import { cn, type WithoutChildrenOrChild } from '$lib/utils.ts';
 
   type YearSelectChangeEvent = {
     currentTarget: { value: number };

@@ -680,23 +680,11 @@
       "type": "registry:ui",
       "registryDependencies": [],
       "devDependencies": [
-        "@tanstack/table-core"
+        "@tanstack/svelte-table"
       ],
       "files": [
         {
-          "path": "src/lib/registry/ui/data-table/data-table.svelte.ts",
-          "type": "registry:file"
-        },
-        {
-          "path": "src/lib/registry/ui/data-table/flex-render.svelte",
-          "type": "registry:file"
-        },
-        {
           "path": "src/lib/registry/ui/data-table/index.ts",
-          "type": "registry:file"
-        },
-        {
-          "path": "src/lib/registry/ui/data-table/render-helpers.ts",
           "type": "registry:file"
         }
       ]
