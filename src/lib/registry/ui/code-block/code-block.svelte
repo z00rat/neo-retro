@@ -195,9 +195,9 @@
   });
 
   $effect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    lines;
-    viewMode = initialViewMode(lines);
+    const initialLines = lines;
+    const startsCollapsed = collapse && initialLines == null;
+    viewMode = startsCollapsed ? 'hidden' : initialViewMode(initialLines);
   });
 
   async function handleCopy() {
