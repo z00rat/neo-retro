@@ -9,6 +9,8 @@
   let {
     ref = $bindable(null),
     value = $bindable(),
+    type = 'single',
+    onValueChange,
     placeholder = $bindable(),
     class: className,
     weekdayFormat = 'short',
@@ -23,7 +25,13 @@
     day,
     disableDaysOutsideMonth = false,
     ...restProps
-  }: WithoutChildrenOrChild<CalendarPrimitive.RootProps> & {
+  }: Omit<
+    WithoutChildrenOrChild<Extract<CalendarPrimitive.RootProps, { type: 'single' }>>,
+    'type' | 'value' | 'onValueChange'
+  > & {
+    type?: 'single';
+    value?: DateValue;
+    onValueChange?: (value: DateValue | undefined) => void;
     color: Color;
     selectedColor: Color;
     captionLayout?: 'dropdown' | 'dropdown-months' | 'dropdown-years' | 'label';
@@ -48,7 +56,8 @@
 </script>
 
 <CalendarPrimitive.Root
-  bind:value={value as never}
+  {type}
+  bind:value
   bind:ref
   bind:placeholder
   {weekdayFormat}
@@ -59,6 +68,7 @@
     className,
   )}
   {locale}
+  {onValueChange}
   {monthFormat}
   {yearFormat}
   {...restProps}

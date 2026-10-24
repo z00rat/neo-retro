@@ -3,6 +3,8 @@
   import { getContext } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
+  import type { SidebarColorContext } from './context.svelte.ts';
+
   let {
     ref = $bindable(null),
     class: className,
@@ -10,8 +12,7 @@
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLElement>> = $props();
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sidebarColor = getContext<() => any>('sidebarColor');
+  const sidebarColor = getContext<() => SidebarColorContext>('sidebarColor');
 </script>
 
 <div

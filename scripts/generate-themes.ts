@@ -336,6 +336,12 @@ function processSchemes() {
   // Sort themes strictly alphabetically A-Z
   themes.sort((a, b) => a.label.localeCompare(b.label));
 
+  for (const mode of ['dark', 'light'] as const) {
+    if (!themes.some((theme) => theme.mode === mode)) {
+      throw new Error(`Theme generation produced no ${mode} themes; refusing to write invalid generated data.`);
+    }
+  }
+
   console.log(`\n${BOLD}=====================================${RESET}`);
   console.log(`${GREEN}Accepted Themes: ${passCount}${RESET}`);
   console.log(`${RED}Filtered Out (Low Contrast <3.0:1): ${failCount}${RESET}`);

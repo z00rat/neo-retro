@@ -14,10 +14,14 @@
   let svgString = $state('');
 
   $effect(() => {
+    let active = true;
     if (!value) {
       svgString = '';
-      return;
+      return () => {
+        active = false;
+      };
     }
+    svgString = '';
     toString(value, {
       type: 'svg',
       margin,
@@ -28,6 +32,7 @@
       },
     })
       .then((svg) => {
+        if (!active) return;
         // Strip fixed width/height and substitute fill color with currentColor
         const cleanedSvg = svg
           .replace(/width="[0-9]+"/, 'width="100%"')
@@ -36,9 +41,13 @@
         svgString = cleanedSvg;
       })
       .catch((err) => {
+        if (!active) return;
         console.error('Failed to generate QR code SVG:', err);
         svgString = '';
       });
+    return () => {
+      active = false;
+    };
   });
 </script>
 

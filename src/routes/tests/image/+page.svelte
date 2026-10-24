@@ -20,7 +20,15 @@
   let columns = $state(3);
   let previewCount = $state(6);
 
-  const galleryImages: ImageMeta[] = [emre, jack, paul];
+  const galleryImages: ImageMeta[] = [
+    {
+      ...emre,
+      description:
+        'A sample image with **bold**, *italic*, and ~~strikethrough~~ text. Photo by [Paul Hanaoka](https://unsplash.com/photos/shallow-focus-photography-of-tuxedo-cat-o6RbK3y7mK4) on Unsplash; plain links like https://example.com work too. Raw tags like <em>this</em> stay text.',
+    },
+    jack,
+    paul,
+  ];
 
   const repeatedImages = [
     galleryImages[0],

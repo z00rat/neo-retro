@@ -14,6 +14,7 @@
     createFilteredRowModel,
     createPaginatedRowModel,
     createSortedRowModel,
+    filterFn_equalsString,
     globalFilteringFeature,
     rowPaginationFeature,
     rowSelectionFeature,
@@ -289,7 +290,7 @@
     columnHelper.accessor('name', { header: 'Name' }),
     columnHelper.accessor('email', { header: 'Email' }),
     columnHelper.accessor('role', { header: 'Role' }),
-    columnHelper.accessor('status', { header: 'Status' }),
+    columnHelper.accessor('status', { header: 'Status', filterFn: filterFn_equalsString }),
     columnHelper.accessor('amount', {
       header: 'Amount',
       cell: (info) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(info.getValue()),
@@ -395,6 +396,7 @@
           } else {
             table.getColumn('status')?.setFilterValue(selectedStatus);
           }
+          table.setPageIndex(0);
         }}
       >
         <Select.Trigger class="font-bold w-full">

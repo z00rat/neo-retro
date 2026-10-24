@@ -109,7 +109,6 @@ done`;
     { name: 'Vidstack', url: 'https://github.com/vidstack/player' },
     { name: 'Panzoom', url: 'https://github.com/timmywil/panzoom' },
     { name: 'DiceBear', url: 'https://github.com/dicebear/dicebear' },
-    { name: 'Marked', url: 'https://github.com/markedjs/marked' },
     { name: 'QRCode', url: 'https://github.com/soldair/node-qrcode' },
     { name: 'ThumbHash', url: 'https://github.com/evanw/thumbhash' },
     { name: 'Vite', url: 'https://github.com/vitejs/vite' },

@@ -4,6 +4,8 @@
   import type { Snippet } from 'svelte';
   import type { HTMLAnchorAttributes } from 'svelte/elements';
 
+  import type { SidebarColorContext } from './context.svelte.ts';
+
   let {
     ref = $bindable(null),
     children,
@@ -18,8 +20,7 @@
     isActive?: boolean;
   } = $props();
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sidebarColor = getContext<() => any>('sidebarColor');
+  const sidebarColor = getContext<() => SidebarColorContext>('sidebarColor');
 
   const mergedProps = $derived({
     class: cn(

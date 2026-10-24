@@ -1,6 +1,8 @@
 <script lang="ts">
   import { Label } from '#lib/registry/ui/label/index.js';
   import * as Tooltip from '#lib/registry/ui/tooltip/index.js';
+
+  let portalTarget: HTMLElement | undefined = $state();
 </script>
 
 <h1>Tooltip</h1>
@@ -74,6 +76,22 @@
         <Tooltip.Content color="white">White tooltip</Tooltip.Content>
       </Tooltip.Root>
     </Tooltip.Provider>
+
+    <Tooltip.Provider>
+      <Tooltip.Root>
+        <Tooltip.Trigger>
+          {#snippet child({ props })}
+            <Label {...props}>Custom portal target</Label>
+          {/snippet}
+        </Tooltip.Trigger>
+        <Tooltip.Content color="bright-black" portalProps={{ to: portalTarget }}>
+          This tooltip is portalled into the target below.
+        </Tooltip.Content>
+      </Tooltip.Root>
+    </Tooltip.Provider>
+  </div>
+  <div bind:this={portalTarget} class="mt-4 min-h-12 rounded neoretro-border p-3 text-sm">
+    Custom tooltip portal target
   </div>
 </section>
 

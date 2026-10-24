@@ -73,6 +73,39 @@
   </div>
 </section>
 
+<section>
+  <h3>Black variants</h3>
+  <div class="gap-4 flex flex-wrap">
+    <Sheet.Root>
+      <Sheet.Trigger>
+        {#snippet child({ props })}
+          <Button {...props} color="white">Black sheet</Button>
+        {/snippet}
+      </Sheet.Trigger>
+      <Sheet.Content color="black">
+        <Sheet.Header>
+          <Sheet.Title>Black Sheet</Sheet.Title>
+          <Sheet.Description>Uses the black theme color.</Sheet.Description>
+        </Sheet.Header>
+      </Sheet.Content>
+    </Sheet.Root>
+
+    <Sheet.Root>
+      <Sheet.Trigger>
+        {#snippet child({ props })}
+          <Button {...props} color="white">Bright-black sheet</Button>
+        {/snippet}
+      </Sheet.Trigger>
+      <Sheet.Content color="bright-black">
+        <Sheet.Header>
+          <Sheet.Title>Bright-black Sheet</Sheet.Title>
+          <Sheet.Description>Uses the bright-black theme color.</Sheet.Description>
+        </Sheet.Header>
+      </Sheet.Content>
+    </Sheet.Root>
+  </div>
+</section>
+
 <!-- Colors -->
 <section>
   <h3>Colors</h3>

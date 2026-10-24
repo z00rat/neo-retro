@@ -1,11 +1,11 @@
 <script lang="ts">
   import * as Tooltip from '#lib/registry/ui/tooltip/index.ts';
-  import { cn, type Color, type WithElementRef } from '#lib/utils.ts';
+  import { cn, type WithElementRef } from '#lib/utils.ts';
   import { setContext } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
   import { SIDEBAR_COOKIE_MAX_AGE, SIDEBAR_COOKIE_NAME, SIDEBAR_WIDTH, SIDEBAR_WIDTH_ICON } from './constants.ts';
-  import { setSidebar } from './context.svelte.ts';
+  import { setSidebar, type SidebarColorContext } from './context.svelte.ts';
 
   let {
     ref = $bindable(null),
@@ -20,8 +20,8 @@
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
-    color: 'black' | 'bright-black' | Color;
-    activeColor: 'black' | 'bright-black' | Color;
+    color: SidebarColorContext['color'];
+    activeColor: SidebarColorContext['activeColor'];
   } = $props();
 
   setContext('sidebarColor', () => ({ color, activeColor }));

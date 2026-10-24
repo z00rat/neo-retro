@@ -5,7 +5,7 @@
   import type { HTMLAttributes } from 'svelte/elements';
 
   import { SIDEBAR_WIDTH_MOBILE } from './constants.ts';
-  import { useSidebar } from './context.svelte.ts';
+  import { useSidebar, type SidebarColorContext } from './context.svelte.ts';
 
   let {
     ref = $bindable(null),
@@ -22,8 +22,7 @@
   } = $props();
 
   const sidebar = useSidebar();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sidebarColor = getContext<() => any>('sidebarColor');
+  const sidebarColor = getContext<() => SidebarColorContext>('sidebarColor');
 </script>
 
 {#if collapsible === 'none'}

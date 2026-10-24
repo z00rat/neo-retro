@@ -9,7 +9,7 @@
     noShadow,
     ...restProps
   }: WithoutChildren<WithElementRef<HTMLAttributes<HTMLDivElement>>> & {
-    color: Color;
+    color: 'black' | 'bright-black' | Color;
     noShadow?: boolean;
   } = $props();
 </script>

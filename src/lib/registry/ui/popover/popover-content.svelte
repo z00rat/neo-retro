@@ -11,7 +11,7 @@
     portalProps,
     ...restProps
   }: PopoverPrimitive.ContentProps & {
-    color: Color;
+    color: 'black' | 'bright-black' | Color;
     portalProps?: PopoverPrimitive.PortalProps;
   } = $props();
 </script>

@@ -79,6 +79,29 @@
   </div>
 </section>
 
+<section>
+  <h3>Black variants</h3>
+  <div class="gap-4 flex flex-wrap">
+    <Popover.Root>
+      <Popover.Trigger>
+        {#snippet child({ props })}
+          <Button {...props} color="white">Black popover</Button>
+        {/snippet}
+      </Popover.Trigger>
+      <Popover.Content color="black">Uses the black theme color.</Popover.Content>
+    </Popover.Root>
+
+    <Popover.Root>
+      <Popover.Trigger>
+        {#snippet child({ props })}
+          <Button {...props} color="white">Bright-black popover</Button>
+        {/snippet}
+      </Popover.Trigger>
+      <Popover.Content color="bright-black">Uses the bright-black theme color.</Popover.Content>
+    </Popover.Root>
+  </div>
+</section>
+
 <!-- With form content -->
 <section>
   <h3>Rich Content</h3>

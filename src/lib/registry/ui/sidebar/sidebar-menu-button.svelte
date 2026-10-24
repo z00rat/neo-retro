@@ -1,12 +1,12 @@
 <script lang="ts">
   import * as Tooltip from '#lib/registry/ui/tooltip/index.ts';
-  import { cn, type Color, type WithElementRef, type WithoutChildrenOrChild } from '#lib/utils.ts';
+  import { cn, type WithElementRef, type WithoutChildrenOrChild } from '#lib/utils.ts';
   import { mergeProps } from 'bits-ui';
   import { getContext } from 'svelte';
   import type { ComponentProps, Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
-  import { useSidebar } from './context.svelte.ts';
+  import { useSidebar, type SidebarColorContext } from './context.svelte.ts';
 
   let {
     ref = $bindable(null),
@@ -27,12 +27,7 @@
   } = $props();
 
   const sidebar = useSidebar();
-  const sidebarColor = getContext<
-    () => {
-      color: 'black' | 'bright-black' | Color;
-      activeColor: 'black' | 'bright-black' | Color;
-    }
-  >('sidebarColor');
+  const sidebarColor = getContext<() => SidebarColorContext>('sidebarColor');
 
   const buttonProps = $derived({
     class: cn(

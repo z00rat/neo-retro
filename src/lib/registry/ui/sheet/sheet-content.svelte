@@ -14,7 +14,7 @@
     children,
     ...restProps
   }: WithoutChildrenOrChild<SheetPrimitive.ContentProps> & {
-    color: Color;
+    color: 'black' | 'bright-black' | Color;
     portalProps?: SheetPrimitive.PortalProps;
     side?: 'top' | 'right' | 'bottom' | 'left';
     children: Snippet;

@@ -10,7 +10,6 @@
   import * as Dialog from '#lib/registry/ui/dialog/index.js';
   import * as DropdownMenu from '#lib/registry/ui/dropdown-menu/index.js';
   import { cn, type Color, type WithElementRef } from '#lib/utils.ts';
-  import { parse } from 'marked';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
   import { MediaQuery, SvelteSet } from 'svelte/reactivity';
@@ -191,9 +190,40 @@
     }
   }
 
-  let descHtml = $derived(
-    currentImage?.description ? (parse(currentImage.description, { async: false }) as string) : '',
-  );
+  type DescriptionPart = {
+    type: 'text' | 'bold' | 'italic' | 'strikethrough' | 'url';
+    value: string;
+    href?: string;
+  };
+
+  function parseDescription(description: string): DescriptionPart[] {
+    const parts: DescriptionPart[] = [];
+    const pattern =
+      /\*\*([^*]+)\*\*|\*([^*]+)\*|~~([^~]+)~~|\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)|(https?:\/\/[^\s<]+)/g;
+    let lastIndex = 0;
+
+    for (const match of description.matchAll(pattern)) {
+      const index = match.index ?? 0;
+      if (index > lastIndex) parts.push({ type: 'text', value: description.slice(lastIndex, index) });
+
+      if (match[1]) parts.push({ type: 'bold', value: match[1] });
+      else if (match[2]) parts.push({ type: 'italic', value: match[2] });
+      else if (match[3]) parts.push({ type: 'strikethrough', value: match[3] });
+      else if (match[4] && match[5]) parts.push({ type: 'url', value: match[4], href: match[5] });
+      else if (match[6]) {
+        const url = match[6].replace(/[.,!?;:)\]]+$/, '');
+        parts.push({ type: 'url', value: url });
+        if (url.length < match[6].length) parts.push({ type: 'text', value: match[6].slice(url.length) });
+      }
+
+      lastIndex = index + match[0].length;
+    }
+
+    if (lastIndex < description.length) parts.push({ type: 'text', value: description.slice(lastIndex) });
+    return parts;
+  }
+
+  let descriptionParts = $derived(currentImage?.description ? parseDescription(currentImage.description) : []);
   function bindPanzoom(node: HTMLElement) {
     const api = panzoom(node, {
       onScaleChange: (scale) => {
@@ -640,16 +670,29 @@
 
         <aside class="min-h-0 border-black md:max-h-[30dvh] flex max-h-[38dvh] flex-col border-t-2">
           <div
-            class="min-h-0 gap-4 p-4 md:grid md:grid-cols-[minmax(0,1fr)_minmax(14rem,auto)] md:items-start flex flex-col"
+            class="min-h-0 gap-4 p-4 md:grid md:grid-cols-[minmax(0,1fr)_minmax(14rem,24rem)] md:items-start flex flex-col"
           >
             <Dialog.Header class="gap-1 p-0 sm:text-center md:text-left text-center">
               <Dialog.Title class="text-xl font-black tracking-tight md:text-2xl uppercase italic select-none">
                 {currentImage.name}
               </Dialog.Title>
-              {#if descHtml}
-                <Dialog.Description class="max-h-24 text-sm leading-snug md:max-h-32 overflow-hidden [&_a]:underline">
-                  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                  {@html descHtml}
+              {#if descriptionParts.length}
+                <Dialog.Description
+                  class="max-h-24 text-sm leading-snug md:max-h-32 overflow-hidden wrap-break-word [&_a]:underline"
+                >
+                  {#each descriptionParts as part, index (index)}
+                    {#if part.type === 'bold'}
+                      <strong>{part.value}</strong>
+                    {:else if part.type === 'italic'}
+                      <em>{part.value}</em>
+                    {:else if part.type === 'strikethrough'}
+                      <del>{part.value}</del>
+                    {:else if part.type === 'url'}
+                      <a href={part.href ?? part.value} target="_blank" rel="noopener noreferrer">{part.value}</a>
+                    {:else}
+                      {part.value}
+                    {/if}
+                  {/each}
                 </Dialog.Description>
               {/if}
             </Dialog.Header>

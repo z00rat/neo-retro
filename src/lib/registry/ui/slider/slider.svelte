@@ -38,15 +38,20 @@
 
   let isHovering = $state(false);
   let hoverPercent = $state(0);
-  let hoverValue = $derived(min + (hoverPercent / 100) * (max - min));
+  let hoverValue = $derived(
+    Math.max(min, Math.min(max, min + Math.round(((hoverPercent / 100) * (max - min)) / step) * step)),
+  );
 
   function handlePointerMove(e: PointerEvent) {
     const target = e.currentTarget as HTMLElement;
     if (!target) return;
     const rect = target.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    hoverPercent = pct;
+    const pct =
+      orientation === 'horizontal'
+        ? ((e.clientX - rect.left) / rect.width) * 100
+        : ((rect.bottom - e.clientY) / rect.height) * 100;
+    const clampedPct = Math.max(0, Math.min(100, pct));
+    hoverPercent = clampedPct;
     isHovering = true;
   }
 
@@ -128,8 +133,11 @@
 
   {#if isHovering && children}
     <div
-      class="mb-2 gap-1.5 pointer-events-none absolute bottom-full z-30 flex -translate-x-1/2 flex-col items-center"
-      style="left: {hoverPercent}%"
+      class={cn(
+        'gap-1.5 pointer-events-none absolute z-30 flex flex-col items-center',
+        orientation === 'horizontal' ? 'mb-2 bottom-full -translate-x-1/2' : 'ml-2 left-full -translate-y-1/2',
+      )}
+      style={orientation === 'horizontal' ? `left: ${hoverPercent}%` : `top: ${100 - hoverPercent}%`}
     >
       <div class="bg-background text-foreground text-xs font-mono px-2 py-1 rounded neoretro-border neoretro-shadow">
         {@render children(hoverValue)}

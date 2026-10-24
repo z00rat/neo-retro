@@ -4,6 +4,8 @@
   import { getContext } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
+  import type { SidebarColorContext } from './context.svelte.ts';
+
   let {
     ref = $bindable(null),
     class: className,
@@ -14,8 +16,7 @@
     showIcon?: boolean;
   } = $props();
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sidebarColor = getContext<() => any>('sidebarColor');
+  const sidebarColor = getContext<() => SidebarColorContext>('sidebarColor');
 
   // Random width between 50% and 90%
   const width = `${Math.floor(Math.random() * 40) + 50}%`;

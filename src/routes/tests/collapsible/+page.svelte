@@ -17,7 +17,7 @@
           <ChevronsUpDown class="size-4" />
         </Button>
       </Collapsible.Trigger>
-      <Collapsible.Content>
+      <Collapsible.Content class="pt-2 border-t-4">
         <div class="mt-2 rounded neoretro-border bg-background p-4 text-sm">
           <p>This content can be collapsed and expanded.</p>
         </div>

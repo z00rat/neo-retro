@@ -1,9 +1,15 @@
 import { IsMobile } from '#lib/registry/hooks/is-mobile.svelte.ts';
+import type { Color } from '#lib/utils.ts';
 import { getContext, setContext } from 'svelte';
 
 import { SIDEBAR_KEYBOARD_SHORTCUT } from './constants.ts';
 
 type Getter<T> = () => T;
+
+export type SidebarColorContext = {
+  color: 'black' | 'bright-black' | Color;
+  activeColor: 'black' | 'bright-black' | Color;
+};
 
 export type SidebarStateProps = {
   /**

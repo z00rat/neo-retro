@@ -41,10 +41,10 @@
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
   } from '#lib/registry/ui/dropdown-menu/index.ts';
-  import { Spinner } from '#lib/registry/ui/spinner/index.ts';
   import { cn, type Color } from '#lib/utils.ts';
 
   import { mediaSettingsStore } from './mediaSettingsStore.ts';
+  import { generateFallbackWave } from './waveform.ts';
 
   type MediaSource = string | { src: string; type: string };
 
@@ -75,6 +75,7 @@
     seekStep?: number;
     showSliderValue?: boolean;
     waveBarsCount?: number;
+    waveform?: number[];
     showYoutubeLink?: boolean;
     preload?: 'none' | 'metadata' | 'auto';
     load?: 'eager' | 'idle' | 'visible' | 'custom' | 'play';
@@ -100,6 +101,7 @@
     seekStep = 5,
     showSliderValue = true,
     waveBarsCount = 128,
+    waveform,
     showYoutubeLink = true,
     preload = 'metadata',
     load = 'visible',
@@ -142,8 +144,6 @@
   const speeds = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
   const OFF_TRACK = '__off__';
   const VOLUME_STEP = 0.05;
-  const MIN_WAVE_HEIGHT = 10;
-  const MAX_WAVE_HEIGHT = 95;
 
   const primarySrc = $derived(getPrimarySrc(src));
   const subtitleTracks = $derived(tracks.filter(({ kind }) => kind === 'subtitles' || kind === 'captions'));
@@ -374,95 +374,7 @@
     mediaSettingsStore.setTextTrackLabel(textTrackLabel);
   }
 
-  function generateFallbackWave(count: number) {
-    const barCount = Math.max(1, Math.floor(count));
-    return Array.from({ length: barCount }, (_, index) => {
-      const angle = (index / barCount) * Math.PI * 4;
-      const value = 0.5 + 0.45 * Math.sin(angle) * Math.cos(angle * 0.5);
-      return Math.max(MIN_WAVE_HEIGHT, Math.round(value * MAX_WAVE_HEIGHT));
-    });
-  }
-
-  function createWaveform(audioBuffer: AudioBuffer, count: number) {
-    const barCount = Math.max(1, Math.floor(count));
-    const channelCount = audioBuffer.numberOfChannels;
-    const blockSize = Math.max(1, Math.floor(audioBuffer.length / barCount));
-    const values = Array.from({ length: barCount }, (_, index) => {
-      const start = index * blockSize;
-      const end = Math.min(start + blockSize, audioBuffer.length);
-      let sum = 0;
-      let samples = 0;
-
-      for (let channelIndex = 0; channelIndex < channelCount; channelIndex++) {
-        const channel = audioBuffer.getChannelData(channelIndex);
-
-        for (let sampleIndex = start; sampleIndex < end; sampleIndex++) {
-          sum += channel[sampleIndex] ** 2;
-          samples++;
-        }
-      }
-
-      return samples ? Math.sqrt(sum / samples) : 0;
-    });
-    const maxValue = Math.max(...values, 0.01);
-
-    return values.map((value) => Math.max(MIN_WAVE_HEIGHT, Math.round((value / maxValue) * MAX_WAVE_HEIGHT)));
-  }
-
-  async function decodeAudio(buffer: ArrayBuffer) {
-    const AudioContextClass =
-      window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-
-    if (!AudioContextClass) return null;
-
-    const audioContext = new AudioContextClass();
-    try {
-      return await audioContext.decodeAudioData(buffer);
-    } finally {
-      void audioContext.close();
-    }
-  }
-
-  let waveHeights = $state<number[]>([]);
-  let isWaveLoading = $state(true);
-
-  $effect(() => {
-    if (viewType !== 'audio') return;
-
-    isWaveLoading = true;
-    const controller = new AbortController();
-    let disposed = false;
-
-    if (!primarySrc) {
-      waveHeights = generateFallbackWave(waveBarsCount);
-      isWaveLoading = false;
-      return;
-    }
-
-    fetch(primarySrc, { signal: controller.signal })
-      .then((response) => {
-        if (!response.ok) throw new Error(`Audio fetch failed: ${response.status}`);
-        return response.arrayBuffer();
-      })
-      .then(decodeAudio)
-      .then((audioBuffer) => {
-        if (disposed) return;
-
-        waveHeights = audioBuffer ? createWaveform(audioBuffer, waveBarsCount) : generateFallbackWave(waveBarsCount);
-        isWaveLoading = false;
-      })
-      .catch(() => {
-        if (disposed) return;
-
-        waveHeights = generateFallbackWave(waveBarsCount);
-        isWaveLoading = false;
-      });
-
-    return () => {
-      disposed = true;
-      controller.abort();
-    };
-  });
+  let waveHeights = $derived(viewType === 'audio' ? (waveform ?? generateFallbackWave(waveBarsCount)) : []);
 
   const headerTipClass =
     'pointer-events-none select-none absolute top-full left-1/2 mt-1.5 -translate-x-1/2 whitespace-nowrap rounded neoretro-border neoretro-clr px-2 py-1 text-xs font-bold z-50 opacity-0 transition-opacity duration-150 group-hover/tip:opacity-100';
@@ -619,39 +531,35 @@
       <div class="bg-black/95 py-4 px-8 min-h-27.5 relative flex w-full items-center justify-center">
         <media-provider class="hidden"></media-provider>
 
-        {#if isWaveLoading}
-          <Spinner {color} class="size-8 animate-spin" />
-        {:else}
-          <media-time-slider
-            class="group h-20 mx-0! relative flex w-full cursor-pointer touch-none items-center justify-center outline-none select-none"
+        <media-time-slider
+          class="group h-20 mx-0! relative flex w-full cursor-pointer touch-none items-center justify-center outline-none select-none"
+        >
+          <div
+            class="inset-x-0 h-14 gap-0.75 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center justify-between opacity-20"
           >
-            <div
-              class="inset-x-0 h-14 gap-0.75 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center justify-between opacity-20"
+            {#each waveHeights as height, i (i)}
+              <div class="rounded-xs bg-foreground flex-1" style="height: {height}%;"></div>
+            {/each}
+          </div>
+
+          {@render waveformLayer('opacity-35', 'clip-path: inset(0 calc(100% - var(--slider-progress, 0%)) 0 0);')}
+
+          {@render waveformLayer('', 'clip-path: inset(0 calc(100% - var(--slider-fill)) 0 0);')}
+
+          <div
+            class="neoretro-clr top-0 w-1 rounded-t-sm pointer-events-none absolute z-20 h-full"
+            style="left: var(--slider-fill); transform: translateX(calc(-1 * var(--slider-fill)));"
+            data-color={color}
+          ></div>
+
+          {#if showSliderValue}
+            <media-slider-preview
+              class="mb-4 pointer-events-none absolute bottom-full flex flex-col items-center opacity-0 transition-opacity duration-150 group-hover:opacity-100"
             >
-              {#each waveHeights as height, i (i)}
-                <div class="rounded-xs bg-foreground flex-1" style="height: {height}%;"></div>
-              {/each}
-            </div>
-
-            {@render waveformLayer('opacity-35', 'clip-path: inset(0 calc(100% - var(--slider-progress, 0%)) 0 0);')}
-
-            {@render waveformLayer('', 'clip-path: inset(0 calc(100% - var(--slider-fill)) 0 0);')}
-
-            <div
-              class="neoretro-clr top-0 w-1 rounded-t-sm pointer-events-none absolute z-20 h-full"
-              style="left: var(--slider-fill); transform: translateX(calc(-1 * var(--slider-fill)));"
-              data-color={color}
-            ></div>
-
-            {#if showSliderValue}
-              <media-slider-preview
-                class="mb-4 pointer-events-none absolute bottom-full flex flex-col items-center opacity-0 transition-opacity duration-150 group-hover:opacity-100"
-              >
-                {@render sliderPreviewValue()}
-              </media-slider-preview>
-            {/if}
-          </media-time-slider>
-        {/if}
+              {@render sliderPreviewValue()}
+            </media-slider-preview>
+          {/if}
+        </media-time-slider>
       </div>
     {/if}
 

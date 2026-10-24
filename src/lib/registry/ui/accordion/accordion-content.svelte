@@ -19,8 +19,9 @@
   data-color={getColor()}
   class={cn(
     'neoretro-clr text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden rounded-none group-last:rounded-b-[calc(var(--radius)-2px)]',
+    className,
   )}
   {...restProps}
 >
-  <div class={cn('p-4', className)}>{@render children?.()}</div>
+  <div class="p-4">{@render children?.()}</div>
 </AccordionPrimitive.Content>

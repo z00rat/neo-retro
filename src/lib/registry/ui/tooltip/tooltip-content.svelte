@@ -10,14 +10,16 @@
     side = 'top',
     children,
     arrowClasses,
+    portalProps,
     ...restProps
   }: TooltipPrimitive.ContentProps & {
     color: 'black' | 'bright-black' | Color;
     arrowClasses?: string;
+    portalProps?: TooltipPrimitive.PortalProps;
   } = $props();
 </script>
 
-<TooltipPrimitive.Portal>
+<TooltipPrimitive.Portal {...portalProps}>
   <TooltipPrimitive.Content
     bind:ref
     data-slot="tooltip-content"

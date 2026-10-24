@@ -2,6 +2,7 @@
   import ArrowLeftIcon from '@lucide/svelte/icons/arrow-left';
   import ArrowUpIcon from '@lucide/svelte/icons/arrow-up';
   import { Button, type Props } from '#lib/registry/ui/button/index.ts';
+  import type { Color } from '#lib/utils.ts';
   import type { WithoutChildren } from 'bits-ui';
   import { getContext } from 'svelte';
 
@@ -10,8 +11,7 @@
   let { ref = $bindable(null), size = 'icon', ...restProps }: Omit<WithoutChildren<Props>, 'color'> = $props();
 
   const emblaCtx = getEmblaContext('<Carousel.Previous/>');
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const getColor = getContext<() => any>('carouselColor');
+  const getColor = getContext<() => Color>('carouselColor');
 </script>
 
 <Button

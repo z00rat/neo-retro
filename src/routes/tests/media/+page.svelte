@@ -9,6 +9,7 @@
 
   const poster = 'https://files.vidstack.io/sprite-fight/poster.webp';
   const livePoster = 'https://image.mux.com/v69RSHhFelSm4701snP22dYz2jICy4E4FUyk02rW4gxRM/thumbnail.webp?time=30';
+  const sampleWaveform = [12, 24, 38, 19, 54, 82, 43, 25, 61, 94, 58, 31, 72, 46, 18, 35];
 
   // Local paths to bypass CORS / Security errors
   const thumbnails = '/media/thumbnails.vtt';
@@ -82,7 +83,20 @@
 
   <!-- Example 5: MP3 Audio Player -->
   <section class="space-y-4">
-    <h2 class="text-xl font-black pb-2 border-b uppercase">5. Custom Audio Player (Green - MP3)</h2>
-    <Media src={audioSource} title="Sprite Fight Sound Track" viewType="audio" color="green" />
+    <h2 class="text-xl font-black pb-2 border-b uppercase">5. Audio with generated waveform data</h2>
+    <p class="text-sm">This array can be generated from an audio file with the media waveform script.</p>
+    <Media
+      src={audioSource}
+      title="Sprite Fight Sound Track"
+      viewType="audio"
+      color="green"
+      waveform={sampleWaveform}
+    />
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-xl font-black pb-2 border-b uppercase">6. Audio with fallback waveform</h2>
+    <p class="text-sm">When <code>waveform</code> is omitted, the player uses its repeating pattern.</p>
+    <Media src={audioSource} title="Fallback waveform example" viewType="audio" color="yellow" />
   </section>
 </div>
