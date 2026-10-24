@@ -23,6 +23,7 @@
     selectTime,
     selectVolume,
   } from '@videojs/html';
+  import * as Select from '#lib/registry/ui/select/index.js';
   import { cn, type Color } from '#lib/utils.ts';
   import { onMount, untrack } from 'svelte';
   import { get } from 'svelte/store';
@@ -124,6 +125,7 @@
   let pip = $state<ReturnType<typeof selectPiP>>(undefined);
   let streamType = $state<ReturnType<typeof selectStreamType>>(undefined);
   let actionError = $state('');
+  let settingsMenu = $state<HTMLDetailsElement | null>(null);
   let preferencesApplied = false;
   let autoplayAttempted = false;
   let previousError: unknown;
@@ -138,7 +140,7 @@
           src: provider.src,
           type: provider.type,
           source: provider.source,
-          poster: posterReady ? poster : undefined,
+          poster: viewType === 'video' && posterReady ? poster : undefined,
           preload,
           autoplay: autoPlay,
           loop,
@@ -157,6 +159,7 @@
   );
   const duration = $derived(Math.max(0, end - start));
   const current = $derived(Math.max(0, Math.min(duration, (time?.currentTime ?? start) - start)));
+  const playedRatio = $derived(duration > 0 ? current / duration : 0);
   const youtubeUrl = $derived(isYoutube(activeSource?.src ?? '') ? (activeSource?.src ?? '') : '');
 
   function resolveProvider(source: SourceChoice, kind: 'audio' | 'video') {
@@ -166,8 +169,7 @@
       const playbackId = source.src.match(/stream\.mux\.com\/([^/.?]+)/)?.[1] ?? source.src;
       return { tag: kind === 'audio' ? 'mux-audio' : 'mux-video', src: source.src, source: { playbackId } };
     }
-    if (/open\.spotify\.com\//.test(url) || /spotify\.link/.test(url))
-      return { tag: 'spotify-audio', src: source.src };
+    if (/open\.spotify\.com\//.test(url) || /spotify\.link/.test(url)) return { tag: 'spotify-audio', src: source.src };
     if (/cloudflarestream\.com/.test(url) || type === 'video/cloudflare')
       return { tag: 'cloudflare-video', src: source.src };
     if (/youtube\.com|youtu\.be/.test(url) || type === 'video/youtube')
@@ -323,7 +325,25 @@
     volume.setVolume(Math.max(0, Math.min(1, volume.volume + (event.deltaY < 0 ? 0.05 : -0.05))));
   }
 
-  onMount(() => mediaSettingsStore.subscribe(syncSettings));
+  onMount(() => {
+    const unsubscribe = mediaSettingsStore.subscribe(syncSettings);
+    const closeSettings = (event: PointerEvent) => {
+      const target = event.target;
+      if (
+        settingsMenu?.open &&
+        target instanceof Element &&
+        !settingsMenu.contains(target) &&
+        !target.closest('[data-slot="select-content"]')
+      ) {
+        settingsMenu.open = false;
+      }
+    };
+    document.addEventListener('pointerdown', closeSettings);
+    return () => {
+      unsubscribe();
+      document.removeEventListener('pointerdown', closeSettings);
+    };
+  });
 
   $effect(() => {
     if (load === 'eager') loaded = true;
@@ -495,29 +515,25 @@
               class="group mx-0 h-20 relative flex w-full cursor-pointer touch-none items-center justify-center outline-none select-none"
               aria-label="Seek audio"
             >
-              <div class="inset-x-0 h-14 gap-0.75 absolute top-1/2 flex -translate-y-1/2 items-center justify-between">
+              <div
+                class="inset-x-0 h-14 gap-0.75 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center justify-between"
+                aria-hidden="true"
+              >
                 {#each bars as height, index (index)}<div
-                    class="rounded-xs bg-foreground flex-1"
+                    class="rounded-xs flex-1"
+                    class:neoretro-clr={(index + 1) / bars.length <= playedRatio}
+                    class:bg-foreground={(index + 1) / bars.length > playedRatio}
+                    data-color={color}
                     style="height: {height}%"
                   ></div>{/each}
               </div>
-              <media-slider-track
-                class="h-3 rounded neoretro-border bg-background neoretro-shadow relative z-10 block w-full overflow-hidden"
-                ><media-slider-buffer class="inset-y-0 left-0 neoretro-clr absolute" data-color={color}
-                ></media-slider-buffer><media-slider-fill
-                  class="inset-y-0 left-0 neoretro-clr absolute"
-                  data-color={color}
-                ></media-slider-fill></media-slider-track
-              >
               <media-slider-thumb
-                class="h-5 w-5 rounded neoretro-border neoretro-clr absolute top-1/2 left-[var(--media-slider-fill)] z-20 -translate-y-1/2"
+                class="h-5 w-5 rounded neoretro-border neoretro-clr neoretro-shadow absolute top-1/2 left-[var(--media-slider-fill)] z-20 -translate-y-1/2"
                 data-color={color}
               ></media-slider-thumb>
               {#if showSliderValue}<media-slider-preview
                   class="mb-4 rounded neoretro-border neoretro-shadow bg-background px-2 py-1 text-xs text-foreground absolute bottom-full"
-                  ><media-slider-thumbnail class="mb-2 aspect-video w-40 rounded bg-black block overflow-hidden"
-                  ></media-slider-thumbnail><media-slider-value type="pointer"
-                  ></media-slider-value></media-slider-preview
+                  ><media-slider-value type="pointer"></media-slider-value></media-slider-preview
                 >{/if}
             </media-time-slider>
           {:else if !loaded}
@@ -541,7 +557,10 @@
           {/if}
         </div>
       {:else}
-        <div class="bg-black relative flex w-full items-center justify-center" style:aspect-ratio={aspectRatio}>
+        <div
+          class="media-video-stage bg-black relative flex w-full items-center justify-center"
+          style:aspect-ratio={aspectRatio}
+        >
           {#if loaded && provider && providerReady}
             {#key `${sourceIndex}:${retryKey}`}
               <svelte:element this={provider.tag} bind:this={mediaEl} {...providerProps}>
@@ -572,6 +591,9 @@
             <p class="text-sm font-bold text-white">Loading video adapter…</p>
           {/if}
         </div>
+      {/if}
+      {#if viewType === 'video'}
+        <media-gesture type="tap" action="togglePaused" region="center"></media-gesture>
       {/if}
 
       {#if loaded && (errorState?.error || adapterFailure)}
@@ -606,8 +628,16 @@
             class="group mx-0 py-2 relative flex w-full cursor-pointer touch-none items-center outline-none select-none"
             aria-label="Seek video"
           >
+            <div
+              class="media-control-track-shadow rounded neoretro-shadow left-0 pointer-events-none absolute top-1/2 z-0 w-full -translate-y-1/2"
+              aria-hidden="true"
+            ></div>
+            <div
+              class="media-control-thumb-shadow h-5 w-5 rounded neoretro-shadow pointer-events-none absolute top-1/2 left-[var(--media-slider-fill)] z-0 -translate-y-1/2"
+              aria-hidden="true"
+            ></div>
             <media-slider-track
-              class="h-3 rounded neoretro-border bg-background neoretro-shadow relative block w-full overflow-hidden"
+              class="h-3 rounded neoretro-border bg-background relative z-10 block w-full overflow-hidden"
               ><media-slider-buffer class="inset-y-0 left-0 neoretro-clr absolute" data-color={color}
               ></media-slider-buffer><media-slider-fill
                 class="inset-y-0 left-0 neoretro-clr absolute"
@@ -618,14 +648,18 @@
               class="h-5 w-5 rounded neoretro-border neoretro-clr absolute top-1/2 left-[var(--media-slider-fill)] z-20 -translate-y-1/2"
               data-color={color}
             ></media-slider-thumb>
-            {#if showSliderValue}<media-slider-preview class="mb-4 absolute bottom-full flex flex-col items-center"
-                >{#if thumbnails}<media-slider-thumbnail
-                    class="mb-2 aspect-video w-40 rounded neoretro-border neoretro-shadow bg-black block overflow-hidden"
-                  ></media-slider-thumbnail>{/if}<span
-                  class="rounded neoretro-border neoretro-shadow bg-background px-2 py-1 text-xs text-foreground"
-                  ><media-slider-value type="pointer"></media-slider-value></span
-                ></media-slider-preview
-              >{/if}
+            {#if thumbnails}
+              <media-slider-thumbnail
+                class="mb-2 aspect-video w-40 rounded neoretro-border neoretro-shadow bg-black absolute bottom-full block overflow-hidden"
+              ></media-slider-thumbnail>
+            {/if}
+            {#if showSliderValue}
+              <media-slider-preview class="mb-4 absolute bottom-full flex flex-col items-center">
+                <span class="rounded neoretro-border neoretro-shadow bg-background px-2 py-1 text-xs text-foreground">
+                  <media-slider-value type="pointer"></media-slider-value>
+                </span>
+              </media-slider-preview>
+            {/if}
           </media-time-slider>
         {/if}
 
@@ -655,20 +689,27 @@
           </div>
 
           <div class="gap-2 ml-auto flex flex-wrap items-center justify-end">
-            {#if viewType === 'video'}
-              <media-volume-slider
-                class="group h-8 w-24 relative flex cursor-pointer touch-none items-center outline-none select-none"
-                aria-label="Volume"
-                ><media-slider-track
-                  class="h-3 rounded neoretro-border bg-background neoretro-shadow relative block w-full overflow-hidden"
-                  ><media-slider-fill class="inset-y-0 left-0 neoretro-clr absolute" data-color={color}
-                  ></media-slider-fill></media-slider-track
-                ><media-slider-thumb
-                  class="h-4 w-4 rounded neoretro-border neoretro-clr absolute top-1/2 left-[var(--media-slider-fill)] z-20 -translate-y-1/2"
-                  data-color={color}
-                ></media-slider-thumb></media-volume-slider
-              >
-            {/if}
+            <media-volume-slider
+              class="group h-8 w-24 mr-2 relative flex shrink-0 cursor-pointer touch-none items-center outline-none select-none"
+              aria-label="Volume"
+            >
+              <div
+                class="media-control-track-shadow rounded neoretro-shadow left-0 pointer-events-none absolute top-1/2 z-0 w-full -translate-y-1/2"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="media-control-thumb-shadow h-4 w-4 rounded neoretro-shadow pointer-events-none absolute top-1/2 left-[var(--media-slider-fill)] z-0 -translate-y-1/2"
+                aria-hidden="true"
+              ></div>
+              <media-slider-track
+                class="h-3 rounded neoretro-border bg-background relative z-10 block w-full overflow-hidden"
+                ><media-slider-fill class="inset-y-0 left-0 neoretro-clr absolute" data-color={color}
+                ></media-slider-fill></media-slider-track
+              ><media-slider-thumb
+                class="h-4 w-4 rounded neoretro-border neoretro-clr absolute top-1/2 left-[var(--media-slider-fill)] z-20 -translate-y-1/2"
+                data-color={color}
+              ></media-slider-thumb></media-volume-slider
+            >
             <button
               type="button"
               class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus inline-flex items-center justify-center"
@@ -677,7 +718,7 @@
               onclick={() => volume?.toggleMuted()}
               >{#if volume?.muted}<VolumeX class="h-4 w-4" />{:else}<Volume2 class="h-4 w-4" />{/if}</button
             >
-            <details class="relative">
+            <details bind:this={settingsMenu} class="relative">
               <summary
                 class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus inline-flex cursor-pointer list-none items-center justify-center"
                 data-color={color}
@@ -686,47 +727,86 @@
               <div
                 class="right-0 mb-2 min-w-56 gap-3 rounded neoretro-border neoretro-shadow bg-background p-3 text-foreground absolute bottom-full z-40 grid"
               >
-                <label class="gap-1 text-xs font-bold grid"
-                  >Speed<select
-                    class="rounded neoretro-border bg-background px-2 py-1 text-foreground focus-visible:neoretro-focus"
-                    value={rate?.playbackRate ?? saved.playbackRate}
-                    onchange={(event) => rate?.setPlaybackRate(Number(event.currentTarget.value))}
-                    >{#each speeds as speed}<option value={speed}>{speed}×</option>{/each}</select
-                  ></label
-                >
-                {#if quality?.videoRenditionList.length}<label class="gap-1 text-xs font-bold grid"
-                    >Quality<select
-                      class="rounded neoretro-border bg-background px-2 py-1 text-foreground focus-visible:neoretro-focus"
+                <div class="gap-1 text-xs font-bold grid">
+                  <span>Speed</span>
+                  <Select.Root
+                    type="single"
+                    {color}
+                    value={String(rate?.playbackRate ?? saved.playbackRate)}
+                    onValueChange={(value) => rate?.setPlaybackRate(Number(value))}
+                  >
+                    <Select.Trigger class="h-9 text-xs">{rate?.playbackRate ?? saved.playbackRate}×</Select.Trigger>
+                    <Select.Content {color}>
+                      {#each speeds as speed}<Select.Item value={String(speed)}>{speed}×</Select.Item>{/each}
+                    </Select.Content>
+                  </Select.Root>
+                </div>
+                {#if quality?.videoRenditionList.length}
+                  <div class="gap-1 text-xs font-bold grid">
+                    <span>Quality</span>
+                    <Select.Root
+                      type="single"
+                      {color}
                       value={quality.activeVideoRendition?.id ?? 'auto'}
-                      onchange={(event) => quality?.selectVideoRendition(event.currentTarget.value)}
-                      ><option value="auto">Auto</option
-                      >{#each quality.videoRenditionList as rendition (rendition.id)}<option value={rendition.id}
-                          >{rendition.height}p</option
-                        >{/each}</select
-                    ></label
-                  >{/if}
-                {#if audio?.audioTrackList.length}<label class="gap-1 text-xs font-bold grid"
-                    >Audio track<select
-                      class="rounded neoretro-border bg-background px-2 py-1 text-foreground focus-visible:neoretro-focus"
+                      onValueChange={(value) => quality?.selectVideoRendition(value)}
+                    >
+                      <Select.Trigger class="h-9 text-xs">
+                        {quality.activeVideoRendition?.height ? `${quality.activeVideoRendition.height}p` : 'Auto'}
+                      </Select.Trigger>
+                      <Select.Content {color}>
+                        <Select.Item value="auto">Auto</Select.Item>
+                        {#each quality.videoRenditionList as rendition (rendition.id ?? rendition.height)}
+                          {#if rendition.id}<Select.Item value={rendition.id}>{rendition.height}p</Select.Item>{/if}
+                        {/each}
+                      </Select.Content>
+                    </Select.Root>
+                  </div>
+                {/if}
+                {#if audio?.audioTrackList.length}
+                  <div class="gap-1 text-xs font-bold grid">
+                    <span>Audio track</span>
+                    <Select.Root
+                      type="single"
+                      {color}
                       value={audio.audioTrackList.find((item) => item.enabled)?.id ?? ''}
-                      onchange={(event) => audio?.selectAudioTrack(event.currentTarget.value)}
-                      >{#each audio.audioTrackList as track (track.id)}<option value={track.id}
-                          >{track.label || track.language || 'Audio'}</option
-                        >{/each}</select
-                    ></label
-                  >{/if}
-                {#if viewType === 'video' && text?.textTrackList.some((item) => item.kind === 'captions' || item.kind === 'subtitles')}<label
-                    class="gap-1 text-xs font-bold grid"
-                    >Captions<select
-                      class="rounded neoretro-border bg-background px-2 py-1 text-foreground focus-visible:neoretro-focus"
-                      value={text.textTrackList.find((item) => item.mode === 'showing')?.id ?? ''}
-                      onchange={(event) => text?.selectSubtitlesTrack(event.currentTarget.value || 'off')}
-                      ><option value="">Off</option
-                      >{#each text.textTrackList.filter((item) => item.kind === 'captions' || item.kind === 'subtitles') as track (track.id)}<option
-                          value={track.id}>{track.label || track.language || 'Captions'}</option
-                        >{/each}</select
-                    ></label
-                  >{/if}
+                      onValueChange={(value) => audio?.selectAudioTrack(value)}
+                    >
+                      <Select.Trigger class="h-9 text-xs">
+                        {audio.audioTrackList.find((item) => item.enabled)?.label || 'Audio'}
+                      </Select.Trigger>
+                      <Select.Content {color}>
+                        {#each audio.audioTrackList as track (track.id ?? track.label ?? track.language)}
+                          {#if track.id}<Select.Item value={track.id}
+                              >{track.label || track.language || 'Audio'}</Select.Item
+                            >{/if}
+                        {/each}
+                      </Select.Content>
+                    </Select.Root>
+                  </div>
+                {/if}
+                {#if viewType === 'video' && text?.textTrackList.some((item) => item.kind === 'captions' || item.kind === 'subtitles')}
+                  <div class="gap-1 text-xs font-bold grid">
+                    <span>Captions</span>
+                    <Select.Root
+                      type="single"
+                      {color}
+                      value={text.textTrackList.find((item) => item.mode === 'showing')?.id ?? 'off'}
+                      onValueChange={(value) => text?.selectSubtitlesTrack(value === 'off' ? 'off' : value)}
+                    >
+                      <Select.Trigger class="h-9 text-xs">
+                        {text.textTrackList.find((item) => item.mode === 'showing')?.label ?? 'Off'}
+                      </Select.Trigger>
+                      <Select.Content {color}>
+                        <Select.Item value="off">Off</Select.Item>
+                        {#each text.textTrackList.filter((item) => item.kind === 'captions' || item.kind === 'subtitles') as track (track.id ?? track.label ?? track.language)}
+                          {#if track.id}<Select.Item value={track.id}
+                              >{track.label || track.language || 'Captions'}</Select.Item
+                            >{/if}
+                        {/each}
+                      </Select.Content>
+                    </Select.Root>
+                  </div>
+                {/if}
               </div>
             </details>
             {#if viewType === 'video'}

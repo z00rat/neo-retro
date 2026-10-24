@@ -1157,7 +1157,8 @@
         "badge",
         "button",
         "button-group",
-        "dropdown-menu"
+        "dropdown-menu",
+        "select"
       ],
       "devDependencies": [
         "@videojs/html",

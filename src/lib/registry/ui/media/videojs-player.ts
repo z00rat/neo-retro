@@ -5,6 +5,7 @@ import { videoFeatures } from '@videojs/html/video';
 import '@videojs/html/ui/captions-button';
 import '@videojs/html/ui/container';
 import '@videojs/html/ui/fullscreen-button';
+import '@videojs/html/ui/gesture';
 import '@videojs/html/ui/live-button';
 import '@videojs/html/ui/mute-button';
 import '@videojs/html/ui/pip-button';
