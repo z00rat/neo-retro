@@ -1,22 +1,4 @@
 <script lang="ts">
-  import 'vidstack/bundle';
-
-  import { get } from 'svelte/store';
-  import type {
-    AudioTrack,
-    MediaProviderAdapter,
-    MediaProviderChangeEvent,
-    MediaRateChangeRequestEvent,
-    MediaState,
-    MediaStorage,
-    MediaVolumeChangeRequestEvent,
-    PlayerSrc,
-    VideoQuality,
-  } from 'vidstack';
-  import type { MediaPlayerElement } from 'vidstack/elements';
-
-  import './media.css';
-
   import ExternalLink from '@lucide/svelte/icons/external-link';
   import FastForward from '@lucide/svelte/icons/fast-forward';
   import Maximize from '@lucide/svelte/icons/maximize';
@@ -27,27 +9,32 @@
   import Settings from '@lucide/svelte/icons/settings';
   import Volume2 from '@lucide/svelte/icons/volume-2';
   import VolumeX from '@lucide/svelte/icons/volume-x';
-  import { Badge } from '#lib/registry/ui/badge/index.ts';
-  import { ButtonGroup } from '#lib/registry/ui/button-group/index.ts';
-  import { buttonVariants } from '#lib/registry/ui/button/button.svelte';
   import {
-    DropdownMenu,
-    DropdownMenuCheckboxItem,
-    DropdownMenuContent,
-    DropdownMenuRadioGroup,
-    DropdownMenuRadioItem,
-    DropdownMenuSub,
-    DropdownMenuSubContent,
-    DropdownMenuSubTrigger,
-    DropdownMenuTrigger,
-  } from '#lib/registry/ui/dropdown-menu/index.ts';
+    selectAudioTrack,
+    selectError,
+    selectFullscreen,
+    selectPiP,
+    selectPlayback,
+    selectPlaybackRate,
+    selectQuality,
+    selectSource,
+    selectStreamType,
+    selectTextTrack,
+    selectTime,
+    selectVolume,
+  } from '@videojs/html';
   import { cn, type Color } from '#lib/utils.ts';
+  import { onMount } from 'svelte';
+  import { get } from 'svelte/store';
 
   import { mediaSettingsStore } from './mediaSettingsStore.ts';
+  import { registerMediaProvider, type NeoRetroPlayer } from './videojs-player.ts';
   import { generateFallbackWave } from './waveform.ts';
 
-  type MediaSource = string | { src: string; type: string };
+  import './videojs-player.ts';
+  import './media.css';
 
+  type MediaSource = string | { src: string; type: string };
   type MediaTrack = {
     src: string;
     kind: 'subtitles' | 'captions' | 'chapters';
@@ -55,6 +42,7 @@
     language: string;
     default?: boolean;
   };
+  type SourceChoice = { src: string; type?: string };
 
   export type MediaProps = {
     src: MediaSource | MediaSource[];
@@ -109,340 +97,359 @@
     ...rest
   }: MediaProps = $props();
 
-  let playerEl = $state<MediaPlayerElement | null>(null);
-
-  const initialSettings = get(mediaSettingsStore);
-  let settings = $state(initialSettings);
-  let currentRate = $state(initialSettings.playbackRate);
-  let currentQualityValue = $state<string>('auto');
-  let liveQualities = $state<Array<{ index: string; height: number }>>([]);
-  let audioTrackOptions = $state<Array<{ index: string; label: string }>>([]);
-  let currentAudioTrackIndex = $state<string | null>(null);
-  let currentTrackLabel = $state<string | null>(initialSettings.textTrackLabel);
-  let isLive = $state(false);
-  let isFullscreen = $state(false);
-  let customAspectRatio = $state<number | null>(null);
-  const computedAspectRatio = $derived(customAspectRatio ?? aspectRatio);
-
-  $effect(() => {
-    if (!playerEl) return;
-    const handleLoadedMetadata = () => {
-      const videoEl = playerEl!.querySelector('video');
-      const w = videoEl?.videoWidth || (playerEl as unknown as HTMLVideoElement).videoWidth;
-      const h = videoEl?.videoHeight || (playerEl as unknown as HTMLVideoElement).videoHeight;
-      if (w && h) {
-        customAspectRatio = w / h;
-      }
-    };
-    playerEl.addEventListener('loaded-metadata', handleLoadedMetadata);
-    handleLoadedMetadata();
-    return () => {
-      playerEl?.removeEventListener('loaded-metadata', handleLoadedMetadata);
-    };
-  });
-
   const speeds = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
-  const OFF_TRACK = '__off__';
-  const VOLUME_STEP = 0.05;
+  const sources = $derived<SourceChoice[]>(
+    (Array.isArray(src) ? src : [src]).map((value) => (typeof value === 'string' ? { src: value } : value)),
+  );
+  const sourceKey = $derived(sources.map((item) => `${item.src}:${item.type ?? ''}`).join('|'));
+  let sourceIndex = $state(0);
+  let retryKey = $state(0);
+  let loaded = $state(false);
+  let providerReady = $state(false);
+  let adapterFailure = $state('');
+  let posterReady = $state(false);
+  let pendingPlay = $state(false);
+  let playerEl = $state<NeoRetroPlayer | null>(null);
+  let mediaEl = $state<HTMLElement | null>(null);
+  let saved = $state(get(mediaSettingsStore));
+  let playback = $state<ReturnType<typeof selectPlayback>>(undefined);
+  let time = $state<ReturnType<typeof selectTime>>(undefined);
+  let volume = $state<ReturnType<typeof selectVolume>>(undefined);
+  let rate = $state<ReturnType<typeof selectPlaybackRate>>(undefined);
+  let quality = $state<ReturnType<typeof selectQuality>>(undefined);
+  let audio = $state<ReturnType<typeof selectAudioTrack>>(undefined);
+  let text = $state<ReturnType<typeof selectTextTrack>>(undefined);
+  let errorState = $state<ReturnType<typeof selectError>>(undefined);
+  let fullscreen = $state<ReturnType<typeof selectFullscreen>>(undefined);
+  let pip = $state<ReturnType<typeof selectPiP>>(undefined);
+  let streamType = $state<ReturnType<typeof selectStreamType>>(undefined);
+  let actionError = $state('');
+  let preferencesApplied = false;
+  let autoplayAttempted = false;
+  let previousError: unknown;
+  let clipFinished = false;
 
-  const primarySrc = $derived(getPrimarySrc(src));
-  const subtitleTracks = $derived(tracks.filter(({ kind }) => kind === 'subtitles' || kind === 'captions'));
-  const youtubeUrl = $derived(isYoutubeUrl(primarySrc) ? primarySrc : '');
+  const activeSource = $derived(sources[Math.min(sourceIndex, Math.max(0, sources.length - 1))]);
+  const mediaTag = $derived(viewType === 'audio' ? 'neo-retro-audio-player' : 'neo-retro-video-player');
+  const provider = $derived(activeSource ? resolveProvider(activeSource, viewType) : null);
+  const providerProps = $derived(
+    provider
+      ? {
+          src: provider.src,
+          type: provider.type,
+          source: provider.source,
+          poster: posterReady ? poster : undefined,
+          preload,
+          autoplay: autoPlay,
+          loop,
+          muted,
+          playsinline: playsInline,
+          class: viewType === 'audio' ? 'hidden' : 'block h-full w-full object-contain',
+          'data-media-source': true,
+        }
+      : {},
+  );
+  const live = $derived(streamType?.streamType === 'live');
+  const bars = $derived(viewType === 'audio' ? (waveform ?? generateFallbackWave(waveBarsCount)) : []);
+  const start = $derived(Math.max(0, clipStartTime));
+  const end = $derived(
+    clipEndTime > start ? Math.min(clipEndTime, time?.duration || clipEndTime) : (time?.duration ?? 0),
+  );
+  const duration = $derived(Math.max(0, end - start));
+  const current = $derived(Math.max(0, Math.min(duration, (time?.currentTime ?? start) - start)));
+  const youtubeUrl = $derived(isYoutube(activeSource?.src ?? '') ? (activeSource?.src ?? '') : '');
 
-  const mediaStorage: MediaStorage = {
-    getVolume: async () => settings.volume,
-    getMuted: async () => null,
-    getTime: async () => null,
-    getLang: async () => null,
-    getCaptions: async () => settings.textTrackLabel !== null,
-    getPlaybackRate: async () => settings.playbackRate,
-    getVideoQuality: async () => null,
-    getAudioGain: async () => null,
-  };
-
-  let providerAdapter = $state<MediaProviderAdapter | null>(null);
-
-  function getPrimarySrc(value: MediaProps['src']) {
-    const source = Array.isArray(value) ? value[0] : value;
-    return typeof source === 'string' ? source : (source?.src ?? '');
+  function resolveProvider(source: SourceChoice, kind: 'audio' | 'video') {
+    const url = source.src.toLowerCase();
+    const type = source.type?.toLowerCase();
+    if (/stream\.mux\.com\//.test(url) || type === 'video/mux' || type === 'audio/mux') {
+      const playbackId = source.src.match(/stream\.mux\.com\/([^/.?]+)/)?.[1] ?? source.src;
+      return { tag: kind === 'audio' ? 'mux-audio' : 'mux-video', src: source.src, source: { playbackId } };
+    }
+    if (/open\.spotify\.com\//.test(url) || /spotify\.link/.test(url))
+      return { tag: 'spotify-audio', src: source.src };
+    if (/cloudflarestream\.com/.test(url) || type === 'video/cloudflare')
+      return { tag: 'cloudflare-video', src: source.src };
+    if (/youtube\.com|youtu\.be/.test(url) || type === 'video/youtube')
+      return { tag: 'youtube-video', src: source.src };
+    if (/vimeo\.com/.test(url) || type === 'video/vimeo') return { tag: 'vimeo-video', src: source.src };
+    if (/twitch\.tv/.test(url) || type === 'video/twitch') return { tag: 'twitch-video', src: source.src };
+    if (/tiktok\.com/.test(url) || type === 'video/tiktok') return { tag: 'tiktok-video', src: source.src };
+    if (/wistia\.(com|net)/.test(url) || type === 'video/wistia') return { tag: 'wistia-video', src: source.src };
+    if (/\.mpd(?:$|\?)/.test(url) || type === 'application/dash+xml')
+      return { tag: 'dash-video', src: source.src, type: source.type };
+    if (/\.m3u8(?:$|\?)/.test(url) || type === 'application/vnd.apple.mpegurl' || type === 'application/x-mpegurl')
+      return { tag: 'hlsjs-video', src: source.src, type: source.type };
+    return { tag: kind, src: source.src, type: source.type };
   }
 
-  function isYoutubeUrl(value: string) {
-    if (!value) return false;
-
+  function isYoutube(value: string) {
     try {
-      const { hostname } = new URL(value);
-      return hostname === 'youtu.be' || hostname === 'www.youtu.be' || hostname.endsWith('.youtube.com');
+      const hostname = new URL(value).hostname;
+      return hostname === 'youtu.be' || hostname.endsWith('youtube.com');
     } catch {
       return value.includes('youtube.com') || value.includes('youtu.be');
     }
   }
 
-  function isSameVolume(a: number, b: number) {
-    return Math.abs(a - b) < 0.001;
+  function formatTime(value: number) {
+    if (!Number.isFinite(value) || value < 0) return '0:00';
+    const seconds = Math.floor(value);
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainder = String(seconds % 60).padStart(2, '0');
+    return hours ? `${hours}:${String(minutes).padStart(2, '0')}:${remainder}` : `${minutes}:${remainder}`;
   }
 
-  function setVolumeSetting(value: number) {
-    const volume = Math.min(Math.max(value, 0), 1);
-    if (isSameVolume(settings.volume, volume)) return;
-
-    mediaSettingsStore.setVolume(volume);
-  }
-
-  function syncNativeMediaVolume(value: number) {
-    const media = playerEl?.querySelector<HTMLMediaElement>('video, audio');
-    if (!media) return true;
-
-    if (!isSameVolume(media.volume, value)) {
-      media.volume = value;
-    }
-
-    return isSameVolume(media.volume, value);
-  }
-
-  function syncProviderVolume(value: number) {
-    providerAdapter?.setVolume(value);
-  }
-
-  function applyVolume(value: number) {
-    if (!playerEl) return;
-
-    syncProviderVolume(value);
-    if (!isSameVolume(playerEl.volume, value)) {
-      playerEl.volume = value;
-    }
-    syncNativeMediaVolume(value);
-  }
-
-  function setPlaybackRateSetting(value: number) {
-    if (settings.playbackRate === value) return;
-
-    mediaSettingsStore.setPlaybackRate(value);
-  }
-
-  function applyPlaybackRate(value: number) {
-    currentRate = value;
-    if (playerEl && playerEl.playbackRate !== value) {
-      playerEl.playbackRate = value;
-    }
-  }
-
-  function applyQuality(value: 'auto' | number) {
-    if (!playerEl) return;
-
-    if (value === 'auto') {
-      playerEl.qualities.autoSelect();
-      currentQualityValue = 'auto';
-      return;
-    }
-
-    const quality = Array.from<VideoQuality>(playerEl.qualities).find((q) => q.height === value);
-    if (quality) {
-      quality.selected = true;
-      currentQualityValue = String(value);
-    }
-  }
-
-  function applyTextTrack(label: string | null) {
-    if (!playerEl) return;
-
-    for (const track of playerEl.textTracks) {
-      track.mode = label && track.label === label ? 'showing' : 'disabled';
-    }
-
-    currentTrackLabel = label;
-  }
-
-  function applySettings(nextSettings = get(mediaSettingsStore)) {
-    applyVolume(nextSettings.volume);
-    applyPlaybackRate(nextSettings.playbackRate);
-    applyQuality(nextSettings.quality);
-    applyTextTrack(nextSettings.textTrackLabel);
-  }
-
-  $effect(() => {
-    if (!playerEl) return;
-
-    const handleVolumeChangeRequest = (event: Event) => {
-      const volume = (event as MediaVolumeChangeRequestEvent).detail;
-      setVolumeSetting(volume);
-    };
-
-    const handleRateChangeRequest = (event: Event) => {
-      setPlaybackRateSetting((event as MediaRateChangeRequestEvent).detail);
-    };
-
-    const handleProviderChange = (event: Event) => {
-      providerAdapter = (event as MediaProviderChangeEvent).detail;
-      applySettings();
-    };
-    const handleReady = () => applySettings();
-
-    const unsubscribe = mediaSettingsStore.subscribe((nextSettings) => {
-      settings = nextSettings;
-      applySettings(nextSettings);
-    });
-
-    playerEl.addEventListener('media-volume-change-request', handleVolumeChangeRequest);
-    playerEl.addEventListener('media-rate-change-request', handleRateChangeRequest);
-    playerEl.addEventListener('loaded-metadata', handleReady);
-    playerEl.addEventListener('can-play', handleReady);
-    playerEl.addEventListener('provider-change', handleProviderChange);
-
-    return () => {
-      unsubscribe();
-      providerAdapter = null;
-      playerEl?.removeEventListener('media-volume-change-request', handleVolumeChangeRequest);
-      playerEl?.removeEventListener('media-rate-change-request', handleRateChangeRequest);
-      playerEl?.removeEventListener('loaded-metadata', handleReady);
-      playerEl?.removeEventListener('can-play', handleReady);
-      playerEl?.removeEventListener('provider-change', handleProviderChange);
-    };
-  });
-
-  $effect(() => {
-    if (!playerEl?.subscribe) return;
-    return playerEl.subscribe(
-      ({ playbackRate, quality, qualities: qs, audioTracks, audioTrack, textTrack, live, fullscreen }: MediaState) => {
-        const currentSettings = settings;
-        currentRate = playbackRate ?? currentSettings.playbackRate;
-        isFullscreen = fullscreen;
-
-        const qualitiesArray = Array.from(qs ?? []);
-        const isAuto = playerEl?.qualities?.auto ?? true;
-        currentQualityValue = isAuto ? 'auto' : quality ? String(quality.height) : 'auto';
-
-        liveQualities = qualitiesArray
-          .map((quality: VideoQuality, index: number) => ({
-            index: String(quality.height || index),
-            height: quality.height,
-          }))
-          .filter(({ height }) => height > 0)
-          .sort((a, b) => b.height - a.height);
-
-        if (currentSettings.quality !== 'auto' && currentQualityValue !== String(currentSettings.quality)) {
-          applyQuality(currentSettings.quality);
-        }
-
-        audioTrackOptions = audioTracks.map((track, index) => ({
-          index: String(index),
-          label: track.label || track.language || `Track ${index + 1}`,
-        }));
-        const audioTrackIndex = audioTracks.findIndex((track) => track === audioTrack || track.selected);
-        currentAudioTrackIndex = audioTrackIndex >= 0 ? String(audioTrackIndex) : null;
-        currentTrackLabel = textTrack?.label ?? currentSettings.textTrackLabel;
-        isLive = live;
-      },
+  function failureMessage(code?: number, message?: string) {
+    if (message) return message;
+    return (
+      (
+        {
+          1: 'Playback was interrupted.',
+          2: 'The media could not be loaded. Check your connection and try again.',
+          3: 'This media could not be decoded by your browser.',
+          4: 'This source is not supported. Try another source or format.',
+        } as Record<number, string>
+      )[code ?? 0] ?? 'Playback failed. Try again or choose another source.'
     );
-  });
-
-  function parseFiniteNumber(value: string) {
-    const parsed = Number(value);
-    return Number.isFinite(parsed) ? parsed : null;
   }
 
-  function setRate(value: string) {
-    const playbackRate = parseFiniteNumber(value);
-    if (playbackRate !== null) setPlaybackRateSetting(playbackRate);
-  }
+  function sync() {
+    if (!playerEl) return;
+    const state = playerEl.store.state;
+    playback = selectPlayback(state);
+    time = selectTime(state);
+    volume = selectVolume(state);
+    rate = selectPlaybackRate(state);
+    quality = selectQuality(state);
+    audio = selectAudioTrack(state);
+    text = selectTextTrack(state);
+    errorState = selectError(state);
+    fullscreen = selectFullscreen(state);
+    pip = selectPiP(state);
+    streamType = selectStreamType(state);
 
-  function setQuality(value: string) {
-    const quality = value === 'auto' ? 'auto' : parseFiniteNumber(value);
-    if (quality === null || settings.quality === quality) return;
+    const sourceState = selectSource(state);
+    if (!preferencesApplied && playerEl.store.target && sourceState?.canPlay) applySavedSettings();
+    else if (preferencesApplied) persistChanges();
 
-    mediaSettingsStore.setQuality(quality);
-  }
-
-  function setAudioTrack(value: string) {
-    const index = parseFiniteNumber(value);
-    if (!playerEl || index === null) return;
-
-    const audioTrack = Array.from<AudioTrack>(playerEl.audioTracks)[index];
-    if (!audioTrack) return;
-
-    audioTrack.selected = true;
-    currentAudioTrackIndex = value;
-  }
-
-  function setTextTrack(label: string) {
-    const textTrackLabel = label === OFF_TRACK ? null : label;
-    if (settings.textTrackLabel === textTrackLabel) {
-      applyTextTrack(textTrackLabel);
-      return;
+    if (autoPlay && !autoplayAttempted && sourceState?.canPlay && playback?.play) {
+      autoplayAttempted = true;
+      void playback.play().catch(() => (actionError = 'Autoplay was blocked. Press play to start playback.'));
     }
 
-    mediaSettingsStore.setTextTrackLabel(textTrackLabel);
+    if (pendingPlay && playerEl.store.target && playback?.play) {
+      pendingPlay = false;
+      void playback.play().catch(() => (actionError = 'Your browser blocked playback. Press play to try again.'));
+    }
+
+    if (clipEndTime > start && (time?.currentTime ?? 0) < start) void time?.seek(start);
+    if (clipEndTime > start && (time?.currentTime ?? 0) >= clipEndTime && !clipFinished) {
+      clipFinished = true;
+      if (loop) {
+        void time?.seek(start).then(() => playback?.play());
+      } else {
+        playback?.pause();
+        void time?.seek(start);
+      }
+    }
+    if (playback && !playback.paused) clipFinished = false;
+
+    const failure = errorState?.error;
+    if (failure && failure !== previousError) {
+      previousError = failure;
+      if (sourceIndex < sources.length - 1) sourceIndex += 1;
+    }
   }
 
-  let waveHeights = $derived(viewType === 'audio' ? (waveform ?? generateFallbackWave(waveBarsCount)) : []);
+  function applySavedSettings() {
+    if (!playerEl) return;
+    const state = playerEl.store.state;
+    selectVolume(state)?.setVolume(saved.volume);
+    selectPlaybackRate(state)?.setPlaybackRate(saved.playbackRate);
+    const textState = selectTextTrack(state);
+    const savedTrack = textState?.textTrackList.find((item) => item.label === saved.textTrackLabel);
+    if (savedTrack?.id) textState?.selectSubtitlesTrack(savedTrack.id);
+    const qualityState = selectQuality(state);
+    const rendition = qualityState?.videoRenditionList.find((item) => item.height === saved.quality);
+    if (rendition?.id) qualityState?.selectVideoRendition(rendition.id);
+    preferencesApplied = true;
+  }
 
-  const headerTipClass =
-    'pointer-events-none select-none absolute top-full left-1/2 mt-1.5 -translate-x-1/2 whitespace-nowrap rounded neoretro-border neoretro-clr px-2 py-1 text-xs font-bold z-50 opacity-0 transition-opacity duration-150 group-hover/tip:opacity-100';
+  function persistChanges() {
+    if (volume && Math.abs(volume.volume - saved.volume) > 0.001) mediaSettingsStore.setVolume(volume.volume);
+    if (rate && rate.playbackRate !== saved.playbackRate) mediaSettingsStore.setPlaybackRate(rate.playbackRate);
+    const label = text?.textTrackList.find((item) => item.mode === 'showing')?.label ?? null;
+    if (label !== saved.textTrackLabel) mediaSettingsStore.setTextTrackLabel(label);
+    const height = quality?.activeVideoRendition?.height ?? 'auto';
+    if (height !== saved.quality) mediaSettingsStore.setQuality(height);
+  }
 
-  const tipClass =
-    'pointer-events-none select-none absolute bottom-full left-1/2 mb-1.5 -translate-x-1/2 whitespace-nowrap rounded neoretro-border neoretro-clr px-2 py-1 text-xs font-bold z-50 opacity-0 transition-opacity duration-150 group-hover/tip:opacity-100';
+  function syncSettings(value: typeof saved) {
+    saved = value;
+    if (!playerEl?.store.target) return;
+    const state = playerEl.store.state;
+    selectVolume(state)?.setVolume(value.volume);
+    selectPlaybackRate(state)?.setPlaybackRate(value.playbackRate);
+    const track = selectTextTrack(state)?.textTrackList.find((item) => item.label === value.textTrackLabel);
+    if (track?.id) selectTextTrack(state)?.selectSubtitlesTrack(track.id);
+    const rendition = selectQuality(state)?.videoRenditionList.find((item) => item.height === value.quality);
+    if (rendition?.id) selectQuality(state)?.selectVideoRendition(rendition.id);
+  }
 
-  function handleWheel(event: WheelEvent) {
-    const canSetProviderVolume = providerAdapter || playerEl?.querySelector<HTMLMediaElement>('video, audio');
-    if (!canSetProviderVolume) return;
+  function requestLoad(play = false) {
+    loaded = true;
+    if (play) pendingPlay = true;
+  }
 
+  function togglePlayback() {
+    actionError = '';
+    if (!loaded) return requestLoad(true);
+    if (playback?.paused)
+      void playback.play().catch(() => (actionError = 'Your browser blocked playback. Press play to try again.'));
+    else playback?.pause();
+  }
+
+  function retry() {
+    actionError = '';
+    previousError = null;
+    retryKey += 1;
+  }
+
+  function setVolumeFromWheel(event: WheelEvent) {
+    if (!volume) return;
     event.preventDefault();
-    const delta = event.deltaY < 0 ? VOLUME_STEP : -VOLUME_STEP;
-    setVolumeSetting(Number((settings.volume + delta).toFixed(2)));
+    volume.setVolume(Math.max(0, Math.min(1, volume.volume + (event.deltaY < 0 ? 0.05 : -0.05))));
   }
+
+  onMount(() => mediaSettingsStore.subscribe(syncSettings));
 
   $effect(() => {
-    if (playerEl && playerEl.loop !== loop) {
-      playerEl.loop = loop;
+    if (load === 'eager') loaded = true;
+  });
+
+  $effect(() => {
+    if (posterLoad === 'eager') posterReady = true;
+  });
+
+  $effect(() => {
+    sourceKey;
+    sourceIndex = 0;
+    retryKey = 0;
+    previousError = null;
+    preferencesApplied = false;
+    autoplayAttempted = false;
+    clipFinished = false;
+  });
+
+  $effect(() => {
+    const selectedProvider = provider;
+    retryKey;
+    if (!loaded || !selectedProvider) {
+      providerReady = false;
+      return;
     }
+    adapterFailure = '';
+    if (selectedProvider.tag === 'video' || selectedProvider.tag === 'audio') {
+      providerReady = true;
+      return;
+    }
+    let active = true;
+    providerReady = false;
+    void registerMediaProvider(selectedProvider.tag)
+      .then(() => {
+        if (active) providerReady = true;
+      })
+      .catch(() => {
+        if (active) adapterFailure = `The ${selectedProvider.tag} playback adapter could not be loaded.`;
+      });
+    return () => {
+      active = false;
+    };
+  });
+
+  $effect(() => {
+    if (load === 'eager' || load === 'custom' || load === 'play') return;
+    if (load === 'idle') {
+      const idleWindow = window as Window & { requestIdleCallback?: (callback: () => void) => number };
+      const callback = () => requestLoad();
+      const handle = idleWindow.requestIdleCallback
+        ? idleWindow.requestIdleCallback(callback)
+        : window.setTimeout(callback, 1);
+      return () => clearTimeout(handle);
+    }
+    const target = playerEl;
+    if (!target || typeof IntersectionObserver === 'undefined') {
+      requestLoad();
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          requestLoad();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' },
+    );
+    observer.observe(target);
+    return () => observer.disconnect();
+  });
+
+  $effect(() => {
+    if (posterLoad === 'eager') {
+      posterReady = true;
+      return;
+    }
+    if (posterLoad === 'custom') {
+      posterReady = loaded;
+      return;
+    }
+    if (posterLoad === 'idle') {
+      const handle = window.setTimeout(() => (posterReady = true), 1);
+      return () => clearTimeout(handle);
+    }
+    const target = playerEl;
+    if (!target || typeof IntersectionObserver === 'undefined') {
+      posterReady = true;
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          posterReady = true;
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' },
+    );
+    observer.observe(target);
+    return () => observer.disconnect();
+  });
+
+  $effect(() => {
+    if (!playerEl) return;
+    const currentPlayer = playerEl;
+    const unsubscribe = currentPlayer.store.subscribe(sync);
+    sync();
+    return () => unsubscribe();
+  });
+
+  $effect(() => {
+    if (!mediaEl) return;
+    const currentMedia = mediaEl;
+    const seekToClip = () => {
+      if (start > 0 && (time?.currentTime ?? 0) < start) void time?.seek(start);
+    };
+    currentMedia.addEventListener('loadedmetadata', seekToClip);
+    return () => currentMedia.removeEventListener('loadedmetadata', seekToClip);
+  });
+
+  $effect(() => {
+    if (loop && duration && current >= duration) void time?.seek(start);
   });
 </script>
-
-{#snippet sliderTrack(sliderColor: typeof color, showProgress = false)}
-  <div
-    class="h-5 w-5 neoretro-shadow rounded pointer-events-none absolute top-1/2 z-0 block outline-hidden"
-    style="left: var(--slider-fill); transform: translate(calc(-1 * var(--slider-fill)), -50%);"
-  ></div>
-  <div class="h-3 rounded neoretro-border bg-background neoretro-shadow relative z-10 w-full overflow-hidden">
-    {#if showProgress}
-      <div
-        class="inset-y-0 left-0 neoretro-clr absolute opacity-35"
-        style="width: var(--slider-progress, 0%);"
-        data-color={sliderColor}
-      ></div>
-    {/if}
-    <div
-      class="inset-y-0 left-0 neoretro-clr absolute"
-      style="width: var(--slider-fill);"
-      data-color={sliderColor}
-    ></div>
-  </div>
-  <div
-    class="h-5 w-5 rounded neoretro-border neoretro-clr absolute top-1/2 z-20 cursor-pointer border-2 outline-none"
-    style="left: var(--slider-fill); transform: translate(calc(-1 * var(--slider-fill)), -50%);"
-    data-color={sliderColor}
-  ></div>
-{/snippet}
-
-{#snippet sliderPreviewValue(type: 'pointer' | undefined = undefined)}
-  <div class="bg-background text-foreground text-xs px-2 py-1 rounded neoretro-border neoretro-shadow">
-    <media-slider-value {type}></media-slider-value>
-  </div>
-{/snippet}
-
-{#snippet waveformLayer(className = '', clipStyle = '')}
-  <div
-    class={cn(
-      'inset-x-0 h-14 gap-0.75 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center justify-between',
-      className,
-    )}
-    style={clipStyle}
-  >
-    {#each waveHeights as height, index (index)}
-      <div class="rounded-xs neoretro-clr flex-1" data-color={color} style="height: {height}%;"></div>
-    {/each}
-  </div>
-{/snippet}
 
 <div
   class={cn(
@@ -451,327 +458,300 @@
   )}
   {...rest}
 >
-  <media-player
-    src={src as unknown as PlayerSrc}
-    {title}
-    {poster}
-    {viewType}
-    {preload}
-    {load}
-    {posterLoad}
-    {autoPlay}
-    {loop}
-    {muted}
-    {playsInline}
-    {clipStartTime}
-    {clipEndTime}
-    storage={mediaStorage}
-    controls={false}
-    crossorigin="anonymous"
-    bind:this={playerEl}
-    volume={settings.volume}
-    class="group bg-black text-foreground relative flex w-full flex-col group-data-fullscreen:h-full group-data-fullscreen:w-full"
-  >
-    <div
-      class="p-4 neoretro-clr group-data-fullscreen:top-0 group-data-fullscreen:left-0 group-data-fullscreen:bg-black/60! group-data-fullscreen:text-white! border-border z-10 flex w-full shrink-0 items-center justify-between border-b transition-all duration-300 group-data-fullscreen:pointer-events-none group-data-fullscreen:absolute group-data-fullscreen:border-none group-data-fullscreen:opacity-0 group-data-fullscreen:group-data-controls:pointer-events-auto group-data-fullscreen:group-data-controls:opacity-100"
-      data-color={color}
-    >
-      <div class="gap-2 font-bold text-lg flex w-full items-center">
-        {title || ''}
-        <Badge color="red" class="tracking-wider mr-auto hidden uppercase group-data-live:inline-flex">
-          <span class="w-2 h-2 animate-pulse rounded-full bg-current"></span> Live
-        </Badge>
-      </div>
-      <div class="gap-2 relative z-20 flex shrink-0 items-center select-none">
+  <svelte:element this={mediaTag} bind:this={playerEl} class="block w-full">
+    <media-container class="bg-black text-white relative block w-full overflow-hidden" onwheel={setVolumeFromWheel}>
+      <header class="gap-2 border-white bg-black p-4 font-bold text-white flex w-full items-center border-b">
+        <span class="min-w-0 text-lg truncate">{title ?? ''}</span>
+        {#if live}<span class="rounded neoretro-border bg-red px-2 py-1 text-xs font-bold text-on-red uppercase"
+            >Live</span
+          >{/if}
         {#if showYoutubeLink && youtubeUrl}
-          <div class="group/tip relative inline-flex">
-            <a
-              href={youtubeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class={cn(buttonVariants({ size: 'icon' }), 'group flex items-center justify-center')}
-              data-color={color}
-              data-pressable
-            >
-              <ExternalLink class="w-4 h-4" />
-            </a>
-            <div class={headerTipClass} data-color={color}>YouTube</div>
-          </div>
-        {/if}
-      </div>
-    </div>
-
-    {#if viewType === 'video'}
-      <div
-        class="video-container bg-black group-data-fullscreen:min-h-0 relative flex w-full items-center justify-center group-data-fullscreen:flex-1"
-        style="aspect-ratio: {computedAspectRatio}"
-        onwheel={handleWheel}
-      >
-        <media-provider class="block h-full w-full">
-          {#each tracks as track (track.src)}
-            <track
-              src={track.src}
-              kind={track.kind}
-              label={track.label}
-              srclang={track.language}
-              default={track.default}
-            />
-          {/each}
-        </media-provider>
-        <media-captions class="inset-0 pointer-events-none absolute z-10"></media-captions>
-        <media-poster
-          class="inset-0 pointer-events-none absolute block h-full w-full object-cover opacity-0 transition-opacity duration-300 data-visible:opacity-100"
-          alt={title}
-        ></media-poster>
-
-        <media-gesture event="pointerup" action="toggle:paused" class="inset-0 absolute z-0 block"></media-gesture>
-        <media-gesture event="dblclick" action="toggle:fullscreen" class="inset-0 absolute z-0 block"></media-gesture>
-      </div>
-    {:else}
-      <div class="bg-black/95 py-4 px-8 min-h-27.5 relative flex w-full items-center justify-center">
-        <media-provider class="hidden"></media-provider>
-
-        <media-time-slider
-          class="group h-20 mx-0! relative flex w-full cursor-pointer touch-none items-center justify-center outline-none select-none"
-        >
-          <div
-            class="inset-x-0 h-14 gap-0.75 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center justify-between opacity-20"
+          <a
+            href={youtubeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open video on YouTube"
+            class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus ml-auto inline-flex items-center justify-center"
+            data-color={color}><ExternalLink class="h-4 w-4" /></a
           >
-            {#each waveHeights as height, i (i)}
-              <div class="rounded-xs bg-foreground flex-1" style="height: {height}%;"></div>
-            {/each}
-          </div>
+        {/if}
+      </header>
 
-          {@render waveformLayer('opacity-35', 'clip-path: inset(0 calc(100% - var(--slider-progress, 0%)) 0 0);')}
-
-          {@render waveformLayer('', 'clip-path: inset(0 calc(100% - var(--slider-fill)) 0 0);')}
-
-          <div
-            class="neoretro-clr top-0 w-1 rounded-t-sm pointer-events-none absolute z-20 h-full"
-            style="left: var(--slider-fill); transform: translateX(calc(-1 * var(--slider-fill)));"
-            data-color={color}
-          ></div>
-
-          {#if showSliderValue}
-            <media-slider-preview
-              class="mb-4 pointer-events-none absolute bottom-full flex flex-col items-center opacity-0 transition-opacity duration-150 group-hover:opacity-100"
-            >
-              {@render sliderPreviewValue()}
-            </media-slider-preview>
-          {/if}
-        </media-time-slider>
-      </div>
-    {/if}
-
-    <div
-      class="px-4 py-3 neoretro-clr gap-2 group-data-fullscreen:bottom-0 group-data-fullscreen:left-0 group-data-fullscreen:bg-black/60! border-border z-10 flex w-full shrink-0 flex-col border-t transition-all duration-300 group-data-fullscreen:pointer-events-none group-data-fullscreen:absolute group-data-fullscreen:border-none group-data-fullscreen:opacity-0 group-data-fullscreen:group-data-controls:pointer-events-auto group-data-fullscreen:group-data-controls:opacity-100"
-      data-color={color}
-    >
-      <div class="gap-4 flex w-full flex-col">
-        {#if viewType === 'video'}
-          <div class="py-2 relative flex w-full items-center group-data-live:hidden">
+      {#if viewType === 'audio'}
+        <div class="min-h-32 bg-black px-8 py-4 relative flex w-full items-center justify-center">
+          {#if loaded && provider && providerReady}
+            {#key `${sourceIndex}:${retryKey}`}
+              <svelte:element this={provider.tag} bind:this={mediaEl} {...providerProps}>
+                {#each tracks as track (track.src)}<track
+                    src={track.src}
+                    kind={track.kind}
+                    label={track.label}
+                    srclang={track.language}
+                    default={track.default}
+                  />{/each}
+              </svelte:element>
+            {/key}
             <media-time-slider
-              class="group mx-0! relative flex w-full cursor-pointer touch-none items-center outline-none"
+              class="group mx-0 h-20 relative flex w-full cursor-pointer touch-none items-center justify-center outline-none select-none"
+              aria-label="Seek audio"
             >
-              {@render sliderTrack(color, true)}
-
-              {#if showSliderValue}
-                <media-slider-preview
-                  class="mb-4 pointer-events-none absolute bottom-full flex flex-col items-center opacity-0 transition-opacity duration-150 group-hover:opacity-100"
-                >
-                  {#if thumbnails}
-                    <media-slider-thumbnail
-                      src={thumbnails}
-                      class="aspect-video neoretro-border neoretro-shadow mb-2 rounded bg-black w-40 block"
-                    ></media-slider-thumbnail>
-                  {/if}
-                  {@render sliderPreviewValue()}
-                </media-slider-preview>
-              {/if}
+              <div class="inset-x-0 h-14 gap-0.75 absolute top-1/2 flex -translate-y-1/2 items-center justify-between">
+                {#each bars as height, index (index)}<div
+                    class="rounded-xs bg-foreground flex-1"
+                    style="height: {height}%"
+                  ></div>{/each}
+              </div>
+              <media-slider-track
+                class="h-3 rounded neoretro-border bg-background neoretro-shadow relative z-10 block w-full overflow-hidden"
+                ><media-slider-buffer class="inset-y-0 left-0 neoretro-clr absolute" data-color={color}
+                ></media-slider-buffer><media-slider-fill
+                  class="inset-y-0 left-0 neoretro-clr absolute"
+                  data-color={color}
+                ></media-slider-fill></media-slider-track
+              >
+              <media-slider-thumb
+                class="h-5 w-5 rounded neoretro-border neoretro-clr absolute top-1/2 left-[var(--media-slider-fill)] z-20 -translate-y-1/2"
+                data-color={color}
+              ></media-slider-thumb>
+              {#if showSliderValue}<media-slider-preview
+                  class="mb-4 rounded neoretro-border neoretro-shadow bg-background px-2 py-1 text-xs text-foreground absolute bottom-full"
+                  ><media-slider-thumbnail class="mb-2 aspect-video w-40 rounded bg-black block overflow-hidden"
+                  ></media-slider-thumbnail><media-slider-value type="pointer"
+                  ></media-slider-value></media-slider-preview
+                >{/if}
             </media-time-slider>
+          {:else if !loaded}
+            <button
+              type="button"
+              class="rounded neoretro-border neoretro-shadow bg-background px-4 py-2 font-bold text-foreground hover:neoretro-hover focus-visible:neoretro-focus relative z-10"
+              data-color={color}
+              onclick={() => requestLoad(true)}>Load audio</button
+            >
+            <div
+              class="inset-x-8 h-14 gap-0.75 absolute top-1/2 flex -translate-y-1/2 items-center justify-between"
+              aria-hidden="true"
+            >
+              {#each bars as height, index (index)}<div
+                  class="rounded-xs bg-foreground flex-1"
+                  style="height: {height}%"
+                ></div>{/each}
+            </div>
+          {:else}
+            <p class="text-sm font-bold text-white">Loading audio adapter…</p>
+          {/if}
+        </div>
+      {:else}
+        <div class="bg-black relative flex w-full items-center justify-center" style:aspect-ratio={aspectRatio}>
+          {#if loaded && provider && providerReady}
+            {#key `${sourceIndex}:${retryKey}`}
+              <svelte:element this={provider.tag} bind:this={mediaEl} {...providerProps}>
+                {#each tracks as track (track.src)}<track
+                    src={track.src}
+                    kind={track.kind}
+                    label={track.label}
+                    srclang={track.language}
+                    default={track.default}
+                  />{/each}
+                {#if thumbnails}<track src={thumbnails} kind="metadata" label="thumbnails" default />{/if}
+              </svelte:element>
+            {/key}
+          {:else if !loaded}
+            {#if posterReady && poster}<img
+                src={poster}
+                alt={title ?? ''}
+                loading={posterLoad === 'eager' ? 'eager' : 'lazy'}
+                class="inset-0 absolute h-full w-full object-cover"
+              />{/if}
+            <button
+              type="button"
+              class="gap-2 rounded neoretro-border neoretro-shadow bg-background px-4 py-2 font-bold text-foreground hover:neoretro-hover focus-visible:neoretro-focus absolute z-10 inline-flex items-center"
+              data-color={color}
+              onclick={() => requestLoad(true)}><Play class="h-5 w-5" /> Load video</button
+            >
+          {:else}
+            <p class="text-sm font-bold text-white">Loading video adapter…</p>
+          {/if}
+        </div>
+      {/if}
+
+      {#if loaded && (errorState?.error || adapterFailure)}
+        <div
+          class="inset-x-4 rounded neoretro-border neoretro-shadow bg-background p-4 text-foreground absolute top-1/2 z-30 mx-auto w-fit max-w-[calc(100%-2rem)] -translate-y-1/2"
+          role="alert"
+        >
+          <h2 class="font-bold">Playback failed</h2>
+          <p class="mt-1 max-w-md text-sm">
+            {adapterFailure || failureMessage(errorState?.error?.code, errorState?.error?.message)}
+          </p>
+          <div class="mt-3 gap-2 flex flex-wrap">
+            <button
+              type="button"
+              class="rounded neoretro-border neoretro-shadow bg-blue px-3 py-2 font-bold text-on-blue hover:neoretro-hover focus-visible:neoretro-focus"
+              data-color="blue"
+              onclick={retry}>Try again</button
+            >
+            {#if sourceIndex < sources.length - 1}<button
+                type="button"
+                class="rounded neoretro-border neoretro-shadow bg-background px-3 py-2 font-bold hover:neoretro-hover focus-visible:neoretro-focus"
+                data-color={color}
+                onclick={() => (sourceIndex += 1)}>Try next source</button
+              >{/if}
           </div>
+        </div>
+      {/if}
+
+      <footer class="gap-2 border-white bg-black px-4 py-3 text-white flex w-full flex-col border-t">
+        {#if viewType === 'video' && !live && loaded}
+          <media-time-slider
+            class="group mx-0 py-2 relative flex w-full cursor-pointer touch-none items-center outline-none select-none"
+            aria-label="Seek video"
+          >
+            <media-slider-track
+              class="h-3 rounded neoretro-border bg-background neoretro-shadow relative block w-full overflow-hidden"
+              ><media-slider-buffer class="inset-y-0 left-0 neoretro-clr absolute" data-color={color}
+              ></media-slider-buffer><media-slider-fill
+                class="inset-y-0 left-0 neoretro-clr absolute"
+                data-color={color}
+              ></media-slider-fill></media-slider-track
+            >
+            <media-slider-thumb
+              class="h-5 w-5 rounded neoretro-border neoretro-clr absolute top-1/2 left-[var(--media-slider-fill)] z-20 -translate-y-1/2"
+              data-color={color}
+            ></media-slider-thumb>
+            {#if showSliderValue}<media-slider-preview class="mb-4 absolute bottom-full flex flex-col items-center"
+                >{#if thumbnails}<media-slider-thumbnail
+                    class="mb-2 aspect-video w-40 rounded neoretro-border neoretro-shadow bg-black block overflow-hidden"
+                  ></media-slider-thumbnail>{/if}<span
+                  class="rounded neoretro-border neoretro-shadow bg-background px-2 py-1 text-xs text-foreground"
+                  ><media-slider-value type="pointer"></media-slider-value></span
+                ></media-slider-preview
+              >{/if}
+          </media-time-slider>
         {/if}
 
-        <div class="gap-3 sm:gap-4 relative z-20 flex flex-wrap items-center justify-between select-none">
-          <div class="gap-2 min-w-0 flex flex-wrap items-center">
-            <ButtonGroup>
-              {#if !isLive}
-                <media-seek-button
-                  seconds={-seekStep}
-                  data-color={color}
-                  data-pressable
-                  class={cn(buttonVariants({ size: 'icon' }), 'group/tip overflow-visible')}
-                >
-                  <Rewind />
-                  <div class={tipClass} data-color={color}>Seek -{seekStep}s</div>
-                </media-seek-button>
-              {/if}
-
-              <media-play-button
+        <div class="gap-3 flex flex-wrap items-center justify-between">
+          <div class="gap-2 flex flex-wrap items-center">
+            {#if !live}<media-seek-button
+                seconds={-seekStep}
+                class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus inline-flex items-center justify-center"
                 data-color={color}
-                data-pressable
-                class={cn(buttonVariants({ size: 'icon' }), 'group/tip group overflow-visible')}
-              >
-                <Play class="hidden group-data-paused:block" />
-                <Pause class="block group-data-paused:hidden" />
-                <div class={tipClass} data-color={color}>
-                  <span class="hidden group-data-paused:inline">Play</span>
-                  <span class="inline group-data-paused:hidden">Pause</span>
-                </div>
-              </media-play-button>
-
-              {#if !isLive}
-                <media-seek-button
-                  seconds={seekStep}
-                  data-color={color}
-                  data-pressable
-                  class={cn(buttonVariants({ size: 'icon' }), 'group/tip overflow-visible')}
-                >
-                  <FastForward />
-                  <div class={tipClass} data-color={color}>Seek +{seekStep}s</div>
-                </media-seek-button>
-              {/if}
-            </ButtonGroup>
-
-            <div
-              class="text-xs sm:text-sm font-bold sm:ml-2 gap-1 group-data-fullscreen:neoretro-clr group-data-fullscreen:neoretro-border group-data-fullscreen:px-2 group-data-fullscreen:py-0.5 group-data-fullscreen:rounded min-w-0 flex items-center select-none"
-              data-color={color}
+                aria-label={`Rewind ${seekStep} seconds`}><Rewind class="h-4 w-4" /></media-seek-button
+              >{/if}
+            <button
+              type="button"
+              class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-blue text-on-blue hover:neoretro-hover focus-visible:neoretro-focus inline-flex items-center justify-center"
+              data-color="blue"
+              aria-label={playback?.paused ? 'Play' : 'Pause'}
+              onclick={togglePlayback}
+              >{#if playback?.paused}<Play class="h-4 w-4" />{:else}<Pause class="h-4 w-4" />{/if}</button
             >
-              <media-time type="current"></media-time>
-              <span class="group-data-live:hidden">/ <media-time type="duration"></media-time></span>
-            </div>
+            {#if !live}<media-seek-button
+                seconds={seekStep}
+                class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus inline-flex items-center justify-center"
+                data-color={color}
+                aria-label={`Seek forward ${seekStep} seconds`}><FastForward class="h-4 w-4" /></media-seek-button
+              >{/if}
+            <span class="min-w-24 text-xs font-bold sm:text-sm">{formatTime(start + current)} / {formatTime(end)}</span>
           </div>
 
-          <div class="gap-2 sm:gap-3 ml-auto flex flex-wrap items-center justify-end">
-            <div class="gap-2 flex items-center">
-              <div class="group/tip relative inline-flex">
-                <media-mute-button
-                  data-color={color}
-                  data-pressable
-                  class={cn(buttonVariants({ size: 'icon' }), 'group')}
-                >
-                  <VolumeX class="hidden group-data-muted:block" />
-                  <Volume2 class="block group-data-muted:hidden" />
-                </media-mute-button>
-                <div class={tipClass} data-color={color}>
-                  <span class="hidden group-data-muted:inline">Unmute</span>
-                  <span class="inline group-data-muted:hidden">Mute</span>
-                </div>
-              </div>
-
-              <media-volume-slider
-                class="md:flex group/volslider h-8 w-28 md:w-32 relative hidden cursor-pointer touch-none items-center outline-none select-none"
-              >
-                {@render sliderTrack(color)}
-                <media-slider-preview
-                  class="mb-4 pointer-events-none absolute bottom-full flex flex-col items-center opacity-0 transition-opacity duration-150 group-hover/volslider:opacity-100"
-                  style="left: var(--slider-pointer);"
-                >
-                  {@render sliderPreviewValue('pointer')}
-                </media-slider-preview>
-              </media-volume-slider>
-            </div>
-
-            <DropdownMenu>
-              <div class="group/tip relative inline-flex">
-                <DropdownMenuTrigger
-                  data-color={color}
-                  data-pressable
-                  class={cn(buttonVariants({ size: 'icon' }), 'group select-none')}
-                >
-                  <Settings class="transition-transform duration-300 group-data-[state=open]:rotate-45" />
-                </DropdownMenuTrigger>
-                <div class={tipClass} data-color={color}>Settings</div>
-              </div>
-
-              <DropdownMenuContent
-                {color}
-                side="top"
-                align="end"
-                sideOffset={8}
-                portalProps={isFullscreen ? { to: playerEl ?? undefined } : undefined}
-              >
-                <DropdownMenuCheckboxItem bind:checked={loop}>Loop</DropdownMenuCheckboxItem>
-
-                {#if !isLive}
-                  <DropdownMenuSub>
-                    <DropdownMenuSubTrigger {color}>Speed</DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent>
-                      <DropdownMenuRadioGroup value={String(currentRate)} onValueChange={setRate}>
-                        {#each speeds as speed (speed)}
-                          <DropdownMenuRadioItem value={String(speed)}>
-                            {speed === 1 ? 'Normal' : `${speed}x`}
-                          </DropdownMenuRadioItem>
-                        {/each}
-                      </DropdownMenuRadioGroup>
-                    </DropdownMenuSubContent>
-                  </DropdownMenuSub>
-                {/if}
-
-                {#if audioTrackOptions.length > 1}
-                  <DropdownMenuSub>
-                    <DropdownMenuSubTrigger {color}>Audio</DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent>
-                      <DropdownMenuRadioGroup value={currentAudioTrackIndex ?? ''} onValueChange={setAudioTrack}>
-                        {#each audioTrackOptions as track (track.index)}
-                          <DropdownMenuRadioItem value={track.index}>{track.label}</DropdownMenuRadioItem>
-                        {/each}
-                      </DropdownMenuRadioGroup>
-                    </DropdownMenuSubContent>
-                  </DropdownMenuSub>
-                {/if}
-
-                {#if liveQualities.length > 1}
-                  <DropdownMenuSub>
-                    <DropdownMenuSubTrigger {color}>Quality</DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent>
-                      <DropdownMenuRadioGroup value={currentQualityValue} onValueChange={setQuality}>
-                        <DropdownMenuRadioItem value="auto">Auto</DropdownMenuRadioItem>
-                        {#each liveQualities as q (q.index)}
-                          <DropdownMenuRadioItem value={String(q.height)}>
-                            {q.height}p
-                          </DropdownMenuRadioItem>
-                        {/each}
-                      </DropdownMenuRadioGroup>
-                    </DropdownMenuSubContent>
-                  </DropdownMenuSub>
-                {/if}
-
-                {#if subtitleTracks.length > 0}
-                  <DropdownMenuSub>
-                    <DropdownMenuSubTrigger {color}>Subtitles</DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent>
-                      <DropdownMenuRadioGroup value={currentTrackLabel ?? OFF_TRACK} onValueChange={setTextTrack}>
-                        <DropdownMenuRadioItem value={OFF_TRACK}>Off</DropdownMenuRadioItem>
-                        {#each subtitleTracks as t (t.src)}
-                          <DropdownMenuRadioItem value={t.label}>{t.label}</DropdownMenuRadioItem>
-                        {/each}
-                      </DropdownMenuRadioGroup>
-                    </DropdownMenuSubContent>
-                  </DropdownMenuSub>
-                {/if}
-              </DropdownMenuContent>
-            </DropdownMenu>
-
+          <div class="gap-2 ml-auto flex flex-wrap items-center justify-end">
             {#if viewType === 'video'}
-              <div class="group/tip relative inline-flex">
-                <media-fullscreen-button
+              <media-volume-slider
+                class="group h-8 w-24 relative flex cursor-pointer touch-none items-center outline-none select-none"
+                aria-label="Volume"
+                ><media-slider-track
+                  class="h-3 rounded neoretro-border bg-background neoretro-shadow relative block w-full overflow-hidden"
+                  ><media-slider-fill class="inset-y-0 left-0 neoretro-clr absolute" data-color={color}
+                  ></media-slider-fill></media-slider-track
+                ><media-slider-thumb
+                  class="h-4 w-4 rounded neoretro-border neoretro-clr absolute top-1/2 left-[var(--media-slider-fill)] z-20 -translate-y-1/2"
                   data-color={color}
-                  data-pressable
-                  class={cn(buttonVariants({ size: 'icon' }), 'group')}
+                ></media-slider-thumb></media-volume-slider
+              >
+            {/if}
+            <button
+              type="button"
+              class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus inline-flex items-center justify-center"
+              data-color={color}
+              aria-label={volume?.muted ? 'Unmute' : 'Mute'}
+              onclick={() => volume?.toggleMuted()}
+              >{#if volume?.muted}<VolumeX class="h-4 w-4" />{:else}<Volume2 class="h-4 w-4" />{/if}</button
+            >
+            <details class="relative">
+              <summary
+                class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus inline-flex cursor-pointer list-none items-center justify-center"
+                data-color={color}
+                aria-label="Playback settings"><Settings class="h-4 w-4" /></summary
+              >
+              <div
+                class="right-0 mb-2 min-w-56 gap-3 rounded neoretro-border neoretro-shadow bg-background p-3 text-foreground absolute bottom-full z-40 grid"
+              >
+                <label class="gap-1 text-xs font-bold grid"
+                  >Speed<select
+                    class="rounded neoretro-border bg-background px-2 py-1 text-foreground focus-visible:neoretro-focus"
+                    value={rate?.playbackRate ?? saved.playbackRate}
+                    onchange={(event) => rate?.setPlaybackRate(Number(event.currentTarget.value))}
+                    >{#each speeds as speed}<option value={speed}>{speed}×</option>{/each}</select
+                  ></label
                 >
-                  <Maximize class="hidden group-data-fullscreen:block" />
-                  <Minimize class="block group-data-fullscreen:hidden" />
-                </media-fullscreen-button>
-                <div class={tipClass} data-color={color}>
-                  <span class="hidden group-data-fullscreen:inline">Exit Fullscreen</span>
-                  <span class="inline group-data-fullscreen:hidden">Fullscreen</span>
-                </div>
+                {#if quality?.videoRenditionList.length}<label class="gap-1 text-xs font-bold grid"
+                    >Quality<select
+                      class="rounded neoretro-border bg-background px-2 py-1 text-foreground focus-visible:neoretro-focus"
+                      value={quality.activeVideoRendition?.id ?? 'auto'}
+                      onchange={(event) => quality?.selectVideoRendition(event.currentTarget.value)}
+                      ><option value="auto">Auto</option
+                      >{#each quality.videoRenditionList as rendition (rendition.id)}<option value={rendition.id}
+                          >{rendition.height}p</option
+                        >{/each}</select
+                    ></label
+                  >{/if}
+                {#if audio?.audioTrackList.length}<label class="gap-1 text-xs font-bold grid"
+                    >Audio track<select
+                      class="rounded neoretro-border bg-background px-2 py-1 text-foreground focus-visible:neoretro-focus"
+                      value={audio.audioTrackList.find((item) => item.enabled)?.id ?? ''}
+                      onchange={(event) => audio?.selectAudioTrack(event.currentTarget.value)}
+                      >{#each audio.audioTrackList as track (track.id)}<option value={track.id}
+                          >{track.label || track.language || 'Audio'}</option
+                        >{/each}</select
+                    ></label
+                  >{/if}
+                {#if viewType === 'video' && text?.textTrackList.some((item) => item.kind === 'captions' || item.kind === 'subtitles')}<label
+                    class="gap-1 text-xs font-bold grid"
+                    >Captions<select
+                      class="rounded neoretro-border bg-background px-2 py-1 text-foreground focus-visible:neoretro-focus"
+                      value={text.textTrackList.find((item) => item.mode === 'showing')?.id ?? ''}
+                      onchange={(event) => text?.selectSubtitlesTrack(event.currentTarget.value || 'off')}
+                      ><option value="">Off</option
+                      >{#each text.textTrackList.filter((item) => item.kind === 'captions' || item.kind === 'subtitles') as track (track.id)}<option
+                          value={track.id}>{track.label || track.language || 'Captions'}</option
+                        >{/each}</select
+                    ></label
+                  >{/if}
               </div>
+            </details>
+            {#if viewType === 'video'}
+              <button
+                type="button"
+                class="h-9 rounded neoretro-border neoretro-shadow bg-background px-2 text-xs font-bold text-foreground hover:neoretro-hover focus-visible:neoretro-focus inline-flex items-center justify-center"
+                data-color={color}
+                aria-label="Picture in picture"
+                onclick={() => pip?.togglePictureInPicture()}>PiP</button
+              >
+              <button
+                type="button"
+                class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus inline-flex items-center justify-center"
+                data-color={color}
+                aria-label="Toggle fullscreen"
+                onclick={() => fullscreen?.toggleFullscreen()}
+                >{#if fullscreen?.fullscreen}<Minimize class="h-4 w-4" />{:else}<Maximize
+                    class="h-4 w-4"
+                  />{/if}</button
+              >
             {/if}
           </div>
         </div>
-      </div>
-    </div>
-  </media-player>
+        {#if actionError}<p class="text-sm font-bold text-yellow" role="status">{actionError}</p>{/if}
+      </footer>
+    </media-container>
+  </svelte:element>
 </div>

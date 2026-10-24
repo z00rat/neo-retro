@@ -106,7 +106,7 @@ done`;
       name: 'Paneforge',
       url: 'https://github.com/svecosystem/paneforge',
     },
-    { name: 'Vidstack', url: 'https://github.com/vidstack/player' },
+    { name: 'Video.js 10', url: 'https://github.com/videojs/v10' },
     { name: 'Panzoom', url: 'https://github.com/timmywil/panzoom' },
     { name: 'DiceBear', url: 'https://github.com/dicebear/dicebear' },
     { name: 'QRCode', url: 'https://github.com/soldair/node-qrcode' },

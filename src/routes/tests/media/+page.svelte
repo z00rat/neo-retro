@@ -6,6 +6,8 @@
   const liveSource = 'https://stream.mux.com/v69RSHhFelSm4701snP22dYz2jICy4E4FUyk02rW4gxRM.m3u8';
   const audioSource = 'https://files.vidstack.io/sprite-fight/audio.mp3';
   const youtubeSource = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+  const vimeoSource = 'https://vimeo.com/76979871';
+  const dashSource = 'https://dash.akamaized.net/envivio/EnvivioDash3/manifest.mpd';
 
   const poster = 'https://files.vidstack.io/sprite-fight/poster.webp';
   const livePoster = 'https://image.mux.com/v69RSHhFelSm4701snP22dYz2jICy4E4FUyk02rW4gxRM/thumbnail.webp?time=30';
@@ -47,7 +49,7 @@
 <div class="px-4 py-16 max-w-4xl space-y-16 container mx-auto">
   <header class="mb-4 space-y-4">
     <h1 class="text-3xl font-black tracking-tight uppercase italic">Media Component Testbed</h1>
-    <p class="text-sm">Testing the new, unified &lt;Media&gt; component powered by Vidstack API with Neo-Retro UI.</p>
+    <p class="text-sm">Testing Video.js 10 source adapters and Neo-Retro playback controls.</p>
   </header>
 
   <!-- Example 1: Basic MP4 -->
@@ -98,5 +100,14 @@
     <h2 class="text-xl font-black pb-2 border-b uppercase">6. Audio with fallback waveform</h2>
     <p class="text-sm">When <code>waveform</code> is omitted, the player uses its repeating pattern.</p>
     <Media src={audioSource} title="Fallback waveform example" viewType="audio" color="yellow" />
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-xl font-black pb-2 border-b uppercase">7. Additional media adapters</h2>
+    <p class="text-sm">
+      Vimeo and DASH sources are selected from their URL and played by their Video.js media adapters.
+    </p>
+    <Media src={vimeoSource} title="Vimeo source" color="blue" />
+    <Media src={dashSource} title="DASH adaptive stream" color="magenta" />
   </section>
 </div>

@@ -2,12 +2,10 @@ import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import tailwindcss from '@tailwindcss/vite';
-import { vite as vidstack } from 'vidstack/plugins';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [
-    vidstack(),
     tailwindcss(),
     sveltekit({
       // Consult https://svelte.dev/docs/kit/integrations
@@ -28,6 +26,14 @@ export default defineConfig({
     assetsInlineLimit: 4096,
   },
   optimizeDeps: {
-    include: ['@lucide/svelte', 'bits-ui', 'clsx', 'mode-watcher', 'tailwind-merge', 'tailwind-variants', 'vidstack'],
+    include: [
+      '@lucide/svelte',
+      '@videojs/html',
+      'bits-ui',
+      'clsx',
+      'mode-watcher',
+      'tailwind-merge',
+      'tailwind-variants',
+    ],
   },
 });

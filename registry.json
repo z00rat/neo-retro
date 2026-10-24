@@ -1160,7 +1160,18 @@
         "dropdown-menu"
       ],
       "devDependencies": [
-        "vidstack"
+        "@videojs/html",
+        "@videojs/cloudflare-video",
+        "@videojs/dash-video",
+        "@videojs/hlsjs-video",
+        "@videojs/mux-audio",
+        "@videojs/mux-video",
+        "@videojs/spotify-audio",
+        "@videojs/tiktok-video",
+        "@videojs/twitch-video",
+        "@videojs/vimeo-video",
+        "@videojs/wistia-video",
+        "@videojs/youtube-video"
       ],
       "files": [
         {
@@ -1177,6 +1188,10 @@
         },
         {
           "path": "src/lib/registry/ui/media/media.svelte",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/media/videojs-player.ts",
           "type": "registry:file"
         },
         {
