@@ -24,7 +24,7 @@
     selectVolume,
   } from '@videojs/html';
   import { cn, type Color } from '#lib/utils.ts';
-  import { onMount } from 'svelte';
+  import { onMount, untrack } from 'svelte';
   import { get } from 'svelte/store';
 
   import { mediaSettingsStore } from './mediaSettingsStore.ts';
@@ -431,8 +431,8 @@
   $effect(() => {
     if (!playerEl) return;
     const currentPlayer = playerEl;
-    const unsubscribe = currentPlayer.store.subscribe(sync);
-    sync();
+    const unsubscribe = currentPlayer.store.subscribe(() => untrack(sync));
+    untrack(sync);
     return () => unsubscribe();
   });
 
