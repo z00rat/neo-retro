@@ -1,0 +1,140 @@
+{
+  "edges": [
+    {
+      "source": "closed",
+      "target": "listen",
+      "label": "open"
+    },
+    {
+      "source": "listen",
+      "target": "syn-rcvd",
+      "label": "rcv SYN"
+    },
+    {
+      "source": "listen",
+      "target": "syn-sent",
+      "label": "send"
+    },
+    {
+      "source": "listen",
+      "target": "closed",
+      "label": "close"
+    },
+    {
+      "source": "syn-rcvd",
+      "target": "finwait-1",
+      "label": "close"
+    },
+    {
+      "source": "syn-rcvd",
+      "target": "estab",
+      "label": "rcv ACK of SYN"
+    },
+    {
+      "source": "syn-sent",
+      "target": "syn-rcvd",
+      "label": "rcv SYN"
+    },
+    {
+      "source": "syn-sent",
+      "target": "estab",
+      "label": "rcv SYN, ACK"
+    },
+    {
+      "source": "syn-sent",
+      "target": "closed",
+      "label": "close"
+    },
+    {
+      "source": "estab",
+      "target": "finwait-1",
+      "label": "close"
+    },
+    {
+      "source": "estab",
+      "target": "close-wait",
+      "label": "rcv FIN"
+    },
+    {
+      "source": "finwait-1",
+      "target": "finwait-2",
+      "label": "rcv ACK of FIN"
+    },
+    {
+      "source": "finwait-1",
+      "target": "closing",
+      "label": "rcv FIN"
+    },
+    {
+      "source": "close-wait",
+      "target": "last-ack",
+      "label": "close"
+    },
+    {
+      "source": "finwait-2",
+      "target": "time-wait",
+      "label": "rcv FIN"
+    },
+    {
+      "source": "closing",
+      "target": "time-wait",
+      "label": "rcv ACK of FIN"
+    },
+    {
+      "source": "last-ack",
+      "target": "closed",
+      "label": "rcv ACK of FIN"
+    },
+    {
+      "source": "time-wait",
+      "target": "closed",
+      "label": "timeout=2MSL"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "closed",
+      "label": "CLOSED"
+    },
+    {
+      "id": "listen",
+      "label": "LISTEN"
+    },
+    {
+      "id": "syn-rcvd",
+      "label": "SYN RCVD"
+    },
+    {
+      "id": "syn-sent",
+      "label": "SYN SENT"
+    },
+    {
+      "id": "estab",
+      "label": "ESTAB"
+    },
+    {
+      "id": "finwait-1",
+      "label": "FINWAIT-1"
+    },
+    {
+      "id": "close-wait",
+      "label": "CLOSE WAIT"
+    },
+    {
+      "id": "finwait-2",
+      "label": "FINWAIT-2"
+    },
+    {
+      "id": "closing",
+      "label": "CLOSING"
+    },
+    {
+      "id": "last-ack",
+      "label": "LAST-ACK"
+    },
+    {
+      "id": "time-wait",
+      "label": "TIME WAIT"
+    }
+  ]
+}

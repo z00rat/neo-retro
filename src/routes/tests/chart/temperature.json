@@ -1,0 +1,12 @@
+{
+  "observations": [
+    { "day": "Mon", "value": 8 },
+    { "day": "Tue", "value": 15 },
+    { "day": "Wed", "value": 12 },
+    { "day": "Thu", "value": 24 },
+    { "day": "Fri", "value": 18 },
+    { "day": "Sat", "value": 29 },
+    { "day": "Sun", "value": 22 }
+  ],
+  "threshold": 18
+}

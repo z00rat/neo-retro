@@ -435,6 +435,36 @@
       ]
     },
     {
+      "name": "chart",
+      "type": "registry:ui",
+      "registryDependencies": [],
+      "devDependencies": [
+        "layerchart"
+      ],
+      "files": [
+        {
+          "path": "src/lib/registry/ui/chart/chart-container.svelte",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/chart/chart-style.svelte",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/chart/chart-tooltip.svelte",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/chart/chart-utils.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/chart/index.ts",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
       "name": "checkbox",
       "type": "registry:ui",
       "registryDependencies": [],
