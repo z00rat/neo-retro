@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "deploy": "bun run build && wrangler pages deploy ./build",
     "prebuild": "bun x shadcn-svelte@latest registry build registry.json && bun scripts/build_style_registry_index.ts",
     "preview": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
