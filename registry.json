@@ -1154,19 +1154,17 @@
       "name": "media",
       "type": "registry:ui",
       "registryDependencies": [
-        "badge",
-        "button",
-        "button-group",
-        "dropdown-menu",
         "select"
       ],
       "devDependencies": [
-        "@videojs/html",
         "@videojs/cloudflare-video",
         "@videojs/dash-video",
         "@videojs/hlsjs-video",
+        "@videojs/html",
         "@videojs/mux-audio",
         "@videojs/mux-video",
+        "@videojs/playerjs-video",
+        "@videojs/shaka-video",
         "@videojs/spotify-audio",
         "@videojs/tiktok-video",
         "@videojs/twitch-video",
@@ -1192,11 +1190,11 @@
           "type": "registry:file"
         },
         {
-          "path": "src/lib/registry/ui/media/videojs-player.ts",
+          "path": "src/lib/registry/ui/media/mediaSettingsStore.ts",
           "type": "registry:file"
         },
         {
-          "path": "src/lib/registry/ui/media/mediaSettingsStore.ts",
+          "path": "src/lib/registry/ui/media/videojs-player.ts",
           "type": "registry:file"
         },
         {

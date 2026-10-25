@@ -30,6 +30,14 @@ media-volume-slider {
   touch-action: none;
 }
 
+.media-audio-waveform-progress {
+  clip-path: inset(0 calc(100% - var(--media-slider-fill, 0%)) 0 0);
+}
+
+.media-audio-playhead {
+  box-shadow: 2px 2px 0 var(--color-border);
+}
+
 media-slider-track {
   position: relative;
   display: block;
@@ -105,6 +113,45 @@ media-slider-thumbnail img {
   max-width: none;
 }
 
+media-time-slider .media-video-scrub-preview {
+  position: absolute;
+  left: clamp(5rem, var(--media-slider-pointer, 0%), calc(100% - 5rem));
+  bottom: calc(100% + 2rem);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 30;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+media-time-slider[data-pointing] .media-video-scrub-preview,
+media-time-slider[data-dragging] .media-video-scrub-preview {
+  display: flex;
+}
+
+media-time-slider .media-video-scrub-preview > media-slider-thumbnail,
+media-time-slider .media-video-scrub-preview > media-slider-preview {
+  position: relative;
+  inset: auto;
+  margin: 0;
+  transform: none;
+}
+
+media-time-slider .media-video-scrub-preview-with-thumbnail > media-slider-thumbnail {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+}
+
+media-time-slider .media-video-scrub-preview-with-thumbnail > media-slider-preview {
+  position: absolute !important;
+  inset: auto auto auto 50% !important;
+  top: calc(100% + 0.5rem) !important;
+  transform: translateX(-50%) !important;
+}
+
 media-slider-value {
   white-space: nowrap;
 }
@@ -120,17 +167,20 @@ media-volume-slider:focus-visible {
   background-color: var(--clr);
 }
 
-neo-retro-video-player:fullscreen {
+neo-retro-video-player:fullscreen,
+neo-retro-video-player media-container:fullscreen {
   width: 100vw;
   height: 100vh;
   background: #000;
 }
 
-neo-retro-video-player:fullscreen media-container {
+neo-retro-video-player:fullscreen media-container,
+neo-retro-video-player media-container:fullscreen {
   height: 100%;
 }
 
-neo-retro-video-player:fullscreen .media-video-stage {
+neo-retro-video-player:fullscreen .media-video-stage,
+neo-retro-video-player media-container:fullscreen .media-video-stage {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -138,15 +188,37 @@ neo-retro-video-player:fullscreen .media-video-stage {
   aspect-ratio: auto !important;
 }
 
-neo-retro-video-player:fullscreen media-container > header {
+neo-retro-video-player:fullscreen media-container > header,
+neo-retro-video-player media-container:fullscreen > header {
   position: absolute;
   inset: 0 0 auto;
   z-index: 20;
 }
 
-neo-retro-video-player:fullscreen media-container > footer {
+neo-retro-video-player:fullscreen media-container > footer,
+neo-retro-video-player media-container:fullscreen > footer {
   position: absolute;
   inset: auto 0 0;
   z-index: 20;
   border-top: 0;
+}
+
+neo-retro-video-player:fullscreen media-container > header,
+neo-retro-video-player:fullscreen media-container > footer,
+neo-retro-video-player media-container:fullscreen > header,
+neo-retro-video-player media-container:fullscreen > footer {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+neo-retro-video-player:fullscreen:hover media-container > header,
+neo-retro-video-player:fullscreen:hover media-container > footer,
+neo-retro-video-player:fullscreen:focus-within media-container > header,
+neo-retro-video-player:fullscreen:focus-within media-container > footer,
+neo-retro-video-player media-container:fullscreen:hover > header,
+neo-retro-video-player media-container:fullscreen:hover > footer,
+neo-retro-video-player media-container:fullscreen:focus-within > header,
+neo-retro-video-player media-container:fullscreen:focus-within > footer {
+  visibility: visible;
+  pointer-events: auto;
 }

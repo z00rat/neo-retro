@@ -174,6 +174,10 @@ registryItems.forEach((item) => {
 
         const extPkg = importToExternalPackage(imp);
         if (extPkg) actualExternalPkgs.add(extPkg);
+
+        // @videojs/html adapters load provider packages as optional peers.
+        const videojsAdapter = imp.match(/^@videojs\/html\/media\/([^/]+)/);
+        if (videojsAdapter) actualExternalPkgs.add(`@videojs/${videojsAdapter[1]}`);
       });
     }
   });

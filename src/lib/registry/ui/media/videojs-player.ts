@@ -2,11 +2,10 @@ import { createPlayer, liveFeature, streamTypeFeature } from '@videojs/html';
 import { audioFeatures } from '@videojs/html/audio';
 import { videoFeatures } from '@videojs/html/video';
 
-import '@videojs/html/ui/captions-button';
 import '@videojs/html/ui/container';
 import '@videojs/html/ui/fullscreen-button';
 import '@videojs/html/ui/gesture';
-import '@videojs/html/ui/live-button';
+import '@videojs/html/ui/hotkey';
 import '@videojs/html/ui/mute-button';
 import '@videojs/html/ui/pip-button';
 import '@videojs/html/ui/play-button';
@@ -56,6 +55,12 @@ export async function registerMediaProvider(tag: string) {
       break;
     case 'mux-video':
       await import('@videojs/html/media/mux-video');
+      break;
+    case 'playerjs-video':
+      await import('@videojs/html/media/playerjs-video');
+      break;
+    case 'shaka-video':
+      await import('@videojs/html/media/shaka-video');
       break;
     case 'spotify-audio':
       await import('@videojs/html/media/spotify-audio');
