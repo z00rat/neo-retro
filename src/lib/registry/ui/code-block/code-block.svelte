@@ -23,7 +23,6 @@
     initialViewMode,
     isClickToExpand,
     showBodyContent,
-    showCollapseToggle,
     toggleHeaderCollapse,
     type ViewMode,
   } from './code-block-view.ts';
@@ -49,7 +48,6 @@
     wrap = false,
     showHeader = true,
     lines,
-    collapse = false,
     highlightedLines,
     tabSize = 2,
     theme,
@@ -65,7 +63,7 @@
     ...restProps
   }: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
     color: PaletteColor;
-    headerColor?: PaletteColor;
+    headerColor: PaletteColor;
     code?: string;
     lang?: string;
     html?: string;
@@ -77,7 +75,6 @@
     wrap?: boolean;
     showHeader?: boolean;
     lines?: number;
-    collapse?: boolean;
     highlightedLines?: number[];
     tabSize?: number;
     theme?: string;
@@ -103,10 +100,10 @@
   let activeValue = $state('');
   let codeColors = $state<{ bg: string; fg: string } | null>(null);
   let viewMode = $state<ViewMode>('full');
+  let hasExpanded = $state(false);
   let copied = $state(false);
   let copyTimer: ReturnType<typeof setTimeout> | undefined;
 
-  const activeHeaderColor = $derived(headerColor ?? color);
   const activeMode = $derived.by((): 'light' | 'dark' => {
     const derived = mode.current;
     if (derived === 'light' || derived === 'dark') return derived;
@@ -134,6 +131,7 @@
     hasVariants && !highlightedLineSet && !preHighlightedHtml && !!normalizedLang && !!activeTheme,
   );
   const resolvedTheme = $derived(activeTheme ? resolveThemeAlias(activeTheme) : '');
+  const missingTheme = $derived(!preHighlightedHtml && !!activeCode && !!normalizedLang && !resolvedTheme);
   const themeKey = $derived(`${activeMode}:${resolvedTheme}`);
   const activeVariantLabel = $derived(activeVariant?.label ?? 'Variant');
   const languageLabel = $derived(!title ? lang?.replace(/^shell$/, 'bash') : undefined);
@@ -141,7 +139,7 @@
   const lineLimit = $derived(effectiveLineLimit(viewMode, lines));
   const truncated = $derived(hasTruncatedLines(viewMode, lines, totalLines));
   const bodyVisible = $derived(showBodyContent(viewMode, hasContent));
-  const collapseToggle = $derived(showCollapseToggle(lines, collapse, hasContent));
+  const collapseToggle = $derived(hasContent);
   const maxHeight = $derived(displayHeight(lineLimit));
   const clickToExpand = $derived(isClickToExpand(viewMode));
   const codePreClass = $derived(cn('m-0 p-4 leading-6', !wrap && 'min-w-max', wrap && 'break-all whitespace-pre-wrap'));
@@ -164,10 +162,14 @@
 
   function expandToFull() {
     viewMode = 'full';
+    hasExpanded = true;
   }
 
   function toggleCollapse() {
-    viewMode = toggleHeaderCollapse(viewMode, lines, collapse);
+    if (viewMode === 'full') hasExpanded = true;
+    const nextViewMode = toggleHeaderCollapse(viewMode, lines, hasExpanded);
+    if (nextViewMode === 'full') hasExpanded = true;
+    viewMode = nextViewMode;
   }
 
   function handleBlockClick(event: MouseEvent) {
@@ -178,8 +180,6 @@
 
   $effect(() => {
     const list = variants;
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    variantKey;
     if (!list.length) {
       activeValue = '';
       return;
@@ -196,8 +196,8 @@
 
   $effect(() => {
     const initialLines = lines;
-    const startsCollapsed = collapse && initialLines == null;
-    viewMode = startsCollapsed ? 'hidden' : initialViewMode(initialLines);
+    hasExpanded = false;
+    viewMode = initialViewMode(initialLines);
   });
 
   async function handleCopy() {
@@ -209,9 +209,7 @@
       copyTimer = setTimeout(() => {
         copied = false;
       }, 2000);
-    } catch {
-      void 0;
-    }
+    } catch {}
   }
 
   function handleDownload() {
@@ -232,7 +230,7 @@
     {#if truncated}
       <div
         class="neoretro-clr neoretro-border-t bottom-0 left-0 right-0 bg-clr py-2 pointer-events-none absolute flex items-center justify-center"
-        data-color={activeHeaderColor}
+        data-color={headerColor}
       >
         <span class="text-on-clr text-xs font-mono font-black tracking-wide leading-none uppercase italic">
           Show {totalLines - lineLimit!} more lines
@@ -254,7 +252,7 @@
     {wrap}
     {title}
     {highlightedLines}
-    spinnerColor={activeHeaderColor}
+    spinnerColor={color}
     onColors={(colors) => {
       codeColors = colors;
     }}
@@ -275,20 +273,28 @@
   {...restProps}
 >
   {#if showHeader}
-    <div class="neoretro-clr neoretro-border-b gap-2 p-2 min-w-0 flex items-center" data-color={activeHeaderColor}>
+    <div class="neoretro-clr neoretro-border-b gap-2 p-2 min-w-0 flex items-center" data-color={headerColor}>
       {#if IconComponent}
-        <span class="size-7 neoretro-border bg-background/20 rounded flex shrink-0 items-center justify-center">
+        <span class="size-7 neoretro-border rounded flex shrink-0 items-center justify-center">
           <IconComponent class="size-4" />
         </span>
       {/if}
 
       <div class="min-w-0 gap-1.5 flex flex-wrap items-center">
-        {#if !hasContent}
-          <Badge color="white" class="text-xs font-black uppercase">No code to display</Badge>
+        {#if missingTheme}
+          <Badge
+            {color}
+            class="text-xs font-black uppercase"
+            title="Provide theme, a mode-specific theme, or a configured Shiki theme."
+          >
+            Theme required
+          </Badge>
+        {:else if !hasContent}
+          <Badge {color} class="text-xs font-black uppercase">No code to display</Badge>
         {:else if title}
           <span class="min-w-0 text-sm font-black truncate">{title}</span>
         {:else if languageLabel}
-          <Badge color={activeHeaderColor} class="bg-background/20 text-xs font-black uppercase">
+          <Badge {color} class="text-xs font-black uppercase">
             {languageLabel}
           </Badge>
         {/if}
@@ -298,12 +304,12 @@
         {#if hasVariants}
           <DropdownMenu.Root>
             <DropdownMenu.Trigger>
-              <Button color={activeHeaderColor} size="sm" class="h-8 px-2 text-xs">
+              <Button {color} size="sm" class="h-8 px-2 text-xs">
                 {activeVariantLabel}
                 <ChevronDownIcon class="size-3.5" />
               </Button>
             </DropdownMenu.Trigger>
-            <DropdownMenu.Content color={activeHeaderColor} align="end" class="min-w-36">
+            <DropdownMenu.Content {color} align="end" class="min-w-36">
               <DropdownMenu.RadioGroup value={activeValue} onValueChange={(value) => selectVariant(value)}>
                 {#each variants as variant (variant.value)}
                   <DropdownMenu.RadioItem value={variant.value}>{variant.label}</DropdownMenu.RadioItem>
@@ -317,35 +323,28 @@
           {@render actions()}
         {/if}
 
-        {#if collapseToggle}
-          <Button
-            color={activeHeaderColor}
-            size="icon-sm"
-            onclick={toggleCollapse}
-            aria-label={viewMode === 'full' ? 'Collapse code' : 'Expand code'}
-          >
-            <ChevronDownIcon
-              class={cn(
-                'size-4 pointer-events-none shrink-0 transition-transform duration-200',
-                viewMode === 'full' && 'rotate-180',
-              )}
-            />
-          </Button>
-        {/if}
+        <Button
+          {color}
+          size="icon-sm"
+          onclick={toggleCollapse}
+          aria-label={viewMode === 'full' || (viewMode === 'lines' && hasExpanded) ? 'Collapse code' : 'Expand code'}
+        >
+          <ChevronDownIcon
+            class={cn(
+              'size-4 pointer-events-none shrink-0 transition-transform duration-200',
+              (viewMode === 'full' || (viewMode === 'lines' && hasExpanded)) && 'rotate-180',
+            )}
+          />
+        </Button>
 
         {#if showDownload}
-          <Button color={activeHeaderColor} size="icon-sm" onclick={handleDownload} aria-label="Download code">
+          <Button {color} size="icon-sm" onclick={handleDownload} aria-label="Download code">
             <DownloadIcon class="size-4" />
           </Button>
         {/if}
 
         {#if copy}
-          <Button
-            color={activeHeaderColor}
-            size="icon-sm"
-            onclick={handleCopy}
-            aria-label={copied ? 'Copied' : 'Copy code'}
-          >
+          <Button {color} size="icon-sm" onclick={handleCopy} aria-label={copied ? 'Copied' : 'Copy code'}>
             {#if copied}
               <CheckIcon class="size-4" />
             {:else}
@@ -357,7 +356,7 @@
     </div>
   {/if}
 
-  {#if bodyVisible}
+  {#if bodyVisible && !missingTheme}
     <div
       class="text-xs font-mono relative overflow-x-auto overflow-y-hidden"
       style:background-color={codeColors?.bg}
@@ -387,7 +386,7 @@
         {/if}
       {:else if activeCode}
         <div class="p-4 bg-background text-foreground flex items-center justify-center">
-          <Spinner color={activeHeaderColor} />
+          <Spinner {color} />
         </div>
       {/if}
     </div>

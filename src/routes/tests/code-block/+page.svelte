@@ -146,14 +146,15 @@ bun run preview`,
     <section class="space-y-4">
       <h2 class="text-xl font-black uppercase italic">Basics</h2>
       <p class="text-xs">
-        Required: <code class="font-mono">color</code>, <code class="font-mono">shiki</code>,
-        <code class="font-mono">code</code>, <code class="font-mono">lang</code>. Optional header props:
+        Required: <code class="font-mono">color</code> and <code class="font-mono">headerColor</code>. Optional header
+        props:
         <code class="font-mono">title</code>, <code class="font-mono">icon</code>, <code class="font-mono">copy</code>,
         <code class="font-mono">numbered</code>.
       </p>
       <CodeBlock
         {shiki}
         color="green"
+        headerColor="blue"
         code={demoJson}
         lang="json"
         title="package.json"
@@ -167,21 +168,30 @@ bun run preview`,
     <section class="space-y-4">
       <h2 class="text-xl font-black uppercase italic">Header</h2>
       <p class="text-xs">
-        <code class="font-mono">color</code> tints the header bar (red, green, yellow, blue, magenta, cyan, white).
-        <code class="font-mono">headerColor</code> overrides it. Without <code class="font-mono">title</code>, a
-        language badge is shown instead.
+        <code class="font-mono">headerColor</code> tints the header bar and is required; it never falls back to
+        <code class="font-mono">color</code>.
+        <code class="font-mono">color</code> is required and tints the buttons, dropdown, badges, and other controls.
+        Without <code class="font-mono">title</code>, a language badge is shown instead.
       </p>
-      <CodeBlock {shiki} color="blue" code={demoTypeScript} lang="typescript" title="color only" copy />
+      <CodeBlock
+        {shiki}
+        color="blue"
+        headerColor="yellow"
+        code={demoTypeScript}
+        lang="typescript"
+        title="blue controls, yellow header"
+        copy
+      />
       <CodeBlock
         {shiki}
         color="yellow"
         headerColor="magenta"
         code={demoTypeScript}
         lang="typescript"
-        title="headerColor override"
+        title="magenta header, yellow controls"
         copy
       />
-      <CodeBlock {shiki} color="cyan" code={demoTypeScript} lang="typescript" copy numbered />
+      <CodeBlock {shiki} color="cyan" headerColor="red" code={demoTypeScript} lang="typescript" copy numbered />
     </section>
 
     <!-- Shiki themes -->
@@ -195,6 +205,7 @@ bun run preview`,
       <CodeBlock
         {shiki}
         color="white"
+        headerColor="blue"
         code={demoTypeScript}
         lang="typescript"
         title="shiki lightTheme + darkTheme"
@@ -204,12 +215,18 @@ bun run preview`,
       <CodeBlock
         {shiki}
         color="green"
+        headerColor="cyan"
         code={demoJson}
         lang="json"
         title="theme override (gruvbox-dark)"
         theme="gruvbox-dark"
         copy
       />
+      <p class="text-xs">
+        Without a theme prop or configured Shiki themes, the header shows a small “Theme required” badge. Hover it for
+        the configuration hint; no code body is shown.
+      </p>
+      <CodeBlock color="red" headerColor="blue" code={demoTypeScript} lang="typescript" title="missing theme" />
     </section>
 
     <!-- Variants -->
@@ -223,6 +240,7 @@ bun run preview`,
       <CodeBlock
         {shiki}
         color="green"
+        headerColor="yellow"
         lang="bash"
         title="Install"
         copy
@@ -234,6 +252,7 @@ bun run preview`,
       <CodeBlock
         {shiki}
         color="cyan"
+        headerColor="magenta"
         lang="bash"
         title="Run dev (synced via variantKey)"
         copy
@@ -242,42 +261,48 @@ bun run preview`,
       />
     </section>
 
-    <!-- Lines & collapse -->
+    <!-- Lines & collapsed state -->
     <section class="space-y-4">
-      <h2 class="text-xl font-black uppercase italic">Lines &amp; collapse</h2>
+      <h2 class="text-xl font-black uppercase italic">Lines &amp; collapsed state</h2>
       <p class="text-xs">
-        <code class="font-mono">lines</code> truncates long code — click the block to expand.
-        <code class="font-mono">collapse</code> adds a header chevron. Combine them for finer control.
+        The header collapse button is always shown. A nonzero <code class="font-mono">lines</code> value starts at that line
+        limit. Zero starts with no body. After expanding, the button cycles through the line limit, hidden, then full.
       </p>
       <ul class="text-xs space-y-1 pl-4 list-disc">
-        <li><code class="font-mono">lines={'{N}'}</code> — truncate to N lines, gradient hint to expand</li>
-        <li><code class="font-mono">collapse</code> — header toggle hides the entire body</li>
-        <li><code class="font-mono">lines={'{N}'} collapse</code> — starts collapsed to N lines</li>
-        <li><code class="font-mono">lines={'{-N}'} collapse</code> — starts full, header collapse → N lines</li>
+        <li><code class="font-mono">lines={'{N}'}</code> — starts at N lines</li>
+        <li><code class="font-mono">lines={0}</code> — starts hidden</li>
       </ul>
-      <CodeBlock {shiki} color="magenta" code={demoLong} lang="typescript" title="lines={5}" copy numbered lines={5} />
-      <CodeBlock {shiki} color="yellow" code={demoLong} lang="typescript" title="collapse" copy collapse />
       <CodeBlock
         {shiki}
-        color="blue"
+        color="magenta"
+        headerColor="cyan"
         code={demoLong}
         lang="typescript"
-        title="lines={6} collapse"
+        title="lines={5}"
         copy
         numbered
-        lines={6}
-        collapse
+        lines={5}
       />
       <CodeBlock
         {shiki}
-        color="green"
+        color="yellow"
+        headerColor="red"
         code={demoLong}
         lang="typescript"
-        title="lines={-4} collapse"
+        title="lines={0}"
+        copy
+        lines={0}
+      />
+      <CodeBlock
+        {shiki}
+        color="blue"
+        headerColor="green"
+        code={demoLong}
+        lang="typescript"
+        title="lines={6}"
         copy
         numbered
-        lines={-4}
-        collapse
+        lines={6}
       />
     </section>
 
@@ -289,13 +314,23 @@ bun run preview`,
         <code class="font-mono">tabSize</code>, and <code class="font-mono">highlightedLines</code> (1-indexed, disables magic-move
         on variants).
       </p>
-      <CodeBlock {shiki} color="red" code={demoLong} lang="typescript" title="wrap" copy wrap />
-      <CodeBlock {shiki} color="white" code={demoTypeScript} lang="typescript" showHeader={false} />
-      <CodeBlock {shiki} color="green" code={demoWithTabs} lang="json" title="tabSize={2}" copy />
-      <CodeBlock {shiki} color="blue" code={demoWithTabs} lang="json" title="tabSize={8}" copy tabSize={8} />
+      <CodeBlock {shiki} color="red" headerColor="yellow" code={demoLong} lang="typescript" title="wrap" copy wrap />
+      <CodeBlock {shiki} color="white" headerColor="cyan" code={demoTypeScript} lang="typescript" showHeader={false} />
+      <CodeBlock {shiki} color="green" headerColor="blue" code={demoWithTabs} lang="json" title="tabSize={2}" copy />
+      <CodeBlock
+        {shiki}
+        color="blue"
+        headerColor="red"
+        code={demoWithTabs}
+        lang="json"
+        title="tabSize={8}"
+        copy
+        tabSize={8}
+      />
       <CodeBlock
         {shiki}
         color="magenta"
+        headerColor="yellow"
         code={demoTypeScript}
         lang="typescript"
         title={`highlightedLines={[1, 3, 5]}`}
@@ -315,13 +350,14 @@ bun run preview`,
       <CodeBlock
         {shiki}
         color="blue"
+        headerColor="cyan"
         code={demoJson}
         lang="json"
         title="copy + download"
         copy
         download="package.json"
       />
-      <CodeBlock {shiki} color="blue" code={demoJson} lang="json" title="custom actions" copy>
+      <CodeBlock {shiki} color="blue" headerColor="magenta" code={demoJson} lang="json" title="custom actions" copy>
         {#snippet actions()}
           <Button color="blue" size="icon-sm" aria-label="Open in editor">
             <ExternalLinkIcon class="size-4" />
@@ -337,7 +373,7 @@ bun run preview`,
         No <code class="font-mono">code</code>, <code class="font-mono">html</code>, or variants — header shows a
         fallback badge.
       </p>
-      <CodeBlock color="red" />
+      <CodeBlock color="red" headerColor="blue" />
     </section>
   </div>
 </div>

@@ -78,11 +78,11 @@ done`;
 
   const dependencies = [
     { name: 'SvelteKit', url: 'https://github.com/sveltejs/kit' },
+    { name: 'Bits UI', url: 'https://github.com/huntabyte/bits-ui' },
     {
       name: 'Tailwind CSS',
       url: 'https://github.com/tailwindlabs/tailwindcss',
     },
-    { name: 'Bits UI', url: 'https://github.com/huntabyte/bits-ui' },
     {
       name: 'Lucide Icons',
       url: 'https://github.com/lucide-icons/lucide',
@@ -92,6 +92,8 @@ done`;
       name: 'Mode Watcher',
       url: 'https://github.com/svecosystem/mode-watcher',
     },
+    { name: 'Video.js 10', url: 'https://github.com/videojs/video.js' },
+    { name: 'LayerChart', url: 'https://github.com/techniq/layerchart' },
     { name: 'Shiki', url: 'https://github.com/shikijs/shiki' },
     {
       name: 'Embla Carousel',
@@ -106,7 +108,6 @@ done`;
       name: 'Paneforge',
       url: 'https://github.com/svecosystem/paneforge',
     },
-    { name: 'Video.js 10', url: 'https://github.com/videojs/v10' },
     { name: 'Panzoom', url: 'https://github.com/timmywil/panzoom' },
     { name: 'DiceBear', url: 'https://github.com/dicebear/dicebear' },
     { name: 'QRCode', url: 'https://github.com/soldair/node-qrcode' },
@@ -182,6 +183,7 @@ done`;
             <CodeBlock
               shiki={codeBlockShiki}
               color="white"
+              headerColor="white"
               code={componentsJson}
               lang="json"
               copy
@@ -192,6 +194,7 @@ done`;
               <CodeBlock
                 shiki={codeBlockShiki}
                 color="white"
+                headerColor="white"
                 lang="bash"
                 copy
                 defaultVariant="bun"
@@ -216,6 +219,7 @@ done`;
             <CodeBlock
               shiki={codeBlockShiki}
               color="white"
+              headerColor="white"
               lang="bash"
               copy
               defaultVariant="bun"
@@ -226,7 +230,15 @@ done`;
               To add registry blocks such as <Badge color="white" class="font-mono">confirm-dialog</Badge>, use their
               URLs:
             </p>
-            <CodeBlock shiki={codeBlockShiki} color="white" lang="bash" copy wrap code={blockCommand} />
+            <CodeBlock
+              shiki={codeBlockShiki}
+              color="white"
+              headerColor="white"
+              lang="bash"
+              copy
+              wrap
+              code={blockCommand}
+            />
           </Card.Content>
         </Card.Root>
 
@@ -242,13 +254,13 @@ done`;
             <CodeBlock
               shiki={codeBlockShiki}
               color="white"
+              headerColor="white"
               code={layoutExample}
               lang="svelte"
               copy
               download="+layout.svelte"
               title="src/routes/+layout.svelte"
               lines={4}
-              collapse
             />
           </Card.Content>
         </Card.Root>
@@ -259,11 +271,27 @@ done`;
             <Card.Description>Install the neo-retro skill for AI coding agents.</Card.Description>
           </Card.Header>
           <Card.Content class="space-y-6">
-            <CodeBlock shiki={codeBlockShiki} color="white" lang="bash" copy wrap code={agentCommand} />
+            <CodeBlock
+              shiki={codeBlockShiki}
+              color="white"
+              headerColor="white"
+              lang="bash"
+              copy
+              wrap
+              code={agentCommand}
+            />
             <p class="leading-relaxed font-medium text-sm">
               Then add this to your project's <Badge color="white" class="font-mono">AGENTS.md</Badge>:
             </p>
-            <CodeBlock shiki={codeBlockShiki} color="white" code={agentsMarkdown} lang="markdown" copy wrap />
+            <CodeBlock
+              shiki={codeBlockShiki}
+              color="white"
+              headerColor="white"
+              code={agentsMarkdown}
+              lang="markdown"
+              copy
+              wrap
+            />
           </Card.Content>
         </Card.Root>
       </div>
