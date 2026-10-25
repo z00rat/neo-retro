@@ -1897,6 +1897,25 @@
       ]
     },
     {
+      "name": "sonner",
+      "type": "registry:ui",
+      "registryDependencies": [],
+      "devDependencies": [
+        "mode-watcher",
+        "svelte-sonner"
+      ],
+      "files": [
+        {
+          "path": "src/lib/registry/ui/sonner/index.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/sonner/sonner.svelte",
+          "type": "registry:file"
+        }
+      ]
+    },
+    {
       "name": "spinner",
       "type": "registry:ui",
       "registryDependencies": [],
