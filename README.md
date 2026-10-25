@@ -3,6 +3,14 @@
 An oxymoronic design system: not modern, yet not old-school.
 A UI component registry for Svelte, based on shadcn-svelte but extended with common utilities and components, and a skill for AI coding agents.
 
+## Start from the Neo-Retro starter
+
+For a ready-to-use SvelteKit project, clone the [Neo-Retro starter](https://github.com/z00rat/neo-retro-starter) and build from there:
+
+```bash
+git clone https://github.com/z00rat/neo-retro-starter.git && cd neo-retro-starter && bun install && bun run dev
+```
+
 ## 1. Initialization
 
 Create a `components.json` file in your project root with the following configuration:
@@ -82,6 +90,37 @@ curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-
 for file in design-language tokens-and-styling components composition-patterns integration; do
   curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"
 done
+```
+
+For Zsh, use:
+
+```zsh
+set -e
+mkdir -p .agent/skills/neo-retro/references
+curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
+for file in design-language tokens-and-styling components composition-patterns integration; do
+  curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"
+done
+```
+
+For Fish:
+
+```fish
+mkdir -p .agent/skills/neo-retro/references
+and curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
+for file in design-language tokens-and-styling components composition-patterns integration
+    curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"
+end
+```
+
+For Nushell:
+
+```nushell
+mkdir .agent/skills/neo-retro/references
+curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
+for file in [design-language tokens-and-styling components composition-patterns integration] {
+  curl -fsSL $"https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/($file).md" -o $".agent/skills/neo-retro/references/($file).md"
+}
 ```
 
 Then add this to your project's `AGENTS.md`:

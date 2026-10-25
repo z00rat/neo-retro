@@ -10,7 +10,7 @@
 
   const codeBlockShiki = {
     themes: ['nord', 'github-light'],
-    langs: ['json', 'svelte', 'markdown', 'bash'],
+    langs: ['json', 'svelte', 'markdown', 'bash', 'zsh', 'fish', 'nushell'],
     lightTheme: 'github-light',
     darkTheme: 'nord',
   };
@@ -69,12 +69,45 @@
   https://neo-retro.zurat.dev/r/copy-button.json \\
   https://neo-retro.zurat.dev/r/privacy-consent-banner.json`;
 
-  const agentCommand = `set -e
+  const starterCommand =
+    'git clone https://github.com/z00rat/neo-retro-starter.git && cd neo-retro-starter && bun install && bun run dev';
+
+  const agentCommands: CodeBlockVariant[] = [
+    {
+      value: 'bash',
+      code: `set -e
 mkdir -p .agent/skills/neo-retro/references
 curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
 for file in design-language tokens-and-styling components composition-patterns integration; do
   curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"
-done`;
+done`,
+    },
+    {
+      value: 'zsh',
+      code: `set -e
+mkdir -p .agent/skills/neo-retro/references
+curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
+for file in design-language tokens-and-styling components composition-patterns integration; do
+  curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"
+done`,
+    },
+    {
+      value: 'fish',
+      code: `mkdir -p .agent/skills/neo-retro/references; and
+curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md; and
+for file in design-language tokens-and-styling components composition-patterns integration
+    curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"; or break
+end`,
+    },
+    {
+      value: 'nushell',
+      code: `mkdir .agent/skills/neo-retro/references
+curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
+for file in [design-language tokens-and-styling components composition-patterns integration] {
+  curl -fsSL $"https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/($file).md" -o $".agent/skills/neo-retro/references/($file).md"
+}`,
+    },
+  ];
 
   const dependencies = [
     { name: 'SvelteKit', url: 'https://github.com/sveltejs/kit' },
@@ -123,7 +156,7 @@ done`;
 <div class="relative min-h-screen">
   <!-- Hero / Header Top Section -->
 
-  <section data-color="blue" class="bg-clr text-on-clr border-black py-12 relative border-b-4">
+  <section data-color="blue" class="bg-clr text-on-clr py-12 relative">
     <BackgroundPattern pattern="cross" size={16} rotation={45} opacity={0.2} />
 
     <div class="max-w-3xl px-4 space-y-8 relative z-10 container mx-auto">
@@ -151,7 +184,7 @@ done`;
         </Card.Content>
       </Card.Root>
 
-      <Card.Root color="magenta">
+      <Card.Root color="green">
         <Card.Header>
           <Card.Title>An oxymoronic design system: not modern, yet not old-school.</Card.Title>
         </Card.Header>
@@ -160,6 +193,44 @@ done`;
             A UI component registry for Svelte, based on shadcn-svelte but extended with common utilities and
             components, and a skill for AI coding agents.
           </p>
+        </Card.Content>
+      </Card.Root>
+    </div>
+  </section>
+
+  <!-- Starter Section -->
+  <section data-color="yellow" class="bg-clr text-on-clr py-12 relative">
+    <BackgroundPattern pattern="waves" size={24} strokeWidth={1.5} opacity={0.2} />
+    <div class="max-w-3xl px-4 relative z-10 container mx-auto">
+      <Card.Root color="bright-red">
+        <Card.Header>
+          <Card.Title>Start from the Neo-Retro starter</Card.Title>
+          <Card.Description>
+            Clone the ready-to-use SvelteKit starter and build your project from here.
+          </Card.Description>
+        </Card.Header>
+        <Card.Content class="space-y-4">
+          <CodeBlock
+            shiki={codeBlockShiki}
+            color="yellow"
+            headerColor="blue"
+            lang="shell"
+            copy
+            wrap
+            code={starterCommand}
+          >
+            {#snippet actions()}
+              <Button
+                color="white"
+                size="icon-sm"
+                href="https://github.com/z00rat/neo-retro-starter"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GithubIcon />
+              </Button>
+            {/snippet}
+          </CodeBlock>
         </Card.Content>
       </Card.Root>
     </div>
@@ -182,8 +253,8 @@ done`;
           <Card.Content class="space-y-6">
             <CodeBlock
               shiki={codeBlockShiki}
-              color="white"
-              headerColor="white"
+              color="blue"
+              headerColor="red"
               code={componentsJson}
               lang="json"
               copy
@@ -193,9 +264,9 @@ done`;
               <p class="text-sm">Once saved, run the initialization command:</p>
               <CodeBlock
                 shiki={codeBlockShiki}
-                color="white"
-                headerColor="white"
-                lang="bash"
+                color="magenta"
+                headerColor="cyan"
+                lang="shell"
                 copy
                 defaultVariant="bun"
                 variantKey="package-manager"
@@ -218,9 +289,9 @@ done`;
           <Card.Content class="space-y-6">
             <CodeBlock
               shiki={codeBlockShiki}
-              color="white"
-              headerColor="white"
-              lang="bash"
+              color="red"
+              headerColor="yellow"
+              lang="shell"
               copy
               defaultVariant="bun"
               variantKey="package-manager"
@@ -232,9 +303,9 @@ done`;
             </p>
             <CodeBlock
               shiki={codeBlockShiki}
-              color="white"
-              headerColor="white"
-              lang="bash"
+              color="yellow"
+              headerColor="blue"
+              lang="shell"
               copy
               wrap
               code={blockCommand}
@@ -253,8 +324,8 @@ done`;
           <Card.Content class="space-y-6">
             <CodeBlock
               shiki={codeBlockShiki}
-              color="white"
-              headerColor="white"
+              color="red"
+              headerColor="magenta"
               code={layoutExample}
               lang="svelte"
               copy
@@ -273,20 +344,22 @@ done`;
           <Card.Content class="space-y-6">
             <CodeBlock
               shiki={codeBlockShiki}
-              color="white"
-              headerColor="white"
-              lang="bash"
+              color="cyan"
+              headerColor="blue"
+              lang="shell"
               copy
               wrap
-              code={agentCommand}
+              defaultVariant="bash"
+              variantKey="shell"
+              variants={agentCommands}
             />
             <p class="leading-relaxed font-medium text-sm">
               Then add this to your project's <Badge color="white" class="font-mono">AGENTS.md</Badge>:
             </p>
             <CodeBlock
               shiki={codeBlockShiki}
-              color="white"
-              headerColor="white"
+              color="green"
+              headerColor="yellow"
               code={agentsMarkdown}
               lang="markdown"
               copy
@@ -300,7 +373,7 @@ done`;
 
   <!-- Footer Section -->
 
-  <footer data-color="bright-green" class="bg-clr text-on-clr border-black py-12 relative border-t-4">
+  <footer data-color="bright-green" class="bg-clr text-on-clr py-12 relative">
     <BackgroundPattern pattern="isometric" size={32} strokeWidth={1.5} opacity={0.15} />
 
     <div class="max-w-3xl px-4 relative z-10 container mx-auto">
@@ -335,7 +408,7 @@ done`;
                 target="_blank"
                 rel="noopener noreferrer"
                 class="font-bold underline">neobrutalism.dev</a
-              > & many cool websites.
+              > & many other cool websites.
             </p>
           </div>
 
