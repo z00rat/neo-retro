@@ -11,6 +11,7 @@
   import { mode, userPrefersMode } from 'mode-watcher';
   import type { Component, Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
+  import { fade } from 'svelte/transition';
 
   import '@shikijs/magic-move/style.css';
 
@@ -99,6 +100,8 @@
 
   let activeValue = $state('');
   let codeColors = $state<{ bg: string; fg: string } | null>(null);
+  let fullBodyHeight = $state<number>();
+  let limitedBodyElement = $state<HTMLDivElement | null>(null);
   let viewMode = $state<ViewMode>('full');
   let hasExpanded = $state(false);
   let copied = $state(false);
@@ -134,15 +137,42 @@
   const missingTheme = $derived(!preHighlightedHtml && !!activeCode && !!normalizedLang && !resolvedTheme);
   const themeKey = $derived(`${activeMode}:${resolvedTheme}`);
   const activeVariantLabel = $derived(activeVariant?.label ?? 'Variant');
-  const languageLabel = $derived(!title ? lang?.replace(/^shell$/, 'bash') : undefined);
+  const languageLabel = $derived(!title ? lang : undefined);
   const totalLines = $derived(activeCode ? activeCode.split('\n').length : 0);
   const lineLimit = $derived(effectiveLineLimit(viewMode, lines));
   const truncated = $derived(hasTruncatedLines(viewMode, lines, totalLines));
   const bodyVisible = $derived(showBodyContent(viewMode, hasContent));
   const collapseToggle = $derived(hasContent);
   const maxHeight = $derived(displayHeight(lineLimit));
+  const naturalBodyHeight = $derived(fullBodyHeight ?? Number.parseFloat(displayHeight(totalLines) ?? '48px'));
+  const visibleBodyHeight = $derived(
+    maxHeight ? Math.min(Number.parseFloat(maxHeight), naturalBodyHeight) : naturalBodyHeight,
+  );
   const clickToExpand = $derived(isClickToExpand(viewMode));
   const codePreClass = $derived(cn('m-0 p-4 leading-6', !wrap && 'min-w-max', wrap && 'break-all whitespace-pre-wrap'));
+
+  $effect(() => {
+    const element = limitedBodyElement;
+    if (!element) return;
+
+    const updateHeight = () => {
+      fullBodyHeight = element.firstElementChild?.scrollHeight ?? element.scrollHeight;
+    };
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(element);
+    if (element.firstElementChild) observer.observe(element.firstElementChild);
+    const mutations = new MutationObserver(() => {
+      if (element.firstElementChild) observer.observe(element.firstElementChild);
+      updateHeight();
+    });
+    mutations.observe(element, { childList: true });
+    updateHeight();
+
+    return () => {
+      observer.disconnect();
+      mutations.disconnect();
+    };
+  });
 
   function normalizeVariant(input: CodeBlockVariant): Variant {
     return { value: input.value, label: input.label ?? input.value, code: input.code };
@@ -225,10 +255,18 @@
 </script>
 
 {#snippet limitedBody(content: Snippet)}
-  <div class={cn('relative overflow-hidden', !wrap && 'min-w-max')} style:max-height={maxHeight}>
+  <div
+    bind:this={limitedBodyElement}
+    class={cn(
+      'code-block-body ease-in-out relative overflow-hidden transition-[max-height] duration-200',
+      !wrap && 'min-w-max',
+    )}
+    style:max-height={maxHeight ?? (fullBodyHeight ? `${fullBodyHeight}px` : undefined)}
+  >
     {@render content()}
     {#if truncated}
       <div
+        transition:fade={{ duration: 150 }}
         class="neoretro-clr neoretro-border-t bottom-0 left-0 right-0 bg-clr py-2 pointer-events-none absolute flex items-center justify-center"
         data-color={headerColor}
       >
@@ -255,6 +293,13 @@
     spinnerColor={color}
     onColors={(colors) => {
       codeColors = colors;
+      if (colors) {
+        requestAnimationFrame(() => {
+          if (limitedBodyElement) {
+            fullBodyHeight = limitedBodyElement.firstElementChild?.scrollHeight ?? limitedBodyElement.scrollHeight;
+          }
+        });
+      }
     }}
   />
 {/snippet}
@@ -323,19 +368,21 @@
           {@render actions()}
         {/if}
 
-        <Button
-          {color}
-          size="icon-sm"
-          onclick={toggleCollapse}
-          aria-label={viewMode === 'full' || (viewMode === 'lines' && hasExpanded) ? 'Collapse code' : 'Expand code'}
-        >
-          <ChevronDownIcon
-            class={cn(
-              'size-4 pointer-events-none shrink-0 transition-transform duration-200',
-              (viewMode === 'full' || (viewMode === 'lines' && hasExpanded)) && 'rotate-180',
-            )}
-          />
-        </Button>
+        {#if hasContent && !missingTheme}
+          <Button
+            {color}
+            size="icon-sm"
+            onclick={toggleCollapse}
+            aria-label={viewMode === 'full' || (viewMode === 'lines' && hasExpanded) ? 'Collapse code' : 'Expand code'}
+          >
+            <ChevronDownIcon
+              class={cn(
+                'size-4 pointer-events-none shrink-0 transition-transform duration-200',
+                (viewMode === 'full' || (viewMode === 'lines' && hasExpanded)) && 'rotate-180',
+              )}
+            />
+          </Button>
+        {/if}
 
         {#if showDownload}
           <Button {color} size="icon-sm" onclick={handleDownload} aria-label="Download code">
@@ -356,39 +403,48 @@
     </div>
   {/if}
 
-  {#if bodyVisible && !missingTheme}
+  {#if !missingTheme}
     <div
-      class="text-xs font-mono relative overflow-x-auto overflow-y-hidden"
-      style:background-color={codeColors?.bg}
-      style:color={codeColors?.fg}
-      style:tab-size={tabSize}
+      class="code-block-content ease-in-out grid overflow-hidden transition-[grid-template-rows] duration-200"
+      style:grid-template-rows={bodyVisible ? `${visibleBodyHeight}px` : '0px'}
+      aria-hidden={!bodyVisible}
+      inert={!bodyVisible}
     >
-      {#if preHighlightedHtml}
-        {#if truncated}
-          {@render limitedBody(preHtml)}
-        {:else}
-          <pre class={codePreClass}>
-            <code>
-              <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-              {@html preHighlightedHtml}
-            </code>
-          </pre>
-        {/if}
-      {:else if activeCode && normalizedLang && resolvedTheme}
-        {#key themeKey}
-          {@render limitedBody(highlightedCode)}
-        {/key}
-      {:else if activeCode && !normalizedLang}
-        {#if truncated}
-          {@render limitedBody(plainBody)}
-        {:else}
-          <pre class={codePreClass}><code>{activeCode}</code></pre>
-        {/if}
-      {:else if activeCode}
-        <div class="p-4 bg-background text-foreground flex items-center justify-center">
-          <Spinner {color} />
+      <div class="min-h-0 overflow-hidden">
+        <div
+          class="text-xs font-mono relative overflow-x-auto overflow-y-hidden"
+          style:background-color={codeColors?.bg}
+          style:color={codeColors?.fg}
+          style:tab-size={tabSize}
+        >
+          {#if preHighlightedHtml}
+            {#if truncated}
+              {@render limitedBody(preHtml)}
+            {:else}
+              <pre class={codePreClass}>
+                <code>
+                  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                  {@html preHighlightedHtml}
+                </code>
+              </pre>
+            {/if}
+          {:else if activeCode && normalizedLang && resolvedTheme}
+            {#key themeKey}
+              {@render limitedBody(highlightedCode)}
+            {/key}
+          {:else if activeCode && !normalizedLang}
+            {#if truncated}
+              {@render limitedBody(plainBody)}
+            {:else}
+              <pre class={codePreClass}><code>{activeCode}</code></pre>
+            {/if}
+          {:else if activeCode}
+            <div class="p-4 bg-background text-foreground flex items-center justify-center">
+              <Spinner {color} />
+            </div>
+          {/if}
         </div>
-      {/if}
+      </div>
     </div>
   {/if}
 </div>
