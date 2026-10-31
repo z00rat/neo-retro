@@ -1,26 +1,18 @@
 # Integration
 
-Use this reference when setting up or diagnosing a consumer project. First inspect its existing framework, package manager, `components.json`, aliases, and global CSS; keep existing choices unless the user asks to change them.
+Use this reference when setting up or troubleshooting the Neo-Retro starter. The starter uses SvelteKit, Bun, Tailwind CSS v4, and the `#lib/components/ui` alias.
 
-## Install from the registry
+## Load the theme and styles
 
-Neo-Retro is a Svelte component registry built on shadcn-svelte. The repository's README shows a `components.json` example and the `shadcn-svelte@latest` init/add commands. Use the current documented command and the consumer's package manager. Do not install the whole registry by default; add only the components the requested UI needs.
+In `./src/routes/+layout.svelte`, import the named `ThemeInit` export from `#lib/components/ui/style` and wrap the rendered children with it. The starter also supports a default import from `#lib/components/ui/style/theme-init.svelte`. `ThemeInit` imports `./src/lib/components/ui/style/tailwind.css` and starts `ModeWatcher`.
 
-The registry's examples use `#lib/registry/ui/...`; installed consumer projects may instead use `#lib/components/ui/...`. Read the consumer's aliases and installed files to determine the correct import path.
+Use `ThemePicker` somewhere in the app. If you cannot use it, report that to the user.
 
-## Theme setup
+The starter's `./src/routes/layout.css` imports Tailwind CSS. Keep that import and the `ThemeInit` wrapper in the root layout.
 
-The style entrypoint exports `ThemeInit`, `ThemePicker`, and `Themes`. `ThemeInit` imports the library Tailwind stylesheet and mounts `ModeWatcher`; wrap the app content with it when using the library's bundled theme initialization. `ThemePicker` is optional UI for choosing a theme. Do not add another theme watcher or picker if the project already has a working equivalent.
+## Troubleshoot styles
 
-Check the current README's layout example for the project's intended setup. Adapt its import alias and layout convention to the consumer app instead of copying the example literally.
-
-## Tailwind CSS
-
-The library stylesheet uses Tailwind CSS v4 and imports its palette, animation utilities, and Neo-Retro utility definitions. The root `tailwind.css` in this repository adds a source path so Tailwind scans the library's own Svelte and TypeScript files; a consumer must make sure its Tailwind build scans the installed component files too. Follow the consumer's Tailwind version and configuration rather than pasting v4 directives into a v3 project.
-
-## Common integration failures
-
-- **Unresolved import:** inspect `components.json`, `svelte.config.js`, and actual installed exports; aliases may differ from the demo site.
-- **Unstyled component:** check the global CSS import, Tailwind version, and source scanning for installed component files.
-- **Theme colors do not update:** verify `ThemeInit` or the consumer's existing theme provider is mounted and that the theme CSS is included.
-- **Missing utility class:** confirm the theme stylesheet is loaded and Tailwind scans the code containing the class.
+- For unresolved imports, check `components.json`, the configured aliases, and the installed exports.
+- For unstyled components, confirm that `ThemeInit` wraps the app and that Tailwind scans the installed component files.
+- For colors or dark mode that do not update, confirm `ThemeInit` is active. Do not inspect the large `colors.css` or `themes.json` files.
+- For missing utilities, confirm that `ThemeInit` loads `tailwind.css` and the class exists in a scanned source file.

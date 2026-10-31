@@ -1,13 +1,13 @@
 # Composition patterns
 
-These examples use the repository's `#lib/registry` alias. In a consuming app, use the alias and extension convention already configured there. Confirm a component API in [components.md](components.md) or its installed source before adapting an example.
+These examples use the Neo-Retro starter's `#lib/components/ui` alias. In another project, adapt imports to its configured aliases. Confirm each API in [components.md](components.md) or the installed source.
 
 ## Card with a clear action
 
 ```svelte
 <script lang="ts">
-  import { Button } from '#lib/registry/ui/button/index.js';
-  import * as Card from '#lib/registry/ui/card/index.js';
+  import { Button } from '#lib/components/ui/button/index.js';
+  import * as Card from '#lib/components/ui/card/index.js';
 </script>
 
 <Card.Root color="cyan" class="max-w-md">
@@ -24,20 +24,19 @@ These examples use the repository's `#lib/registry` alias. In a consuming app, u
 </Card.Root>
 ```
 
-This follows the card demo: namespace imports for compound components, explicit surface color, and one action in the footer. Use a quieter card color when the page already has several strong accents.
-
 ## Labeled form control
 
 ```svelte
 <script lang="ts">
-  import { Input } from '#lib/registry/ui/input/index.js';
-  import { Label } from '#lib/registry/ui/label/index.js';
+  import * as Field from '#lib/components/ui/field/index.js';
+  import { Input } from '#lib/components/ui/input/index.js';
 </script>
 
-<div class="gap-1.5 flex flex-col">
-  <Label for="email" class="text-sm font-bold">Email</Label>
+<Field.Field>
+  <Field.Label for="email">Email</Field.Label>
   <Input id="email" type="email" autocomplete="email" placeholder="you@example.com" />
-</div>
+  <Field.Description>Use the address where you receive updates.</Field.Description>
+</Field.Field>
 ```
 
 Associate the label and control with matching `for`/`id`; add real validation and error messaging when the form requires it. Do not use a placeholder as the only label.
@@ -46,21 +45,29 @@ Associate the label and control with matching `for`/`id`; add real validation an
 
 ```svelte
 <script lang="ts">
-  import { BackgroundPattern } from '#lib/registry/ui/background-pattern/index.js';
+  import { BackgroundPattern } from '#lib/components/ui/background-pattern/index.js';
+  import { Button } from '#lib/components/ui/button/index.js';
+  import * as Card from '#lib/components/ui/card/index.js';
 </script>
 
-<section data-color="blue" class="border-black bg-clr py-12 text-on-clr relative border-b-4">
+<section class="py-12 relative isolate overflow-hidden">
   <BackgroundPattern pattern="cross" size={16} rotation={45} />
   <div class="max-w-3xl px-4 relative z-10 container mx-auto">
-    <!-- Heading, short supporting copy, and primary action -->
+    <Card.Root color="blue">
+      <Card.Header>
+        <Card.Title>Project status</Card.Title>
+        <Card.Description>The pattern stays behind this readable surface.</Card.Description>
+      </Card.Header>
+      <Card.Footer>
+        <Button color="cyan">View project</Button>
+      </Card.Footer>
+    </Card.Root>
   </div>
 </section>
 ```
 
-Import `BackgroundPattern` from its installed component path. Keep the pattern behind the content and leave opacity at its component default; choose a different pattern or omit it if it makes text harder to read.
-
 ## Compound and primitive components
 
-Many compound components export `Root` plus named parts. The repository's demos commonly use `import * as Card` and `<Card.Root>`, `<Card.Header>`, and `<Card.Content>`. Standalone controls commonly export a named component, such as `Button` or `Input`. Match the installed index exports rather than guessing from the visual name.
+Import compound components as namespaces and standalone controls by name. Check the installed exports before choosing an import.
 
 Several interactive primitives are built on Bits UI. Preserve their trigger/content structure and state bindings. When customizing a dialog, menu, select, or popover, read its demo and source first; do not replace its focus, keyboard, or portal behavior with a hand-built visual imitation.

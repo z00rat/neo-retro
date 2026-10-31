@@ -1,27 +1,38 @@
 ---
 name: neo-retro
-description: Build and refine Svelte interfaces with the Neo-Retro design system. Use when a project uses Neo-Retro components, themes, or styling; do not apply its visual rules to unrelated design systems.
+description: When this skill exists, the project is using this design system. Read it and follow the style.
 ---
 
 # Neo-Retro
 
-Use this skill when creating or changing UI in a project that uses the Neo-Retro component registry. The goal is a coherent, usable interface that fits the existing project and uses the design system accurately.
+Neo-Retro combines neo-brutalist structure with a 16-color terminal palette. Crisp borders, compact corners, hard offset shadows, and clear hierarchy define the style. Keep layouts modern and preserve the host product's density; do not force a game-console or CRT look.
 
-**Never set opacity** with CSS, Tailwind opacity/alpha utilities, or component props unless the user explicitly asks for opacity or translucency. Keep a component's built-in default behavior; do not add or override opacity as decoration. Existing explicit opacity in project code is local to that instance; do not copy it into new UI by default.
+## Core rules
+
+- Set a component's color with its `color` prop when available. Do not override it with Tailwind color classes or CSS. Check the component's prop type because accepted colors vary.
+- Choose colors from the Neo-Retro palette for the task; never introduce colors outside it or assume a default palette color. Components pair foreground and background colors. For custom markup, use Neo-Retro Tailwind color classes; for LayerChart, use `neoretroColors`.
+- Do not set opacity with CSS, Tailwind utilities, or component props unless the user asks for opacity or translucency. Preserve component defaults.
+- Preserve components' built-in corners. For custom elements that need a radius, use `rounded`; use `rounded-xl` only for very small parts. Use `noShadow` only when the user asks for it.
+- Use Tailwind for layout, spacing, sizing, and responsive behavior. Do not use utility classes to recreate a component's colors, borders, shadows, or corners.
+- Structure each page into meaningful sections. Use a different `BackgroundPattern` in each section. Put text and controls inside colored `Card` or `Item` surfaces above each pattern. Never place content directly on a pattern. Apply this rule to new work even when an existing starter page uses a different pattern.
+- Use clear labels and concise actions, preserve visible keyboard focus, and respect semantic HTML and reduced-motion behavior.
+- Do not edit existing components under `./src/lib/components/ui/` or existing registry blocks under `./src/lib/components/`. Read them as API documentation. If one is buggy, report it. Add new behavior in a separate file under `./src/lib/components/`.
+- Before styling, confirm that `./src/routes/+layout.svelte` wraps its children in `ThemeInit`. In the starter, import it from `#lib/components/ui/style/theme-init.svelte` or as a named export from `#lib/components/ui/style`. Confirm that the app uses `ThemePicker` somewhere. If it is missing, follow [integration.md](references/integration.md). After route or layout changes, confirm that `ThemePicker` remains in the app. If you cannot use it, report that to the user.
 
 ## Workflow
 
-1. Inspect the host project before editing. Find its framework, installed component location, aliases, theme setup, and existing page patterns. Do not assume this repository's `#lib/registry` imports are the consumer's imports.
-2. Read only the references needed for the task:
-   - Read [design-language.md](references/design-language.md) for visual direction.
-   - Read [tokens-and-styling.md](references/tokens-and-styling.md) when choosing colors, theme utilities, borders, shadows, or global styles.
-   - Read [components.md](references/components.md) to choose a component for the UI job; inspect the installed source and demo for its exact API before using it.
-   - Read [composition-patterns.md](references/composition-patterns.md) for tested Svelte composition examples.
-   - Read [integration.md](references/integration.md) when installing, configuring, or troubleshooting the registry.
-3. Build with existing Neo-Retro components where they fit. Preserve the project's layout, data flow, naming, and routing. Use semantic native elements for content or behavior that has no suitable component; do not wrap every element in a library component.
-4. Follow the design language without making every surface loud. Use the project's current theme and a small, intentional set of accent colors. Keep contrast, focus visibility, responsive behavior, and semantic structure intact.
-5. Before finishing, check imports and props against the installed source, review the changed UI at relevant viewport sizes when a preview is available, and run the host project's normal checks when appropriate. Report any part that could not be verified.
+1. Inspect the host project's components, aliases, theme setup, and existing page patterns. In the Neo-Retro starter, components live under `./src/lib/components/ui/` and use the `#lib/components/ui/` alias.
+2. Read only the relevant references:
+   - [tokens-and-styling.md](references/tokens-and-styling.md) for colors, utilities, borders, and shadows.
+   - [components.md](references/components.md) to map UI jobs to components and confirm custom component guidance.
+   - [composition-patterns.md](references/composition-patterns.md) for Svelte examples.
+   - [integration.md](references/integration.md) for setup or troubleshooting.
+3. Build with Neo-Retro components wherever they fit. Preserve data flow, routing, and accessibility.
+4. Check imports and props against the installed source. Review the changed UI at relevant viewport sizes when a preview is available. Confirm that the app still uses `ThemePicker`.
 
-## Source of truth
+## Registry commands
 
-The installed component source and the project's existing configuration are authoritative for API and integration details. These references summarize stable usage patterns; they are not a reason to invent an API or override the host project's conventions. If this skill conflicts with the installed code, follow the code and update the reference when working in this repository.
+- Use `bun x shadcn-svelte@latest add button` as the pattern for adding one registry item. Replace `button` with the requested item. If the project is not initialized, follow the [Neo-Retro initialization guide](https://github.com/z00rat/neo-retro#1-initialization). Do not initialize an existing starter.
+- Use `bun run update:neo-retro` only when the user asks to sync the installed Neo-Retro registry. The script prompts before it overwrites registry components, updates dependencies and skill files, then runs install and format.
+
+The installed components and project configuration define the available APIs. Do not guess props, imports, or component structure. If this skill conflicts with installed source, follow the source and tell the user about the mismatch.

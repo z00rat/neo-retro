@@ -50,19 +50,10 @@
     '</Theme' +
     'Init>';
   const agentsMarkdown =
-    '- **Neo-Retro skill**: Follow `.agent/skills/neo-retro/SKILL.md` when building or changing UI with this design system. It links to focused references for visual guidance, tokens, component choices, examples, and setup.';
+    '- **Neo-Retro skill**: Follow `.agent/skills/neo-retro/SKILL.md` when building or changing UI with this design system. It links to focused references for style rules, tokens, component choices, examples, and setup.';
 
-  const initVariants: CodeBlockVariant[] = [
-    { value: 'npm', code: 'npx shadcn-svelte@latest init' },
-    { value: 'pnpm', code: 'pnpm dlx shadcn-svelte@latest init' },
-    { value: 'bun', code: 'bun x shadcn-svelte@latest init' },
-  ];
-
-  const addVariants: CodeBlockVariant[] = [
-    { value: 'npm', code: 'npx shadcn-svelte@latest add' },
-    { value: 'pnpm', code: 'pnpm dlx shadcn-svelte@latest add' },
-    { value: 'bun', code: 'bun x shadcn-svelte@latest add' },
-  ];
+  const initCommand = 'bun x shadcn-svelte@latest init';
+  const addCommand = 'bun x shadcn-svelte@latest add --all';
 
   const blockCommand = `bun x shadcn-svelte@latest add \\
   https://neo-retro.zurat.dev/r/confirm-dialog.json \\
@@ -78,7 +69,7 @@
       code: `set -e
 mkdir -p .agent/skills/neo-retro/references
 curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
-for file in design-language tokens-and-styling components composition-patterns integration; do
+for file in tokens-and-styling components composition-patterns integration; do
   curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"
 done`,
     },
@@ -87,7 +78,7 @@ done`,
       code: `set -e
 mkdir -p .agent/skills/neo-retro/references
 curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
-for file in design-language tokens-and-styling components composition-patterns integration; do
+for file in tokens-and-styling components composition-patterns integration; do
   curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"
 done`,
     },
@@ -95,7 +86,7 @@ done`,
       value: 'fish',
       code: `mkdir -p .agent/skills/neo-retro/references; and
 curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md; and
-for file in design-language tokens-and-styling components composition-patterns integration
+for file in tokens-and-styling components composition-patterns integration
     curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"; or break
 end`,
     },
@@ -103,7 +94,7 @@ end`,
       value: 'nushell',
       code: `mkdir .agent/skills/neo-retro/references
 curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
-for file in [design-language tokens-and-styling components composition-patterns integration] {
+for file in [tokens-and-styling components composition-patterns integration] {
   curl -fsSL $"https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/($file).md" -o $".agent/skills/neo-retro/references/($file).md"
 }`,
     },
@@ -156,17 +147,13 @@ for file in [design-language tokens-and-styling components composition-patterns 
 <div class="relative min-h-screen">
   <!-- Hero / Header Top Section -->
 
-  <section data-color="blue" class="bg-clr text-on-clr py-12 relative">
-    <BackgroundPattern pattern="cross" size={16} rotation={45} opacity={0.2} />
+  <section data-color="blue" class="bg-clr text-on-clr py-12 relative isolate overflow-hidden">
+    <BackgroundPattern pattern="cross" size={16} rotation={45} />
 
-    <div class="max-w-3xl px-4 space-y-8 relative z-10 container mx-auto">
+    <div class="max-w-3xl space-y-8 px-4 relative z-10 container mx-auto">
       <Card.Root color="white">
         <Card.Content class="p-4 sm:p-6 gap-4 flex flex-wrap items-center justify-between">
-          <h1 class="text-5xl font-black tracking-tighter mb-0 uppercase [text-shadow:2px_2px_0px_#000]">
-            <span class="text-blue">Neo</span>-<span class="text-red">R</span><span class="text-yellow">e</span><span
-              class="text-cyan">t</span
-            ><span class="text-magenta">r</span><span class="text-green">o</span>
-          </h1>
+          <h1 class="mb-0 text-4xl font-black tracking-tighter sm:text-5xl uppercase">Neo-Retro</h1>
           <div class="gap-2 flex flex-wrap items-center">
             <Button color="red" href={resolve('tests')} class="gap-2 flex items-center">View Examples</Button>
 
@@ -199,8 +186,8 @@ for file in [design-language tokens-and-styling components composition-patterns 
   </section>
 
   <!-- Starter Section -->
-  <section data-color="yellow" class="bg-clr text-on-clr py-12 relative">
-    <BackgroundPattern pattern="waves" size={24} strokeWidth={1.5} opacity={0.2} />
+  <section data-color="yellow" class="bg-clr text-on-clr py-12 relative isolate overflow-hidden">
+    <BackgroundPattern pattern="waves" size={24} strokeWidth={1.5} />
     <div class="max-w-3xl px-4 relative z-10 container mx-auto">
       <Card.Root color="bright-red">
         <Card.Header>
@@ -237,8 +224,8 @@ for file in [design-language tokens-and-styling components composition-patterns 
   </section>
 
   <!-- Content Lower Section -->
-  <section class="py-12 relative">
-    <BackgroundPattern pattern="dots" size={20} opacity={0.2} />
+  <section class="py-12 relative isolate overflow-hidden">
+    <BackgroundPattern pattern="dots" size={20} />
 
     <div class="max-w-3xl px-4 relative z-10 container mx-auto">
       <div class="space-y-10">
@@ -268,9 +255,7 @@ for file in [design-language tokens-and-styling components composition-patterns 
                 headerColor="cyan"
                 lang="shell"
                 copy
-                defaultVariant="bun"
-                variantKey="package-manager"
-                variants={initVariants}
+                code={initCommand}
               />
             </div>
           </Card.Content>
@@ -287,16 +272,7 @@ for file in [design-language tokens-and-styling components composition-patterns 
             </Card.Description>
           </Card.Header>
           <Card.Content class="space-y-6">
-            <CodeBlock
-              shiki={codeBlockShiki}
-              color="red"
-              headerColor="yellow"
-              lang="shell"
-              copy
-              defaultVariant="bun"
-              variantKey="package-manager"
-              variants={addVariants}
-            />
+            <CodeBlock shiki={codeBlockShiki} color="red" headerColor="yellow" lang="shell" copy code={addCommand} />
             <p class="leading-relaxed font-medium text-sm">
               To add registry blocks such as <Badge color="white" class="font-mono">confirm-dialog</Badge>, use their
               URLs:
@@ -373,8 +349,8 @@ for file in [design-language tokens-and-styling components composition-patterns 
 
   <!-- Footer Section -->
 
-  <footer data-color="bright-green" class="bg-clr text-on-clr py-12 relative">
-    <BackgroundPattern pattern="isometric" size={32} strokeWidth={1.5} opacity={0.15} />
+  <footer data-color="bright-green" class="bg-clr text-on-clr py-12 relative isolate overflow-hidden">
+    <BackgroundPattern pattern="isometric" size={32} strokeWidth={1.5} />
 
     <div class="max-w-3xl px-4 relative z-10 container mx-auto">
       <Card.Root color="white">
@@ -420,11 +396,10 @@ for file in [design-language tokens-and-styling components composition-patterns 
                 {@const dotColors = ['bg-red', 'bg-green', 'bg-yellow', 'bg-blue', 'bg-magenta']}
                 <li class="gap-2 flex items-center">
                   <span
-                    class="size-2 border-black inline-block shrink-0 rounded-full border {dotColors[
-                      i % dotColors.length
-                    ]}"
+                    class="size-2 border-black shrink-0 rounded-full border {dotColors[i % dotColors.length]}"
+                    aria-hidden="true"
                   ></span>
-                  <a href={dep.url} target="_blank" rel="noopener noreferrer" class="hover:underline">
+                  <a href={dep.url} target="_blank" rel="noopener noreferrer" class="underline">
                     {dep.name}
                   </a>
                 </li>
