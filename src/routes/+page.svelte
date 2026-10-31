@@ -5,8 +5,41 @@
   import { Button } from '#lib/registry/ui/button/index.js';
   import * as Card from '#lib/registry/ui/card/index.js';
   import { CodeBlock, type CodeBlockVariant } from '#lib/registry/ui/code-block/index.js';
+  import { applyTheme, Themes } from '#lib/registry/ui/style/themes.ts';
+  import { theme } from 'mode-watcher';
 
   import { resolve } from '$app/paths';
+
+  let themeInterval: ReturnType<typeof setInterval> | undefined;
+
+  function selectRandomTheme() {
+    const choices = Themes.filter((item) => item.id !== theme.current);
+    if (choices.length === 0) return;
+
+    applyTheme(choices[Math.floor(Math.random() * choices.length)].id);
+  }
+
+  function stopThemeShuffle() {
+    if (themeInterval !== undefined) clearInterval(themeInterval);
+    themeInterval = undefined;
+  }
+
+  function handleThemeShortcut(event: KeyboardEvent) {
+    if (event.key.toLowerCase() !== 't' || !event.altKey || event.ctrlKey || event.metaKey || event.repeat) return;
+    if (
+      event.target instanceof HTMLElement &&
+      (event.target.isContentEditable || event.target.closest('input, textarea, select, [role="textbox"]'))
+    )
+      return;
+
+    event.preventDefault();
+    selectRandomTheme();
+    themeInterval = setInterval(selectRandomTheme, 500);
+  }
+
+  function handleThemeShortcutRelease(event: KeyboardEvent) {
+    if (event.key.toLowerCase() === 't') stopThemeShuffle();
+  }
 
   const codeBlockShiki = {
     themes: ['nord', 'github-light'],
@@ -143,6 +176,8 @@ for file in [tokens-and-styling components composition-patterns integration] {
     { name: 'Knip', url: 'https://github.com/webpro-nl/knip' },
   ];
 </script>
+
+<svelte:window onkeydown={handleThemeShortcut} onkeyup={handleThemeShortcutRelease} onblur={stopThemeShuffle} />
 
 <div class="relative min-h-screen">
   <!-- Hero / Header Top Section -->

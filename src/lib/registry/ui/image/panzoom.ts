@@ -1,5 +1,5 @@
-import Panzoom from '@panzoom/panzoom';
 import type { PanzoomGlobalOptions } from '@panzoom/panzoom';
+import Panzoom from '@panzoom/panzoom/dist/panzoom.es.js';
 
 export interface PanZoomConfig {
   minScale?: number;

@@ -1,7 +1,6 @@
 <script lang="ts">
   import PaintbrushIcon from '@lucide/svelte/icons/paintbrush';
   import SearchIcon from '@lucide/svelte/icons/search';
-  import { BackgroundPattern, type BackgroundPatternProps } from '#lib/registry/ui/background-pattern/index.js';
   import { Badge } from '#lib/registry/ui/badge/index.js';
   import * as ButtonGroup from '#lib/registry/ui/button-group/index.js';
   import { Button } from '#lib/registry/ui/button/index.js';
@@ -16,11 +15,9 @@
   let {
     class: className = '',
     backgroundColor = 'yellow',
-    backgroundPattern = { pattern: 'dots', opacity: 0.3 },
   }: {
     class?: string;
     backgroundColor?: 'black' | 'bright-black' | Color;
-    backgroundPattern?: Omit<BackgroundPatternProps, 'absolute' | 'class'>;
   } = $props();
   let searchQuery = $state('');
   let modeFilter = $state<'all' | 'light' | 'dark'>('all');
@@ -90,7 +87,6 @@
     {/snippet}
   </Dialog.Trigger>
   <Dialog.Content color={backgroundColor} class="sm:max-w-4xl @container">
-    <BackgroundPattern {...backgroundPattern} absolute class="inset-0 rounded absolute z-0" />
     <Dialog.Header class="relative z-10">
       <Dialog.Title>Choose a theme</Dialog.Title>
       <Dialog.Description class="gap-2 flex flex-wrap items-center">

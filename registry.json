@@ -979,6 +979,10 @@
           "type": "registry:file"
         },
         {
+          "path": "src/lib/registry/ui/image/panzoom-es.d.ts",
+          "type": "registry:file"
+        },
+        {
           "path": "src/lib/registry/ui/image/types.ts",
           "type": "registry:file"
         }
