@@ -83,7 +83,7 @@
     '</Theme' +
     'Init>';
   const agentsMarkdown =
-    '- **Neo-Retro skill**: Follow `.agent/skills/neo-retro/SKILL.md` when building or changing UI with this design system. It links to focused references for style rules, tokens, component choices, examples, and setup.';
+    '- **Neo-Retro skill**: Follow `.agents/skills/neo-retro/SKILL.md` when building or changing UI with this design system. It links to focused references for style rules, tokens, component choices, examples, and setup.';
 
   const initCommand = 'bun x shadcn-svelte@latest init';
   const addCommand = 'bun x shadcn-svelte@latest add --all';
@@ -100,35 +100,35 @@
     {
       value: 'bash',
       code: `set -e
-mkdir -p .agent/skills/neo-retro/references
-curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
+mkdir -p .agents/skills/neo-retro/references
+curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agents/skills/neo-retro/SKILL.md
 for file in tokens-and-styling components composition-patterns integration; do
-  curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"
+  curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agents/skills/neo-retro/references/$file.md"
 done`,
     },
     {
       value: 'zsh',
       code: `set -e
-mkdir -p .agent/skills/neo-retro/references
-curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
+mkdir -p .agents/skills/neo-retro/references
+curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agents/skills/neo-retro/SKILL.md
 for file in tokens-and-styling components composition-patterns integration; do
-  curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"
+  curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agents/skills/neo-retro/references/$file.md"
 done`,
     },
     {
       value: 'fish',
-      code: `mkdir -p .agent/skills/neo-retro/references; and
-curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md; and
+      code: `mkdir -p .agents/skills/neo-retro/references; and
+curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agents/skills/neo-retro/SKILL.md; and
 for file in tokens-and-styling components composition-patterns integration
-    curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"; or break
+    curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agents/skills/neo-retro/references/$file.md"; or break
 end`,
     },
     {
       value: 'nushell',
-      code: `mkdir .agent/skills/neo-retro/references
-curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
+      code: `mkdir .agents/skills/neo-retro/references
+curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agents/skills/neo-retro/SKILL.md
 for file in [tokens-and-styling components composition-patterns integration] {
-  curl -fsSL $"https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/($file).md" -o $".agent/skills/neo-retro/references/($file).md"
+  curl -fsSL $"https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/($file).md" -o $".agents/skills/neo-retro/references/($file).md"
 }`,
     },
   ];

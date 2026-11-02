@@ -85,10 +85,10 @@ Install the Neo-Retro skill for AI coding agents. It includes focused references
 
 ```bash
 set -e
-mkdir -p .agent/skills/neo-retro/references
-curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
+mkdir -p .agents/skills/neo-retro/references
+curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agents/skills/neo-retro/SKILL.md
 for file in tokens-and-styling components composition-patterns integration; do
-  curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"
+  curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agents/skills/neo-retro/references/$file.md"
 done
 ```
 
@@ -96,35 +96,35 @@ For Zsh, use:
 
 ```zsh
 set -e
-mkdir -p .agent/skills/neo-retro/references
-curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
+mkdir -p .agents/skills/neo-retro/references
+curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agents/skills/neo-retro/SKILL.md
 for file in tokens-and-styling components composition-patterns integration; do
-  curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"
+  curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agents/skills/neo-retro/references/$file.md"
 done
 ```
 
 For Fish:
 
 ```fish
-mkdir -p .agent/skills/neo-retro/references
-and curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
+mkdir -p .agents/skills/neo-retro/references
+and curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agents/skills/neo-retro/SKILL.md
 for file in tokens-and-styling components composition-patterns integration
-    curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agent/skills/neo-retro/references/$file.md"
+    curl -fsSL "https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/$file.md" -o ".agents/skills/neo-retro/references/$file.md"
 end
 ```
 
 For Nushell:
 
 ```nushell
-mkdir .agent/skills/neo-retro/references
-curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agent/skills/neo-retro/SKILL.md
+mkdir .agents/skills/neo-retro/references
+curl -fsSL https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/SKILL.md -o .agents/skills/neo-retro/SKILL.md
 for file in [tokens-and-styling components composition-patterns integration] {
-  curl -fsSL $"https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/($file).md" -o $".agent/skills/neo-retro/references/($file).md"
+  curl -fsSL $"https://raw.githubusercontent.com/z00rat/neo-retro/master/skills/neo-retro/references/($file).md" -o $".agents/skills/neo-retro/references/($file).md"
 }
 ```
 
 Then add this to your project's `AGENTS.md`:
 
 ```markdown
-- **Neo-Retro skill**: Follow `.agent/skills/neo-retro/SKILL.md` when building or changing UI with this design system. It links to focused references for style rules, tokens, component choices, examples, and setup.
+- **Neo-Retro skill**: Follow `.agents/skills/neo-retro/SKILL.md` when building or changing UI with this design system. It links to focused references for style rules, tokens, component choices, examples, and setup.
 ```

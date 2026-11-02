@@ -14,7 +14,8 @@ Neo-Retro combines neo-brutalist structure with a 16-color terminal palette. Cri
 - Do not set opacity with CSS, Tailwind utilities, or component props unless the user asks for opacity or translucency. Preserve component defaults.
 - Preserve components' built-in corners. For custom elements that need a radius, use `rounded`; use `rounded-xl` only for very small parts. Use `noShadow` only when the user asks for it.
 - Use Tailwind for layout, spacing, sizing, and responsive behavior. Do not use utility classes to recreate a component's colors, borders, shadows, or corners.
-- Structure each page into meaningful sections. Use a different `BackgroundPattern` in each section. Put text and controls inside colored `Card` or `Item` surfaces above each pattern. Never place content directly on a pattern. Apply this rule to new work even when an existing starter page uses a different pattern.
+- Structure each page into meaningful sections. Use a different `BackgroundPattern` in each section. Treat the pattern marks and the section background as separate colors: choose a section background that lets the pattern remain visible, then put text and controls inside colored `Card` or `Item` surfaces above it. Never place content directly on a pattern. Apply this rule to new work even when an existing starter page uses a different pattern.
+- Give adjacent parent and child surfaces different palette colors when the component APIs allow it, so their boundaries remain visible. Check the rendered result; if they must share a color, use another clear visual boundary already provided by the component.
 - Use clear labels and concise actions, preserve visible keyboard focus, and respect semantic HTML and reduced-motion behavior.
 - Do not edit existing components under `./src/lib/components/ui/` or existing registry blocks under `./src/lib/components/`. Read them as API documentation. If one is buggy, report it. Add new behavior in a separate file under `./src/lib/components/`.
 - Before styling, confirm that `./src/routes/+layout.svelte` wraps its children in `ThemeInit`. In the starter, import it from `#lib/components/ui/style/theme-init.svelte` or as a named export from `#lib/components/ui/style`. Confirm that the app uses `ThemePicker` somewhere. If it is missing, follow [integration.md](references/integration.md). After route or layout changes, confirm that `ThemePicker` remains in the app. If you cannot use it, report that to the user.
@@ -28,7 +29,7 @@ Neo-Retro combines neo-brutalist structure with a 16-color terminal palette. Cri
    - [composition-patterns.md](references/composition-patterns.md) for Svelte examples.
    - [integration.md](references/integration.md) for setup or troubleshooting.
 3. Build with Neo-Retro components wherever they fit. Preserve data flow, routing, and accessibility.
-4. Check imports and props against the installed source. Review the changed UI at relevant viewport sizes when a preview is available. Confirm that the app still uses `ThemePicker`.
+4. Check imports and props against the installed source. Review the changed UI at relevant viewport sizes when a preview is available. Verify that patterns are visible over their section backgrounds, content is on readable surfaces, adjacent parent and child surfaces use different colors when possible, and component content such as charts remains visible. Confirm that the app still uses `ThemePicker`.
 
 ## Registry commands
 
