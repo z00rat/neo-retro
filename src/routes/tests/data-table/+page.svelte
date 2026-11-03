@@ -505,7 +505,7 @@
               >
                 {#if !header.isPlaceholder}
                   {#if header.column.id === 'select'}
-                    <div class="flex h-full w-full items-center justify-center">
+                    <div class="flex size-full items-center justify-center">
                       <Checkbox
                         color="blue"
                         class="pointer-events-none"
@@ -547,7 +547,7 @@
                 onclick={cell.column.id === 'select' ? () => row.toggleSelected(!row.getIsSelected()) : undefined}
               >
                 {#if cell.column.id === 'select'}
-                  <div class="flex h-full w-full items-center justify-center">
+                  <div class="flex size-full items-center justify-center">
                     <Checkbox color="blue" class="pointer-events-none" checked={row.getIsSelected()} />
                   </div>
                 {:else if cell.column.id === 'status'}

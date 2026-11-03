@@ -22,7 +22,7 @@
   toastOptions={{
     classes: {
       toast: 'cn-toast neoretro-border neoretro-shadow font-sans',
-      title: 'font-heading text-base font-bold',
+      title: 'text-base font-bold',
       description: '!text-[var(--normal-text)] text-sm leading-snug',
       actionButton: 'neoretro-border rounded px-2 py-1 font-semibold text-current',
       cancelButton: 'neoretro-border rounded px-2 py-1 font-semibold text-current',

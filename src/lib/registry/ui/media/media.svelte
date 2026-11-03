@@ -400,8 +400,8 @@
 
   $effect(() => {
     const key = sourceKey;
-    sourceIndex;
-    retryKey;
+    void sourceIndex;
+    void retryKey;
     if (key !== lastSourceKey) {
       lastSourceKey = key;
       sourceIndex = 0;
@@ -415,7 +415,7 @@
 
   $effect(() => {
     const selectedProvider = provider;
-    retryKey;
+    void retryKey;
     if (!loaded || !selectedProvider) {
       providerReady = false;
       return;
@@ -546,8 +546,8 @@
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Open video on YouTube"
-            class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus ml-auto inline-flex items-center justify-center"
-            data-color={linkColor}><ExternalLink class="h-4 w-4" /></a
+            class="rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus size-9 ml-auto inline-flex items-center justify-center"
+            data-color={linkColor}><ExternalLink class="size-4" /></a
           >
         {/if}
       </header>
@@ -567,11 +567,11 @@
               </svelte:element>
             {/key}
             <media-time-slider
-              class="media-audio-time-slider group mx-0 h-20 relative flex w-full cursor-pointer touch-none items-center justify-center outline-none select-none"
+              class="group mx-0 h-20 relative flex w-full cursor-pointer touch-none items-center justify-center outline-none select-none"
               aria-label="Seek audio"
             >
               <div
-                class="media-audio-waveform inset-x-0 h-14 gap-0 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center"
+                class="inset-x-0 h-14 gap-0 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center"
                 aria-hidden="true"
               >
                 {#each bars as height, index (index)}<div
@@ -580,7 +580,7 @@
                   ></div>{/each}
               </div>
               <div
-                class="media-audio-waveform media-audio-waveform-progress inset-x-0 h-14 gap-0 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center"
+                class="media-audio-waveform-progress inset-x-0 h-14 gap-0 pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center"
                 data-color={waveformColor}
                 aria-hidden="true"
               >
@@ -591,7 +591,7 @@
                   ></div>{/each}
               </div>
               <media-slider-thumb
-                class="media-audio-playhead h-16 w-1.5 rounded neoretro-border neoretro-clr absolute top-1/2 left-(--media-slider-fill) z-20 -translate-x-1/2 -translate-y-1/2"
+                class="media-audio-playhead h-16 w-1.5 rounded neoretro-border neoretro-clr absolute top-1/2 left-(--media-slider-fill) z-20 -translate-1/2"
                 data-color={waveformColor}
                 aria-hidden="true"
               ></media-slider-thumb>
@@ -651,13 +651,13 @@
                 src={poster}
                 alt={title ?? ''}
                 loading={posterLoad === 'eager' ? 'eager' : 'lazy'}
-                class="inset-0 absolute h-full w-full object-cover"
+                class="inset-0 absolute size-full object-cover"
               />{/if}
             <button
               type="button"
               class="gap-2 rounded neoretro-border neoretro-shadow bg-background px-4 py-2 font-bold text-foreground hover:neoretro-hover focus-visible:neoretro-focus absolute z-10 inline-flex items-center"
               data-color={actionButtonColor}
-              onclick={() => requestLoad(true)}><Play class="h-5 w-5" /> Load video</button
+              onclick={() => requestLoad(true)}><Play class="size-5" /> Load video</button
             >
           {:else}
             <p class="text-sm font-bold text-white">Loading video adapter…</p>
@@ -711,7 +711,7 @@
               aria-hidden="true"
             ></div>
             <div
-              class="media-control-thumb-shadow h-5 w-5 rounded neoretro-shadow pointer-events-none absolute top-1/2 left-(--media-slider-fill) z-0 -translate-y-1/2"
+              class="media-control-thumb-shadow rounded neoretro-shadow size-5 pointer-events-none absolute top-1/2 left-(--media-slider-fill) z-0 -translate-y-1/2"
               aria-hidden="true"
             ></div>
             <media-slider-track
@@ -723,7 +723,7 @@
               ></media-slider-fill></media-slider-track
             >
             <media-slider-thumb
-              class="h-5 w-5 rounded neoretro-border neoretro-clr absolute top-1/2 left-(--media-slider-fill) z-20 -translate-y-1/2"
+              class="rounded neoretro-border neoretro-clr size-5 absolute top-1/2 left-(--media-slider-fill) z-20 -translate-y-1/2"
               data-color={seekButtonColor}
             ></media-slider-thumb>
             {#if thumbnails || showSliderValue}
@@ -732,9 +732,9 @@
                 class:media-video-scrub-preview-with-thumbnail={Boolean(thumbnails)}
               >
                 {#if thumbnails}<media-slider-thumbnail
-                    class="media-video-thumbnail-preview aspect-video w-32 rounded neoretro-border neoretro-shadow bg-black block overflow-hidden"
+                    class="aspect-video w-32 rounded neoretro-border neoretro-shadow bg-black block overflow-hidden"
                   ></media-slider-thumbnail>{/if}
-                {#if showSliderValue}<media-slider-preview class="media-video-time-preview flex flex-col items-center">
+                {#if showSliderValue}<media-slider-preview class="flex flex-col items-center">
                     <span
                       class="rounded neoretro-border neoretro-shadow bg-background px-2 py-1 text-xs text-foreground"
                     >
@@ -750,34 +750,34 @@
           <div class="gap-2 flex flex-wrap items-center">
             {#if !live}<media-seek-button
                 seconds={-seekStep}
-                class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus inline-flex items-center justify-center"
+                class="rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus size-9 inline-flex items-center justify-center"
                 data-color={seekButtonColor}
-                aria-label={`Rewind ${seekStep} seconds`}><Rewind class="h-4 w-4" /></media-seek-button
+                aria-label={`Rewind ${seekStep} seconds`}><Rewind class="size-4" /></media-seek-button
               >{/if}
             {#if loaded}<media-play-button
-                class="h-9 w-9 rounded neoretro-border neoretro-shadow neoretro-clr hover:neoretro-hover focus-visible:neoretro-focus inline-flex items-center justify-center"
+                class="rounded neoretro-border neoretro-shadow neoretro-clr hover:neoretro-hover focus-visible:neoretro-focus size-9 inline-flex items-center justify-center"
                 data-color={playButtonColor}
-                >{#if playback?.paused}<Play class="h-4 w-4" />{:else}<Pause class="h-4 w-4" />{/if}</media-play-button
+                >{#if playback?.paused}<Play class="size-4" />{:else}<Pause class="size-4" />{/if}</media-play-button
               >{:else}<button
                 type="button"
-                class="h-9 w-9 rounded neoretro-border neoretro-shadow neoretro-clr hover:neoretro-hover focus-visible:neoretro-focus inline-flex items-center justify-center"
+                class="rounded neoretro-border neoretro-shadow neoretro-clr hover:neoretro-hover focus-visible:neoretro-focus size-9 inline-flex items-center justify-center"
                 data-color={playButtonColor}
                 aria-label="Load and play"
-                onclick={togglePlayback}><Play class="h-4 w-4" /></button
+                onclick={togglePlayback}><Play class="size-4" /></button
               >{/if}
             {#if live}<button
                 type="button"
-                class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus inline-flex items-center justify-center"
+                class="rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus size-9 inline-flex items-center justify-center"
                 aria-label="Restart live stream"
                 title="Restart live stream"
                 data-color={controlButtonColor}
-                onclick={restartLive}><RotateCcw class="h-4 w-4" /></button
+                onclick={restartLive}><RotateCcw class="size-4" /></button
               >{/if}
             {#if !live}<media-seek-button
                 seconds={seekStep}
-                class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus inline-flex items-center justify-center"
+                class="rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus size-9 inline-flex items-center justify-center"
                 data-color={seekButtonColor}
-                aria-label={`Seek forward ${seekStep} seconds`}><FastForward class="h-4 w-4" /></media-seek-button
+                aria-label={`Seek forward ${seekStep} seconds`}><FastForward class="size-4" /></media-seek-button
               >{/if}
             <span class="min-w-24 text-xs font-bold sm:text-sm">{formatTime(start + current)} / {formatTime(end)}</span>
           </div>
@@ -794,7 +794,7 @@
                 aria-hidden="true"
               ></div>
               <div
-                class="media-control-thumb-shadow h-4 w-4 rounded neoretro-shadow pointer-events-none absolute top-1/2 left-(--media-slider-fill) z-0 -translate-x-1/2 -translate-y-1/2"
+                class="media-control-thumb-shadow rounded neoretro-shadow size-4 pointer-events-none absolute top-1/2 left-(--media-slider-fill) z-0 -translate-1/2"
                 aria-hidden="true"
               ></div>
               <media-slider-track
@@ -802,21 +802,21 @@
                 ><media-slider-fill class="inset-y-0 left-0 neoretro-clr absolute" data-color={controlButtonColor}
                 ></media-slider-fill></media-slider-track
               ><media-slider-thumb
-                class="h-4 w-4 rounded neoretro-border neoretro-clr absolute top-1/2 left-(--media-slider-fill) z-20 -translate-x-1/2 -translate-y-1/2"
+                class="rounded neoretro-border neoretro-clr size-4 absolute top-1/2 left-(--media-slider-fill) z-20 -translate-1/2"
                 data-color={controlButtonColor}
               ></media-slider-thumb></media-volume-slider
             >
             <media-mute-button
-              class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus inline-flex items-center justify-center"
+              class="rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus size-9 inline-flex items-center justify-center"
               data-color={controlButtonColor}
               onwheel={setVolumeFromWheel}
-              >{#if volume?.muted}<VolumeX class="h-4 w-4" />{:else}<Volume2 class="h-4 w-4" />{/if}</media-mute-button
+              >{#if volume?.muted}<VolumeX class="size-4" />{:else}<Volume2 class="size-4" />{/if}</media-mute-button
             >
             <details bind:this={settingsMenu} class="relative">
               <summary
-                class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus inline-flex cursor-pointer list-none items-center justify-center"
+                class="rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus size-9 inline-flex cursor-pointer list-none items-center justify-center"
                 data-color={controlButtonColor}
-                aria-label="Playback settings"><Settings class="h-4 w-4" /></summary
+                aria-label="Playback settings"><Settings class="size-4" /></summary
               >
               <div
                 class="right-0 mb-2 min-w-56 gap-3 rounded neoretro-border neoretro-shadow bg-background p-3 text-foreground absolute bottom-full z-40 grid"
@@ -831,7 +831,7 @@
                   >
                     <Select.Trigger class="h-9 text-xs">{rate?.playbackRate ?? saved.playbackRate}×</Select.Trigger>
                     <Select.Content color={selectorColor}>
-                      {#each speeds as speed}<Select.Item value={String(speed)}>{speed}×</Select.Item>{/each}
+                      {#each speeds as speed (speed)}<Select.Item value={String(speed)}>{speed}×</Select.Item>{/each}
                     </Select.Content>
                   </Select.Root>
                 </div>
@@ -905,15 +905,15 @@
             </details>
             {#if viewType === 'video'}
               <media-pip-button
-                class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus inline-flex items-center justify-center"
+                class="rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus size-9 inline-flex items-center justify-center"
                 data-color={controlButtonColor}
-                aria-label="Picture in picture"><PictureInPicture2 class="h-4 w-4" /></media-pip-button
+                aria-label="Picture in picture"><PictureInPicture2 class="size-4" /></media-pip-button
               >
               <media-fullscreen-button
-                class="h-9 w-9 rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus inline-flex items-center justify-center"
+                class="rounded neoretro-border neoretro-shadow bg-background text-foreground hover:neoretro-hover focus-visible:neoretro-focus size-9 inline-flex items-center justify-center"
                 data-color={controlButtonColor}
-                >{#if fullscreen?.isFullscreen}<Minimize class="h-4 w-4" />{:else}<Maximize
-                    class="h-4 w-4"
+                >{#if fullscreen?.isFullscreen}<Minimize class="size-4" />{:else}<Maximize
+                    class="size-4"
                   />{/if}</media-fullscreen-button
               >
             {/if}

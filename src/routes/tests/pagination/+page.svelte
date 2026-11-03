@@ -3,7 +3,7 @@
   import * as Pagination from '#lib/registry/ui/pagination/index.ts';
 </script>
 
-<div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">
+<div class="gap-12 p-12 min-h-125 flex flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Pagination Tests</h1>
 
   <div class="max-w-2xl gap-10 flex w-full flex-col">

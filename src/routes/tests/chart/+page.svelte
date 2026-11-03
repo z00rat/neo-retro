@@ -367,7 +367,7 @@
       <Card.Description>Population rank changes for all states from 1920 to 2020.</Card.Description>
     </Card.Header>
     <Card.Content class="min-w-0 overflow-hidden">
-      <div class="h-[64rem] w-full" bind:clientWidth={bumpChartWidth}>
+      <div class="h-256 w-full" bind:clientWidth={bumpChartWidth}>
         <LayerChart
           data={bumpData}
           x="year"
@@ -607,7 +607,7 @@
           min: { label: 'Minimum', color: neoretroColors.blue },
           max: { label: 'Maximum', color: neoretroColors.magenta },
         }}
-        class="mx-auto aspect-square w-full max-w-[600px]"
+        class="max-w-150 mx-auto aspect-square w-full"
       >
         <BarChart
           data={radialTemperature}

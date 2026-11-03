@@ -107,7 +107,7 @@
                 <ul class="gap-2 p-2 md:w-100 lg:w-125 lg:grid-cols-[.75fr_1fr] grid">
                   <li class="row-span-3">
                     <NavigationMenu.Link
-                      class="rounded p-4 focus:shadow-md md:p-6 flex h-full w-full flex-col justify-end no-underline outline-hidden select-none"
+                      class="rounded p-4 focus:shadow-md md:p-6 flex size-full flex-col justify-end no-underline outline-hidden select-none"
                     >
                       {#snippet child({ props })}
                         <a {...props} href="/">

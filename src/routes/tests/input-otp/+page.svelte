@@ -15,7 +15,7 @@
   }
 </script>
 
-<div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">
+<div class="gap-12 p-12 min-h-125 flex flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Input OTP Tests</h1>
 
   <div class="max-w-lg gap-10 flex w-full flex-col">

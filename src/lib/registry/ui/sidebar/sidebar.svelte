@@ -50,7 +50,7 @@
         <Sheet.Title>Sidebar</Sheet.Title>
         <Sheet.Description>Displays the mobile sidebar.</Sheet.Description>
       </Sheet.Header>
-      <div class="flex h-full w-full flex-col">
+      <div class="flex size-full flex-col">
         {@render children?.()}
       </div>
     </Sheet.Content>
@@ -82,8 +82,8 @@
       class={cn(
         'inset-y-0 md:flex fixed z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear',
         side === 'left'
-          ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
-          : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
+          ? 'left-0 group-data-[collapsible=offcanvas]:-left-(--sidebar-width)'
+          : 'right-0 group-data-[collapsible=offcanvas]:-right-(--sidebar-width)',
         // Adjust the padding for floating and inset variants.
         variant === 'floating' || variant === 'inset'
           ? 'p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]'
@@ -97,7 +97,7 @@
         data-slot="sidebar-inner"
         data-color={sidebarColor().color}
         class={cn(
-          'neoretro-clr group-data-[variant=floating]:neoretro-shadow group-data-[variant=floating]:rounded group-data-[variant=floating]:neoretro-border flex h-full w-full flex-col',
+          'neoretro-clr group-data-[variant=floating]:neoretro-shadow group-data-[variant=floating]:rounded group-data-[variant=floating]:neoretro-border flex size-full flex-col',
         )}
       >
         {@render children?.()}

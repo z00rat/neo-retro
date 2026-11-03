@@ -51,7 +51,7 @@
   <meta name="description" content="Overview of all component test pages in the Neo Retro project." />
 </svelte:head>
 
-<div class="-mx-8 -my-8 p-8 relative min-h-screen">
+<div class="p-8 -m-8 relative min-h-screen">
   <BackgroundPattern pattern="waves" size={24} strokeWidth={1.5} opacity={0.1} mask="fade-horizontal" />
 
   <div class="max-w-md animate-in space-y-6 fade-in slide-in-from-bottom-2 pb-12 relative z-10 mx-auto duration-400">
@@ -66,7 +66,7 @@
     {#if uiRoutes.length > 0}
       <ButtonGroup.Root orientation="vertical" class="w-full">
         {#each uiRoutes as route, i (route)}
-          <Button href="/tests/{route}" color={colors[i % colors.length]} class="px-6 py-6 justify-center">
+          <Button href="/tests/{route}" color={colors[i % colors.length]} class="p-6 justify-center">
             <span class="text-lg font-black tracking-tight capitalize">
               {route.replace(/-/g, ' ')}
             </span>
@@ -78,7 +78,7 @@
     {#if blockRoutes.length > 0}
       <ButtonGroup.Root orientation="vertical" class="w-full">
         {#each blockRoutes as route, i (route.path)}
-          <Button href="/tests/{route.path}" color={colors[(i + 3) % colors.length]} class="px-6 py-6 justify-center">
+          <Button href="/tests/{route.path}" color={colors[(i + 3) % colors.length]} class="p-6 justify-center">
             <span class="text-lg font-black tracking-tight capitalize">
               {route.name.replace(/-/g, ' ')}
             </span>

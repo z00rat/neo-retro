@@ -27,6 +27,6 @@
 >
   <SwitchPrimitive.Thumb
     data-slot="switch-thumb"
-    class="h-4 w-4 rounded neoretro-border bg-foreground data-[state=checked]:translate-x-6 data-[state=unchecked]:translate-x-1 pointer-events-none block ring-0 transition-transform data-disabled:opacity-50"
+    class="rounded neoretro-border bg-foreground data-[state=checked]:translate-x-6 data-[state=unchecked]:translate-x-1 size-4 pointer-events-none block ring-0 transition-transform data-disabled:opacity-50"
   />
 </SwitchPrimitive.Root>

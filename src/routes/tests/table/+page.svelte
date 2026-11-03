@@ -3,7 +3,7 @@
   import * as Table from '#lib/registry/ui/table/index.ts';
 </script>
 
-<div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">
+<div class="gap-12 p-12 min-h-125 flex flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Table Tests</h1>
 
   <div class="max-w-4xl gap-10 flex w-full flex-col">
@@ -16,7 +16,7 @@
           <Table.Caption>A list of your recent invoices.</Table.Caption>
           <Table.Header>
             <Table.Row>
-              <Table.Head class="w-[100px]">Invoice</Table.Head>
+              <Table.Head class="w-25">Invoice</Table.Head>
               <Table.Head>Status</Table.Head>
               <Table.Head>Method</Table.Head>
               <Table.Head class="text-right">Amount</Table.Head>
@@ -54,7 +54,7 @@
         <Table.Root headerColor="magenta" rowColor="green" noShadow>
           <Table.Header>
             <Table.Row>
-              <Table.Head class="w-[100px]">Invoice</Table.Head>
+              <Table.Head class="w-25">Invoice</Table.Head>
               <Table.Head>Status</Table.Head>
               <Table.Head>Method</Table.Head>
               <Table.Head class="text-right">Amount</Table.Head>

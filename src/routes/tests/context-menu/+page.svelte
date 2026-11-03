@@ -2,13 +2,13 @@
   import * as ContextMenu from '#lib/registry/ui/context-menu/index.ts';
 </script>
 
-<div class="gap-8 p-12 flex min-h-[500px] flex-col items-center justify-center">
+<div class="gap-8 p-12 min-h-125 flex flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Context Menu Tests</h1>
 
   <div class="max-w-2xl gap-8 flex w-full">
     <ContextMenu.Root>
       <ContextMenu.Trigger
-        class="rounded-md neoretro-border bg-black text-on-black flex h-[200px] w-full flex-1 items-center justify-center border-dashed"
+        class="rounded-md neoretro-border bg-black text-on-black h-50 flex w-full flex-1 items-center justify-center border-dashed"
       >
         Right click here
       </ContextMenu.Trigger>
@@ -56,7 +56,7 @@
     <!-- Cyan Context Menu -->
     <ContextMenu.Root>
       <ContextMenu.Trigger
-        class="rounded-md neoretro-border bg-cyan text-on-cyan flex h-[200px] w-full flex-1 items-center justify-center border-dashed"
+        class="rounded-md neoretro-border bg-cyan text-on-cyan h-50 flex w-full flex-1 items-center justify-center border-dashed"
       >
         Right click here (Cyan)
       </ContextMenu.Trigger>

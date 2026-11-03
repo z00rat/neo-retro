@@ -239,7 +239,9 @@
       copyTimer = setTimeout(() => {
         copied = false;
       }, 2000);
-    } catch {}
+    } catch {
+      // Clipboard access can be unavailable in insecure contexts.
+    }
   }
 
   function handleDownload() {
@@ -257,17 +259,14 @@
 {#snippet limitedBody(content: Snippet)}
   <div
     bind:this={limitedBodyElement}
-    class={cn(
-      'code-block-body ease-in-out relative overflow-hidden transition-[max-height] duration-200',
-      !wrap && 'min-w-max',
-    )}
+    class={cn('ease-in-out relative overflow-hidden transition-[max-height] duration-200', !wrap && 'min-w-max')}
     style:max-height={maxHeight ?? (fullBodyHeight ? `${fullBodyHeight}px` : undefined)}
   >
     {@render content()}
     {#if truncated}
       <div
         transition:fade={{ duration: 150 }}
-        class="neoretro-clr neoretro-border-t bottom-0 left-0 right-0 bg-clr py-2 pointer-events-none absolute flex items-center justify-center"
+        class="neoretro-clr neoretro-border-t bottom-0 bg-clr py-2 inset-x-0 pointer-events-none absolute flex items-center justify-center"
         data-color={headerColor}
       >
         <span class="text-on-clr text-xs font-mono font-black tracking-wide leading-none uppercase italic">
@@ -405,7 +404,7 @@
 
   {#if !missingTheme}
     <div
-      class="code-block-content ease-in-out grid overflow-hidden transition-[grid-template-rows] duration-200"
+      class="ease-in-out grid overflow-hidden transition-[grid-template-rows] duration-200"
       style:grid-template-rows={bodyVisible ? `${visibleBodyHeight}px` : '0px'}
       aria-hidden={!bodyVisible}
       inert={!bodyVisible}

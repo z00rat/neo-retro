@@ -83,7 +83,7 @@
   <title>Background Pattern Test | Neo Retro</title>
 </svelte:head>
 
-<div class="-mx-8 -my-8 font-mono">
+<div class="font-mono -m-8">
   {#each PATTERN_TYPES as pattern (pattern)}
     {@const control = settings[pattern]}
     <section

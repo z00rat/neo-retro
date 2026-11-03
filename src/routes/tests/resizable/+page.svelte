@@ -7,7 +7,7 @@
 <!-- Horizontal -->
 <section>
   <h3>Horizontal</h3>
-  <div class="max-w-md neoretro-shadow rounded neoretro-border h-[400px] w-full overflow-hidden">
+  <div class="max-w-md neoretro-shadow rounded neoretro-border h-100 w-full overflow-hidden">
     <Resizable.PaneGroup direction="horizontal">
       <Resizable.Pane defaultSize={25}>
         <div class="bg-red p-6 font-semibold text-on-red flex h-full items-center justify-center">
@@ -27,7 +27,7 @@
 <!-- Vertical -->
 <section>
   <h3>Vertical</h3>
-  <div class="max-w-md neoretro-shadow rounded neoretro-border h-[400px] w-full overflow-hidden">
+  <div class="max-w-md neoretro-shadow rounded neoretro-border h-100 w-full overflow-hidden">
     <Resizable.PaneGroup direction="vertical">
       <Resizable.Pane defaultSize={25}>
         <div class="bg-red p-6 font-semibold text-on-red flex h-full items-center justify-center">
@@ -46,7 +46,7 @@
 
 <section>
   <h3>MIX</h3>
-  <div class="max-w-md neoretro-shadow rounded neoretro-border h-[200px] w-full overflow-hidden">
+  <div class="max-w-md neoretro-shadow rounded neoretro-border h-50 w-full overflow-hidden">
     <Resizable.PaneGroup direction="horizontal">
       <Resizable.Pane defaultSize={50}>
         <div class="bg-white p-6 font-semibold text-on-white flex h-full items-center justify-center">

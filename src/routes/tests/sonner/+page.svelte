@@ -33,7 +33,7 @@
   <header class="max-w-2xl space-y-3">
     <p class="text-sm font-semibold tracking-wider uppercase">Component playground</p>
     <h1>Sonner</h1>
-    <p class="text-muted-foreground">A small collection of toast states, actions, and timing controls.</p>
+    <p class="text-foreground">A small collection of toast states, actions, and timing controls.</p>
   </header>
 
   <section class="space-y-4">
@@ -96,7 +96,7 @@
 
   <section class="space-y-4">
     <h2>Stacking</h2>
-    <p class="text-muted-foreground">Send a few at once to see how multiple notifications stack.</p>
+    <p class="text-foreground">Send a few at once to see how multiple notifications stack.</p>
     <div class="gap-3 flex flex-wrap">
       <Button
         color="white"

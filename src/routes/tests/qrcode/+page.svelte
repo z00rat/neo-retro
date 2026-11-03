@@ -64,11 +64,11 @@
       <Card.Header>
         <Card.Title>Output Preview</Card.Title>
       </Card.Header>
-      <Card.Content class="p-2 flex min-h-[220px] flex-1 flex-col items-center justify-center">
+      <Card.Content class="p-2 min-h-55 flex flex-1 flex-col items-center justify-center">
         <div
           class="size-64 border-black p-2 rounded bg-white neoretro-shadow flex items-center justify-center border-2"
         >
-          <QrCode value={text} {level} margin={margin[0]} class="text-black h-full w-full" />
+          <QrCode value={text} {level} margin={margin[0]} class="text-black size-full" />
         </div>
       </Card.Content>
     </Card.Root>

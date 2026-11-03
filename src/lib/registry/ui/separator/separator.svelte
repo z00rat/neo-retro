@@ -8,10 +8,10 @@
     base: 'shrink-0 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full',
     variants: {
       thickness: {
-        xs: 'data-[orientation=horizontal]:border-t-px data-[orientation=vertical]:border-l-px',
-        sm: 'data-[orientation=horizontal]:border-t-[2px] data-[orientation=vertical]:border-l-[2px]',
-        md: 'data-[orientation=horizontal]:border-t-[4px] data-[orientation=vertical]:border-l-[4px]',
-        lg: 'data-[orientation=horizontal]:border-t-[8px] data-[orientation=vertical]:border-l-[8px]',
+        xs: 'data-[orientation=horizontal]:border-t data-[orientation=vertical]:border-l',
+        sm: 'data-[orientation=horizontal]:border-t-2 data-[orientation=vertical]:border-l-2',
+        md: 'data-[orientation=horizontal]:border-t-4 data-[orientation=vertical]:border-l-4',
+        lg: 'data-[orientation=horizontal]:border-t-8 data-[orientation=vertical]:border-l-8',
       },
       style: {
         solid: 'border-solid',
@@ -53,7 +53,7 @@
 
   const containerClasses = $derived(
     cn(
-      'flex items-center justify-center w-full h-full',
+      'flex items-center justify-center size-full',
       orientation === 'horizontal' ? 'flex-row gap-2' : 'flex-col gap-2',
       className,
     ),

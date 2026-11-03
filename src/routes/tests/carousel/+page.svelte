@@ -38,7 +38,7 @@
     <div class="flex justify-center">
       <Carousel.Root orientation="vertical" class="max-w-sm w-full" color="red">
         <Carousel.Previous />
-        <Carousel.Content class="-mt-1 h-[200px]">
+        <Carousel.Content class="-mt-1 h-50">
           {#each items as item, i (i)}
             <Carousel.Item class="pt-1 md:basis-1/2">
               <div class="p-1">
@@ -65,7 +65,7 @@
               <div class="p-1">
                 <Card.Root
                   color="magenta"
-                  class="neoretro-shadow gap-2 p-6 flex min-h-[150px] flex-col items-center justify-center"
+                  class="neoretro-shadow gap-2 p-6 min-h-37.5 flex flex-col items-center justify-center"
                 >
                   <span class="text-3xl font-bold">{item.title}</span>
                   <p class="text-center">{item.description}</p>

@@ -2,7 +2,7 @@
   import * as DropdownMenu from '#lib/registry/ui/dropdown-menu/index.ts';
 </script>
 
-<div class="gap-8 p-12 flex min-h-[500px] flex-col items-center justify-center">
+<div class="gap-8 p-12 min-h-125 flex flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Dropdown Menu Tests</h1>
 
   <div class="max-w-2xl gap-8 flex w-full">

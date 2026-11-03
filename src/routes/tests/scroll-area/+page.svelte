@@ -34,7 +34,7 @@
 <section>
   <h3>Both Axes</h3>
   <ScrollArea.Root orientation="both" class="h-48 w-64 rounded neoretro-border bg-background p-4">
-    <div class="w-[600px]">
+    <div class="w-150">
       {#each Array.from({ length: 30 }, (_, i) => i + 1) as n (n)}
         <p class="py-1 text-sm whitespace-nowrap">
           This is a long line of text for item number {n} that overflows horizontally

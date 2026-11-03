@@ -4,7 +4,7 @@
   import { Label } from '#lib/registry/ui/label/index.ts';
 </script>
 
-<div class="gap-12 p-12 flex min-h-[500px] flex-col items-center justify-center">
+<div class="gap-12 p-12 min-h-125 flex flex-col items-center justify-center">
   <h1 class="text-3xl font-bold">Input Tests</h1>
 
   <div class="max-w-md gap-6 flex w-full flex-col">

@@ -113,13 +113,13 @@
   data-slot="background-pattern"
   class={cn(
     'pointer-events-none overflow-hidden select-none',
-    absolute ? 'inset-0 absolute z-0 h-full w-full' : 'relative h-full w-full',
+    absolute ? 'inset-0 absolute z-0 size-full' : 'relative size-full',
     className,
   )}
   style={patternStyle}
   {...restProps}
 >
-  <svg class="h-full w-full" aria-hidden="true">
+  <svg class="size-full" aria-hidden="true">
     <defs>
       <pattern
         id={patternId}

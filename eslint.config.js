@@ -4,6 +4,7 @@ import js from '@eslint/js';
 import { loadConfig } from '@sveltejs/load-config';
 import prettier from 'eslint-config-prettier';
 import svelte from 'eslint-plugin-svelte';
+import tailwindcss from 'eslint-plugin-tailwindcss';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import ts from 'typescript-eslint';
@@ -20,6 +21,32 @@ export default defineConfig(
   ...svelte.configs.recommended,
   prettier,
   ...svelte.configs.prettier,
+  tailwindcss.configs.recommended,
+  {
+    settings: {
+      tailwindcss: {
+        cssConfigPath: './src/lib/registry/ui/style/tailwind.css',
+      },
+    },
+    rules: {
+      'tailwindcss/classnames-order': 'off',
+      'tailwindcss/no-custom-classname': [
+        'error',
+        {
+          whitelist: [
+            '^(media-audio-waveform-progress|media-audio-playhead|media-control-track-shadow|media-control-thumb-shadow|media-video-stage|media-video-scrub-preview|media-video-scrub-preview-with-thumbnail)$',
+            '^toaster$',
+            '^\\*:is\\(kbd\\):rounded-\\[calc\\(var\\(--radius\\)-5px\\)\\]$',
+            '^\\*:is\\(svg\\):not\\(\\[class\\*=\\x27size-\\x27\\]\\):size-4$',
+            '^\\*:not\\(\\[class\\*=\\x27size-\\x27\\]\\):has-\\[svg\\]:size-3\\.5$',
+            '^\\*:not\\(\\[class\\*=\\x22size-\\x22\\]\\):size-4$',
+            '^\\*:is\\(img\\):size-full$',
+            '^\\*:is\\(img\\):object-cover$',
+          ],
+        },
+      ],
+    },
+  },
   {
     languageOptions: {
       globals: { ...globals.browser, ...globals.node },

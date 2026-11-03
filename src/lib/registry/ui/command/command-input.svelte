@@ -19,7 +19,7 @@
     data-slot="command-input"
     data-color={getColor()}
     class={cn(
-      'rounded neoretro-clr data-[disabled=true]:neoretro-disable flex h-full w-full border-none outline-none placeholder:opacity-90',
+      'rounded neoretro-clr data-[disabled=true]:neoretro-disable flex size-full border-none outline-none placeholder:opacity-90',
       className,
     )}
     bind:ref
